@@ -211,8 +211,11 @@ export function HomeV3() {
                     <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">
                       {s.id}
                     </div>
-                    <div className="mt-1 font-mono text-lg font-medium tabular-nums text-foreground/40">
-                      {String(i + 1).padStart(2, "0")} / 06
+                    <div className="mt-3 num-display-sm text-foreground tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
+                    <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/40">
+                      of 06
                     </div>
                   </div>
                   <div className="col-span-12 md:col-span-9">
