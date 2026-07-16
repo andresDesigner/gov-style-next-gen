@@ -1,0 +1,286 @@
+import {
+  primaryServices,
+  secondaryServices,
+  engagement,
+  audience,
+  operations,
+  footerCols,
+  evidenceSnippet,
+} from "./shared";
+
+export function HomeV2() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-foreground focus:px-4 focus:py-2 focus:text-background focus:font-mono focus:text-xs"
+      >
+        Skip to main content
+      </a>
+
+      <div className="border-b border-foreground/10 bg-secondary/60">
+        <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-2 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+          <span>A Zenzo LLC consulting practice</span>
+          <div className="flex items-center gap-4">
+            <span aria-current="true" className="text-foreground">EN</span>
+            <span aria-hidden="true" className="text-foreground/20">/</span>
+            <a href="#" className="hover:text-foreground hover:underline underline-offset-4">ES</a>
+          </div>
+        </div>
+      </div>
+
+      <nav aria-label="Primary" className="border-b border-foreground/10 bg-background">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4 sm:h-16 sm:grid-cols-none sm:flex sm:flex-wrap sm:justify-between">
+          <div className="flex min-w-0 items-center gap-8">
+            <a href="/" className="flex items-center gap-2 shrink-0">
+              <span aria-hidden="true" className="grid h-6 w-6 place-items-center bg-foreground text-background font-mono text-[10px] font-medium">A</span>
+              <span className="font-semibold tracking-tight">ACT Verified</span>
+            </a>
+            <ul className="hidden lg:flex gap-6 text-sm font-medium">
+              {["Services", "How We Verify", "For Government", "Resources", "About"].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-foreground/80 decoration-primary decoration-1 underline-offset-[6px] transition-[text-decoration-thickness] hover:text-foreground hover:underline hover:decoration-2">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <a href="#book" className="btn-gov shrink-0 bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-colors hover:bg-primary">
+            Book a Readiness Call
+          </a>
+        </div>
+      </nav>
+
+      <main id="main">
+        <header className="border-b border-foreground/10 bg-secondary/40">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-16 lg:py-24">
+            <div className="col-span-12 lg:col-span-8">
+              <div className="mb-6 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                Accessibility Verification · Compliance Readiness
+              </div>
+              <h1 className="max-w-[20ch] text-balance text-4xl font-medium leading-[1.05] tracking-[-0.02em] md:text-5xl lg:text-6xl">
+                Accessibility verification and compliance readiness for ADA Title II deadlines.
+              </h1>
+              <p className="mt-6 max-w-[56ch] text-pretty text-lg leading-relaxed text-foreground/80 md:text-xl">
+                ACT Verified prepares public-sector and regulated organizations for the Title II deadlines of April 26, 2027 and April 26, 2028 — with findings you can defend to auditors, legal counsel, and procurement reviewers.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <a href="#book" className="btn-gov bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:bg-primary">Book a Readiness Call</a>
+                <a href="#capability" className="btn-gov border border-foreground/25 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground hover:bg-foreground/[0.03]">Download Capability Statement</a>
+              </div>
+            </div>
+
+            <aside aria-label="Title II compliance deadlines" className="col-span-12 lg:col-span-4">
+              <div className="border border-foreground/10 bg-card p-6">
+                <div className="mb-4 font-mono text-[10px] uppercase tracking-widest text-foreground/50">Compliance Deadlines · ADA.gov</div>
+                <dl className="divide-y divide-foreground/10">
+                  <div className="pb-4">
+                    <div className="flex items-baseline justify-between">
+                      <dt className="font-mono text-sm font-medium tabular-nums text-foreground">April 26, 2027</dt>
+                      <span className="bg-primary/10 px-1.5 py-0.5 font-mono text-[10px] tracking-widest text-primary">PHASE 1</span>
+                    </div>
+                    <dd className="mt-1 text-xs uppercase tracking-wide text-foreground/60">Entities serving 50,000+ residents</dd>
+                  </div>
+                  <div className="pt-4">
+                    <div className="flex items-baseline justify-between">
+                      <dt className="font-mono text-sm font-medium tabular-nums text-foreground">April 26, 2028</dt>
+                      <span className="bg-foreground/5 px-1.5 py-0.5 font-mono text-[10px] tracking-widest text-foreground/60">PHASE 2</span>
+                    </div>
+                    <dd className="mt-1 text-xs uppercase tracking-wide text-foreground/60">Smaller entities · special districts</dd>
+                  </div>
+                </dl>
+              </div>
+            </aside>
+          </div>
+        </header>
+
+        <section aria-label="Firm credentials" className="bg-foreground text-background">
+          <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-x-10 gap-y-3 px-6 py-4">
+            {["Section 508 Trusted Tester-led practice", "10+ years in accessibility compliance", "AI-assisted · human-verified"].map((label) => (
+              <div key={label} className="flex items-center gap-3">
+                <span aria-hidden="true" className="h-2 w-2 bg-accent" />
+                <span className="font-mono text-[10px] uppercase tracking-wider text-background/85">{label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section aria-labelledby="engagement-v2" className="border-b border-foreground/10">
+          <div className="mx-auto max-w-[1200px] px-6 pt-16">
+            <div className="mb-8">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Engagement Model · 6 phases</div>
+              <h2 id="engagement-v2" className="mt-2 text-2xl font-medium tracking-tight md:text-3xl">How a Title II readiness engagement runs.</h2>
+            </div>
+          </div>
+          <div className="mx-auto max-w-[1200px]">
+            <ol className="grid grid-cols-2 border-l border-foreground/10 md:grid-cols-3 lg:grid-cols-6">
+              {engagement.map((step, i) => (
+                <li key={step.n} className={`border-r border-b border-foreground/10 p-6 ${i === 0 ? "bg-card" : ""}`}>
+                  <div className={`mb-6 font-mono text-[10px] tracking-widest ${i === 0 ? "text-primary" : "text-foreground/40"}`}>{step.n}</div>
+                  <h3 className="text-sm font-semibold">{step.label}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-foreground/65">{step.desc}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section aria-labelledby="deadline-reality-v2" className="border-b border-foreground/10">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
+            <div className="col-span-12 lg:col-span-5">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Deadline Reality</div>
+              <h2 id="deadline-reality-v2" className="mt-3 text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl">
+                The deadline is not optional, and the backlog is bigger than it looks.
+              </h2>
+              <p className="mt-6 max-w-[52ch] text-base leading-relaxed text-foreground/75">
+                Most public entities are sitting on backlogs of public-facing PDFs that often run into the thousands, plus web content and mobile apps that were never audited against WCAG 2.1 AA. The runway to April 2027 is shorter than it reads on the calendar.
+              </p>
+              <div className="mt-6 border-l-2 border-primary bg-secondary/60 px-6 py-3 font-mono text-[11px] leading-relaxed text-foreground/70">
+                Last reviewed: 2026-07-16 · Informational, not legal advice.<br />
+                Source: ADA.gov / DOJ (per brief §6A)
+              </div>
+            </div>
+            <div className="col-span-12 lg:col-span-7">
+              <div className="grid grid-cols-2 gap-px bg-foreground/10 border border-foreground/10">
+                {[
+                  { label: "Standard", value: "WCAG 2.1 AA", note: "Mandatory baseline for all digital assets under Title II." },
+                  { label: "Runway", value: "≈ 9 mo", note: "From today to the Phase 1 deadline of April 26, 2027." },
+                  { label: "Coverage", value: "Web · App · PDF", note: "Third-party content and vendor platforms included." },
+                  { label: "Evidence", value: "Behavioral", note: "Native screen-reader verification, not scanner-only." },
+                ].map((cell) => (
+                  <div key={cell.label} className="bg-card p-6">
+                    <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/45">{cell.label}</div>
+                    <div className="mt-2 text-2xl font-medium tracking-tight tabular-nums">{cell.value}</div>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/70">{cell.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="services-v2" className="border-b border-foreground/10 bg-secondary/30">
+          <div className="mx-auto max-w-[1200px] px-6 py-24">
+            <div className="mb-10 flex flex-wrap items-baseline justify-between gap-6">
+              <div>
+                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Services · 4 primary + 2 Phase 2</div>
+                <h2 id="services-v2" className="mt-2 max-w-[24ch] text-balance text-3xl font-medium tracking-tight md:text-4xl">Six services scoped for public-sector accessibility work.</h2>
+              </div>
+              <a href="#" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</a>
+            </div>
+            <div className="grid grid-cols-1 gap-px border border-foreground/10 bg-foreground/10 md:grid-cols-2 lg:grid-cols-4">
+              {primaryServices.map((s) => (
+                <article key={s.id} className="bg-card p-6">
+                  <div className="mb-4 font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
+                  <h3 className="text-lg font-semibold leading-tight">{s.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">{s.desc}</p>
+                </article>
+              ))}
+            </div>
+            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+              {secondaryServices.map((s) => (
+                <article key={s.id} className="border border-dashed border-foreground/25 bg-background p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="mb-2 font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
+                      <h3 className="text-lg font-semibold">{s.title}</h3>
+                    </div>
+                    <span className="shrink-0 border border-foreground/15 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-foreground/50">Phase 2</span>
+                  </div>
+                  <p className="mt-4 max-w-[52ch] text-sm leading-relaxed text-foreground/70">{s.desc}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-foreground/10">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
+            <div className="col-span-12 lg:col-span-7">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Methodology Preview</div>
+              <h2 className="mt-2 text-3xl font-medium tracking-tight md:text-4xl">Behavioral Verification.</h2>
+              <p className="mt-4 max-w-[60ch] text-lg leading-relaxed text-foreground/80">
+                We tell you what's exposed to assistive technology — not just what's inside the document. Static analysis and automated scanners are valuable first steps; behavioral verification covers what they are not designed to detect.
+              </p>
+              <figure aria-label="Excerpt from a verification finding record" className="mt-8 border border-foreground/15 bg-foreground text-background">
+                <figcaption className="flex items-center justify-between border-b border-background/10 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-background/60">
+                  <span>Finding · F-2027-0142</span>
+                  <span>NVDA · Firefox · Win 11</span>
+                </figcaption>
+                <pre className="overflow-x-auto p-5 font-mono text-[12px] leading-relaxed text-background/90">{evidenceSnippet}</pre>
+              </figure>
+            </div>
+            <aside aria-labelledby="audience-v2" className="col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Who We Help</div>
+              <h3 id="audience-v2" className="mt-2 text-2xl font-medium tracking-tight">Built for procurement-driven buyers.</h3>
+              <dl className="mt-8 divide-y divide-foreground/10">
+                {audience.map((item) => (
+                  <div key={item.role} className="grid grid-cols-[140px_1fr] gap-4 py-4">
+                    <dt className="text-sm font-semibold">{item.role}</dt>
+                    <dd className="text-sm text-foreground/70">{item.desc}</dd>
+                  </div>
+                ))}
+              </dl>
+            </aside>
+          </div>
+        </section>
+
+        <section aria-labelledby="operations-v2" className="border-b border-foreground/10">
+          <div className="mx-auto max-w-[1200px] px-6 py-24">
+            <div className="mb-10">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Operations · Capability Statement</div>
+              <h2 id="operations-v2" className="mt-2 text-3xl font-medium tracking-tight">Practice-level operating facts.</h2>
+            </div>
+            <dl className="grid grid-cols-1 gap-px border border-foreground/10 bg-foreground/10 md:grid-cols-3">
+              {operations.map((cell) => (
+                <div key={cell.label} className="bg-card p-8">
+                  <dt className="font-mono text-[10px] uppercase tracking-widest text-foreground/45">{cell.label}</dt>
+                  <dd className="mt-3 text-xl font-medium tracking-tight break-words">{cell.value}</dd>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">{cell.desc}</p>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        <section id="book" aria-labelledby="cta-v2" className="bg-foreground text-background">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-20">
+            <div className="col-span-12 lg:col-span-8">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-accent">Book a Readiness Call</div>
+              <h2 id="cta-v2" className="mt-3 max-w-[24ch] text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl">Get a defensible Title II readiness roadmap.</h2>
+              <p className="mt-4 max-w-[52ch] text-base text-background/70">No silent passes. No hidden uncertainty. A scoped read of what's exposed today and what has to change before April 2027.</p>
+            </div>
+            <div className="col-span-12 flex flex-col justify-end gap-3 lg:col-span-4 lg:items-end">
+              <a href="#" className="btn-gov bg-background px-6 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-secondary">Book a Readiness Call</a>
+              <a id="capability" href="#" className="btn-gov border border-background/30 px-6 py-3 text-center text-sm font-medium text-background transition-colors hover:bg-background/10">Download Capability Statement</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="bg-secondary/50 border-t border-foreground/10">
+        <div className="mx-auto max-w-[1200px] px-6 py-16">
+          <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
+            {footerCols.map((col) => (
+              <div key={col.head}>
+                <h4 className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">{col.head}</h4>
+                <ul className="mt-4 space-y-3">
+                  {col.items.map((item) => (
+                    <li key={item}>
+                      <a href="#" className="text-sm text-foreground/75 decoration-primary decoration-1 underline-offset-4 transition-[text-decoration-thickness] hover:text-foreground hover:underline hover:decoration-2">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-foreground/10 pt-6 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+            <span>ACT Verified — a Zenzo LLC consulting practice</span>
+            <span>WCAG 2.1 AA · Section 508 · PDF/UA-1 aligned</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
