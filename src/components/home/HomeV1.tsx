@@ -1,3 +1,4 @@
+import { Logo } from "./Logo";
 import {
   primaryServices,
   secondaryServices,
@@ -29,9 +30,9 @@ export function HomeV1() {
           <span>Vol. 1 · Zenzo LLC consulting practice</span>
           <span className="tabular-nums">Est. 2026 · Bilingual EN / ES</span>
         </div>
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-3 px-6 pb-8 pt-4 text-center rule-medium">
-          <a href="/" className="type-h2 font-medium tracking-[0.28em] uppercase">
-            ACT Verified
+        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-3 px-6 pb-8 pt-6 text-center rule-medium">
+          <a href="/" aria-label="ACT Verified home" className="inline-flex">
+            <Logo className="h-16 w-auto md:h-20" />
           </a>
           <span className="eyebrow text-foreground/60">
             Accessibility Verification · Compliance Readiness
