@@ -150,7 +150,7 @@ export function HomeV2() {
         <section aria-labelledby="deadline-reality-v2" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
             <div className="col-span-12 lg:col-span-5">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Deadline Reality</div>
+              <SectionKicker n="02" label="Deadline Reality" />
               <h2 id="deadline-reality-v2" className="mt-3 text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl">
                 The deadline is not optional, and the backlog is bigger than it looks.
               </h2>
@@ -163,24 +163,24 @@ export function HomeV2() {
               </div>
             </div>
             <div className="col-span-12 lg:col-span-7">
-              <div className="grid grid-cols-2 gap-px bg-foreground/20 border border-foreground/20">
-                {[
-                  { label: "Standard", value: "AA", note: "WCAG 2.1 · mandatory baseline for all digital assets.", big: true },
-                  { label: "Runway", value: "9 mo", note: "From today to the Phase 1 deadline of April 26, 2027.", big: true },
-                  { label: "Coverage", value: "Web · App · PDF", note: "Third-party content and vendor platforms included." },
-                  { label: "Evidence", value: "Behavioral", note: "Native screen-reader verification, not scanner-only." },
-                ].map((cell) => (
-                  <div key={cell.label} className="bg-card p-6">
-                    <div className="eyebrow text-foreground/50">{cell.label}</div>
-                    {cell.big ? (
-                      <div className="mt-3 num-display-md text-foreground tabular-nums">{cell.value}</div>
-                    ) : (
-                      <div className="mt-2 text-2xl font-medium tracking-tight tabular-nums">{cell.value}</div>
-                    )}
-                    <p className="mt-3 text-sm leading-relaxed text-foreground/70">{cell.note}</p>
-                  </div>
-                ))}
+              <div className="grid grid-cols-2 gap-8 mb-6">
+                <div>
+                  <div className="eyebrow text-foreground/50">Standard</div>
+                  <div className="mt-3 num-display-md text-foreground tabular-nums">AA</div>
+                </div>
+                <div>
+                  <div className="eyebrow text-foreground/50">Runway</div>
+                  <div className="mt-3 num-display-md text-foreground tabular-nums">9 mo</div>
+                </div>
               </div>
+              <LabValueTable
+                rows={[
+                  { label: "Standard", value: "WCAG 2.1 AA", note: "mandatory baseline for all digital assets" },
+                  { label: "Coverage", value: "Web · App · PDF", note: "third-party content and vendor platforms" },
+                  { label: "Evidence", value: "Behavioral", note: "native screen-reader verification, not scanner-only" },
+                  { label: "Runway", value: "≈ 9 months", note: "to April 26, 2027 Phase 1 deadline" },
+                ]}
+              />
             </div>
 
           </div>
