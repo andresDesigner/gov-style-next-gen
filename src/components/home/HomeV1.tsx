@@ -121,15 +121,29 @@ export function HomeV1() {
           </div>
         </section>
 
+        {/* Scale strip — navy full-width */}
+        <MetricStrip
+          ariaLabel="Scale of the Title II deadline"
+          kicker={{ n: "01", label: "Scale of the Deadline" }}
+          metrics={[
+            { value: "50k+", label: "Residents served", note: "Phase 1 threshold" },
+            { value: "2027", label: "Deadline", note: "Phase 1 · April 26" },
+            { value: "AA", label: "Standard", note: "WCAG 2.1 conformance" },
+          ]}
+        />
 
         {/* Trust dateline strip */}
         <section aria-label="Firm credentials" className="border-b border-foreground/15 bg-secondary/40">
-          <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-center gap-x-8 gap-y-2 px-6 py-4 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
-            <span>Section 508 Trusted Tester-led</span>
-            <span aria-hidden="true">·</span>
-            <span>10+ yrs accessibility compliance</span>
-            <span aria-hidden="true">·</span>
-            <span>AI-assisted · human-verified</span>
+          <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-x-8 gap-y-3 px-6 py-4">
+            <SectionKicker n="02" label="Firm Credentials · Trust" />
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+              <TraceBadge id="TRACE-002" status="VERIFIED" />
+              <span>Section 508 Trusted Tester-led</span>
+              <span aria-hidden="true">·</span>
+              <span>10+ yrs accessibility compliance</span>
+              <span aria-hidden="true">·</span>
+              <span>AI-assisted · human-verified</span>
+            </div>
           </div>
         </section>
 
