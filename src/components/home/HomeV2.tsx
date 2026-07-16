@@ -1,4 +1,7 @@
 import { Logo } from "./Logo";
+import { SectionKicker } from "./SectionKicker";
+import { MetricStrip } from "./MetricStrip";
+import { LabValueTable } from "./LabValueRow";
 import {
   primaryServices,
   secondaryServices,
@@ -126,7 +129,7 @@ export function HomeV2() {
         <section aria-labelledby="engagement-v2" className="border-b border-foreground/10">
           <div className="mx-auto max-w-[1200px] px-6 pt-16">
             <div className="mb-8">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Engagement Model · 6 phases</div>
+              <SectionKicker n="01" label="Engagement Model · 6 Phases" />
               <h2 id="engagement-v2" className="mt-2 text-2xl font-medium tracking-tight md:text-3xl">How a Title II readiness engagement runs.</h2>
             </div>
           </div>
@@ -147,7 +150,7 @@ export function HomeV2() {
         <section aria-labelledby="deadline-reality-v2" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
             <div className="col-span-12 lg:col-span-5">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Deadline Reality</div>
+              <SectionKicker n="02" label="Deadline Reality" />
               <h2 id="deadline-reality-v2" className="mt-3 text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl">
                 The deadline is not optional, and the backlog is bigger than it looks.
               </h2>
@@ -160,24 +163,24 @@ export function HomeV2() {
               </div>
             </div>
             <div className="col-span-12 lg:col-span-7">
-              <div className="grid grid-cols-2 gap-px bg-foreground/20 border border-foreground/20">
-                {[
-                  { label: "Standard", value: "AA", note: "WCAG 2.1 · mandatory baseline for all digital assets.", big: true },
-                  { label: "Runway", value: "9 mo", note: "From today to the Phase 1 deadline of April 26, 2027.", big: true },
-                  { label: "Coverage", value: "Web · App · PDF", note: "Third-party content and vendor platforms included." },
-                  { label: "Evidence", value: "Behavioral", note: "Native screen-reader verification, not scanner-only." },
-                ].map((cell) => (
-                  <div key={cell.label} className="bg-card p-6">
-                    <div className="eyebrow text-foreground/50">{cell.label}</div>
-                    {cell.big ? (
-                      <div className="mt-3 num-display-md text-foreground tabular-nums">{cell.value}</div>
-                    ) : (
-                      <div className="mt-2 text-2xl font-medium tracking-tight tabular-nums">{cell.value}</div>
-                    )}
-                    <p className="mt-3 text-sm leading-relaxed text-foreground/70">{cell.note}</p>
-                  </div>
-                ))}
+              <div className="grid grid-cols-2 gap-8 mb-6">
+                <div>
+                  <div className="eyebrow text-foreground/50">Standard</div>
+                  <div className="mt-3 num-display-md text-foreground tabular-nums">AA</div>
+                </div>
+                <div>
+                  <div className="eyebrow text-foreground/50">Runway</div>
+                  <div className="mt-3 num-display-md text-foreground tabular-nums">9 mo</div>
+                </div>
               </div>
+              <LabValueTable
+                rows={[
+                  { label: "Standard", value: "WCAG 2.1 AA", note: "mandatory baseline for all digital assets" },
+                  { label: "Coverage", value: "Web · App · PDF", note: "third-party content and vendor platforms" },
+                  { label: "Evidence", value: "Behavioral", note: "native screen-reader verification, not scanner-only" },
+                  { label: "Runway", value: "≈ 9 months", note: "to April 26, 2027 Phase 1 deadline" },
+                ]}
+              />
             </div>
 
           </div>
@@ -187,7 +190,7 @@ export function HomeV2() {
           <div className="mx-auto max-w-[1200px] px-6 py-24">
             <div className="mb-10 flex flex-wrap items-baseline justify-between gap-6">
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Services · 4 primary + 2 Phase 2</div>
+                <SectionKicker n="03" label="Services · 4 Primary + 2 Phase 2" />
                 <h2 id="services-v2" className="mt-2 max-w-[24ch] text-balance text-3xl font-medium tracking-tight md:text-4xl">Six services scoped for public-sector accessibility work.</h2>
               </div>
               <a href="#" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</a>
@@ -221,7 +224,7 @@ export function HomeV2() {
         <section className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
             <div className="col-span-12 lg:col-span-7">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Methodology Preview</div>
+              <SectionKicker n="04" label="Methodology Preview" />
               <h2 className="mt-2 text-3xl font-medium tracking-tight md:text-4xl">Behavioral Verification.</h2>
               <p className="mt-4 max-w-[60ch] text-lg leading-relaxed text-foreground/80">
                 We tell you what's exposed to assistive technology — not just what's inside the document. Static analysis and automated scanners are valuable first steps; behavioral verification covers what they are not designed to detect.
@@ -235,7 +238,7 @@ export function HomeV2() {
               </figure>
             </div>
             <aside aria-labelledby="audience-v2" className="col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Who We Help</div>
+              <SectionKicker n="05" label="Who We Help" />
               <h3 id="audience-v2" className="mt-2 text-2xl font-medium tracking-tight">Built for procurement-driven buyers.</h3>
               <dl className="mt-8 divide-y divide-foreground/10">
                 {audience.map((item) => (
@@ -252,7 +255,7 @@ export function HomeV2() {
         <section aria-labelledby="operations-v2" className="surface-navy">
           <div className="mx-auto max-w-[1200px] px-6 py-24">
             <div className="mb-10">
-              <div className="eyebrow text-accent">Operations · Capability Statement</div>
+              <SectionKicker n="06" label="Operations · Capability Statement" tone="accent" />
               <h2 id="operations-v2" className="mt-3 type-h2">Practice-level operating facts.</h2>
             </div>
             <dl className="grid grid-cols-1 gap-px bg-background/15 border border-background/15 md:grid-cols-3">
@@ -267,11 +270,22 @@ export function HomeV2() {
           </div>
         </section>
 
+        {/* Process guarantees strip */}
+        <MetricStrip
+          tone="cobalt"
+          ariaLabel="Process guarantees"
+          kicker={{ n: "07", label: "Process Guarantees" }}
+          metrics={[
+            { value: "9 mo", label: "Runway", note: "to Phase 1 · April 26, 2027" },
+            { value: "AA", label: "Conformance", note: "WCAG 2.1 baseline" },
+            { value: "6", label: "Phases", note: "scope → govern" },
+          ]}
+        />
 
         <section id="book" aria-labelledby="cta-v2" className="bg-foreground text-background">
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-20">
             <div className="col-span-12 lg:col-span-8">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-accent">Book a Readiness Call</div>
+              <SectionKicker n="08" label="Book a Readiness Call" tone="accent" />
               <h2 id="cta-v2" className="mt-3 max-w-[24ch] text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl">Get a defensible Title II readiness roadmap.</h2>
               <p className="mt-4 max-w-[52ch] text-base text-background/70">No silent passes. No hidden uncertainty. A scoped read of what's exposed today and what has to change before April 2027.</p>
             </div>

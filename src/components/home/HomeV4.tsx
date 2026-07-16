@@ -1,4 +1,6 @@
 import { Logo } from "./Logo";
+import { SectionKicker } from "./SectionKicker";
+import { TraceBadge } from "./TraceBadge";
 import {
   primaryServices,
   secondaryServices,
@@ -211,12 +213,25 @@ export function HomeV4() {
               <p className="max-w-[68ch] text-sm leading-relaxed text-background/85">
                 A Section 508 <strong className="font-semibold text-background">Trusted Tester-led practice with 10 years</strong> in accessibility compliance across federal, state, and local government.
               </p>
-              <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-background/40 px-4 py-1.5 text-xs font-medium text-background">
-                AI-assisted <span aria-hidden="true" className="text-background/40">|</span> Human-verified.
-              </span>
+              <div className="flex items-center gap-3">
+                <TraceBadge id="TRACE-002" status="VERIFIED" variant="dark" />
+                <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-background/40 px-4 py-1.5 text-xs font-medium text-background">
+                  AI-assisted <span aria-hidden="true" className="text-background/40">|</span> Human-verified.
+                </span>
+              </div>
             </div>
           </div>
         </header>
+
+        {/* Overview transition strip — soften navy → paper */}
+        <section aria-label="Overview" className="border-b border-foreground/10 bg-secondary/50">
+          <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-4 px-6 py-4">
+            <SectionKicker n="01" label="Overview · What follows" tone="primary" />
+            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              Scale → Engagement → Reality → Services → Methodology
+            </div>
+          </div>
+        </section>
 
         {/* ---- Body reused from V2 ---- */}
 
@@ -303,24 +318,41 @@ export function HomeV4() {
               </div>
               <a href="#" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</a>
             </div>
+            {/* Node connector (sutil, decorativo) */}
+            <div aria-hidden="true" className="relative mb-4 hidden h-6 lg:block">
+              <div className="absolute left-6 right-6 top-1/2 h-px bg-foreground/20" />
+              <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-between px-4">
+                {[0, 1, 2, 3].map((i) => (
+                  <span key={i} className="h-2 w-2 rounded-full bg-primary" />
+                ))}
+              </div>
+            </div>
             <div className="grid grid-cols-1 gap-px border border-foreground/10 bg-foreground/10 md:grid-cols-2 lg:grid-cols-4">
-              {primaryServices.map((s) => (
+              {primaryServices.map((s, i) => (
                 <article key={s.id} className="bg-card p-6">
-                  <div className="mb-4 font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
+                  <div className="mb-3 font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
+                  <TraceBadge
+                    id={`TRACE-1${String(i + 1).padStart(2, "0")}`}
+                    status={i === 0 ? "ACTIVE" : i === 1 ? "PENDING" : "VERIFIED"}
+                    className="mb-4"
+                  />
                   <h3 className="text-lg font-semibold leading-tight">{s.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-foreground/70">{s.desc}</p>
                 </article>
               ))}
             </div>
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-              {secondaryServices.map((s) => (
+              {secondaryServices.map((s, i) => (
                 <article key={s.id} className="border border-dashed border-foreground/25 bg-background p-6">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="mb-2 font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
                       <h3 className="text-lg font-semibold">{s.title}</h3>
                     </div>
-                    <span className="shrink-0 border border-foreground/15 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-foreground/50">Phase 2</span>
+                    <TraceBadge
+                      id={`TRACE-2${String(i + 1).padStart(2, "0")}`}
+                      status="PENDING"
+                    />
                   </div>
                   <p className="mt-4 max-w-[52ch] text-sm leading-relaxed text-foreground/70">{s.desc}</p>
                 </article>

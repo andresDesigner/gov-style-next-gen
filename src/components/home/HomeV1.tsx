@@ -1,4 +1,7 @@
 import { Logo } from "./Logo";
+import { SectionKicker } from "./SectionKicker";
+import { TraceBadge } from "./TraceBadge";
+import { MetricStrip } from "./MetricStrip";
 import {
   primaryServices,
   secondaryServices,
@@ -66,6 +69,12 @@ export function HomeV1() {
               <span className="h-px flex-1 bg-foreground/20" aria-hidden="true" />
               <span>Deadlines Ahead</span>
             </div>
+            <SectionKicker
+              n="00"
+              label="Title II Readiness · Accessibility Verification"
+              tone="primary"
+              className="mb-4"
+            />
             <div className="grid grid-cols-12 gap-8">
               <h1 className="col-span-12 type-h1 max-w-[22ch] text-balance lg:col-span-8">
                 Accessibility verification and compliance readiness for ADA Title II deadlines.
@@ -112,15 +121,29 @@ export function HomeV1() {
           </div>
         </section>
 
+        {/* Scale strip — navy full-width */}
+        <MetricStrip
+          ariaLabel="Scale of the Title II deadline"
+          kicker={{ n: "01", label: "Scale of the Deadline" }}
+          metrics={[
+            { value: "50k+", label: "Residents served", note: "Phase 1 threshold" },
+            { value: "2027", label: "Deadline", note: "Phase 1 · April 26" },
+            { value: "AA", label: "Standard", note: "WCAG 2.1 conformance" },
+          ]}
+        />
 
         {/* Trust dateline strip */}
         <section aria-label="Firm credentials" className="border-b border-foreground/15 bg-secondary/40">
-          <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-center gap-x-8 gap-y-2 px-6 py-4 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
-            <span>Section 508 Trusted Tester-led</span>
-            <span aria-hidden="true">·</span>
-            <span>10+ yrs accessibility compliance</span>
-            <span aria-hidden="true">·</span>
-            <span>AI-assisted · human-verified</span>
+          <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-x-8 gap-y-3 px-6 py-4">
+            <SectionKicker n="02" label="Firm Credentials · Trust" />
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+              <TraceBadge id="TRACE-002" status="VERIFIED" />
+              <span>Section 508 Trusted Tester-led</span>
+              <span aria-hidden="true">·</span>
+              <span>10+ yrs accessibility compliance</span>
+              <span aria-hidden="true">·</span>
+              <span>AI-assisted · human-verified</span>
+            </div>
           </div>
         </section>
 
@@ -213,7 +236,8 @@ export function HomeV1() {
                       {s.desc}
                     </p>
                   </div>
-                  <div className="col-span-12 flex items-start justify-end md:col-span-3">
+                  <div className="col-span-12 flex flex-col items-start gap-3 md:col-span-3 md:items-end">
+                    <TraceBadge id={`TRACE-1${String(i + 1).padStart(2, "0")}`} status="ACTIVE" />
                     <a
                       href="#"
                       className="font-mono text-[11px] uppercase tracking-widest text-primary decoration-2 underline-offset-4 hover:underline"
@@ -233,6 +257,12 @@ export function HomeV1() {
                       {String(primaryServices.length + i + 1).padStart(2, "0")}
                     </div>
                     <div className="mt-2 eyebrow text-foreground/50">{s.id} · Phase 2</div>
+                    <div className="mt-3">
+                      <TraceBadge
+                        id={`TRACE-2${String(i + 1).padStart(2, "0")}`}
+                        status="PENDING"
+                      />
+                    </div>
                   </div>
 
                   <div className="col-span-12 md:col-span-10">
