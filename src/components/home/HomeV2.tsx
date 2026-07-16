@@ -1,4 +1,7 @@
 import { Logo } from "./Logo";
+import { SectionKicker } from "./SectionKicker";
+import { MetricStrip } from "./MetricStrip";
+import { LabValueTable } from "./LabValueRow";
 import {
   primaryServices,
   secondaryServices,
