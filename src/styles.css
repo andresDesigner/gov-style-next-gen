@@ -61,6 +61,12 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+
+  /* Editorial fluid type scale (plan: contraste tipográfico) */
+  --text-eyebrow: 0.6875rem;
+  --text-h2: clamp(2rem, 4vw, 3.5rem);
+  --text-h1: clamp(2.75rem, 6vw, 5.5rem);
+  --text-display: clamp(3.5rem, 8vw, 8rem);
 }
 
 :root {
@@ -195,3 +201,87 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ---------- Editorial utilities (brief-safe) ---------- */
+
+/* Institutional rules (thicker than border-foreground/10 which reads invisible) */
+@utility rule-heavy {
+  border-top: 2px solid var(--color-foreground);
+}
+@utility rule-medium {
+  border-top: 1px solid color-mix(in oklab, var(--color-foreground) 35%, transparent);
+}
+@utility rule-heavy-b {
+  border-bottom: 2px solid var(--color-foreground);
+}
+@utility rule-medium-b {
+  border-bottom: 1px solid color-mix(in oklab, var(--color-foreground) 35%, transparent);
+}
+
+/* Alternating surfaces — reuse the locked palette, don't invent new colors */
+@utility surface-navy {
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+}
+@utility surface-cobalt {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+/* Numbers-as-composition */
+@utility num-display {
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "ss01";
+  font-size: var(--text-display);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+}
+@utility num-display-md {
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "ss01";
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+}
+@utility num-display-sm {
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+
+/* Unified eyebrow (mono uppercase) */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+/* Fluid editorial headings */
+@utility type-display {
+  font-size: var(--text-display);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+@utility type-h1 {
+  font-size: var(--text-h1);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+}
+@utility type-h2 {
+  font-size: var(--text-h2);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+

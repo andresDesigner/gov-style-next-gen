@@ -58,21 +58,25 @@ export function HomeV3() {
 
       <main id="main">
         {/* Hero — big prose, single column */}
-        <section className="border-b border-foreground/10">
-          <div className="mx-auto max-w-[960px] px-6 pb-24 pt-28 lg:pt-40">
-            <div className="mb-8 font-mono text-[11px] uppercase tracking-[0.25em] text-foreground/50">
+        <section className="rule-medium-b">
+          <div className="mx-auto max-w-[960px] px-6 pb-24 pt-24 lg:pt-36">
+            <div className="mb-10 eyebrow text-foreground/55">
               A memorandum on ADA Title II readiness
             </div>
-            <h1 className="max-w-[18ch] text-balance text-5xl font-medium leading-[0.98] tracking-[-0.03em] md:text-7xl lg:text-[5.5rem]">
+            <h1 className="type-display max-w-[14ch] text-balance">
               Evidence, not assertions.
             </h1>
-            <p className="mt-10 max-w-[62ch] text-xl leading-[1.55] text-foreground/80 md:text-2xl">
-              ACT Verified prepares public-sector and regulated organizations for the Title II
-              deadlines of{" "}
-              <span className="font-medium tabular-nums text-foreground">April 26, 2027</span> and{" "}
-              <span className="font-medium tabular-nums text-foreground">April 26, 2028</span> —
-              with findings you can defend to auditors, legal counsel, and procurement reviewers.
-            </p>
+            <div className="mt-14 grid grid-cols-12 items-end gap-8 rule-medium pt-8">
+              <div className="col-span-12 md:col-span-5">
+                <div className="eyebrow text-primary">Phase 1 deadline</div>
+                <div className="mt-3 num-display-md text-foreground tabular-nums">04.26.2027</div>
+              </div>
+              <p className="col-span-12 max-w-[52ch] text-lg leading-[1.65] text-foreground/80 md:col-span-7 md:text-xl">
+                ACT Verified prepares public-sector and regulated organizations for the Title II
+                deadlines of April 26, 2027 and April 26, 2028 — with findings you can defend to
+                auditors, legal counsel, and procurement reviewers.
+              </p>
+            </div>
             <div className="mt-12 flex flex-wrap items-center gap-3">
               <a
                 href="#book"
@@ -89,6 +93,7 @@ export function HomeV3() {
             </div>
           </div>
         </section>
+
 
         {/* Trust — inline mono line */}
         <section aria-label="Firm credentials" className="border-b border-foreground/10">
@@ -117,23 +122,20 @@ export function HomeV3() {
               user encounters.
             </p>
 
-            <div className="mt-16 grid grid-cols-2 gap-x-10 gap-y-10 md:grid-cols-4">
+            <div className="mt-16 grid grid-cols-2 gap-x-10 gap-y-14 md:grid-cols-2">
               {[
                 { k: "Standard", v: "WCAG 2.1 AA" },
                 { k: "Coverage", v: "Web · App · PDF" },
                 { k: "Evidence", v: "Behavioral" },
-                { k: "Runway", v: "≈ 9 mo" },
+                { k: "Runway", v: "≈9 mo" },
               ].map((cell) => (
-                <div key={cell.k}>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/45">
-                    {cell.k}
-                  </div>
-                  <div className="mt-3 text-2xl font-medium tabular-nums tracking-tight">
-                    {cell.v}
-                  </div>
+                <div key={cell.k} className="rule-medium pt-5">
+                  <div className="eyebrow text-foreground/50">{cell.k}</div>
+                  <div className="mt-4 num-display-sm text-foreground tabular-nums">{cell.v}</div>
                 </div>
               ))}
             </div>
+
 
             <p className="mt-12 max-w-[68ch] border-l-2 border-primary pl-6 font-mono text-[11px] leading-relaxed text-foreground/60">
               Last reviewed 2026-07-16. Source: ADA.gov / DOJ. Informational, not legal advice.
@@ -164,9 +166,10 @@ export function HomeV3() {
                 <span>Finding · F-2027-0142</span>
                 <span>NVDA · Firefox · Win 11</span>
               </figcaption>
-              <pre className="overflow-x-auto p-6 font-mono text-[13px] leading-[1.7] text-background/90">
+              <pre className="overflow-x-auto p-6 font-mono text-[15px] leading-[1.85] text-background/90">
 {evidenceSnippet}
               </pre>
+
             </figure>
 
             <p className="mt-8 max-w-[68ch] font-mono text-[11px] leading-relaxed text-foreground/60">
@@ -174,6 +177,23 @@ export function HomeV3() {
             </p>
           </div>
         </section>
+
+        {/* Cobalt pull-quote band — the only cobalt on the page */}
+        <aside aria-label="Practice thesis" className="surface-cobalt">
+          <div className="mx-auto max-w-[960px] px-6 py-20">
+            <div className="eyebrow text-primary-foreground/70">Thesis</div>
+            <blockquote className="mt-4">
+              <p className="max-w-[24ch] text-balance type-h2">
+                Scanners passed. The user still couldn't use it.
+              </p>
+              <footer className="mt-6 eyebrow text-primary-foreground/70">
+                — What behavioral verification documents
+              </footer>
+            </blockquote>
+          </div>
+        </aside>
+
+
 
         {/* Services — quiet list */}
         <section aria-labelledby="services-v3" className="border-b border-foreground/10">
