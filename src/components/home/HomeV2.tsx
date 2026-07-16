@@ -270,11 +270,22 @@ export function HomeV2() {
           </div>
         </section>
 
+        {/* Process guarantees strip */}
+        <MetricStrip
+          tone="cobalt"
+          ariaLabel="Process guarantees"
+          kicker={{ n: "07", label: "Process Guarantees" }}
+          metrics={[
+            { value: "9 mo", label: "Runway", note: "to Phase 1 · April 26, 2027" },
+            { value: "AA", label: "Conformance", note: "WCAG 2.1 baseline" },
+            { value: "6", label: "Phases", note: "scope → govern" },
+          ]}
+        />
 
         <section id="book" aria-labelledby="cta-v2" className="bg-foreground text-background">
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-20">
             <div className="col-span-12 lg:col-span-8">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-accent">Book a Readiness Call</div>
+              <SectionKicker n="08" label="Book a Readiness Call" tone="accent" />
               <h2 id="cta-v2" className="mt-3 max-w-[24ch] text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl">Get a defensible Title II readiness roadmap.</h2>
               <p className="mt-4 max-w-[52ch] text-base text-background/70">No silent passes. No hidden uncertainty. A scoped read of what's exposed today and what has to change before April 2027.</p>
             </div>
