@@ -289,7 +289,7 @@ export function HomeV1() {
               <div className="mt-3 num-display-sm tabular-nums">01</div>
             </div>
             <blockquote className="col-span-12 md:col-span-9">
-              <p className="h-2 max-w-[26ch] text-balance">
+              <p className="type-h2 max-w-[26ch] text-balance">
                 Evidence you can defend. Not scanner passes. Not AI reports.
               </p>
               <footer className="mt-6 eyebrow text-background/60">
