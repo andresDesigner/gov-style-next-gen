@@ -335,6 +335,17 @@ export function HomeV3() {
           </div>
         </section>
 
+        {/* Practice scale — full-width navy break */}
+        <MetricStrip
+          ariaLabel="Practice scale"
+          kicker={{ n: "VII", label: "Practice at a Glance" }}
+          metrics={[
+            { value: "≈9 mo", label: "Runway", note: "to Phase 1 deadline" },
+            { value: "AA", label: "Standard", note: "WCAG 2.1 conformance" },
+            { value: "6", label: "Services", note: "scoped for public sector" },
+          ]}
+        />
+
         {/* Final CTA */}
         <section id="book" className="bg-foreground text-background">
           <div className="mx-auto max-w-[960px] px-6 py-28">
