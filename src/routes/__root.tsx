@@ -77,21 +77,42 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      {
+        title:
+          "ACT Verified — ADA Title II accessibility verification & compliance readiness",
+      },
+      {
+        name: "description",
+        content:
+          "Independent Section 508 / WCAG verification and Title II readiness for public-sector entities preparing for the April 26, 2027 and 2028 deadlines. A Zenzo LLC consulting practice.",
+      },
+      { name: "author", content: "ACT Verified — a Zenzo LLC consulting practice" },
+      {
+        property: "og:title",
+        content:
+          "ACT Verified — ADA Title II accessibility verification & compliance readiness",
+      },
+      {
+        property: "og:description",
+        content:
+          "Independent Section 508 / WCAG verification and Title II readiness for public-sector entities. Evidence-based. Government-fluent.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
