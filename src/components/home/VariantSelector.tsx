@@ -1,9 +1,10 @@
-export type HomeVariant = "v1" | "v2" | "v3";
+export type HomeVariant = "v1" | "v2" | "v3" | "v4";
 
 const labels: Record<HomeVariant, string> = {
   v1: "V1 · Sober institutional",
   v2: "V2 · Dense operational",
   v3: "V3 · Quiet authority",
+  v4: "V4 · Hero (client design)",
 };
 
 export function VariantSelector({
