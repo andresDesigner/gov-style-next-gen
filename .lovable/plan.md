@@ -1,64 +1,91 @@
-## Diagnóstico
+## Objetivo
 
-El brief bloquea muchas cosas visuales por buena razón (credibilidad ante procurement y legal):
-- Paleta: navy-900 `#031436`, cobalt-600 `#033EAD`, azure-500 `#3079FF`, paper-50/100.
-- Tipografía: una sola familia (Inter o Source Sans 3) + mono para evidencia.
-- 8pt grid, prosa 72ch, sección máx 1200px, botones primarios con radius 0.
-- Prohibido: gradientes decorativos, blobs, mascotas, ilustraciones stock, fotos de personas sin aprobación, estética SaaS-flashy.
-- WCAG 2.1 AA obligatorio; azure NO puede usarse como texto de cuerpo.
+Eliminar la sensación "plana / monotónica" actual **sin adoptar Material Design 3 y sin pedir cambios al cliente**. Todo se resuelve dentro de las reglas ya firmadas: paleta bloqueada, una tipografía + mono, `radius: 0` en botones primarios, prohibido gradientes / blobs / SaaS-flashy, azure solo en focus/acentos grandes, WCAG 2.1 AA.
 
-Dentro de ese corsé sí hay espacio para verse 2026 y no genérico. La estrategia es **no romper reglas, sino subir el nivel de ejecución** en composición, tipografía, densidad informativa y micro-interacción — territorio donde los sitios de gobierno reales (y la mayoría de competencia legal-tech) se ven aburridos.
+La palanca es tipográfica y compositiva, no decorativa.
 
-## Ejes de modernización propuestos (todos compatibles con el brief)
+## Diagnóstico de por qué se ve plano hoy
 
-**1. Tipografía como sistema editorial, no decorativa**
-- H1 grande, tracking negativo (-0.02em), peso 500-600, no 700+. Se ve editorial, no corporate.
-- Escala tipográfica fluida con `clamp()` en lugar de breakpoints duros. Tendencia 2026 sólida.
-- Números tabulares (`font-variant-numeric: tabular-nums`) en fechas de deadline, métricas y tablas de evidencia — detalle que lee como "instrumento de precisión".
-- Uso deliberado de la monoespaciada permitida: metadata ("Last reviewed", citas a ADA.gov, IDs de hallazgos) en mono. Da textura sin romper la regla de un solo typeface principal.
+1. **Escala tipográfica corta.** El H1 llega a `text-6xl/7xl` pero los H2 se quedan en `text-3xl/4xl` y el resto vive en `text-sm/base`. La página no tiene "picos".
+2. **Todas las secciones pesan igual.** Fondo alterna paper-50 / paper-100 / secondary-40, todo muy cercano en luminosidad. Solo el CTA final rompe con navy sólido.
+3. **Cobalt y azure casi no aparecen.** Están definidos como tokens pero el 95% de la superficie es navy sobre paper. La paleta bloqueada se está subutilizando.
+4. **Números y datos no son elementos de composición.** Las fechas `April 26, 2027` viven en `text-sm` cuando podrían ser piezas visuales de 60-80px que sostienen la sección.
+5. **Reglas horizontales/verticales apenas se ven** (`border-foreground/10` = casi invisible). El "government-feel" de reglas gruesas no se está ejerciendo.
 
-**2. Composición asimétrica sobre grid de 12, no centrado genérico**
-- Hero a 8 columnas alineado a la izquierda con metadata de deadlines en columna lateral de 4 — se ve como documento oficial serio, no landing SaaS.
-- Sección "Deadline reality" con línea de tiempo horizontal densa (2027 / 2028) usando la grilla de 8pt como estructura visible, no oculta.
-- Cards de servicios 4+2 (como marca el brief) con jerarquía por peso y borde, no por color: primarias con borde `navy-900`, secundarias Phase 2 con borde punteado `paper-300`. Mantiene la regla.
+## Cambios de sistema (aplican a V1, V2, V3)
 
-**3. Densidad informativa "government-fluent" bien resuelta**
-- Trust strip como línea de datos, no como logos genéricos ("Trusted by...").
-- Bloque de operaciones (Methodology / Secure intake / Government-ready) en formato de "ficha técnica" con labels en mono uppercase pequeños y valores en navy — lee como capability statement, no como feature grid.
-- Modelo de engagement (6 pasos) como stepper horizontal minimal con líneas conectoras, no cards infladas.
+Editar `src/styles.css` — solo tokens y utilidades, no romper nada existente:
 
-**4. Micro-interacción sobria (respeta `prefers-reduced-motion`)**
-- Focus rings en azure-500 de 3px con offset — cumple regla del brief (azure solo para focus/acentos grandes) y a la vez se ve 2026.
-- Hover en links: underline animada `text-decoration-thickness` de 1px→2px, sin transform ni glow.
-- Scroll-driven reveal muy sutil (opacity 0→1, 200ms) desactivado con `prefers-reduced-motion`. Nada de parallax, nada de blobs animados.
+**Escala tipográfica fluida agresiva con `clamp()`**
+- `--fs-display`: `clamp(3.5rem, 8vw, 8rem)` — para números-pieza y hero de V3.
+- `--fs-h1`: `clamp(2.75rem, 6vw, 5.5rem)`.
+- `--fs-h2`: `clamp(2rem, 4vw, 3.5rem)`.
+- `--fs-eyebrow`: `0.6875rem` con `letter-spacing: 0.25em` (unifica los mono uppercase).
 
-**5. Detalles "evidence-toned" que sustituyen al decorado prohibido**
-- En vez de ilustraciones: bloques de "evidencia" reales — snippet de code review con anotación ARIA, diagrama SVG accesible del flow Behavioral Verification (con ARIA label + equivalente en texto, como pide sección 12).
-- Callouts con banda lateral izquierda navy de 2px + label mono, estilo nota al pie de documento normativo.
-- Footer denso tipo mapa de sitio (ya está en el HTML del cliente) con jerarquía tipográfica clara — se ve institucional bien hecho.
+**Nuevas utilidades (`@utility`, no `@layer`)**
+- `.rule-heavy`: `border-top: 2px solid var(--color-foreground);` — regla gruesa institucional para arrancar secciones.
+- `.rule-medium`: `border-top: 1px solid color-mix(in oklab, var(--color-foreground) 35%, transparent);` — reemplaza el `border-foreground/10` casi invisible.
+- `.surface-navy`: fondo `--foreground` + `color: --background` — para bandas alternadas.
+- `.surface-cobalt`: fondo `--primary` + `color: --primary-foreground` — banda de acento (una sola vez por página, máximo dos).
+- `.num-display`: `font-variant-numeric: tabular-nums; font-feature-settings: "ss01";` + `font-size: var(--fs-display); line-height: 0.85; letter-spacing: -0.04em;` — para las fechas y métricas como pieza visual.
+- `.eyebrow`: aplica la escala eyebrow + `font-family: var(--font-mono); text-transform: uppercase;`.
 
-**6. Accesibilidad como estética, no como afterthought**
-- Skip-to-content visible siempre en focus, no oculto. Convertirlo en decisión de diseño.
-- Indicador visible del idioma actual EN/ES (bilingüe está en el brief).
-- Test a 200% zoom y 320px reflow como parte del entregable — el layout se diseña ya pensando en eso.
+**Nada de esto agrega**: sombras, gradientes, radius > 0, colores nuevos, animaciones, fuentes nuevas. Solo tokens y utilidades sobre lo que ya está firmado.
 
-## Lo que explícitamente NO vamos a hacer (aunque sea "tendencia 2026")
+## Cambios por variante
 
-- Sin glassmorphism, sin gradientes de marca, sin bento grids decorativos, sin dark mode (no está pedido y agrega superficie de QA de contraste), sin ilustraciones 3D, sin fotos de stock, sin animaciones scroll-jack, sin AI-generated hero art.
-- Botones primarios mantienen `border-radius: 0` como pide el brief. El resto (cards, inputs) puede llevar 4-6px máximo para no romper la sensación gubernamental.
+### V1 — Sober institutional
 
-## Estructura del home (respetando el mockup del cliente)
+- **Masthead:** subir el logotipo `ACT Verified` a `--fs-h2` con `letter-spacing: 0.3em`, y separar del subtítulo con `rule-heavy` en vez de `border-b-2`. Se lee más como cabecera de periódico impreso.
+- **Hero:** las dos fechas (2027, 2028) suben de chip mono pequeño a **par de números `num-display`** alineados a la derecha del H1, formato `04.26.27 / 04.26.28` en tabular. Se convierten en el peso visual dominante junto al H1.
+- **Sección "Deadline reality":** insertar antes de la prosa un bloque `num-display` que diga `≈ 9 mo` o `2027` a escala completa. La sección arranca con un pico, no con eyebrow + H2.
+- **Services (annotated list):** los números `01–06` actuales suben a `num-display` reducido (~72px), en `text-foreground/20` como marca de agua a la izquierda de cada fila. Cambio de escala, no de radius.
+- **Ritmo cromático:** intercalar un bloque `surface-navy` entre §03 Engagement y §04 Methodology (una franja completa de citas o de la mission statement corta). Rompe el gris continuo.
 
-Mantenemos las 10 secciones del `homeACT.html`: nav → hero con H1 v2.0 + chips de deadlines + doble CTA → trust strip firm-level → deadline reality → cards 4+2 → engagement 6 pasos → methodology preview → who we help → operations/trust → CTA final navy → footer sitemap.
+### V2 — Dense operational
 
-Cambia el **cómo se ejecuta cada bloque**, no el qué.
+- **Trust strip navy** actual se queda, pero se le agrega debajo una **fila de contra-datos** en `surface-cobalt` con 3 métricas grandes en `num-display` (ej. `50k+` residentes / `2027` deadline / `A/AA` standard). Aparece el cobalt-600 que hoy no se usa.
+- **Grid de deadline reality:** los valores `WCAG 2.1 AA`, `≈ 9 mo`, `Web · App · PDF`, `Behavioral` pasan de `text-2xl` a `num-display` reducido (~56px) en las dos primeras celdas (Standard y Runway) y se mantienen menores en las otras dos — jerarquía dentro del grid.
+- **Engagement stepper:** los `01–06` pasan de `text-[10px]` mono a `num-display` a ~48px en color `text-primary` en el paso activo y `text-foreground/25` en los demás. El stepper se vuelve la pieza visual dominante de la sección.
+- **Operations triptych:** cambiar el fondo de esta sección a `surface-navy` completa, invirtiendo la paleta. Aparece el segundo bloque oscuro además del CTA final — la página respira con dos anclas navy en vez de una sola.
+- **Reglas:** cambiar todos los `border-foreground/10` de separación de sección a `rule-medium`. Las secciones se separan de verdad.
 
-## Entregable siguiente
+### V3 — Quiet authority
 
-Al aprobar este plan, propongo generar 3 direcciones renderizadas del home usando `design--create_directions` con la paleta y tipografía bloqueadas como constraint duro, variando solo composición, densidad y jerarquía. Después el cliente elige una y se implementa en TanStack Start.
+- **Hero:** el H1 actual (`Evidence, not assertions.`) sube a `--fs-display` completo, ocupando 2 líneas. Debajo, en la misma columna, aparece un `num-display` con `04.26.2027` como firma temporal — dos piezas grandes, ningún elemento intermedio.
+- **Sección Deadline reality:** las 4 métricas actuales (`WCAG 2.1 AA`, `Web · App · PDF`, `Behavioral`, `≈ 9 mo`) se agrandan a ~64px cada una (`num-display` reducido) y se alinean en dos filas de dos, ocupando toda la columna de lectura. Hoy son casi decorativas; se vuelven el pulmón visual.
+- **Methodology:** el bloque de código (`Finding · F-2027-0142`) ya está bien resuelto. Se le aumenta el `font-size` interno del `<pre>` de `13px` a `15px` con `line-height: 1.85` — se lee como un artifact real, no como snippet decorativo.
+- **Ritmo cromático:** el CTA final navy queda. Se agrega **una sola banda `surface-cobalt`** breve entre §II Methodology y §III Services conteniendo una cita corta ("Scanners passed. The user still couldn't use it.") en `num-display` reducido. Es el único punto de cobalt en toda la página — funciona como acento editorial.
+- **Reglas:** los `border-foreground/10` de separación se cambian a `rule-medium`. En V3, además, las secciones arrancan con `rule-heavy` (regla de 2px navy) para marcar cada capítulo (I–VI).
 
-## Nota técnica (para el equipo)
+## Fuera de alcance (para no violar el brief)
 
-- Stack del brief: Astro 4 + Tailwind + Cloudflare Pages. Este proyecto Lovable usa TanStack Start + Tailwind v4 — la implementación aquí sirve como referencia de diseño de alta fidelidad; el port a Astro es trivial porque son utilidades Tailwind + HTML semántico.
-- Tokens en `src/styles.css` con los hex del brief convertidos a `oklch` (mantener hex originales como comentario para trazabilidad con logo vectors).
-- Inter vía `<link>` en `src/routes/__root.tsx` (no `@import` en CSS por regla de Tailwind v4).
+- No se tocan radius (botones primarios siguen `radius: 0`; cards mantienen los 4px de `--radius`).
+- No se agregan sombras, glows, blur, gradientes, ni state layers estilo MD3.
+- No se agrega tipografía nueva (Inter + JetBrains Mono, punto).
+- No se cambia la paleta — se **usa más** la que ya está firmada.
+- Azure sigue solo en focus rings (regla §11 intacta).
+- Sin nuevas ilustraciones ni SVGs decorativos.
+
+## Riesgos de contraste (WCAG AA)
+
+- `surface-cobalt` como banda: cobalt-600 sobre paper-50 en texto grande — verificar ≥ 3:1 (AA large). Texto de cuerpo dentro de esa banda debe ir en `paper-50` sobre cobalt-600 (relación ~7:1, seguro).
+- `num-display` en `text-foreground/20` como marca de agua: es decorativo, no informativo — el número está también en el título accesible (`aria-label` o texto adyacente). No aplica contraste AA para elementos puramente decorativos, pero se documenta.
+- Ninguna combinación nueva pone azure como texto de cuerpo.
+
+## Archivos a tocar (build phase)
+
+- `src/styles.css` — agregar `@theme` tokens de escala y `@utility` de reglas/superficies/`num-display`.
+- `src/components/home/HomeV1.tsx`, `HomeV2.tsx`, `HomeV3.tsx` — aplicar cambios por variante descritos arriba. Sin refactor estructural, solo cambios de clases y adición de 1–2 secciones nuevas por variante (banda cobalt / franja navy).
+- `src/components/home/shared.ts` — sin cambios de datos.
+- El selector V1/V2/V3 arriba a la derecha se mantiene idéntico.
+
+## Verificación al terminar
+
+1. `tsgo --noEmit` limpio.
+2. Recorrer las 3 variantes en preview y confirmar que:
+   - Cada sección tiene un pico visual claro (num-display o bloque oscuro).
+   - Se ven al menos 2 superficies de contraste fuerte por página (navy y/o cobalt).
+   - Los botones primarios siguen con radius 0.
+   - Focus rings siguen azure 3px.
+3. Snapshot Playwright de las 3 variantes para comparación lado a lado con el estado previo.
