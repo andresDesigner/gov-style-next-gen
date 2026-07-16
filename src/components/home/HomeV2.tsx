@@ -255,7 +255,7 @@ export function HomeV2() {
         <section aria-labelledby="operations-v2" className="surface-navy">
           <div className="mx-auto max-w-[1200px] px-6 py-24">
             <div className="mb-10">
-              <div className="eyebrow text-accent">Operations · Capability Statement</div>
+              <SectionKicker n="06" label="Operations · Capability Statement" tone="accent" />
               <h2 id="operations-v2" className="mt-3 type-h2">Practice-level operating facts.</h2>
             </div>
             <dl className="grid grid-cols-1 gap-px bg-background/15 border border-background/15 md:grid-cols-3">
