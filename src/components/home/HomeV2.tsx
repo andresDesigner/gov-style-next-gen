@@ -224,7 +224,7 @@ export function HomeV2() {
         <section className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
             <div className="col-span-12 lg:col-span-7">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Methodology Preview</div>
+              <SectionKicker n="04" label="Methodology Preview" />
               <h2 className="mt-2 text-3xl font-medium tracking-tight md:text-4xl">Behavioral Verification.</h2>
               <p className="mt-4 max-w-[60ch] text-lg leading-relaxed text-foreground/80">
                 We tell you what's exposed to assistive technology — not just what's inside the document. Static analysis and automated scanners are valuable first steps; behavioral verification covers what they are not designed to detect.
