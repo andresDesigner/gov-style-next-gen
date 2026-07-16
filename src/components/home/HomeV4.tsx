@@ -213,12 +213,25 @@ export function HomeV4() {
               <p className="max-w-[68ch] text-sm leading-relaxed text-background/85">
                 A Section 508 <strong className="font-semibold text-background">Trusted Tester-led practice with 10 years</strong> in accessibility compliance across federal, state, and local government.
               </p>
-              <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-background/40 px-4 py-1.5 text-xs font-medium text-background">
-                AI-assisted <span aria-hidden="true" className="text-background/40">|</span> Human-verified.
-              </span>
+              <div className="flex items-center gap-3">
+                <TraceBadge id="TRACE-002" status="VERIFIED" variant="dark" />
+                <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-background/40 px-4 py-1.5 text-xs font-medium text-background">
+                  AI-assisted <span aria-hidden="true" className="text-background/40">|</span> Human-verified.
+                </span>
+              </div>
             </div>
           </div>
         </header>
+
+        {/* Overview transition strip — soften navy → paper */}
+        <section aria-label="Overview" className="border-b border-foreground/10 bg-secondary/50">
+          <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-4 px-6 py-4">
+            <SectionKicker n="01" label="Overview · What follows" tone="primary" />
+            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              Scale → Engagement → Reality → Services → Methodology
+            </div>
+          </div>
+        </section>
 
         {/* ---- Body reused from V2 ---- */}
 
