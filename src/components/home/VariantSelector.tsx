@@ -21,7 +21,7 @@ export function VariantSelector({
       className="fixed right-4 top-4 z-50 flex items-center gap-1 border border-foreground/15 bg-background/95 p-1 shadow-[0_1px_0_0_rgba(0,0,0,0.08)] backdrop-blur"
     >
       <span className="hidden md:inline px-2 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-        Design
+        OPCIONES DE DISEÑO
       </span>
       {(Object.keys(labels) as HomeVariant[]).map((key) => {
         const active = value === key;
