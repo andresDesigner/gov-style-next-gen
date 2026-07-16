@@ -1,4 +1,5 @@
 import { Logo } from "./Logo";
+import { MetricStrip } from "./MetricStrip";
 import {
   primaryServices,
   secondaryServices,
