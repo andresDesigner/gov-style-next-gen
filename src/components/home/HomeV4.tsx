@@ -105,7 +105,7 @@ export function HomeV4() {
       </a>
 
       {/* Nav */}
-      <nav aria-label="Primary" className="border-b border-foreground/10 bg-background">
+      <nav aria-label="Primary" className="border-b border-foreground/10 bg-white">
         <div className="mx-auto grid max-w-[1240px] grid-cols-[auto_1fr_auto] items-center gap-6 px-6 py-4">
           <a href="/" aria-label="ACT Verified home" className="inline-flex shrink-0">
             <Logo className="h-11 w-auto" />
@@ -139,7 +139,7 @@ export function HomeV4() {
 
       <main id="main">
         {/* Hero */}
-        <header className="bg-secondary/70">
+        <header style={{ backgroundColor: "#e6ecf5" }}>
           <div className="mx-auto grid max-w-[1240px] grid-cols-12 items-center gap-10 px-6 py-16 lg:py-20">
             <div className="col-span-12 lg:col-span-7">
               <h1 className="text-balance text-[44px] font-bold leading-[1.05] tracking-[-0.02em] text-foreground md:text-[60px] lg:text-[68px]">
@@ -183,7 +183,7 @@ export function HomeV4() {
                 <div className="mt-5 text-lg font-semibold tracking-tight text-foreground">
                   ADA Title II Deadline
                 </div>
-                <div className="mt-1 num-display text-primary tabular-nums leading-none">
+                <div className="mt-1 font-bold tabular-nums leading-none text-primary text-[clamp(2.25rem,5vw,3.75rem)]">
                   04.26.2027
                 </div>
                 <div
