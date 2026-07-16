@@ -69,6 +69,12 @@ export function HomeV1() {
               <span className="h-px flex-1 bg-foreground/20" aria-hidden="true" />
               <span>Deadlines Ahead</span>
             </div>
+            <SectionKicker
+              n="00"
+              label="Title II Readiness · Accessibility Verification"
+              tone="primary"
+              className="mb-4"
+            />
             <div className="grid grid-cols-12 gap-8">
               <h1 className="col-span-12 type-h1 max-w-[22ch] text-balance lg:col-span-8">
                 Accessibility verification and compliance readiness for ADA Title II deadlines.
