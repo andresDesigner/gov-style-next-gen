@@ -257,6 +257,12 @@ export function HomeV1() {
                       {String(primaryServices.length + i + 1).padStart(2, "0")}
                     </div>
                     <div className="mt-2 eyebrow text-foreground/50">{s.id} · Phase 2</div>
+                    <div className="mt-3">
+                      <TraceBadge
+                        id={`TRACE-2${String(i + 1).padStart(2, "0")}`}
+                        status="PENDING"
+                      />
+                    </div>
                   </div>
 
                   <div className="col-span-12 md:col-span-10">
