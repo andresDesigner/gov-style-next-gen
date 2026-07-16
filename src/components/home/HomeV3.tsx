@@ -63,7 +63,7 @@ export function HomeV3() {
             <div className="mb-10 eyebrow text-foreground/55">
               A memorandum on ADA Title II readiness
             </div>
-            <h1 className="h-display max-w-[14ch] text-balance">
+            <h1 className="type-display max-w-[14ch] text-balance">
               Evidence, not assertions.
             </h1>
             <div className="mt-14 grid grid-cols-12 items-end gap-8 rule-medium pt-8">
@@ -183,7 +183,7 @@ export function HomeV3() {
           <div className="mx-auto max-w-[960px] px-6 py-20">
             <div className="eyebrow text-primary-foreground/70">Thesis</div>
             <blockquote className="mt-4">
-              <p className="max-w-[24ch] text-balance h-2">
+              <p className="max-w-[24ch] text-balance type-h2">
                 Scanners passed. The user still couldn't use it.
               </p>
               <footer className="mt-6 eyebrow text-primary-foreground/70">

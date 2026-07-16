@@ -30,7 +30,7 @@ export function HomeV1() {
           <span className="tabular-nums">Est. 2026 · Bilingual EN / ES</span>
         </div>
         <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-3 px-6 pb-8 pt-4 text-center rule-medium">
-          <a href="/" className="h-2 font-medium tracking-[0.28em] uppercase">
+          <a href="/" className="type-h2 font-medium tracking-[0.28em] uppercase">
             ACT Verified
           </a>
           <span className="eyebrow text-foreground/60">
@@ -66,7 +66,7 @@ export function HomeV1() {
               <span>Deadlines Ahead</span>
             </div>
             <div className="grid grid-cols-12 gap-8">
-              <h1 className="col-span-12 h-1 max-w-[22ch] text-balance lg:col-span-8">
+              <h1 className="col-span-12 type-h1 max-w-[22ch] text-balance lg:col-span-8">
                 Accessibility verification and compliance readiness for ADA Title II deadlines.
               </h1>
               <aside
@@ -134,7 +134,7 @@ export function HomeV1() {
               </div>
               <h2
                 id="deadline-v1"
-                className="col-span-12 h-2 max-w-[28ch] text-balance md:col-span-7"
+                className="col-span-12 type-h2 max-w-[28ch] text-balance md:col-span-7"
               >
                 The deadline is not optional, and the backlog is bigger than it looks.
               </h2>

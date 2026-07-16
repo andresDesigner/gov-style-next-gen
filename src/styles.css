@@ -265,22 +265,23 @@
 }
 
 /* Fluid editorial headings */
-@utility h-display {
+@utility type-display {
   font-size: var(--text-display);
   line-height: 0.95;
   letter-spacing: -0.03em;
   font-weight: 500;
 }
-@utility h-1 {
+@utility type-h1 {
   font-size: var(--text-h1);
   line-height: 1.02;
   letter-spacing: -0.025em;
   font-weight: 500;
 }
-@utility h-2 {
+@utility type-h2 {
   font-size: var(--text-h2);
   line-height: 1.05;
   letter-spacing: -0.02em;
   font-weight: 500;
 }
+
 

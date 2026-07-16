@@ -253,7 +253,7 @@ export function HomeV2() {
           <div className="mx-auto max-w-[1200px] px-6 py-24">
             <div className="mb-10">
               <div className="eyebrow text-accent">Operations · Capability Statement</div>
-              <h2 id="operations-v2" className="mt-3 h-2">Practice-level operating facts.</h2>
+              <h2 id="operations-v2" className="mt-3 type-h2">Practice-level operating facts.</h2>
             </div>
             <dl className="grid grid-cols-1 gap-px bg-background/15 border border-background/15 md:grid-cols-3">
               {operations.map((cell) => (
