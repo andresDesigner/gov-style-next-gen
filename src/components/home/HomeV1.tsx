@@ -236,7 +236,8 @@ export function HomeV1() {
                       {s.desc}
                     </p>
                   </div>
-                  <div className="col-span-12 flex items-start justify-end md:col-span-3">
+                  <div className="col-span-12 flex flex-col items-start gap-3 md:col-span-3 md:items-end">
+                    <TraceBadge id={`TRACE-1${String(i + 1).padStart(2, "0")}`} status="ACTIVE" />
                     <a
                       href="#"
                       className="font-mono text-[11px] uppercase tracking-widest text-primary decoration-2 underline-offset-4 hover:underline"
