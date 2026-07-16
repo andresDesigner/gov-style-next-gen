@@ -238,7 +238,7 @@ export function HomeV2() {
               </figure>
             </div>
             <aside aria-labelledby="audience-v2" className="col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Who We Help</div>
+              <SectionKicker n="05" label="Who We Help" />
               <h3 id="audience-v2" className="mt-2 text-2xl font-medium tracking-tight">Built for procurement-driven buyers.</h3>
               <dl className="mt-8 divide-y divide-foreground/10">
                 {audience.map((item) => (
