@@ -190,7 +190,7 @@ export function HomeV2() {
           <div className="mx-auto max-w-[1200px] px-6 py-24">
             <div className="mb-10 flex flex-wrap items-baseline justify-between gap-6">
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Services · 4 primary + 2 Phase 2</div>
+                <SectionKicker n="03" label="Services · 4 Primary + 2 Phase 2" />
                 <h2 id="services-v2" className="mt-2 max-w-[24ch] text-balance text-3xl font-medium tracking-tight md:text-4xl">Six services scoped for public-sector accessibility work.</h2>
               </div>
               <a href="#" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</a>
