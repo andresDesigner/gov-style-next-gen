@@ -95,10 +95,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Independent Section 508 / WCAG verification and Title II readiness for public-sector entities. Evidence-based. Government-fluent.",
+          "Independent Section 508 / WCAG verification and Title II readiness for public-sector entities preparing for the April 26, 2027 and 2028 deadlines. A Zenzo LLC consulting practice.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "ACT Verified — ADA Title II accessibility verification & compliance readiness" },
+      { name: "twitter:description", content: "Independent Section 508 / WCAG verification and Title II readiness for public-sector entities preparing for the April 26, 2027 and 2028 deadlines. A Zenzo LLC consulting practice." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/5QCxMTCvKNNVeQMXQZwLqr6gbUW2/social-images/social-1784245425398-actLOGO.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/5QCxMTCvKNNVeQMXQZwLqr6gbUW2/social-images/social-1784245425398-actLOGO.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
