@@ -24,20 +24,20 @@ export function HomeV1() {
       </a>
 
       {/* Masthead */}
-      <header className="border-b-2 border-foreground bg-background">
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+      <header className="rule-heavy-b bg-background">
+        <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-3 eyebrow text-foreground/60">
           <span>Vol. 1 · Zenzo LLC consulting practice</span>
           <span className="tabular-nums">Est. 2026 · Bilingual EN / ES</span>
         </div>
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-1 px-6 pb-6 pt-2 text-center">
-          <a href="/" className="font-semibold tracking-[0.2em] uppercase text-2xl">
+        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-3 px-6 pb-8 pt-4 text-center rule-medium">
+          <a href="/" className="h-2 font-medium tracking-[0.28em] uppercase">
             ACT Verified
           </a>
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/60">
+          <span className="eyebrow text-foreground/60">
             Accessibility Verification · Compliance Readiness
           </span>
         </div>
-        <nav aria-label="Primary" className="border-t border-foreground/15">
+        <nav aria-label="Primary" className="rule-medium">
           <ul className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-center gap-x-8 gap-y-2 px-6 py-3 text-sm font-medium">
             {["Services", "How We Verify", "For Government", "Resources", "About", "Book a Call"].map(
               (item) => (
@@ -55,26 +55,38 @@ export function HomeV1() {
         </nav>
       </header>
 
+
       <main id="main">
         {/* Hero */}
-        <section className="border-b border-foreground/15">
+        <section className="rule-medium-b">
           <div className="mx-auto max-w-[1200px] px-6 py-16 lg:py-24">
-            <div className="mb-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-widest text-foreground/60">
-              <span className="border border-foreground/20 px-2 py-0.5">Filed · 2026-07-16</span>
-              <span className="tabular-nums">Deadline · April 26, 2027</span>
-              <span className="tabular-nums">Phase 2 · April 26, 2028</span>
+            <div className="mb-8 flex items-center gap-x-4 eyebrow text-foreground/60">
+              <span className="border border-foreground/25 px-2 py-0.5">Filed · 2026-07-16</span>
+              <span className="h-px flex-1 bg-foreground/20" aria-hidden="true" />
+              <span>Deadlines Ahead</span>
             </div>
-            <h1 className="max-w-[22ch] text-balance text-5xl font-medium leading-[1.02] tracking-[-0.025em] md:text-6xl lg:text-7xl">
-              Accessibility verification and compliance readiness for ADA Title II deadlines.
-            </h1>
-            <div className="mt-10 grid grid-cols-12 gap-8">
+            <div className="grid grid-cols-12 gap-8">
+              <h1 className="col-span-12 h-1 max-w-[22ch] text-balance lg:col-span-8">
+                Accessibility verification and compliance readiness for ADA Title II deadlines.
+              </h1>
+              <aside
+                aria-label="ADA Title II deadlines"
+                className="col-span-12 lg:col-span-4 lg:border-l lg:border-foreground/25 lg:pl-8"
+              >
+                <div className="num-display-md text-foreground tabular-nums">04.26.27</div>
+                <div className="mt-1 eyebrow text-primary">Phase 1 · 50k+ residents</div>
+                <div className="mt-8 num-display-md text-foreground/40 tabular-nums">04.26.28</div>
+                <div className="mt-1 eyebrow text-foreground/50">Phase 2 · Smaller entities</div>
+              </aside>
+            </div>
+            <div className="mt-12 grid grid-cols-12 gap-8">
               <p className="col-span-12 max-w-[62ch] text-lg leading-relaxed text-foreground/80 md:col-span-8 md:text-xl">
                 ACT Verified prepares public-sector and regulated organizations for the Title II
                 deadlines of April 26, 2027 and April 26, 2028 — with findings you can defend to
                 auditors, legal counsel, and procurement reviewers.
               </p>
               <div className="col-span-12 md:col-span-4">
-                <div className="border-l border-foreground/20 pl-4 font-mono text-[11px] leading-relaxed text-foreground/70">
+                <div className="border-l border-foreground/25 pl-4 font-mono text-[11px] leading-relaxed text-foreground/70">
                   <span className="uppercase tracking-widest text-foreground/50">Editor's note</span>
                   <p className="mt-2 text-foreground/75">
                     Independent, evidence-backed verification. No silent passes. No AI-only reports.
@@ -99,6 +111,7 @@ export function HomeV1() {
           </div>
         </section>
 
+
         {/* Trust dateline strip */}
         <section aria-label="Firm credentials" className="border-b border-foreground/15 bg-secondary/40">
           <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-center gap-x-8 gap-y-2 px-6 py-4 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
@@ -111,17 +124,22 @@ export function HomeV1() {
         </section>
 
         {/* Deadline reality */}
-        <section aria-labelledby="deadline-v1" className="border-b border-foreground/15">
+        <section aria-labelledby="deadline-v1" className="rule-medium-b">
           <div className="mx-auto max-w-[1200px] px-6 py-20">
-            <div className="mb-6 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-              §01 · Deadline Reality
+            <div className="grid grid-cols-12 gap-8">
+              <div className="col-span-12 md:col-span-5">
+                <div className="eyebrow text-foreground/50">§01 · Deadline Reality</div>
+                <div className="mt-6 num-display text-foreground tabular-nums">≈9 mo</div>
+                <div className="mt-3 eyebrow text-primary">Runway to Phase 1</div>
+              </div>
+              <h2
+                id="deadline-v1"
+                className="col-span-12 h-2 max-w-[28ch] text-balance md:col-span-7"
+              >
+                The deadline is not optional, and the backlog is bigger than it looks.
+              </h2>
             </div>
-            <h2
-              id="deadline-v1"
-              className="max-w-[28ch] text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl"
-            >
-              The deadline is not optional, and the backlog is bigger than it looks.
-            </h2>
+
             <div className="mt-10 grid grid-cols-12 gap-8">
               <p className="col-span-12 max-w-[62ch] text-base leading-relaxed text-foreground/80 md:col-span-7">
                 Most public entities are sitting on backlogs of public-facing PDFs that often run
@@ -182,13 +200,12 @@ export function HomeV1() {
               {primaryServices.map((s, i) => (
                 <li key={s.id} className="grid grid-cols-12 gap-6 border-b border-foreground/15 py-8">
                   <div className="col-span-12 md:col-span-2">
-                    <div className="font-mono text-2xl font-medium tabular-nums text-foreground/40">
+                    <div className="num-display-sm text-foreground/25 tabular-nums">
                       {String(i + 1).padStart(2, "0")}
                     </div>
-                    <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-primary">
-                      {s.id}
-                    </div>
+                    <div className="mt-2 eyebrow text-primary">{s.id}</div>
                   </div>
+
                   <div className="col-span-12 md:col-span-7">
                     <h3 className="text-xl font-medium leading-tight tracking-tight">{s.title}</h3>
                     <p className="mt-3 max-w-[60ch] text-base leading-relaxed text-foreground/75">
@@ -211,13 +228,12 @@ export function HomeV1() {
                   className="grid grid-cols-12 gap-6 border-b border-foreground/15 py-8"
                 >
                   <div className="col-span-12 md:col-span-2">
-                    <div className="font-mono text-2xl font-medium tabular-nums text-foreground/30">
+                    <div className="num-display-sm text-foreground/15 tabular-nums">
                       {String(primaryServices.length + i + 1).padStart(2, "0")}
                     </div>
-                    <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-                      {s.id} · Phase 2
-                    </div>
+                    <div className="mt-2 eyebrow text-foreground/50">{s.id} · Phase 2</div>
                   </div>
+
                   <div className="col-span-12 md:col-span-10">
                     <h3 className="text-xl font-medium leading-tight tracking-tight text-foreground/85">
                       {s.title}
@@ -264,6 +280,26 @@ export function HomeV1() {
             </ol>
           </div>
         </section>
+
+        {/* Statement band — surface-navy break */}
+        <aside aria-label="Practice statement" className="surface-navy">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-20">
+            <div className="col-span-12 md:col-span-3">
+              <div className="eyebrow text-accent">Position</div>
+              <div className="mt-3 num-display-sm tabular-nums">01</div>
+            </div>
+            <blockquote className="col-span-12 md:col-span-9">
+              <p className="h-2 max-w-[26ch] text-balance">
+                Evidence you can defend. Not scanner passes. Not AI reports.
+              </p>
+              <footer className="mt-6 eyebrow text-background/60">
+                ACT Verified · Practice statement
+              </footer>
+            </blockquote>
+          </div>
+        </aside>
+
+
 
         {/* Methodology + Who we help */}
         <section className="border-b border-foreground/15 bg-secondary/30">
