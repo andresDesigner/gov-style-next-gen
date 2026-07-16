@@ -129,7 +129,7 @@ export function HomeV2() {
         <section aria-labelledby="engagement-v2" className="border-b border-foreground/10">
           <div className="mx-auto max-w-[1200px] px-6 pt-16">
             <div className="mb-8">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Engagement Model · 6 phases</div>
+              <SectionKicker n="01" label="Engagement Model · 6 Phases" />
               <h2 id="engagement-v2" className="mt-2 text-2xl font-medium tracking-tight md:text-3xl">How a Title II readiness engagement runs.</h2>
             </div>
           </div>
