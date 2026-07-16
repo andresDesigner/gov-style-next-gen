@@ -1,4 +1,6 @@
 import { Logo } from "./Logo";
+import { SectionKicker } from "./SectionKicker";
+import { TraceBadge } from "./TraceBadge";
 import {
   primaryServices,
   secondaryServices,
