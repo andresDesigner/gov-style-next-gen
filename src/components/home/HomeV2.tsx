@@ -95,16 +95,33 @@ export function HomeV2() {
           </div>
         </header>
 
-        <section aria-label="Firm credentials" className="bg-foreground text-background">
+        <section aria-label="Firm credentials" className="surface-navy">
           <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-x-10 gap-y-3 px-6 py-4">
             {["Section 508 Trusted Tester-led practice", "10+ years in accessibility compliance", "AI-assisted · human-verified"].map((label) => (
               <div key={label} className="flex items-center gap-3">
                 <span aria-hidden="true" className="h-2 w-2 bg-accent" />
-                <span className="font-mono text-[10px] uppercase tracking-wider text-background/85">{label}</span>
+                <span className="eyebrow text-background/85">{label}</span>
               </div>
             ))}
           </div>
         </section>
+
+        <section aria-label="Scale of the deadline" className="surface-cobalt">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-3 gap-8 px-6 py-10">
+            {[
+              { k: "Residents served", v: "50k+", n: "Phase 1 threshold" },
+              { k: "Deadline", v: "2027", n: "Phase 1 · April 26" },
+              { k: "Standard", v: "AA", n: "WCAG 2.1 conformance" },
+            ].map((m) => (
+              <div key={m.k}>
+                <div className="eyebrow text-primary-foreground/70">{m.k}</div>
+                <div className="mt-2 num-display-sm tabular-nums">{m.v}</div>
+                <div className="mt-1 eyebrow text-primary-foreground/60">{m.n}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
 
         <section aria-labelledby="engagement-v2" className="border-b border-foreground/10">
           <div className="mx-auto max-w-[1200px] px-6 pt-16">
@@ -114,15 +131,16 @@ export function HomeV2() {
             </div>
           </div>
           <div className="mx-auto max-w-[1200px]">
-            <ol className="grid grid-cols-2 border-l border-foreground/10 md:grid-cols-3 lg:grid-cols-6">
+            <ol className="grid grid-cols-2 border-l border-foreground/20 md:grid-cols-3 lg:grid-cols-6">
               {engagement.map((step, i) => (
-                <li key={step.n} className={`border-r border-b border-foreground/10 p-6 ${i === 0 ? "bg-card" : ""}`}>
-                  <div className={`mb-6 font-mono text-[10px] tracking-widest ${i === 0 ? "text-primary" : "text-foreground/40"}`}>{step.n}</div>
+                <li key={step.n} className={`border-r border-b border-foreground/20 p-6 ${i === 0 ? "bg-card" : ""}`}>
+                  <div className={`mb-4 num-display-sm tabular-nums ${i === 0 ? "text-primary" : "text-foreground/25"}`}>{step.n}</div>
                   <h3 className="text-sm font-semibold">{step.label}</h3>
                   <p className="mt-2 text-xs leading-relaxed text-foreground/65">{step.desc}</p>
                 </li>
               ))}
             </ol>
+
           </div>
         </section>
 
@@ -142,21 +160,26 @@ export function HomeV2() {
               </div>
             </div>
             <div className="col-span-12 lg:col-span-7">
-              <div className="grid grid-cols-2 gap-px bg-foreground/10 border border-foreground/10">
+              <div className="grid grid-cols-2 gap-px bg-foreground/20 border border-foreground/20">
                 {[
-                  { label: "Standard", value: "WCAG 2.1 AA", note: "Mandatory baseline for all digital assets under Title II." },
-                  { label: "Runway", value: "≈ 9 mo", note: "From today to the Phase 1 deadline of April 26, 2027." },
+                  { label: "Standard", value: "AA", note: "WCAG 2.1 · mandatory baseline for all digital assets.", big: true },
+                  { label: "Runway", value: "9 mo", note: "From today to the Phase 1 deadline of April 26, 2027.", big: true },
                   { label: "Coverage", value: "Web · App · PDF", note: "Third-party content and vendor platforms included." },
                   { label: "Evidence", value: "Behavioral", note: "Native screen-reader verification, not scanner-only." },
                 ].map((cell) => (
                   <div key={cell.label} className="bg-card p-6">
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/45">{cell.label}</div>
-                    <div className="mt-2 text-2xl font-medium tracking-tight tabular-nums">{cell.value}</div>
-                    <p className="mt-2 text-sm leading-relaxed text-foreground/70">{cell.note}</p>
+                    <div className="eyebrow text-foreground/50">{cell.label}</div>
+                    {cell.big ? (
+                      <div className="mt-3 num-display-md text-foreground tabular-nums">{cell.value}</div>
+                    ) : (
+                      <div className="mt-2 text-2xl font-medium tracking-tight tabular-nums">{cell.value}</div>
+                    )}
+                    <p className="mt-3 text-sm leading-relaxed text-foreground/70">{cell.note}</p>
                   </div>
                 ))}
               </div>
             </div>
+
           </div>
         </section>
 
@@ -226,23 +249,24 @@ export function HomeV2() {
           </div>
         </section>
 
-        <section aria-labelledby="operations-v2" className="border-b border-foreground/10">
+        <section aria-labelledby="operations-v2" className="surface-navy">
           <div className="mx-auto max-w-[1200px] px-6 py-24">
             <div className="mb-10">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Operations · Capability Statement</div>
-              <h2 id="operations-v2" className="mt-2 text-3xl font-medium tracking-tight">Practice-level operating facts.</h2>
+              <div className="eyebrow text-accent">Operations · Capability Statement</div>
+              <h2 id="operations-v2" className="mt-3 h-2">Practice-level operating facts.</h2>
             </div>
-            <dl className="grid grid-cols-1 gap-px border border-foreground/10 bg-foreground/10 md:grid-cols-3">
+            <dl className="grid grid-cols-1 gap-px bg-background/15 border border-background/15 md:grid-cols-3">
               {operations.map((cell) => (
-                <div key={cell.label} className="bg-card p-8">
-                  <dt className="font-mono text-[10px] uppercase tracking-widest text-foreground/45">{cell.label}</dt>
+                <div key={cell.label} className="surface-navy p-8">
+                  <dt className="eyebrow text-background/60">{cell.label}</dt>
                   <dd className="mt-3 text-xl font-medium tracking-tight break-words">{cell.value}</dd>
-                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">{cell.desc}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-background/70">{cell.desc}</p>
                 </div>
               ))}
             </dl>
           </div>
         </section>
+
 
         <section id="book" aria-labelledby="cta-v2" className="bg-foreground text-background">
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-20">
