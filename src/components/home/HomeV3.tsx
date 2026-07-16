@@ -26,14 +26,8 @@ export function HomeV3() {
       {/* Slim nav */}
       <nav aria-label="Primary" className="border-b border-foreground/10 bg-background">
         <div className="mx-auto flex max-w-[960px] items-center justify-between px-6 py-5">
-          <a href="/" className="flex items-center gap-2">
-            <span
-              aria-hidden="true"
-              className="grid h-6 w-6 place-items-center bg-foreground text-background font-mono text-[10px] font-medium"
-            >
-              A
-            </span>
-            <span className="font-semibold tracking-tight">ACT Verified</span>
+          <a href="/" className="flex items-center">
+            <Logo className="h-9 w-auto" />
           </a>
           <ul className="hidden lg:flex gap-8 text-sm font-medium">
             {["Services", "How We Verify", "For Government", "Resources", "About"].map((item) => (

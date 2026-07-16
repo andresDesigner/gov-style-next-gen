@@ -32,9 +32,8 @@ export function HomeV2() {
       <nav aria-label="Primary" className="border-b border-foreground/10 bg-background">
         <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4 sm:h-16 sm:grid-cols-none sm:flex sm:flex-wrap sm:justify-between">
           <div className="flex min-w-0 items-center gap-8">
-            <a href="/" className="flex items-center gap-2 shrink-0">
-              <span aria-hidden="true" className="grid h-6 w-6 place-items-center bg-foreground text-background font-mono text-[10px] font-medium">A</span>
-              <span className="font-semibold tracking-tight">ACT Verified</span>
+            <a href="/" className="flex items-center shrink-0">
+              <Logo className="h-9 w-auto" />
             </a>
             <ul className="hidden lg:flex gap-6 text-sm font-medium">
               {["Services", "How We Verify", "For Government", "Resources", "About"].map((item) => (
