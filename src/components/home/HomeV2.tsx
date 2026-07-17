@@ -86,28 +86,44 @@ export function HomeV2() {
                 ACT Verified prepares public-sector and regulated organizations for the Title II deadlines of April 26, 2027 and April 26, 2028 — with findings you can defend to auditors, legal counsel, and procurement reviewers.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
-                <a href="#book" className="btn-gov bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:bg-primary">Book a Readiness Call</a>
-                <a href="#capability" className="btn-gov border border-foreground/25 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground hover:bg-foreground/[0.03]">Download Capability Statement</a>
+                <a href="#book" className="btn-gov inline-flex items-center gap-2 bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:bg-primary">
+                  <CalendarCheck aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
+                  Book a Readiness Call
+                </a>
+                <a href="#capability" className="btn-gov inline-flex items-center gap-2 border border-foreground/25 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground hover:bg-foreground/[0.03]">
+                  <Download aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
+                  Download Capability Statement
+                </a>
               </div>
+
             </div>
 
             <aside aria-label="Title II compliance deadlines" className="col-span-12 lg:col-span-4">
               <div className="border border-foreground/10 bg-card p-6">
-                <div className="mb-4 font-mono text-[10px] uppercase tracking-widest text-foreground/50">Compliance Deadlines · ADA.gov</div>
+                <div className="mb-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                  <ShieldCheck aria-hidden="true" strokeWidth={1.5} className="h-3.5 w-3.5" />
+                  Compliance Deadlines · ADA.gov
+                </div>
                 <dl className="divide-y divide-foreground/10">
                   <div className="pb-4">
                     <div className="flex items-baseline justify-between">
-                      <dt className="font-mono text-sm font-medium tabular-nums text-foreground">April 26, 2027</dt>
+                      <dt className="flex items-center gap-2 font-mono text-sm font-medium tabular-nums text-foreground">
+                        <Calendar aria-hidden="true" strokeWidth={1.5} className="h-4 w-4 text-primary" />
+                        April 26, 2027
+                      </dt>
                       <span className="bg-primary/10 px-1.5 py-0.5 font-mono text-[10px] tracking-widest text-primary">PHASE 1</span>
                     </div>
-                    <dd className="mt-1 text-xs uppercase tracking-wide text-foreground/60">Entities serving 50,000+ residents</dd>
+                    <dd className="mt-1 pl-6 text-xs uppercase tracking-wide text-foreground/60">Entities serving 50,000+ residents</dd>
                   </div>
                   <div className="pt-4">
                     <div className="flex items-baseline justify-between">
-                      <dt className="font-mono text-sm font-medium tabular-nums text-foreground">April 26, 2028</dt>
+                      <dt className="flex items-center gap-2 font-mono text-sm font-medium tabular-nums text-foreground">
+                        <Calendar aria-hidden="true" strokeWidth={1.5} className="h-4 w-4 text-foreground/40" />
+                        April 26, 2028
+                      </dt>
                       <span className="bg-foreground/5 px-1.5 py-0.5 font-mono text-[10px] tracking-widest text-foreground/60">PHASE 2</span>
                     </div>
-                    <dd className="mt-1 text-xs uppercase tracking-wide text-foreground/60">Smaller entities · special districts</dd>
+                    <dd className="mt-1 pl-6 text-xs uppercase tracking-wide text-foreground/60">Smaller entities · special districts</dd>
                   </div>
                 </dl>
               </div>
@@ -117,11 +133,16 @@ export function HomeV2() {
 
         <section aria-label="Firm credentials" className="surface-navy">
           <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-x-10 gap-y-3 px-6 py-4">
-            {["Section 508 Trusted Tester-led practice", "10+ years in accessibility compliance", "AI-assisted · human-verified"].map((label) => (
+            {[
+              { label: "Section 508 Trusted Tester-led practice", Icon: BadgeCheck },
+              { label: "10+ years in accessibility compliance", Icon: Clock },
+              { label: "AI-assisted · human-verified", Icon: Sparkles },
+            ].map(({ label, Icon }) => (
               <div key={label} className="flex items-center gap-3">
-                <span aria-hidden="true" className="h-2 w-2 bg-accent" />
+                <Icon aria-hidden="true" strokeWidth={1.5} className="h-4 w-4 text-accent" />
                 <span className="eyebrow text-background/85">{label}</span>
               </div>
+
             ))}
           </div>
         </section>
