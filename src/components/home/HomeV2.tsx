@@ -173,14 +173,27 @@ export function HomeV2() {
           </div>
           <div className="mx-auto max-w-[1200px]">
             <ol className="grid grid-cols-2 border-l border-foreground/20 md:grid-cols-3 lg:grid-cols-6">
-              {engagement.map((step, i) => (
-                <li key={step.n} className={`border-r border-b border-foreground/20 p-6 ${i === 0 ? "bg-card" : ""}`}>
-                  <div className={`mb-4 num-display-sm tabular-nums ${i === 0 ? "text-primary" : "text-foreground/25"}`}>{step.n}</div>
-                  <h3 className="text-sm font-semibold">{step.label}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-foreground/65">{step.desc}</p>
-                </li>
-              ))}
+              {engagement.map((step, i) => {
+                const Icon = engagementIcons[step.n];
+                return (
+                  <li key={step.n} className={`border-r border-b border-foreground/20 p-6 ${i === 0 ? "bg-card" : ""}`}>
+                    <div className="mb-4 flex items-start justify-between">
+                      <div className={`num-display-sm tabular-nums ${i === 0 ? "text-primary" : "text-foreground/25"}`}>{step.n}</div>
+                      {Icon ? (
+                        <Icon
+                          aria-hidden="true"
+                          strokeWidth={1.5}
+                          className={`h-5 w-5 ${i === 0 ? "text-primary" : "text-foreground/25"}`}
+                        />
+                      ) : null}
+                    </div>
+                    <h3 className="text-sm font-semibold">{step.label}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-foreground/65">{step.desc}</p>
+                  </li>
+                );
+              })}
             </ol>
+
 
           </div>
         </section>
@@ -213,12 +226,13 @@ export function HomeV2() {
               </div>
               <LabValueTable
                 rows={[
-                  { label: "Standard", value: "WCAG 2.1 AA", note: "mandatory baseline for all digital assets" },
-                  { label: "Coverage", value: "Web · App · PDF", note: "third-party content and vendor platforms" },
-                  { label: "Evidence", value: "Behavioral", note: "native screen-reader verification, not scanner-only" },
-                  { label: "Runway", value: "≈ 9 months", note: "to April 26, 2027 Phase 1 deadline" },
+                  { label: "Standard", value: "WCAG 2.1 AA", note: "mandatory baseline for all digital assets", icon: Ruler },
+                  { label: "Coverage", value: "Web · App · PDF", note: "third-party content and vendor platforms", icon: Layers },
+                  { label: "Evidence", value: "Behavioral", note: "native screen-reader verification, not scanner-only", icon: Eye },
+                  { label: "Runway", value: "≈ 9 months", note: "to April 26, 2027 Phase 1 deadline", icon: Timer },
                 ]}
               />
+
             </div>
 
           </div>
