@@ -248,28 +248,43 @@ export function HomeV2() {
               <a href="#" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</a>
             </div>
             <div className="grid grid-cols-1 gap-px border border-foreground/10 bg-foreground/10 md:grid-cols-2 lg:grid-cols-4">
-              {primaryServices.map((s) => (
-                <article key={s.id} className="bg-card p-6">
-                  <div className="mb-4 font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
-                  <h3 className="text-lg font-semibold leading-tight">{s.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">{s.desc}</p>
-                </article>
-              ))}
+              {primaryServices.map((s) => {
+                const Icon = serviceIcons[s.id];
+                return (
+                  <article key={s.id} className="bg-card p-6">
+                    {Icon ? (
+                      <Icon aria-hidden="true" strokeWidth={1.5} className="mb-4 h-6 w-6 text-primary" />
+                    ) : null}
+                    <div className="mb-2 font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
+                    <h3 className="text-lg font-semibold leading-tight">{s.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-foreground/70">{s.desc}</p>
+                  </article>
+                );
+              })}
             </div>
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-              {secondaryServices.map((s) => (
-                <article key={s.id} className="border border-dashed border-foreground/25 bg-background p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="mb-2 font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
-                      <h3 className="text-lg font-semibold">{s.title}</h3>
+              {secondaryServices.map((s) => {
+                const Icon = serviceIcons[s.id];
+                return (
+                  <article key={s.id} className="border border-dashed border-foreground/25 bg-background p-6">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start gap-3">
+                        {Icon ? (
+                          <Icon aria-hidden="true" strokeWidth={1.5} className="mt-0.5 h-6 w-6 text-foreground/60" />
+                        ) : null}
+                        <div>
+                          <div className="mb-2 font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
+                          <h3 className="text-lg font-semibold">{s.title}</h3>
+                        </div>
+                      </div>
+                      <span className="shrink-0 border border-foreground/15 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-foreground/50">Phase 2</span>
                     </div>
-                    <span className="shrink-0 border border-foreground/15 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-foreground/50">Phase 2</span>
-                  </div>
-                  <p className="mt-4 max-w-[52ch] text-sm leading-relaxed text-foreground/70">{s.desc}</p>
-                </article>
-              ))}
+                    <p className="mt-4 max-w-[52ch] text-sm leading-relaxed text-foreground/70">{s.desc}</p>
+                  </article>
+                );
+              })}
             </div>
+
           </div>
         </section>
 
@@ -277,18 +292,25 @@ export function HomeV2() {
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
             <div className="col-span-12 lg:col-span-7">
               <SectionKicker n="04" label="Methodology Preview" />
-              <h2 className="mt-2 text-3xl font-medium tracking-tight md:text-4xl">Behavioral Verification.</h2>
+              <h2 className="mt-2 flex items-center gap-3 text-3xl font-medium tracking-tight md:text-4xl">
+                <Accessibility aria-hidden="true" strokeWidth={1.5} className="h-8 w-8 text-primary" />
+                Behavioral Verification.
+              </h2>
               <p className="mt-4 max-w-[60ch] text-lg leading-relaxed text-foreground/80">
                 We tell you what's exposed to assistive technology — not just what's inside the document. Static analysis and automated scanners are valuable first steps; behavioral verification covers what they are not designed to detect.
               </p>
               <figure aria-label="Excerpt from a verification finding record" className="mt-8 border border-foreground/15 bg-foreground text-background">
                 <figcaption className="flex items-center justify-between border-b border-background/10 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-background/60">
-                  <span>Finding · F-2027-0142</span>
+                  <span className="flex items-center gap-2">
+                    <Terminal aria-hidden="true" strokeWidth={1.5} className="h-3.5 w-3.5" />
+                    Finding · F-2027-0142
+                  </span>
                   <span>NVDA · Firefox · Win 11</span>
                 </figcaption>
                 <pre className="overflow-x-auto p-5 font-mono text-[12px] leading-relaxed text-background/90">{evidenceSnippet}</pre>
               </figure>
             </div>
+
             <aside aria-labelledby="audience-v2" className="col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
               <SectionKicker n="05" label="Who We Help" />
               <h3 id="audience-v2" className="mt-2 text-2xl font-medium tracking-tight">Built for procurement-driven buyers.</h3>
