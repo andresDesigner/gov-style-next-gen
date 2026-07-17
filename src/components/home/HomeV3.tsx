@@ -32,7 +32,7 @@ export function HomeV3() {
       <nav aria-label="Primary" className="border-b border-foreground/10 bg-background">
         <div className="mx-auto flex max-w-[960px] items-center justify-between px-6 py-5">
           <a href="/" className="flex items-center">
-            <Logo className="h-9 w-auto" />
+            <Logo className="h-11 w-auto" />
           </a>
           <ul className="hidden lg:flex gap-8 text-sm font-medium">
             {["Services", "How We Verify", "For Government", "Resources", "About"].map((item) => (
@@ -50,7 +50,7 @@ export function HomeV3() {
             href="#book"
             className="btn-gov bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-primary"
           >
-            Book a Call
+            Book a Readiness Call
           </a>
         </div>
       </nav>
@@ -58,8 +58,8 @@ export function HomeV3() {
       <main id="main">
         {/* Hero — big prose, single column */}
         <section className="rule-medium-b">
-          <div className="mx-auto max-w-[960px] px-6 pb-24 pt-24 lg:pt-36">
-            <div className="mb-10 eyebrow text-foreground/55">
+          <div className="mx-auto max-w-[960px] px-6 pb-20 pt-16 lg:pt-24">
+            <div className="mb-8 eyebrow text-foreground/55">
               A memorandum on ADA Title II readiness
             </div>
             <h1 className="type-display max-w-[14ch] text-balance">
@@ -67,6 +67,7 @@ export function HomeV3() {
             </h1>
             <div className="mt-14 grid grid-cols-12 items-end gap-8 rule-medium pt-8">
               <div className="col-span-12 md:col-span-5">
+                <TraceBadge id="TRACE-001" status="ACTIVE" className="mb-4" />
                 <div className="eyebrow text-primary">Phase 1 deadline</div>
                 <div className="mt-3 num-display-md text-foreground tabular-nums">04.26.2027</div>
               </div>
