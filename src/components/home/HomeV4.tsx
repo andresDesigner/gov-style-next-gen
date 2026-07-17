@@ -410,18 +410,25 @@ export function HomeV4() {
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
             <div className="col-span-12 lg:col-span-7">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Methodology Preview</div>
-              <h2 className="mt-2 text-3xl font-medium tracking-tight md:text-4xl">Behavioral Verification.</h2>
+              <h2 className="mt-2 flex items-center gap-3 text-3xl font-medium tracking-tight md:text-4xl">
+                <Accessibility aria-hidden="true" strokeWidth={1.5} className="h-8 w-8 text-primary" />
+                Behavioral Verification.
+              </h2>
               <p className="mt-4 max-w-[60ch] text-lg leading-relaxed text-foreground/80">
                 We tell you what's exposed to assistive technology — not just what's inside the document. Static analysis and automated scanners are valuable first steps; behavioral verification covers what they are not designed to detect.
               </p>
               <figure aria-label="Excerpt from a verification finding record" className="mt-8 border border-foreground/15 bg-foreground text-background">
                 <figcaption className="flex items-center justify-between border-b border-background/10 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-background/60">
-                  <span>Finding · F-2027-0142</span>
+                  <span className="flex items-center gap-2">
+                    <Terminal aria-hidden="true" strokeWidth={1.5} className="h-3.5 w-3.5" />
+                    Finding · F-2027-0142
+                  </span>
                   <span>NVDA · Firefox · Win 11</span>
                 </figcaption>
                 <pre className="overflow-x-auto p-5 font-mono text-[12px] leading-relaxed text-background/90">{evidenceSnippet}</pre>
               </figure>
             </div>
+
             <aside aria-labelledby="audience-v4" className="col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Who We Help</div>
               <h3 id="audience-v4" className="mt-2 text-2xl font-medium tracking-tight">Built for procurement-driven buyers.</h3>
@@ -444,14 +451,23 @@ export function HomeV4() {
               <h2 id="operations-v4" className="mt-3 type-h2">Practice-level operating facts.</h2>
             </div>
             <dl className="grid grid-cols-1 gap-px bg-background/15 border border-background/15 md:grid-cols-3">
-              {operations.map((cell) => (
-                <div key={cell.label} className="surface-navy p-8">
-                  <dt className="eyebrow text-background/60">{cell.label}</dt>
-                  <dd className="mt-3 text-xl font-medium tracking-tight break-words">{cell.value}</dd>
-                  <p className="mt-3 text-sm leading-relaxed text-background/70">{cell.desc}</p>
-                </div>
-              ))}
+              {operations.map((cell) => {
+                const Icon = operationsIcons[cell.label];
+                return (
+                  <div key={cell.label} className="surface-navy p-8">
+                    <dt className="flex items-center gap-2 eyebrow text-background/60">
+                      {Icon ? (
+                        <Icon aria-hidden="true" strokeWidth={1.5} className="h-4 w-4 text-accent" />
+                      ) : null}
+                      {cell.label}
+                    </dt>
+                    <dd className="mt-3 text-xl font-medium tracking-tight break-words">{cell.value}</dd>
+                    <p className="mt-3 text-sm leading-relaxed text-background/70">{cell.desc}</p>
+                  </div>
+                );
+              })}
             </dl>
+
           </div>
         </section>
 
