@@ -219,8 +219,10 @@ export function HomeV4() {
               <div className="flex items-center gap-3">
                 <TraceBadge id="TRACE-002" status="VERIFIED" variant="dark" />
                 <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-background/40 px-4 py-1.5 text-xs font-medium text-background">
+                  <Sparkles aria-hidden="true" strokeWidth={1.5} className="h-3.5 w-3.5 text-accent" />
                   AI-assisted <span aria-hidden="true" className="text-background/40">|</span> Human-verified.
                 </span>
+
               </div>
             </div>
           </div>
