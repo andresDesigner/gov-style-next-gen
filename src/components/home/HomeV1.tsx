@@ -35,16 +35,16 @@ export function HomeV1() {
         </div>
         <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-3 px-6 pb-8 pt-6 text-center rule-medium">
           <a href="/" aria-label="ACT Verified home" className="inline-flex">
-            <Logo className="h-16 w-auto md:h-20" />
+            <Logo className="h-20 w-auto md:h-24" />
           </a>
           <span className="eyebrow text-foreground/60">
             Accessibility Verification · Compliance Readiness
           </span>
         </div>
         <nav aria-label="Primary" className="rule-medium">
-          <ul className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-center gap-x-8 gap-y-2 px-6 py-3 text-sm font-medium">
-            {["Services", "How We Verify", "For Government", "Resources", "About", "Book a Call"].map(
-              (item) => (
+          <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 px-6 py-3">
+            <ul className="flex flex-wrap items-center gap-x-8 gap-y-2 text-sm font-medium">
+              {["Services", "How We Verify", "For Government", "Resources", "About"].map((item) => (
                 <li key={item}>
                   <a
                     href="#"
@@ -53,9 +53,15 @@ export function HomeV1() {
                     {item}
                   </a>
                 </li>
-              ),
-            )}
-          </ul>
+              ))}
+            </ul>
+            <a
+              href="#book"
+              className="btn-gov bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-primary"
+            >
+              Book a Readiness Call
+            </a>
+          </div>
         </nav>
       </header>
 
@@ -65,7 +71,7 @@ export function HomeV1() {
         <section className="rule-medium-b">
           <div className="mx-auto max-w-[1200px] px-6 py-16 lg:py-24">
             <div className="mb-8 flex items-center gap-x-4 eyebrow text-foreground/60">
-              <span className="border border-foreground/25 px-2 py-0.5">Filed · 2026-07-16</span>
+              <span className="border border-foreground/25 px-2 py-0.5">Last reviewed · 2026-07-16</span>
               <span className="h-px flex-1 bg-foreground/20" aria-hidden="true" />
               <span>Deadlines Ahead</span>
             </div>
@@ -121,12 +127,13 @@ export function HomeV1() {
           </div>
         </section>
 
-        {/* Scale strip — navy full-width */}
+        {/* Scale strip — cobalt full-width, high-signal urgency */}
         <MetricStrip
+          tone="cobalt"
           ariaLabel="Scale of the Title II deadline"
-          kicker={{ n: "01", label: "Scale of the Deadline" }}
+          kicker={{ n: "01", label: "URGENT · Runway to Phase 1 shrinks daily" }}
           metrics={[
-            { value: "50k+", label: "Residents served", note: "Phase 1 threshold" },
+            { value: "50k+", label: "Residents served", note: "Federally mandated Phase 1 threshold" },
             { value: "2027", label: "Deadline", note: "Phase 1 · April 26" },
             { value: "AA", label: "Standard", note: "WCAG 2.1 conformance" },
           ]}
@@ -313,18 +320,19 @@ export function HomeV1() {
         </section>
 
         {/* Statement band — surface-navy break */}
-        <aside aria-label="Practice statement" className="surface-navy">
+        {/* Alt H1 propuesto para revisión del cliente: "Evidence, not assertions." */}
+        <aside aria-label="Practice thesis" className="surface-navy">
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-20">
             <div className="col-span-12 md:col-span-3">
-              <div className="eyebrow text-accent">Position</div>
+              <div className="eyebrow text-accent">Thesis</div>
               <div className="mt-3 num-display-sm tabular-nums">01</div>
             </div>
             <blockquote className="col-span-12 md:col-span-9">
-              <p className="type-h2 max-w-[26ch] text-balance">
-                Evidence you can defend. Not scanner passes. Not AI reports.
+              <p className="type-h2 max-w-[28ch] text-balance">
+                Scanners passed. The user still couldn't use it. That gap is what we document.
               </p>
-              <footer className="mt-6 eyebrow text-background/60">
-                ACT Verified · Practice statement
+              <footer className="mt-6 eyebrow text-background/70">
+                ACT Verified · What behavioral verification documents
               </footer>
             </blockquote>
           </div>
@@ -394,13 +402,13 @@ export function HomeV1() {
             <dl className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-3">
               {operations.map((cell) => (
                 <div key={cell.label} className="border-t-2 border-foreground pt-4">
-                  <dt className="font-mono text-[10px] uppercase tracking-widest text-foreground/45">
+                  <dt className="font-mono text-[10px] uppercase tracking-widest text-foreground/70">
                     {cell.label}
                   </dt>
                   <dd className="mt-3 text-xl font-medium tracking-tight break-words">
                     {cell.value}
                   </dd>
-                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">{cell.desc}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/85">{cell.desc}</p>
                 </div>
               ))}
             </dl>
