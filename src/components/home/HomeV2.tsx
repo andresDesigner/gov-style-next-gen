@@ -333,14 +333,23 @@ export function HomeV2() {
               <h2 id="operations-v2" className="mt-3 type-h2">Practice-level operating facts.</h2>
             </div>
             <dl className="grid grid-cols-1 gap-px bg-background/15 border border-background/15 md:grid-cols-3">
-              {operations.map((cell) => (
-                <div key={cell.label} className="surface-navy p-8">
-                  <dt className="eyebrow text-background/60">{cell.label}</dt>
-                  <dd className="mt-3 text-xl font-medium tracking-tight break-words">{cell.value}</dd>
-                  <p className="mt-3 text-sm leading-relaxed text-background/70">{cell.desc}</p>
-                </div>
-              ))}
+              {operations.map((cell) => {
+                const Icon = operationsIcons[cell.label];
+                return (
+                  <div key={cell.label} className="surface-navy p-8">
+                    <dt className="flex items-center gap-2 eyebrow text-background/60">
+                      {Icon ? (
+                        <Icon aria-hidden="true" strokeWidth={1.5} className="h-4 w-4 text-accent" />
+                      ) : null}
+                      {cell.label}
+                    </dt>
+                    <dd className="mt-3 text-xl font-medium tracking-tight break-words">{cell.value}</dd>
+                    <p className="mt-3 text-sm leading-relaxed text-background/70">{cell.desc}</p>
+                  </div>
+                );
+              })}
             </dl>
+
           </div>
         </section>
 
@@ -364,9 +373,16 @@ export function HomeV2() {
               <p className="mt-4 max-w-[52ch] text-base text-background/70">No silent passes. No hidden uncertainty. A scoped read of what's exposed today and what has to change before April 2027.</p>
             </div>
             <div className="col-span-12 flex flex-col justify-end gap-3 lg:col-span-4 lg:items-end">
-              <a href="#" className="btn-gov bg-background px-6 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-secondary">Book a Readiness Call</a>
-              <a id="capability" href="#" className="btn-gov border border-background/30 px-6 py-3 text-center text-sm font-medium text-background transition-colors hover:bg-background/10">Download Capability Statement</a>
+              <a href="#" className="btn-gov inline-flex items-center justify-center gap-2 bg-background px-6 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-secondary">
+                <CalendarCheck aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
+                Book a Readiness Call
+              </a>
+              <a id="capability" href="#" className="btn-gov inline-flex items-center justify-center gap-2 border border-background/30 px-6 py-3 text-center text-sm font-medium text-background transition-colors hover:bg-background/10">
+                <Download aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
+                Download Capability Statement
+              </a>
             </div>
+
           </div>
         </section>
       </main>
