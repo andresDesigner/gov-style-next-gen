@@ -1,7 +1,23 @@
+import {
+  BadgeCheck,
+  Calendar,
+  CalendarCheck,
+  Clock,
+  Download,
+  Eye,
+  Layers,
+  Ruler,
+  ShieldCheck,
+  Sparkles,
+  Terminal,
+  Timer,
+  Accessibility,
+} from "lucide-react";
 import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { MetricStrip } from "./MetricStrip";
 import { LabValueTable } from "./LabValueRow";
+import { serviceIcons, engagementIcons, operationsIcons } from "./serviceIcons";
 import {
   primaryServices,
   secondaryServices,
@@ -11,6 +27,7 @@ import {
   footerCols,
   evidenceSnippet,
 } from "./shared";
+
 
 export function HomeV2() {
   return (
