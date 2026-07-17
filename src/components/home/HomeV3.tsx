@@ -1,5 +1,8 @@
+import { Ruler, Layers, Eye, Timer } from "lucide-react";
 import { Logo } from "./Logo";
 import { MetricStrip } from "./MetricStrip";
+import { LabValueTable } from "./LabValueRow";
+import { TraceBadge } from "./TraceBadge";
 import {
   primaryServices,
   secondaryServices,
