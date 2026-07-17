@@ -1,63 +1,45 @@
 ## Objetivo
 
-Inyectar más personalidad editorial y jerarquía visual en las 4 variantes del home (V1–V4) aplicando 5 principios comunes, sin tocar paleta, tipografía base ni navegación. Se trabajará una variante a la vez y se esperará confirmación visual antes de pasar a la siguiente.
+Incorporar iconografía (lucide-react, ya disponible) en V2 y V4 solo donde mejora el escaneo y refuerza la jerarquía, sin sobrecargar el estilo editorial/gubernamental existente. Iconos como refuerzo semántico, nunca decorativos.
 
-## Principios comunes (aplican a las 4 variantes)
+## Principios
 
-1. **Kicker/eyebrow consistente antes de cada H2**: componente reutilizable `SectionKicker` con formato `§0X · NOMBRE` (mono, uppercase, tracking 0.05–0.08em, color `text-foreground/50` o `text-primary`). Se aplica en TODAS las secciones, no solo algunas.
-2. **Mínimo 2 franjas navy/cobalt con texto blanco**: una después del hero (métricas grandes tipo "50k+ / 2027 / AA"), otra antes del CTA final (métricas de proceso "9 mo / AA / 6 phases"). Separadores verticales en `azure-500`.
-3. **Ritmo de columnas alternado**: secuencia 60/40 → full-width → 40/60 → full-width en cada variante para romper monotonía vertical.
-4. **Líneas divisorias 1px como diseño**: pares label/valor tipo tabla de laboratorio ("STANDARD — WCAG 2.1 AA") en secciones densas.
-5. **Badge de trazabilidad reutilizable** `TraceBadge` con formato `TRACE-XXX · STATUS: ACTIVE|PENDING|VERIFIED`, usado en hero, trust strip y al menos una service card.
+- Icon size 16–20px en línea con texto; 24–28px en cards.
+- `strokeWidth={1.5}` para tono editorial fino, coherente con el diseño actual.
+- Color heredado: `currentColor` con `text-primary`, `text-foreground/60` o `text-accent` según superficie.
+- Siempre `aria-hidden` cuando acompañan texto; nunca sustituyen etiquetas.
+- No añadir iconos en: H1 del hero, kickers `SectionKicker`, números grandes de `MetricStrip`, `TraceBadge`, ni dentro del bloque `<pre>` de evidencia.
 
-## Componentes nuevos compartidos
+## V2 — puntos de inserción
 
-Se crean en `src/components/home/`:
+1. **Deadlines aside (Phase 1 / Phase 2):** `Calendar` junto a cada fecha, `ShieldCheck` en el título "Compliance Deadlines".
+2. **Trust strip navy:** reemplazar el cuadrado `bg-accent` por `BadgeCheck`, `Clock` y `Sparkles` (uno por credencial).
+3. **Engagement 6 fases:** icono pequeño por fase (`Search`, `ClipboardList`, `TestTube2`, `FileCheck2`, `Wrench`, `ShieldCheck`) en la esquina superior derecha de cada celda, `text-foreground/25` (activo `text-primary` en fase 01).
+4. **Deadline Reality — LabValueTable:** icono a la izquierda de cada label (`Ruler`, `Layers`, `Eye`, `Timer`). Requiere prop opcional `icon` en `LabValueRow`.
+5. **Services primarios (4) y secundarios (2):** icono 24px arriba del `id`, uno por servicio (mapeo determinista por `s.id`). Cards mantienen mono-id.
+6. **Methodology / Behavioral Verification:** `Accessibility` junto al H2; `Terminal` en el header del `<figure>` de evidencia.
+7. **Operations capability:** icono por celda (`Users`, `MapPin`, `FileBadge`, etc., según `label`).
+8. **CTA final:** `CalendarCheck` en el botón "Book a Readiness Call", `Download` en "Download Capability Statement". Aplica también al par de botones del hero.
+9. **Footer:** `ArrowUpRight` inline al hover en enlaces externos (solo los que apunten fuera). Omitir si todos son `#`.
 
-- `SectionKicker.tsx` — kicker `§0X · TITLE`, props `{ n, label, tone?: "muted" | "primary" | "accent" }`.
-- `TraceBadge.tsx` — badge `TRACE-XXX · STATUS: X`, props `{ id, status }`, variantes en fondo claro y oscuro.
-- `MetricStrip.tsx` — franja full-width `surface-navy` o `surface-cobalt` con 3 métricas grandes y separadores verticales en `azure-500`. Props: `{ tone, metrics: { value, label, note? }[] }`.
-- `LabValueRow.tsx` — fila `label — valor` con línea inferior 1px, para tablas de laboratorio.
+## V4 — puntos de inserción
 
-Ninguno introduce colores, fuentes ni assets nuevos: solo componen tokens y utilidades ya existentes en `styles.css` (`surface-navy`, `surface-cobalt`, `eyebrow`, `num-display*`, `rule-*`).
+1. **Header blanco:** `Menu` como disclosure en breakpoint móvil si aplica; si no, omitir.
+2. **Trust strip / Overview intermedio (`paper-50`):** iconos pequeños al lado de cada `TraceBadge` o credencial (`BadgeCheck`, `Clock`, `Sparkles`) manteniendo el badge existente.
+3. **Nodos de diagrama en servicios:** dejar los círculos+líneas; añadir icono central 14px dentro de cada nodo por servicio (mismo mapeo que V2).
+4. **Deadline card (no se toca layout):** solo un `Calendar` en el título "Compliance Deadlines" — permitido porque el brief prohíbe tocar la tarjeta, así que **omitir si el usuario lo interpreta como cambio estructural**. Por defecto: no tocar.
+5. **Resto de secciones heredadas de V2:** aplicar los mismos puntos 3–9 de V2 con los mismos componentes/mapeo para mantener coherencia entre variantes.
 
-## Cambios por variante
+## Cambios de código
 
-### V1 — Federal Precision reforzado
-- Añadir `SectionKicker` consistente en hero y trust strip (ya existe en secciones §01–§06; homogeneizar estilo con el nuevo componente).
-- Insertar `MetricStrip` navy full-width después del hero: `50k+ residents served`, `2027 deadline`, `AA standard`, con divisores verticales azure.
-- Agregar `TraceBadge` (`S-01`, `S-02`, …) junto al número existente en cada service card del `<ol>` de servicios.
-- No tocar: masthead, hero, footer, ni banda `surface-navy` "Practice statement" existente.
+- **Editar** `src/components/home/LabValueRow.tsx`: añadir prop opcional `icon?: LucideIcon` a `LabValueRow` y renderizarlo 16px a la izquierda del label.
+- **Nuevo** `src/components/home/serviceIcons.ts`: mapa `Record<serviceId, LucideIcon>` reutilizado por V2 y V4 (fuente única).
+- **Editar** `src/components/home/HomeV2.tsx`: imports puntuales de lucide-react e inserciones descritas.
+- **Editar** `src/components/home/HomeV4.tsx`: imports puntuales e inserciones descritas.
+- **No tocar:** `shared.ts`, `styles.css`, `SectionKicker`, `TraceBadge`, `MetricStrip`, V1, V3.
 
-### V2 — Evidence Metrics ampliado
-- Añadir `SectionKicker` en cada H2 (Deadline Reality, Services, Methodology, Who We Help, Operations, CTA) siguiendo el estilo actual de "ENGAGEMENT MODEL · 6 PHASES".
-- Reemplazar el grid actual de 4 celdas en "Deadline Reality" por `LabValueRow` (STANDARD / COVERAGE / EVIDENCE / RUNWAY) con líneas 1px, manteniendo el copy actual.
-- Insertar segunda `MetricStrip` (navy) inmediatamente antes del CTA final con `9 mo runway`, `AA conformance`, `6 phases`.
-- No tocar: header, hero, grid de 6 fases del engagement.
+## Fuera de alcance
 
-### V3 — Memorandum editorial ampliado
-- Extender el patrón `§0X · SECCIÓN` + `LabValueRow` a TODAS las secciones (no solo Deadline Reality).
-- Presentar cada servicio con `num-display-sm` grande a la izquierda (coherente con "≈9 mo" del hero), tamaño menor que el hero.
-- Insertar `MetricStrip` navy full-width entre servicios y CTA final.
-- No tocar: hero ni H1.
-
-### V4 — Trace System completo
-- Reutilizar `TraceBadge` (`TRACE-002`, `TRACE-003`, …) en trust strip y en cada service card, numeración incremental empezando desde el `TRACE-001` del hero.
-- Insertar franja delgada `paper-50` con `SectionKicker` "§01 · OVERVIEW" entre el header navy y el contenido principal para suavizar la transición de fondo.
-- Extender el patrón de nodos (círculos + líneas finas horizontales) como conector sutil entre las 6 service cards.
-- No tocar: header, hero principal, tarjeta de deadline actual.
-
-## Orden de trabajo
-
-1. Crear los 4 componentes compartidos (`SectionKicker`, `TraceBadge`, `MetricStrip`, `LabValueRow`).
-2. Aplicar cambios a **V1** → pausa para confirmación visual.
-3. Aplicar cambios a **V2** → pausa.
-4. Aplicar cambios a **V3** → pausa.
-5. Aplicar cambios a **V4** → pausa final.
-
-## Notas técnicas
-
-- No se modifican `styles.css` (paleta/tokens) ni `shared.ts` (datos).
-- No se agregan imágenes, gradientes, glassmorphism ni dependencias.
-- Se preservan contrastes AAA: navy `#031436` + white supera 4.5:1; azure `#3079FF` solo como acento grande (líneas verticales, no texto de cuerpo).
-- Los nuevos componentes son puramente presentacionales (sin estado, sin lógica) y viven junto a los existentes en `src/components/home/`.
+- No se cambian colores, tipografías, tamaños de texto, ni estructura de grids.
+- No se añaden animaciones ni librerías nuevas (lucide-react ya está).
+- No se aplican iconos en V1 ni V3 en esta iteración.
