@@ -54,7 +54,7 @@ export function HomeV2() {
         <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4 sm:h-16 sm:grid-cols-none sm:flex sm:flex-wrap sm:justify-between">
           <div className="flex min-w-0 items-center gap-8">
             <a href="/" className="flex items-center shrink-0">
-              <Logo className="h-9 w-auto" />
+              <Logo className="h-11 w-auto" />
             </a>
             <ul className="hidden lg:flex gap-6 text-sm font-medium">
               {["Services", "How We Verify", "For Government", "Resources", "About"].map((item) => (
@@ -337,14 +337,14 @@ export function HomeV2() {
                 const Icon = operationsIcons[cell.label];
                 return (
                   <div key={cell.label} className="surface-navy p-8">
-                    <dt className="flex items-center gap-2 eyebrow text-background/60">
+                    <dt className="flex items-center gap-2 eyebrow text-background/75">
                       {Icon ? (
                         <Icon aria-hidden="true" strokeWidth={1.5} className="h-4 w-4 text-accent" />
                       ) : null}
                       {cell.label}
                     </dt>
                     <dd className="mt-3 text-xl font-medium tracking-tight break-words">{cell.value}</dd>
-                    <p className="mt-3 text-sm leading-relaxed text-background/70">{cell.desc}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-background/85">{cell.desc}</p>
                   </div>
                 );
               })}

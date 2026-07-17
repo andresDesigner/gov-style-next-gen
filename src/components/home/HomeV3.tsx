@@ -1,5 +1,8 @@
+import { Ruler, Layers, Eye, Timer } from "lucide-react";
 import { Logo } from "./Logo";
 import { MetricStrip } from "./MetricStrip";
+import { LabValueTable } from "./LabValueRow";
+import { TraceBadge } from "./TraceBadge";
 import {
   primaryServices,
   secondaryServices,
@@ -29,7 +32,7 @@ export function HomeV3() {
       <nav aria-label="Primary" className="border-b border-foreground/10 bg-background">
         <div className="mx-auto flex max-w-[960px] items-center justify-between px-6 py-5">
           <a href="/" className="flex items-center">
-            <Logo className="h-9 w-auto" />
+            <Logo className="h-11 w-auto" />
           </a>
           <ul className="hidden lg:flex gap-8 text-sm font-medium">
             {["Services", "How We Verify", "For Government", "Resources", "About"].map((item) => (
@@ -47,7 +50,7 @@ export function HomeV3() {
             href="#book"
             className="btn-gov bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-primary"
           >
-            Book a Call
+            Book a Readiness Call
           </a>
         </div>
       </nav>
@@ -55,8 +58,8 @@ export function HomeV3() {
       <main id="main">
         {/* Hero — big prose, single column */}
         <section className="rule-medium-b">
-          <div className="mx-auto max-w-[960px] px-6 pb-24 pt-24 lg:pt-36">
-            <div className="mb-10 eyebrow text-foreground/55">
+          <div className="mx-auto max-w-[960px] px-6 pb-20 pt-16 lg:pt-24">
+            <div className="mb-8 eyebrow text-foreground/55">
               A memorandum on ADA Title II readiness
             </div>
             <h1 className="type-display max-w-[14ch] text-balance">
@@ -64,6 +67,7 @@ export function HomeV3() {
             </h1>
             <div className="mt-14 grid grid-cols-12 items-end gap-8 rule-medium pt-8">
               <div className="col-span-12 md:col-span-5">
+                <TraceBadge id="TRACE-001" status="ACTIVE" className="mb-4" />
                 <div className="eyebrow text-primary">Phase 1 deadline</div>
                 <div className="mt-3 num-display-md text-foreground tabular-nums">04.26.2027</div>
               </div>
@@ -118,19 +122,15 @@ export function HomeV3() {
               user encounters.
             </p>
 
-            <div className="mt-16 grid grid-cols-2 gap-x-10 gap-y-14 md:grid-cols-2">
-              {[
-                { k: "Standard", v: "WCAG 2.1 AA" },
-                { k: "Coverage", v: "Web · App · PDF" },
-                { k: "Evidence", v: "Behavioral" },
-                { k: "Runway", v: "≈9 mo" },
-              ].map((cell) => (
-                <div key={cell.k} className="rule-medium pt-5">
-                  <div className="eyebrow text-foreground/50">{cell.k}</div>
-                  <div className="mt-4 num-display-sm text-foreground tabular-nums">{cell.v}</div>
-                </div>
-              ))}
-            </div>
+            <LabValueTable
+              className="mt-14"
+              rows={[
+                { label: "Standard", value: "WCAG 2.1 AA", note: "mandatory baseline for all digital assets", icon: Ruler },
+                { label: "Coverage", value: "Web · App · PDF", note: "third-party content and vendor platforms", icon: Layers },
+                { label: "Evidence", value: "Behavioral", note: "native screen-reader verification", icon: Eye },
+                { label: "Runway", value: "≈ 9 months", note: "to April 26, 2027 Phase 1 deadline", icon: Timer },
+              ]}
+            />
 
 
             <p className="mt-12 max-w-[68ch] border-l-2 border-primary pl-6 font-mono text-[11px] leading-relaxed text-foreground/60">
@@ -318,14 +318,14 @@ export function HomeV3() {
                   key={cell.label}
                   className="grid grid-cols-12 gap-6 border-t border-foreground/20 pt-6"
                 >
-                  <dt className="col-span-12 font-mono text-[11px] uppercase tracking-[0.25em] text-foreground/50 md:col-span-3">
+                  <dt className="col-span-12 font-mono text-[11px] uppercase tracking-[0.25em] text-foreground/70 md:col-span-3">
                     {cell.label}
                   </dt>
                   <dd className="col-span-12 md:col-span-9">
                     <div className="text-2xl font-medium tracking-tight break-words">
                       {cell.value}
                     </div>
-                    <p className="mt-2 max-w-[60ch] text-sm leading-relaxed text-foreground/70">
+                    <p className="mt-2 max-w-[60ch] text-sm leading-relaxed text-foreground/85">
                       {cell.desc}
                     </p>
                   </dd>
@@ -335,13 +335,14 @@ export function HomeV3() {
           </div>
         </section>
 
-        {/* Practice scale — full-width navy break */}
+        {/* Practice scale — cobalt band with urgency framing */}
         <MetricStrip
+          tone="cobalt"
           ariaLabel="Practice scale"
-          kicker={{ n: "VII", label: "Practice at a Glance" }}
+          kicker={{ n: "VII", label: "URGENT · Runway to Phase 1 shrinks daily" }}
           metrics={[
-            { value: "≈9 mo", label: "Runway", note: "to Phase 1 deadline" },
-            { value: "AA", label: "Standard", note: "WCAG 2.1 conformance" },
+            { value: "≈9 mo", label: "Runway", note: "to Phase 1 deadline · April 26, 2027" },
+            { value: "AA", label: "Standard", note: "WCAG 2.1 conformance baseline" },
             { value: "6", label: "Services", note: "scoped for public sector" },
           ]}
         />
