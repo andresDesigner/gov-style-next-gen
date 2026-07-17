@@ -122,19 +122,15 @@ export function HomeV3() {
               user encounters.
             </p>
 
-            <div className="mt-16 grid grid-cols-2 gap-x-10 gap-y-14 md:grid-cols-2">
-              {[
-                { k: "Standard", v: "WCAG 2.1 AA" },
-                { k: "Coverage", v: "Web · App · PDF" },
-                { k: "Evidence", v: "Behavioral" },
-                { k: "Runway", v: "≈9 mo" },
-              ].map((cell) => (
-                <div key={cell.k} className="rule-medium pt-5">
-                  <div className="eyebrow text-foreground/50">{cell.k}</div>
-                  <div className="mt-4 num-display-sm text-foreground tabular-nums">{cell.v}</div>
-                </div>
-              ))}
-            </div>
+            <LabValueTable
+              className="mt-14"
+              rows={[
+                { label: "Standard", value: "WCAG 2.1 AA", note: "mandatory baseline for all digital assets", icon: Ruler },
+                { label: "Coverage", value: "Web · App · PDF", note: "third-party content and vendor platforms", icon: Layers },
+                { label: "Evidence", value: "Behavioral", note: "native screen-reader verification", icon: Eye },
+                { label: "Runway", value: "≈ 9 months", note: "to April 26, 2027 Phase 1 deadline", icon: Timer },
+              ]}
+            />
 
 
             <p className="mt-12 max-w-[68ch] border-l-2 border-primary pl-6 font-mono text-[11px] leading-relaxed text-foreground/60">
@@ -322,14 +318,14 @@ export function HomeV3() {
                   key={cell.label}
                   className="grid grid-cols-12 gap-6 border-t border-foreground/20 pt-6"
                 >
-                  <dt className="col-span-12 font-mono text-[11px] uppercase tracking-[0.25em] text-foreground/50 md:col-span-3">
+                  <dt className="col-span-12 font-mono text-[11px] uppercase tracking-[0.25em] text-foreground/70 md:col-span-3">
                     {cell.label}
                   </dt>
                   <dd className="col-span-12 md:col-span-9">
                     <div className="text-2xl font-medium tracking-tight break-words">
                       {cell.value}
                     </div>
-                    <p className="mt-2 max-w-[60ch] text-sm leading-relaxed text-foreground/70">
+                    <p className="mt-2 max-w-[60ch] text-sm leading-relaxed text-foreground/85">
                       {cell.desc}
                     </p>
                   </dd>
@@ -339,13 +335,14 @@ export function HomeV3() {
           </div>
         </section>
 
-        {/* Practice scale — full-width navy break */}
+        {/* Practice scale — cobalt band with urgency framing */}
         <MetricStrip
+          tone="cobalt"
           ariaLabel="Practice scale"
-          kicker={{ n: "VII", label: "Practice at a Glance" }}
+          kicker={{ n: "VII", label: "URGENT · Runway to Phase 1 shrinks daily" }}
           metrics={[
-            { value: "≈9 mo", label: "Runway", note: "to Phase 1 deadline" },
-            { value: "AA", label: "Standard", note: "WCAG 2.1 conformance" },
+            { value: "≈9 mo", label: "Runway", note: "to Phase 1 deadline · April 26, 2027" },
+            { value: "AA", label: "Standard", note: "WCAG 2.1 conformance baseline" },
             { value: "6", label: "Services", note: "scoped for public sector" },
           ]}
         />

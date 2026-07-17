@@ -113,7 +113,7 @@ export function HomeV4() {
       <nav aria-label="Primary" className="border-b border-foreground/10 bg-white">
         <div className="mx-auto grid max-w-[1240px] grid-cols-[auto_1fr_auto] items-center gap-6 px-6 py-4">
           <a href="/" aria-label="ACT Verified home" className="inline-flex shrink-0">
-            <Logo className="h-11 w-auto" />
+            <Logo className="h-12 w-auto" />
           </a>
           <ul className="hidden lg:flex items-center justify-center gap-9 text-[15px] font-medium">
             {NAV.map((item) => (
@@ -169,7 +169,7 @@ export function HomeV4() {
                 </a>
                 <a
                   href="#capability"
-                  className="btn-gov inline-flex items-center border-2 border-primary bg-transparent px-5 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/5"
+                  className="btn-gov inline-flex items-center border border-foreground/25 bg-transparent px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground hover:bg-foreground/[0.03]"
                 >
                   Download capability statement
                 </a>
@@ -455,14 +455,14 @@ export function HomeV4() {
                 const Icon = operationsIcons[cell.label];
                 return (
                   <div key={cell.label} className="surface-navy p-8">
-                    <dt className="flex items-center gap-2 eyebrow text-background/60">
+                    <dt className="flex items-center gap-2 eyebrow text-background/75">
                       {Icon ? (
                         <Icon aria-hidden="true" strokeWidth={1.5} className="h-4 w-4 text-accent" />
                       ) : null}
                       {cell.label}
                     </dt>
                     <dd className="mt-3 text-xl font-medium tracking-tight break-words">{cell.value}</dd>
-                    <p className="mt-3 text-sm leading-relaxed text-background/70">{cell.desc}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-background/85">{cell.desc}</p>
                   </div>
                 );
               })}
