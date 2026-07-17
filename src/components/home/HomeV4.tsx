@@ -1,6 +1,8 @@
+import { Accessibility, CalendarCheck, Download, Sparkles, Terminal } from "lucide-react";
 import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
+import { serviceIcons, engagementIcons, operationsIcons } from "./serviceIcons";
 import {
   primaryServices,
   secondaryServices,
@@ -10,6 +12,7 @@ import {
   footerCols,
   evidenceSnippet,
 } from "./shared";
+
 
 const NAV = [
   { label: "Home", active: true },
