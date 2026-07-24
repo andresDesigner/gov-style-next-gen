@@ -337,7 +337,7 @@ export function Home() {
           </div>
         </section>
 
-        <section aria-labelledby="deadline-reality-v4" className="border-b border-foreground/10">
+        <section aria-labelledby="deadline-reality-v4" className="overflow-x-hidden border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
             <div className="col-span-12 lg:col-span-5">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Deadline Reality</div>
@@ -353,20 +353,21 @@ export function Home() {
               </div>
             </div>
             <div className="col-span-12 lg:col-span-7">
-              <div className="grid grid-cols-2 gap-px bg-foreground/20 border border-foreground/20">
+              <div className="grid grid-cols-1 gap-0 border border-foreground/20 sm:grid-cols-2">
                 {[
-                  { label: "Standard", value: "AA", note: "WCAG 2.1 · mandatory baseline for all digital assets.", big: true },
-                  { label: "Runway", value: "9 mo", note: "From today to the Phase 1 deadline of April 26, 2027.", big: true },
+                  { label: "Standard", value: "AA", note: "WCAG 2.1 · mandatory baseline for all digital assets." },
+                  { label: "Runway", value: "9 mo", note: "From today to the Phase 1 deadline of April 26, 2027." },
                   { label: "Coverage", value: "Web · App · PDF", note: "Third-party content and vendor platforms included." },
                   { label: "Evidence", value: "Behavioral", note: "Native screen-reader verification, not scanner-only." },
-                ].map((cell) => (
-                  <div key={cell.label} className="bg-card p-6">
-                    <div className="eyebrow text-foreground/50">{cell.label}</div>
-                    {cell.big ? (
-                      <div className="mt-3 num-display-md text-foreground tabular-nums">{cell.value}</div>
-                    ) : (
-                      <div className="mt-2 text-2xl font-medium tracking-tight tabular-nums">{cell.value}</div>
-                    )}
+                ].map((cell, idx) => (
+                  <div
+                    key={cell.label}
+                    className={`bg-card p-6 border-b border-foreground/20 ${idx % 2 === 0 ? "sm:border-r" : ""} ${idx > 1 ? "sm:border-b-0" : ""}`}
+                  >
+                    <div className="font-mono text-[11px] uppercase tracking-widest text-foreground/50">{cell.label}</div>
+                    <div className="mt-2 text-3xl font-bold tracking-tight text-foreground tabular-nums sm:text-4xl">
+                      {cell.value}
+                    </div>
                     <p className="mt-3 text-sm leading-relaxed text-foreground/70">{cell.note}</p>
                   </div>
                 ))}
