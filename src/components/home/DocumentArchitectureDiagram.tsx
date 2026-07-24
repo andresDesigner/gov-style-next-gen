@@ -29,6 +29,12 @@ export function DocumentArchitectureDiagram() {
         <title id="dad-title">Document tags vs. accessibility tree</title>
         <desc>{DESC}</desc>
 
+        <defs>
+          <filter id="dad-shadow" x="-10%" y="-10%" width="120%" height="140%">
+            <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#031436" floodOpacity="0.14" />
+          </filter>
+        </defs>
+
         {/* Top layer label */}
         <text
           x="20"
@@ -47,15 +53,16 @@ export function DocumentArchitectureDiagram() {
           const gap = 12;
           const x = 20 + i * (w + gap);
           return (
-            <g key={"top-" + i}>
+            <g key={"top-" + i} filter="url(#dad-shadow)">
               <rect
                 x={x}
                 y={38}
                 width={w}
                 height={60}
+                rx={4}
                 fill="#ffffff"
-                stroke="#031436"
-                strokeWidth="1.25"
+                stroke="#cbd2dd"
+                strokeWidth="1"
               />
               <text
                 x={x + w / 2}
@@ -72,23 +79,23 @@ export function DocumentArchitectureDiagram() {
           );
         })}
 
-        {/* Discrepancy band */}
+        {/* Discrepancy band — alert tone */}
         <rect
           x="0"
           y="130"
           width="800"
           height="80"
-          fill="#eef2fb"
+          fill="#dbe4f7"
         />
-        <line x1="0" y1="130" x2="800" y2="130" stroke="#033EAD" strokeWidth="1" strokeDasharray="4 4" />
-        <line x1="0" y1="210" x2="800" y2="210" stroke="#033EAD" strokeWidth="1" strokeDasharray="4 4" />
+        <line x1="0" y1="130" x2="800" y2="130" stroke="#033EAD" strokeWidth="1.25" strokeDasharray="4 4" />
+        <line x1="0" y1="210" x2="800" y2="210" stroke="#033EAD" strokeWidth="1.25" strokeDasharray="4 4" />
         <text
           x="400"
           y="176"
           textAnchor="middle"
           fontFamily="ui-sans-serif, system-ui"
           fontSize="13"
-          fontWeight="600"
+          fontWeight="700"
           fill="#033EAD"
         >
           Discrepancy zone — what behavioral verification measures
@@ -118,12 +125,13 @@ export function DocumentArchitectureDiagram() {
           const gap = 12;
           const x = 20 + i * (w + gap);
           return (
-            <g key={"bot-" + i}>
+            <g key={"bot-" + i} filter="url(#dad-shadow)">
               <rect
                 x={x}
                 y={242}
                 width={w}
                 height={60}
+                rx={4}
                 fill="#031436"
                 stroke="#031436"
               />
@@ -141,6 +149,7 @@ export function DocumentArchitectureDiagram() {
             </g>
           );
         })}
+
 
         {/* Bottom label */}
         <text
