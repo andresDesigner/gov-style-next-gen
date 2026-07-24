@@ -228,21 +228,6 @@
   color: var(--color-primary-foreground);
 }
 
-/* Subtle dot grid pattern for high-impact bands. Contrast ~1.2:1 so text is unaffected. */
-@utility dot-grid {
-  background-image: radial-gradient(
-    circle,
-    color-mix(in oklab, currentColor 12%, transparent) 1px,
-    transparent 1.5px
-  );
-  background-size: 22px 22px;
-}
-@media (prefers-reduced-motion: reduce) {
-  .dot-grid {
-    background-image: none;
-  }
-}
-
 /* Numbers-as-composition */
 @utility num-display {
   font-family: var(--font-sans);
