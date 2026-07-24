@@ -475,7 +475,10 @@ export function Home() {
               </div>
             </div>
 
+            <PhaseScopeDiagram />
+
           </div>
+
         </section>
 
         <section className="border-b border-foreground/10">
