@@ -1,4 +1,5 @@
 import { Accessibility, Download, Phone, Sparkles, Terminal } from "lucide-react";
+import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
 import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
