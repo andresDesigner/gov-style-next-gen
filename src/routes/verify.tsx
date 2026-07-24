@@ -60,7 +60,8 @@ function VerifyPage() {
 
 
       <main id="main">
-        <section className="border-b border-foreground/10">
+        <section className="dot-grid border-b border-foreground/10">
+
           <div className="mx-auto max-w-[1200px] px-6 py-20">
             <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">
               How We Verify · Methodology
