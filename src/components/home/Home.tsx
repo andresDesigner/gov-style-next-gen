@@ -6,7 +6,9 @@ import { DocumentArchitectureDiagram } from "./DocumentArchitectureDiagram";
 import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
-import { serviceIcons, engagementIcons, operationsIcons } from "./serviceIcons";
+import { engagementIcons, operationsIcons } from "./serviceIcons";
+import { serviceIconMap } from "./ServiceIcon";
+import { PhaseScopeDiagram } from "./PhaseScopeDiagram";
 import {
   primaryServices,
   secondaryServices,
