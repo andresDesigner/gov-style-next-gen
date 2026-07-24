@@ -395,7 +395,7 @@ export function Home() {
               <div className="absolute left-16 right-16 top-1/2 h-px bg-foreground/20" />
               <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-between px-8">
                 {primaryServices.map((s) => {
-                  const Icon = serviceIcons[s.id];
+                  const Icon = serviceIconMap[s.id];
                   return (
                     <span
                       key={s.id}
@@ -411,7 +411,7 @@ export function Home() {
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {primaryServices.map((s, i) => {
-                const Icon = serviceIcons[s.id];
+                const Icon = serviceIconMap[s.id];
                 const status = i === 0 ? "ACTIVE" : i === 1 ? "PENDING" : "VERIFIED";
                 const statusColor =
                   status === "PENDING" ? "text-foreground/45" : "text-accent";
@@ -445,7 +445,7 @@ export function Home() {
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {secondaryServices.map((s, i) => {
-                  const Icon = serviceIcons[s.id];
+                  const Icon = serviceIconMap[s.id];
                   return (
                     <article
                       key={s.id}
