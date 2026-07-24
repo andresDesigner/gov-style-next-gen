@@ -134,9 +134,9 @@ export function Home() {
           </ul>
           <a
             href="#book"
-            className="btn-gov inline-flex items-center gap-2 bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+            className="btn-gov inline-flex items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
           >
-            <PhoneIcon />
+            <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
             Book a Readiness Call
           </a>
         </div>
