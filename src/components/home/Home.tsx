@@ -462,7 +462,8 @@ export function Home() {
                       </span>
                       <div className="mb-3 flex items-start gap-3 pr-24">
                         {Icon ? (
-                          <Icon aria-hidden="true" strokeWidth={1.5} className="mt-0.5 h-6 w-6 text-foreground/60" />
+                          <Icon aria-hidden="true" strokeWidth={1.5} className="mt-0.5 h-5 w-5 text-foreground/60" />
+
                         ) : null}
                         <div className="min-w-0">
                           <div className="font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
