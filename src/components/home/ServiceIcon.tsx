@@ -1,3 +1,4 @@
+import type React from "react";
 import type { SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement> & { className?: string };
@@ -90,7 +91,7 @@ export function IconUserValidation(props: IconProps) {
   );
 }
 
-export const serviceIconMap: Record<string, (props: IconProps) => JSX.Element> = {
+export const serviceIconMap: Record<string, (props: IconProps) => React.ReactElement> = {
   "S-01": IconReadinessSprint,
   "S-02": IconWcagAudit,
   "S-03": IconPdfRemediation,
