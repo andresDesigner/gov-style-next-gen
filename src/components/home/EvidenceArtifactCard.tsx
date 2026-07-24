@@ -1,4 +1,4 @@
-import { Terminal } from "lucide-react";
+import { CheckCircle2, Terminal } from "lucide-react";
 
 export type EvidenceArtifactField = {
   label: string;
