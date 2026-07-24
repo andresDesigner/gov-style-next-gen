@@ -110,14 +110,6 @@ function TriStep() {
 }
 
 export function Home() {
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-foreground focus:px-4 focus:py-2 focus:text-background focus:font-mono focus:text-xs"
-      >
-        Skip to main content
-export function Home() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   return (
     <div className="min-h-screen bg-background text-foreground">
