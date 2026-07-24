@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Phone } from "lucide-react";
 import { Logo } from "@/components/home/Logo";
+
 import { MethodologyFlowDiagram } from "@/components/home/MethodologyFlowDiagram";
 import { DocumentArchitectureDiagram } from "@/components/home/DocumentArchitectureDiagram";
 import { EvidenceArtifactCard } from "@/components/home/EvidenceArtifactCard";
