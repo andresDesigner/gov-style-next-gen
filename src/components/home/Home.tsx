@@ -162,15 +162,16 @@ export function Home() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#book"
-                  className="btn-gov inline-flex items-center gap-2 bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                  className="btn-gov inline-flex items-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
                 >
-                  <PhoneIcon />
+                  <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
                   Book a Readiness Call
                 </a>
                 <a
                   href="#capability"
-                  className="btn-gov inline-flex items-center border border-foreground/25 bg-transparent px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground hover:bg-foreground/[0.03]"
+                  className="btn-gov inline-flex items-center gap-2 border-[1.5px] border-foreground/80 bg-transparent px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/[0.04]"
                 >
+                  <Download aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
                   Download capability statement
                 </a>
               </div>
