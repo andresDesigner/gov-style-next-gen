@@ -126,7 +126,7 @@ export function Home() {
       </a>
 
       {/* Nav */}
-      <nav aria-label="Primary" className="border-b border-foreground/10 bg-white">
+      <nav aria-label="Primary" className="sticky top-0 z-40 border-b border-foreground/10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
         <div className="mx-auto grid max-w-[1240px] grid-cols-[auto_1fr_auto] items-center gap-6 px-6 py-4">
           <a href="/" aria-label="ACT Verified home" className="inline-flex shrink-0">
             <Logo className="h-12 w-auto" />
