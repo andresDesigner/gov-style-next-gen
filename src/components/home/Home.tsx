@@ -550,7 +550,7 @@ export function Home() {
           </div>
         </section>
 
-        <section id="book" aria-labelledby="cta-v4" className="bg-primary text-primary-foreground">
+        <section id="book" aria-labelledby="cta-v4" className="dot-grid-dark bg-primary text-primary-foreground">
           <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-20">
             <div className="col-span-12 lg:col-span-8">
               <div className="font-mono text-[10px] uppercase tracking-widest text-accent">Book a Readiness Call</div>
