@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Accessibility, Download, Menu, Phone, Sparkles, Terminal } from "lucide-react";
+import { Accessibility, Download, Menu, Phone, Sparkles } from "lucide-react";
 import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
+import { EvidenceArtifactCard } from "./EvidenceArtifactCard";
 import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
@@ -12,8 +13,9 @@ import {
   audience,
   operations,
   footerCols,
-  evidenceSnippet,
+  evidenceFindingF20270142,
 } from "./shared";
+
 import {
   Sheet,
   SheetContent,
@@ -484,16 +486,13 @@ export function Home() {
               <p className="mt-4 max-w-[60ch] text-lg leading-relaxed text-foreground/80">
                 We tell you what's exposed to assistive technology — not just what's inside the document. Static analysis and automated scanners are valuable first steps; behavioral verification covers what they are not designed to detect.
               </p>
-              <figure aria-label="Excerpt from a verification finding record" className="mt-8 border border-foreground/15 bg-foreground text-background">
-                <figcaption className="flex items-center justify-between border-b border-background/10 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-background/60">
-                  <span className="flex items-center gap-2">
-                    <Terminal aria-hidden="true" strokeWidth={1.5} className="h-3.5 w-3.5" />
-                    Finding · F-2027-0142
-                  </span>
-                  <span>NVDA · Firefox · Win 11</span>
-                </figcaption>
-                <pre className="overflow-x-auto p-5 font-mono text-[12px] leading-relaxed text-background/90">{evidenceSnippet}</pre>
-              </figure>
+              <EvidenceArtifactCard
+                className="mt-8"
+                caption="Excerpt from a verification finding record"
+                {...evidenceFindingF20270142}
+                fields={evidenceFindingF20270142.fields.map((f) => ({ ...f }))}
+              />
+
             </div>
 
             <aside aria-labelledby="audience-v4" className="col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">

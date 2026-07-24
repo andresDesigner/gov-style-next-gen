@@ -121,3 +121,22 @@ scanner     axe: pass · lighthouse: pass
 behavior    NVDA announces "button" — no name reaches AT
 evidence    screen-reader-log/f-2027-0142.txt
 status      confirmed · defensible`;
+
+/** Structured payload for <EvidenceArtifactCard/>. Mirrors evidenceSnippet. */
+export const evidenceFindingF20270142 = {
+  traceId: "F-2027-0142",
+  status: "CONFIRMED",
+  screenReader: "NVDA",
+  browser: "Firefox",
+  os: "Win 11",
+  fields: [
+    { label: "element", value: "button#submit-form" },
+    { label: "issue", value: "accessible name absent" },
+    { label: "wcag", value: "2.1 · 4.1.2 Name, Role, Value (A)" },
+    { label: "scanner", value: "axe: pass · lighthouse: pass" },
+    { label: "behavior", value: 'NVDA announces "button" — no name reaches AT', confirmed: true },
+    { label: "evidence", value: "screen-reader-log/f-2027-0142.txt" },
+    { label: "status", value: "confirmed · defensible", confirmed: true },
+  ],
+} as const;
+
