@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Accessibility, Download, Menu, Phone, Sparkles } from "lucide-react";
 import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
 import { EvidenceArtifactCard } from "./EvidenceArtifactCard";
+import { DocumentArchitectureDiagram } from "./DocumentArchitectureDiagram";
 import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
@@ -28,8 +29,8 @@ import {
 const NAV = [
   { label: "Home", href: "/", active: true },
   { label: "Services", href: "#services-v4" },
-  { label: "How We Verify", href: "#" },
-  { label: "For Government", href: "#" },
+  { label: "How We Verify", href: "/verify" },
+  { label: "For Government", href: "/government" },
   { label: "Resources", href: "#" },
   { label: "About", href: "#" },
   { label: "Book a Call", href: "#book" },
@@ -486,6 +487,7 @@ export function Home() {
               <p className="mt-4 max-w-[60ch] text-lg leading-relaxed text-foreground/80">
                 We tell you what's exposed to assistive technology — not just what's inside the document. Static analysis and automated scanners are valuable first steps; behavioral verification covers what they are not designed to detect.
               </p>
+              <DocumentArchitectureDiagram />
               <EvidenceArtifactCard
                 className="mt-8"
                 caption="Excerpt from a verification finding record"
