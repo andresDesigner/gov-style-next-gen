@@ -83,8 +83,7 @@ function TriStep() {
   return (
     <div className="mt-5" aria-label="Verification pipeline">
       <div className="relative mx-auto w-full">
-
-        <div className="absolute left-6 right-6 top-3 h-px bg-foreground/25" aria-hidden="true" />
+        <div className="absolute left-6 right-6 top-[9px] h-px bg-foreground/25" aria-hidden="true" />
         <ol className="relative flex items-start justify-between">
           {steps.map((s) => (
             <li key={s.label} className="flex flex-col items-center gap-2">
@@ -92,18 +91,18 @@ function TriStep() {
                 aria-hidden="true"
                 className={
                   s.state === "done"
-                    ? "grid h-6 w-6 place-items-center rounded-full bg-primary text-primary-foreground"
+                    ? "grid h-[18px] w-[18px] place-items-center rounded-full bg-primary text-primary-foreground"
                     : s.state === "active"
-                    ? "grid h-6 w-6 place-items-center rounded-full border-2 border-primary bg-background"
-                    : "grid h-6 w-6 place-items-center rounded-full border border-foreground/30 bg-background"
+                    ? "grid h-[18px] w-[18px] place-items-center rounded-full border-2 border-primary bg-card"
+                    : "grid h-[18px] w-[18px] place-items-center rounded-full border border-foreground bg-card"
                 }
               >
                 {s.state === "done" ? (
-                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <svg viewBox="0 0 24 24" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M20 6 9 17l-5-5" />
                   </svg>
                 ) : s.state === "active" ? (
-                  <span className="h-2 w-2 rounded-full bg-primary" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                 ) : null}
               </span>
               <span className="text-xs font-medium text-foreground/70">{s.label}</span>
@@ -114,6 +113,7 @@ function TriStep() {
     </div>
   );
 }
+
 
 export function Home() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
