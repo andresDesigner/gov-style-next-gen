@@ -147,18 +147,17 @@ export function Home() {
         <header style={{ backgroundColor: "#e6ecf5" }}>
           <div className="mx-auto grid max-w-[1240px] grid-cols-12 items-center gap-10 px-6 py-16 lg:py-20">
             <div className="col-span-12 lg:col-span-7">
-              <h1 className="text-balance text-[44px] font-bold leading-[1.05] tracking-[-0.02em] text-foreground md:text-[60px] lg:text-[68px]">
-                Verify accessibility with{" "}
-                <span className="relative inline-block whitespace-nowrap">
-                  evidence
-                  <EvidenceUnderline />
-                </span>
-                , not assumptions.
+              <h1
+                className="text-balance font-bold leading-[1.05] tracking-[-0.02em] text-foreground"
+                style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
+              >
+                Accessibility verification and compliance readiness for Title II.
               </h1>
-              <p className="mt-7 max-w-[52ch] text-base leading-relaxed text-foreground/75 md:text-lg">
+              <p className="mt-6 max-w-[56ch] text-lg leading-relaxed text-foreground/70">
                 Independent audits and remediation from a governmental web accessibility
                 consultancy — scoped for Title II readiness, defensible under audit.
               </p>
+              <DeadlineCoverageDiagram />
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#book"
