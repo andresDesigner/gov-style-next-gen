@@ -99,7 +99,7 @@ function TriStep() {
   );
 }
 
-export function HomeV4() {
+export function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <a
