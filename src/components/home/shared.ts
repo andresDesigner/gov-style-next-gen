@@ -106,7 +106,7 @@ export const footerCols = [
   },
   {
     head: "Company",
-    items: ["About", "Contact", "Book a Readiness Call"],
+    items: ["About", "Contact"],
   },
   {
     head: "Operations",
