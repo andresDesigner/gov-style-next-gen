@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Accessibility, Download, Menu, Phone, Sparkles, Terminal } from "lucide-react";
+import { Accessibility, Download, Menu, Phone, Sparkles } from "lucide-react";
 import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
+import { EvidenceArtifactCard } from "./EvidenceArtifactCard";
 import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
@@ -12,8 +13,9 @@ import {
   audience,
   operations,
   footerCols,
-  evidenceSnippet,
+  evidenceFindingF20270142,
 } from "./shared";
+
 import {
   Sheet,
   SheetContent,
