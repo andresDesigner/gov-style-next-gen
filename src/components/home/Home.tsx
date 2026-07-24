@@ -16,12 +16,13 @@ import {
 
 
 const NAV = [
-  { label: "Home", active: true },
-  { label: "Services" },
-  { label: "How We Verify" },
-  { label: "For Government" },
-  { label: "Resources" },
-  { label: "About" },
+  { label: "Home", href: "/", active: true },
+  { label: "Services", href: "#services-v4" },
+  { label: "How We Verify", href: "#" },
+  { label: "For Government", href: "#" },
+  { label: "Resources", href: "#" },
+  { label: "About", href: "#" },
+  { label: "Book a Call", href: "#book" },
 ];
 
 function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
