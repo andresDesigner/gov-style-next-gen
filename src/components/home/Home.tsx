@@ -1,4 +1,5 @@
-import { Accessibility, Download, Phone, Sparkles, Terminal } from "lucide-react";
+import { useState } from "react";
+import { Accessibility, Download, Menu, Phone, Sparkles, Terminal } from "lucide-react";
 import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
 import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
@@ -13,6 +14,13 @@ import {
   footerCols,
   evidenceSnippet,
 } from "./shared";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 
 const NAV = [
