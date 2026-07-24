@@ -121,7 +121,7 @@ export function Home() {
             {NAV.map((item) => (
               <li key={item.label}>
                 <a
-                  href="#"
+                  href={item.href}
                   aria-current={item.active ? "page" : undefined}
                   className={
                     item.active
