@@ -241,21 +241,6 @@ export function Home() {
 
         {/* ---- Body reused from V2 ---- */}
 
-        <section aria-label="Scale of the deadline" className="surface-cobalt">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-3 gap-8 px-6 py-10">
-            {[
-              { k: "Residents served", v: "50k+", n: "Phase 1 threshold" },
-              { k: "Deadline", v: "2027", n: "Phase 1 · April 26" },
-              { k: "Standard", v: "AA", n: "WCAG 2.1 conformance" },
-            ].map((m) => (
-              <div key={m.k}>
-                <div className="eyebrow text-primary-foreground/70">{m.k}</div>
-                <div className="mt-2 num-display-sm tabular-nums">{m.v}</div>
-                <div className="mt-1 eyebrow text-primary-foreground/60">{m.n}</div>
-              </div>
-            ))}
-          </div>
-        </section>
 
         <section aria-labelledby="engagement-v4" className="border-b border-foreground/10">
           <div className="mx-auto max-w-[1200px] px-6 pt-16">
