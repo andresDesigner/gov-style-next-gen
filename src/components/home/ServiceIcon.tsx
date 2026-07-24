@@ -90,11 +90,11 @@ export function IconUserValidation(props: IconProps) {
   );
 }
 
-export const serviceIconMap = {
+export const serviceIconMap: Record<string, (props: IconProps) => JSX.Element> = {
   "S-01": IconReadinessSprint,
   "S-02": IconWcagAudit,
   "S-03": IconPdfRemediation,
   "S-04": IconVerification,
   "S-05": IconGovernance,
   "S-06": IconUserValidation,
-} as const;
+};
