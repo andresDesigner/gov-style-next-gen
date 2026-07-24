@@ -81,8 +81,9 @@ function TriStep() {
     { label: "Verify", state: "done" as const },
   ];
   return (
-    <div className="mt-6" aria-label="Verification pipeline">
-      <div className="relative mx-auto max-w-[360px]">
+    <div className="mt-5" aria-label="Verification pipeline">
+      <div className="relative mx-auto w-full">
+
         <div className="absolute left-6 right-6 top-3 h-px bg-foreground/25" aria-hidden="true" />
         <ol className="relative flex items-start justify-between">
           {steps.map((s) => (
