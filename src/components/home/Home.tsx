@@ -1,4 +1,4 @@
-import { Accessibility, CalendarCheck, Download, Sparkles, Terminal } from "lucide-react";
+import { Accessibility, Download, Phone, Sparkles, Terminal } from "lucide-react";
 import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
@@ -134,9 +134,9 @@ export function Home() {
           </ul>
           <a
             href="#book"
-            className="btn-gov inline-flex items-center gap-2 bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+            className="btn-gov inline-flex items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
           >
-            <PhoneIcon />
+            <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
             Book a Readiness Call
           </a>
         </div>
@@ -162,15 +162,16 @@ export function Home() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#book"
-                  className="btn-gov inline-flex items-center gap-2 bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                  className="btn-gov inline-flex items-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
                 >
-                  <PhoneIcon />
+                  <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
                   Book a Readiness Call
                 </a>
                 <a
                   href="#capability"
-                  className="btn-gov inline-flex items-center border border-foreground/25 bg-transparent px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground hover:bg-foreground/[0.03]"
+                  className="btn-gov inline-flex items-center gap-2 border-[1.5px] border-foreground/80 bg-transparent px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/[0.04]"
                 >
+                  <Download aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
                   Download capability statement
                 </a>
               </div>
@@ -479,11 +480,11 @@ export function Home() {
               <p className="mt-4 max-w-[52ch] text-base text-background/70">No silent passes. No hidden uncertainty. A scoped read of what's exposed today and what has to change before April 2027.</p>
             </div>
             <div className="col-span-12 flex flex-col justify-end gap-3 lg:col-span-4 lg:items-end">
-              <a href="#" className="btn-gov inline-flex items-center justify-center gap-2 bg-background px-6 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-secondary">
-                <CalendarCheck aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
+              <a href="#" className="btn-gov inline-flex items-center justify-center gap-2 bg-accent px-6 py-3 text-center text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90">
+                <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
                 Book a Readiness Call
               </a>
-              <a id="capability" href="#" className="btn-gov inline-flex items-center justify-center gap-2 border border-background/30 px-6 py-3 text-center text-sm font-medium text-background transition-colors hover:bg-background/10">
+              <a id="capability" href="#" className="btn-gov inline-flex items-center justify-center gap-2 border-[1.5px] border-background/70 px-6 py-3 text-center text-sm font-medium text-background transition-colors hover:bg-background/10">
                 <Download aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
                 Download Capability Statement
               </a>
