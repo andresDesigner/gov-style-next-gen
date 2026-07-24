@@ -459,14 +459,14 @@ export function Home() {
                 const Icon = operationsIcons[cell.label];
                 return (
                   <div key={cell.label} className="surface-navy p-8">
-                    <dt className="flex items-center gap-2 eyebrow text-background/75">
+                    <dt className="flex items-center gap-2 eyebrow text-background/90">
                       {Icon ? (
                         <Icon aria-hidden="true" strokeWidth={1.5} className="h-4 w-4 text-accent" />
                       ) : null}
                       {cell.label}
                     </dt>
                     <dd className="mt-3 text-xl font-medium tracking-tight break-words">{cell.value}</dd>
-                    <p className="mt-3 text-sm leading-relaxed text-background/85">{cell.desc}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-background/90">{cell.desc}</p>
                   </div>
                 );
               })}
