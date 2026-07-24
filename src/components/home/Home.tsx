@@ -1,4 +1,4 @@
-import { Accessibility, CalendarCheck, Download, Sparkles, Terminal } from "lucide-react";
+import { Accessibility, Download, Phone, Sparkles, Terminal } from "lucide-react";
 import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
