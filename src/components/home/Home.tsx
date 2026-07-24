@@ -245,7 +245,7 @@ export function Home() {
             </div>
 
             <aside
-              aria-label="Title II compliance trace"
+              aria-label="Engagement status preview"
               className="col-span-12 lg:col-span-5"
             >
               <div className="border border-foreground/15 bg-card p-6 shadow-[0_2px_0_0_rgba(15,23,42,0.06)]">
@@ -254,28 +254,32 @@ export function Home() {
                   Trace-001 · Status: Active
                 </div>
                 <div className="mt-5 text-lg font-semibold tracking-tight text-foreground">
-                  ADA Title II Deadline
+                  Engagement Status Preview
                 </div>
-                <div className="mt-1 font-bold tabular-nums leading-none text-primary text-[clamp(2.25rem,5vw,3.75rem)]">
-                  04.26.2027
-                </div>
+                <p className="mt-1 text-sm leading-relaxed text-foreground/70">
+                  How your engagement tracks from capture to verified evidence.
+                </p>
+                <TriStep />
                 <div
-                  className="mt-5 h-2 w-full overflow-hidden bg-foreground/10"
+                  className="mt-6 h-1.5 w-full overflow-hidden bg-foreground/10"
                   role="progressbar"
                   aria-valuenow={38}
                   aria-valuemin={0}
                   aria-valuemax={100}
-                  aria-label="Readiness runway"
+                  aria-label="Engagement progress"
                 >
                   <div className="h-full bg-primary" style={{ width: "38%" }} />
                 </div>
                 <div className="mt-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-foreground/55">
-                  <span>Runway used</span>
+                  <span>Progress</span>
                   <span className="tabular-nums">38%</span>
                 </div>
+                <div className="mt-4 border-t border-foreground/10 pt-3 text-xs text-foreground/55">
+                  Ref · Title II deadline 04.26.2027 — see timeline above.
+                </div>
               </div>
-              <TriStep />
             </aside>
+
           </div>
 
           {/* Dark trust strip */}
