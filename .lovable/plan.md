@@ -1,50 +1,78 @@
-## Ajustes transversales V1–V4 (una sola pasada)
+## Objetivo
+Armonizar visualmente los dos artefactos del hero — **Timeline de deadlines** (izquierda, ancho completo bajo el H1) y **Engagement Status Preview** (aside derecho) — para que se lean como piezas del mismo sistema, sin quitar contenido.
 
-### 1. Jerarquía de CTA — corregir en las 4 versiones
-Hoy "Download Capability Statement" compite visualmente con "Book a Readiness Call" (o incluso lo supera en V4). Se invierte para alinear con Funnels 1 y 3 del brief.
+## Diagnóstico (verificado en `Home.tsx`, `DeadlineCoverageDiagram.tsx`)
+Ambos elementos hoy son "correctos" pero visualmente disonantes:
 
-- **Botón primario** (relleno sólido, alto contraste, ícono `Phone` / `CalendarCheck`): `Book a Readiness Call`.
-- **Botón secundario** (outline sobre la misma superficie, sin relleno): `Download Capability Statement`.
-- Aplicar en: nav superior, hero, y CTA final de cada versión.
-- V1: nav actualmente solo tiene "Book a Call" como link de menú — se convierte en botón primario visible a la derecha, igual que V2/V3/V4.
-- V4: hoy el outline usa `border-2 border-primary` con el mismo peso visual que el primary; se baja a `border` (1px) `border-foreground/25` con texto `text-foreground` para que no compita.
+| Aspecto | Timeline actual | Engagement card actual |
+|---|---|---|
+| Contenedor | `border-foreground/15`, `bg-card/60`, `p-5`, sin sombra | mismo border, `bg-card` sólido, `p-6`, sombra `[0_2px_0_0_...]` |
+| Cabecera | ninguna | Badge TRACE-001 + título + subtítulo |
+| Color source | hex crudos (`#031436`, `#033EAD`) dentro del SVG | tokens (`bg-primary`, `text-foreground`) |
+| Marcadores | círculos 4–6 px sin sistema jerárquico claro | círculos 24 px con estados idle/active/done |
+| Tipografía interna | SVG 9 px mono + 13 px sans, sin escala compartida | 10 px mono uppercase + 12 px + 18 px |
+| Pie / metadata | nada | franja "Progress 38%" + ref line |
 
-### 2. Header y logo
-- Aumentar el logo en el nav de las 4 versiones: V2 `h-9 → h-11`, V3 `h-9 → h-11`, V4 `h-11 → h-12`, V1 masthead `h-16/h-20 → h-20/h-24`.
-- Cerrar el aire vertical entre header y primer bloque de texto (hero eyebrow / H1): reducir el `py-24 lg:py-36` de V3 y equivalentes a `py-16 lg:py-24`, y en V4 elevar el hero eyebrow con una línea corta de contexto (`§00 · Title II Readiness`) para llenar el gap sin agregar decoración.
+El resultado es que uno se ve como "diagrama técnico suelto" y el otro como "card de producto", aunque cuentan la misma historia (tiempo → progreso → verificación).
 
-### 3. Incorporaciones cruzadas (con permiso explícito para proponer)
-- **V1, V3, V4** reciben, en su banda de tesis / pull-quote, el copy de V2:
-  > "Scanners passed. The user still couldn't use it. That gap is what we document."
-  V3 ya lo tiene — se replica el mismo patrón en V1 (reemplaza "Evidence you can defend…") y V4 (nueva banda cobalt corta antes de servicios).
-- **V1, V3** reciben, como headline alternativo propuesto, el H1 de V3 "Evidence, not assertions." como opción A/B en un comentario del componente (no reemplaza el H1 aprobado por defecto; queda comentado para que el cliente decida en revisión).
-- **V1, V3** adoptan la tabla de cumplimiento de V4 en la sección "Deadline Reality":
-  ```text
-  STANDARD   | WCAG 2.1 AA         | mandatory baseline for all digital assets
-  COVERAGE   | Web · App · PDF     | third-party content and vendor platforms
-  EVIDENCE   | Behavioral          | native screen-reader verification
-  RUNWAY     | ≈ 9 months          | to April 26, 2027 Phase 1 deadline
-  ```
-- **V2, V3, V4** reciben `PDF/UA-1 aligned` en el footer meta (V1 ya lo trae). Se añade a la línea `WCAG 2.1 AA · Section 508 · PDF/UA-1 aligned`.
-- **V2, V3, V4** reciben el patrón de card del hero de V1: `TRACE-001 · STATUS: ACTIVE` + fecha grande. V4 ya lo tiene; V2 y V3 lo suman como microheader sobre la fecha del hero (V3 hoy solo muestra "Phase 1 deadline" + fecha).
+## Estrategia
+Aplicar un **sistema de artefacto** compartido — mismo marco, misma cabecera, mismo vocabulario de nodos, misma franja de pie — para que ambos sean claramente "dos vistas del mismo mecanismo": *tiempo externo* (regulación) y *tiempo interno* (tu engagement).
 
-### 4. Contraste en "Practice-level operating facts"
-El párrafo descriptivo actualmente usa `text-foreground/70` sobre `bg-secondary/40` — cerca del umbral WCAG 1.4.3.
-- Subir de `/70` a `/85` en las descripciones de operations en V1, V2, V3, V4.
-- La label de la fila (`text-foreground/50`) sube a `/70`.
-- Se verifica con el DevTools de contraste que quede ≥ 4.5:1 sobre `--secondary`.
+## Cambios de diseño (sin borrar contenido)
 
-### 5. Renombrar la etiqueta "FILED · 2026-07-16"
-El término "Filed" en contexto gubernamental sugiere radicación legal. Se renombra en V1 (única versión que la usa así):
-- `Filed · 2026-07-16` → `Last reviewed · 2026-07-16`
-- Alineado con el disclaimer de V2/V3 (`Last reviewed 2026-07-16. Source: ADA.gov / DOJ. Informational, not legal advice.`).
+**1. Marco unificado ("artifact frame")**
+- Mismo `border-foreground/15`, `bg-card` sólido (quitar `/60` del timeline), `p-6`, misma sombra sutil `shadow-[0_2px_0_0_rgba(15,23,42,0.06)]`.
+- Ambos con la misma altura mínima en desktop para que los bordes inferiores coincidan.
 
-### 6. Rediseño de las tres métricas de urgencia (`50k+ / 2027 / AA` y `≈9 mo / AA / 6`)
-Hoy usan `text-foreground/40` sobre paper — se leen como decorativas.
-- Migrar ambos strips a `MetricStrip` en variante `surface-cobalt` (no navy) para que las tres cifras aparezcan sobre azul cobalto con `num-display-md` en `text-primary-foreground` — máximo contraste, coherente con la banda de tesis.
-- Añadir una **línea de urgencia** sobre la primera métrica: `URGENT · Runway to Phase 1 shrinks daily` en mono `text-accent`.
-- Reforzar `50k+` con un sub-label `residents served → federally mandated Phase 1 threshold` (hoy solo dice "Phase 1 threshold").
-- Aplicar el cambio en V1 (§01 Scale of Deadline), V2 (banda cobalt bajo trust strip), V3 (`Practice at a Glance`), V4 (banda cobalt bajo hero).
+**2. Cabecera de metadata gemela**
+- Añadir al timeline una cabecera equivalente al TRACE badge: `REF-T2 · SCOPE: FEDERAL` + título "ADA Title II Deadline Coverage" + subtítulo "Two statutory deadlines governing Web/App accessibility."
+- Mantiene todo el contenido actual y le da la misma jerarquía visual que la card derecha.
 
-### Fuera de alcance (confirmado)
-No se toca: paleta, tipografía, radius, sombras, animaciones, estructura de rutas ni la lógica del `VariantSelector`. Todo el trabajo permanece en `src/components/home/HomeV1–V4.tsx`, `MetricStrip.tsx` y `LabValueRow.tsx`.
+**3. Vocabulario de nodos compartido**
+Definir 3 estados que aparecen en los dos diagramas con la misma forma exacta:
+- `passed / now` → círculo sólido navy 12 px
+- `active / current milestone` → anillo cobalt 14 px con dot interno
+- `future / target` → círculo hueco navy 12 px con línea punteada de conexión
+
+Aplicar en TriStep **y** en los markers del SVG timeline (NOW, 2027, 2028).
+
+**4. Sistema tipográfico único en SVG**
+Reemplazar tamaños actuales del SVG por la misma escala de la card:
+- Kicker/eyebrow: 10 px mono, tracking widest, `#031436`
+- Etiqueta principal: 13 px sans-serif, weight 600
+- Metadata: 10 px mono uppercase
+Sube legibilidad y hace que ambos artefactos "hablen el mismo idioma".
+
+**5. Franja de pie espejo**
+- Timeline: añadir bajo el SVG una fila `Runway used · 12%` (mismo estilo que `Progress · 38%` de la card).
+- Card: añadir en el borde inferior un mini-eyebrow `Trace ref · TRACE-001` alineado con el `REF-T2` del timeline.
+Ambos cierran con la misma franja horizontal delgada.
+
+**6. Color governance**
+- Sustituir hex crudos del SVG por `currentColor` + clases (`text-primary`, `text-foreground`) vía `<g className>` o `stroke="currentColor"`, para que si mañana cambia el token, cambien los dos a la vez.
+- Regla: **navy = estructura/pasado**, **cobalt = movimiento/actual**, **outline = futuro**. Aplicada consistente en los dos.
+
+**7. Alineación de columnas**
+- Hoy: timeline vive en la col izquierda (12 cols en mobile, 7 en desktop implícito) y card en col derecha (5). El borde superior del timeline está debajo del párrafo intro, mientras la card empieza más arriba.
+- Ajustar: subir el inicio del timeline para que su borde superior quede a la misma altura que el borde superior de la card (usar `lg:mt-0` y reordenar en desktop). En mobile permanecen apilados en orden narrativo.
+
+**8. Densidad y ritmo**
+- Estandarizar padding interno vertical: 24 px arriba/abajo en ambos.
+- Espaciado entre cabecera → contenido → pie idéntico (16 / 20 / 16).
+
+**9. Micro-detalles de acabado**
+- Añadir marca de textura `dot-grid` sutilísima detrás **de los dos** contenedores para que se sientan del mismo lote (o quitarla de los dos — hoy solo el hero global la tiene).
+- Mismos `stroke-linecap="round"` y `stroke-width` (1.5) en todos los trazos SVG del timeline (hoy mezcla 1, 1.5, 3).
+
+## Detalles técnicos
+Archivos a tocar:
+- `src/components/home/DeadlineCoverageDiagram.tsx` — nuevo header + footer, tokens en vez de hex, escala tipográfica, nodos rediseñados.
+- `src/components/home/Home.tsx` (TriStep + aside card) — mismo vocabulario de nodos, alineación de columna, padding armonizado.
+- Opcional: extraer `ArtifactFrame` a `src/components/home/ArtifactFrame.tsx` para no duplicar el marco (border + padding + shadow + header slot + footer slot).
+
+Sin cambios de contenido ni de datos. Sin nuevas dependencias. Todo dentro del sistema de tokens existente en `src/styles.css`.
+
+## Fuera de alcance
+- No se elimina ningún dato del timeline ni de la card.
+- No se rediseña el resto del hero (H1, CTAs, párrafo intro).
+- No se toca el comportamiento móvil de la lista semántica del timeline.

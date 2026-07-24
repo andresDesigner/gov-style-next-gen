@@ -1,5 +1,8 @@
 import { useMemo } from "react";
 
+const NAVY = "var(--color-foreground)";
+const COBALT = "var(--color-primary)";
+
 function monthsUntil(target: Date, now: Date = new Date()) {
   const months =
     (target.getFullYear() - now.getFullYear()) * 12 +
@@ -13,6 +16,13 @@ export function DeadlineCoverageDiagram() {
     [],
   );
 
+  // Rule effective April 24, 2024 → 36 months of runway to the first deadline.
+  const totalWindow = 36;
+  const runwayUsed = Math.min(
+    100,
+    Math.max(0, Math.round(((totalWindow - monthsRemaining) / totalWindow) * 100)),
+  );
+
   const desc =
     `Timeline showing two ADA Title II compliance deadlines. ` +
     `First: April 26, 2027 for entities serving 50,000 or more residents. ` +
@@ -22,127 +32,145 @@ export function DeadlineCoverageDiagram() {
   return (
     <figure
       aria-label="ADA Title II deadline coverage"
-      className="mt-6 border border-foreground/15 bg-card/60 p-5"
+      className="mt-6 border border-foreground/15 bg-card p-6 shadow-[0_2px_0_0_rgba(15,23,42,0.06)]"
     >
+      {/* Header — mirrors Engagement Status card */}
+      <div className="inline-flex items-center gap-2 bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground/70">
+        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
+        Ref-T2 · Scope: Federal
+      </div>
+      <div className="mt-5 text-lg font-semibold tracking-tight text-foreground">
+        ADA Title II Deadline Coverage
+      </div>
+      <p className="mt-1 text-sm leading-relaxed text-foreground/70">
+        Two statutory deadlines governing Web and App accessibility for public entities.
+      </p>
+
       {/* Desktop / tablet: horizontal SVG timeline */}
       <svg
         role="img"
         aria-labelledby="dcd-title"
-        viewBox="0 0 600 120"
-        className="hidden h-auto w-full sm:block"
+        viewBox="0 0 600 130"
+        className="mt-5 hidden h-auto w-full sm:block"
         preserveAspectRatio="xMidYMid meet"
       >
         <title id="dcd-title">Title II deadline coverage timeline</title>
         <desc>{desc}</desc>
 
-        {/* Baseline */}
+        {/* Baseline (future portion) */}
         <line
           x1="40"
           y1="70"
           x2="560"
           y2="70"
-          stroke="#031436"
+          stroke={NAVY}
+          strokeOpacity="0.35"
           strokeWidth="1.5"
+          strokeLinecap="round"
         />
-        {/* Runway (now → 2027) filled with cobalt */}
+        {/* Runway used (now → 2027) filled with cobalt */}
         <line
           x1="40"
           y1="70"
           x2="220"
           y2="70"
-          stroke="#033EAD"
+          stroke={COBALT}
           strokeWidth="3"
+          strokeLinecap="round"
         />
 
-        {/* NOW marker */}
+        {/* NOW marker — passed/anchor: solid navy */}
         <g>
-          <circle cx="40" cy="70" r="4" fill="#031436" />
+          <circle cx="40" cy="70" r="6" fill={NAVY} />
           <text
             x="40"
-            y="92"
+            y="96"
             textAnchor="start"
             fontFamily="ui-monospace, monospace"
-            fontSize="9"
-            letterSpacing="1"
-            fill="#031436"
+            fontSize="10"
+            letterSpacing="1.5"
+            fill={NAVY}
           >
             NOW · ≈{monthsRemaining} MO
           </text>
         </g>
 
-        {/* 2027 marker */}
+        {/* 2027 marker — active milestone: cobalt ring + inner dot */}
         <g>
           <line
             x1="220"
-            y1="40"
+            y1="38"
             x2="220"
-            y2="70"
-            stroke="#033EAD"
+            y2="62"
+            stroke={COBALT}
             strokeWidth="1.5"
+            strokeLinecap="round"
           />
-          <circle cx="220" cy="70" r="6" fill="#033EAD" />
+          <circle cx="220" cy="70" r="8" fill="none" stroke={COBALT} strokeWidth="2" />
+          <circle cx="220" cy="70" r="3" fill={COBALT} />
           <text
             x="220"
-            y="32"
+            y="30"
             textAnchor="middle"
             fontFamily="ui-sans-serif, system-ui"
             fontSize="13"
-            fontWeight="700"
-            fill="#031436"
+            fontWeight="600"
+            fill={NAVY}
           >
             April 26, 2027
           </text>
           <text
             x="220"
-            y="92"
+            y="96"
             textAnchor="middle"
             fontFamily="ui-monospace, monospace"
-            fontSize="9"
-            letterSpacing="1"
-            fill="#031436"
+            fontSize="10"
+            letterSpacing="1.5"
+            fill={NAVY}
           >
             50,000+ RESIDENTS
           </text>
         </g>
 
-        {/* 2028 marker */}
+        {/* 2028 marker — future: hollow navy + dashed connector */}
         <g>
           <line
             x1="500"
-            y1="40"
+            y1="38"
             x2="500"
-            y2="70"
-            stroke="#031436"
-            strokeWidth="1"
-            strokeDasharray="2 3"
+            y2="62"
+            stroke={NAVY}
+            strokeOpacity="0.55"
+            strokeWidth="1.25"
+            strokeDasharray="3 3"
           />
           <circle
             cx="500"
             cy="70"
-            r="6"
-            fill="none"
-            stroke="#031436"
+            r="7"
+            fill="var(--color-card)"
+            stroke={NAVY}
             strokeWidth="1.5"
           />
           <text
             x="500"
-            y="32"
+            y="30"
             textAnchor="middle"
             fontFamily="ui-sans-serif, system-ui"
             fontSize="13"
-            fontWeight="700"
-            fill="#031436"
+            fontWeight="600"
+            fill={NAVY}
           >
             April 26, 2028
           </text>
           <text
             x="500"
-            y="92"
+            y="96"
             textAnchor="middle"
             fontFamily="ui-monospace, monospace"
-            fontSize="9"
-            letterSpacing="1"
-            fill="#031436"
+            fontSize="10"
+            letterSpacing="1.5"
+            fill={NAVY}
           >
             SMALLER ENTITIES · SPECIAL DISTRICTS
           </text>
@@ -151,20 +179,22 @@ export function DeadlineCoverageDiagram() {
         {/* End cap */}
         <line
           x1="560"
-          y1="64"
+          y1="63"
           x2="560"
-          y2="76"
-          stroke="#031436"
+          y2="77"
+          stroke={NAVY}
+          strokeOpacity="0.55"
           strokeWidth="1.5"
+          strokeLinecap="round"
         />
       </svg>
 
       {/* Mobile: vertical stack, semantic list */}
-      <ol className="flex flex-col gap-4 sm:hidden" aria-label={desc}>
+      <ol className="mt-5 flex flex-col gap-4 sm:hidden" aria-label={desc}>
         <li className="flex items-start gap-3">
           <span
             aria-hidden="true"
-            className="mt-1 inline-block h-2.5 w-2.5 shrink-0 bg-foreground"
+            className="mt-1 inline-block h-3 w-3 shrink-0 rounded-full bg-foreground"
           />
           <div className="min-w-0">
             <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/70">
@@ -173,19 +203,16 @@ export function DeadlineCoverageDiagram() {
             <div className="text-sm font-medium text-foreground">Today</div>
           </div>
         </li>
-        <li
-          aria-hidden="true"
-          className="ml-1 h-6 w-[3px] bg-accent"
-        />
+        <li aria-hidden="true" className="ml-[5px] h-6 w-[3px] bg-primary" />
         <li className="flex items-start gap-3">
           <span
             aria-hidden="true"
-            className="mt-1 inline-block h-3 w-3 shrink-0 bg-accent"
-          />
+            className="mt-1 grid h-3.5 w-3.5 shrink-0 place-items-center rounded-full border-2 border-primary"
+          >
+            <span className="h-1 w-1 rounded-full bg-primary" />
+          </span>
           <div className="min-w-0">
-            <div className="text-sm font-bold text-foreground">
-              April 26, 2027
-            </div>
+            <div className="text-sm font-semibold text-foreground">April 26, 2027</div>
             <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/70">
               50,000+ residents
             </div>
@@ -193,23 +220,40 @@ export function DeadlineCoverageDiagram() {
         </li>
         <li
           aria-hidden="true"
-          className="ml-1 h-6 w-[1px] border-l border-dashed border-foreground/50"
+          className="ml-[6px] h-6 w-px border-l border-dashed border-foreground/50"
         />
         <li className="flex items-start gap-3">
           <span
             aria-hidden="true"
-            className="mt-1 inline-block h-3 w-3 shrink-0 border border-foreground"
+            className="mt-1 inline-block h-3 w-3 shrink-0 rounded-full border border-foreground bg-card"
           />
           <div className="min-w-0">
-            <div className="text-sm font-bold text-foreground">
-              April 26, 2028
-            </div>
+            <div className="text-sm font-semibold text-foreground">April 26, 2028</div>
             <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/70">
               Smaller entities · Special districts
             </div>
           </div>
         </li>
       </ol>
+
+      {/* Footer strip — mirrors "Progress · 38%" on the Engagement card */}
+      <div
+        className="mt-5 h-1.5 w-full overflow-hidden bg-foreground/10"
+        role="progressbar"
+        aria-valuenow={runwayUsed}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label="Regulatory runway used"
+      >
+        <div className="h-full bg-primary" style={{ width: `${runwayUsed}%` }} />
+      </div>
+      <div className="mt-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-foreground/55">
+        <span>Runway used</span>
+        <span className="tabular-nums">{runwayUsed}%</span>
+      </div>
+      <div className="mt-4 border-t border-foreground/10 pt-3 text-xs text-foreground/55">
+        Ref · 28 CFR Part 35 — statutory deadlines as published in the Federal Register.
+      </div>
 
       <figcaption className="sr-only">{desc}</figcaption>
     </figure>
