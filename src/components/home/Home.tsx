@@ -117,6 +117,15 @@ export function Home() {
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-foreground focus:px-4 focus:py-2 focus:text-background focus:font-mono focus:text-xs"
       >
         Skip to main content
+export function Home() {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-foreground focus:px-4 focus:py-2 focus:text-background focus:font-mono focus:text-xs"
+      >
+        Skip to main content
       </a>
 
       {/* Nav */}
@@ -142,13 +151,62 @@ export function Home() {
               </li>
             ))}
           </ul>
+          <div className="hidden lg:block" />
           <a
             href="#book"
-            className="btn-gov inline-flex items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+            className="btn-gov hidden lg:inline-flex items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
           >
             <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
             Book a Readiness Call
           </a>
+
+          {/* Mobile menu trigger */}
+          <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
+            <SheetTrigger asChild>
+              <button
+                type="button"
+                aria-label="Open navigation menu"
+                className="lg:hidden inline-flex h-11 w-11 items-center justify-center border border-foreground/20 text-foreground"
+              >
+                <Menu aria-hidden="true" className="h-5 w-5" />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[86vw] max-w-sm bg-white p-0">
+              <SheetHeader className="border-b border-foreground/10 px-6 py-4 text-left">
+                <SheetTitle className="font-mono text-xs uppercase tracking-widest text-foreground/60">
+                  Menu
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex h-[calc(100dvh-64px)] flex-col justify-between px-6 py-6">
+                <ul className="flex flex-col gap-1 text-base font-medium">
+                  {NAV.map((item) => (
+                    <li key={item.label}>
+                      <a
+                        href={item.href}
+                        onClick={() => setMobileNavOpen(false)}
+                        aria-current={item.active ? "page" : undefined}
+                        className={
+                          item.active
+                            ? "block py-3 text-primary border-b border-foreground/10"
+                            : "block py-3 text-foreground/85 hover:text-primary border-b border-foreground/10"
+                        }
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="#book"
+                  onClick={() => setMobileNavOpen(false)}
+                  className="btn-gov mt-6 inline-flex w-full items-center justify-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground hover:bg-accent/90"
+                >
+                  <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
+                  Book a Readiness Call
+                </a>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </nav>
 
@@ -157,6 +215,9 @@ export function Home() {
         <header style={{ backgroundColor: "#e6ecf5" }}>
           <div className="mx-auto grid max-w-[1240px] grid-cols-12 items-center gap-10 px-6 py-16 lg:py-20">
             <div className="col-span-12 lg:col-span-7">
+              <div className="mb-4 font-mono text-[11px] uppercase tracking-widest text-foreground/60">
+                Published · 2026-07-16
+              </div>
               <h1
                 className="text-balance font-bold leading-[1.05] tracking-[-0.02em] text-foreground"
                 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
