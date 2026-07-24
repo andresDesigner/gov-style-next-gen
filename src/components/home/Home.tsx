@@ -356,52 +356,70 @@ export function Home() {
                 })}
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-px border border-foreground/10 bg-foreground/10 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {primaryServices.map((s, i) => {
                 const Icon = serviceIcons[s.id];
+                const status = i === 0 ? "ACTIVE" : i === 1 ? "PENDING" : "VERIFIED";
+                const statusColor =
+                  status === "PENDING" ? "text-foreground/45" : "text-accent";
                 return (
-                  <article key={s.id} className="bg-card p-6">
-                    <div className="mb-3 flex items-center justify-between">
-                      <div className="font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
+                  <article
+                    key={s.id}
+                    className="group flex flex-col rounded-xl border border-foreground/15 bg-card p-6 shadow-sm motion-safe:transition-shadow motion-safe:hover:shadow-md"
+                  >
+                    <div className="mb-4 flex items-center justify-between gap-2 font-mono text-xs tracking-widest text-foreground/60">
+                      <span>
+                        TRACE-1{String(i + 1).padStart(2, "0")}
+                        <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
+                        <span className={statusColor}>STATUS: {status}</span>
+                      </span>
                       {Icon ? (
                         <Icon aria-hidden="true" strokeWidth={1.5} className="h-5 w-5 text-primary" />
                       ) : null}
                     </div>
-                    <TraceBadge
-                      id={`TRACE-1${String(i + 1).padStart(2, "0")}`}
-                      status={i === 0 ? "ACTIVE" : i === 1 ? "PENDING" : "VERIFIED"}
-                      className="mb-4"
-                    />
-                    <h3 className="text-lg font-semibold leading-tight">{s.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-foreground/70">{s.desc}</p>
+                    <div className="font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
+                    <h3 className="mt-2 text-lg font-semibold leading-tight">{s.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-foreground/75">{s.desc}</p>
                   </article>
                 );
               })}
             </div>
-            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-              {secondaryServices.map((s, i) => {
-                const Icon = serviceIcons[s.id];
-                return (
-                  <article key={s.id} className="border border-dashed border-foreground/25 bg-background p-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex items-start gap-3">
+
+            {/* Divider between primary & Phase 2 */}
+            <div className="mt-10 border-t border-foreground/15 pt-8">
+              <div className="mb-6 font-mono text-[11px] uppercase tracking-widest text-foreground/60">
+                Phase 2 — Upcoming
+              </div>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {secondaryServices.map((s, i) => {
+                  const Icon = serviceIcons[s.id];
+                  return (
+                    <article
+                      key={s.id}
+                      className="relative flex flex-col rounded-xl border border-dashed border-foreground/30 bg-card p-6 shadow-sm motion-safe:transition-shadow motion-safe:hover:shadow-md"
+                    >
+                      <span className="absolute right-4 top-4 inline-flex items-center bg-primary px-2 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
+                        Phase 2
+                      </span>
+                      <div className="mb-3 flex items-start gap-3 pr-24">
                         {Icon ? (
                           <Icon aria-hidden="true" strokeWidth={1.5} className="mt-0.5 h-6 w-6 text-foreground/60" />
                         ) : null}
-                        <div>
-                          <div className="mb-2 font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
-                          <h3 className="text-lg font-semibold">{s.title}</h3>
+                        <div className="min-w-0">
+                          <div className="font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
+                          <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
                         </div>
                       </div>
-                      <TraceBadge
-                        id={`TRACE-2${String(i + 1).padStart(2, "0")}`}
-                        status="PENDING"
-                      />
-                    </div>
-                    <p className="mt-4 max-w-[52ch] text-sm leading-relaxed text-foreground/70">{s.desc}</p>
-                  </article>
-                );
-              })}
+                      <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-foreground/75">{s.desc}</p>
+                      <div className="mt-4 font-mono text-xs tracking-widest text-foreground/55">
+                        TRACE-2{String(i + 1).padStart(2, "0")}
+                        <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
+                        <span className="text-foreground/45">STATUS: PENDING</span>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
             </div>
 
           </div>
