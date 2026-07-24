@@ -420,16 +420,17 @@ export function Home() {
                     key={s.id}
                     className="group flex flex-col rounded-xl border border-foreground/15 bg-card p-6 shadow-sm motion-safe:transition-shadow motion-safe:hover:shadow-md"
                   >
-                    <div className="mb-4 flex items-center justify-between gap-2 font-mono text-xs tracking-widest text-foreground/60">
+                    <div className="mb-4 flex items-center gap-2 font-mono text-xs tracking-widest text-foreground/60">
+                      {Icon ? (
+                        <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-primary" />
+                      ) : null}
                       <span>
                         TRACE-1{String(i + 1).padStart(2, "0")}
                         <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
                         <span className={statusColor}>STATUS: {status}</span>
                       </span>
-                      {Icon ? (
-                        <Icon aria-hidden="true" strokeWidth={1.5} className="h-5 w-5 text-primary" />
-                      ) : null}
                     </div>
+
                     <div className="font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
                     <h3 className="mt-2 text-lg font-semibold leading-tight">{s.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-foreground/75">{s.desc}</p>
