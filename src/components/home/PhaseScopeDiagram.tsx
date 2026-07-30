@@ -18,6 +18,10 @@ const phases: { key: Phase; label: string; sub: string }[] = [
   { key: "p2", label: "Phase 2", sub: "Post-April 2027" },
 ];
 
+function inViewAnim(state?: "true" | "false") {
+  return state ? "reveal reveal-stagger " : "";
+}
+
 function Dot({
   filled,
   state,
@@ -27,7 +31,7 @@ function Dot({
   state?: "true" | "false";
   stagger?: number;
 }) {
-  const anim = "reveal reveal-stagger ";
+  const anim = inViewAnim(state);
   const style = { ["--stagger" as string]: stagger };
   return filled ? (
     <span
