@@ -1,16 +1,19 @@
+import { useState } from "react";
+import { useInView } from "@/hooks/use-in-view";
+
 const STAGES = [
-  "Intake & Scoping",
-  "Static Extraction",
-  "Rule Analysis",
-  "NVDA Capture",
-  "Event Normalization",
-  "Reconciliation",
-  "Conflict Resolution",
-  "Evidence Sufficiency",
-  "Finding & Trace",
+  { short: "Intake", full: "Intake & Scoping" },
+  { short: "Extract", full: "Static Extraction" },
+  { short: "Rules", full: "Rule Analysis" },
+  { short: "NVDA", full: "NVDA Capture" },
+  { short: "Normalize", full: "Event Normalization" },
+  { short: "Reconcile", full: "Reconciliation" },
+  { short: "Conflicts", full: "Conflict Resolution" },
+  { short: "Sufficiency", full: "Evidence Sufficiency" },
+  { short: "Finding", full: "Finding & Trace" },
 ];
 
-const EMPHASIZED = new Set([3, 7]); // NVDA Capture, Evidence Sufficiency (0-indexed)
+const EMPHASIZED = new Set([3, 7]); // NVDA Capture, Evidence Sufficiency
 
 const DESC =
   "Nine-stage verification flow: Intake & Scoping, Static Extraction, Rule Analysis, " +
@@ -18,114 +21,133 @@ const DESC =
   "Evidence Sufficiency (evidence emphasis), Finding & Trace. Each stage feeds the next, with " +
   "NVDA Capture and Evidence Sufficiency highlighted as the two moments where behavioral truth is committed.";
 
+const RAIL_START = 70;
+const RAIL_STEP = 132;
+const RAIL_END = RAIL_START + RAIL_STEP * (STAGES.length - 1);
+
 export function MethodologyFlowDiagram() {
+  const { ref, inView } = useInView<HTMLElement>();
+  const [hovered, setHovered] = useState<number | null>(null);
+  const state = inView ? "true" : "false";
+
   return (
     <figure
+      ref={ref}
       role="group"
       aria-label="Nine-stage verification methodology"
       className="mt-8 border border-foreground/15 bg-card/60 p-5"
     >
-      {/* Desktop / tablet — horizontal SVG */}
+      {/* Desktop / tablet — horizontal rail */}
       <svg
         role="img"
         aria-labelledby="mfd-title"
-        viewBox="0 0 1200 180"
+        viewBox="0 0 1200 170"
         className="hidden h-auto w-full md:block"
         preserveAspectRatio="xMidYMid meet"
       >
         <title id="mfd-title">Verification methodology — 9 stages</title>
         <desc>{DESC}</desc>
-        <defs>
-          <marker
-            id="mfd-arrow"
-            viewBox="0 0 10 10"
-            refX="9"
-            refY="5"
-            markerWidth="6"
-            markerHeight="6"
-            orient="auto-start-reverse"
-          >
-            <path d="M0,0 L10,5 L0,10 z" fill="#031436" />
-          </marker>
-        </defs>
-        {STAGES.map((label, i) => {
-          const cellW = 1200 / STAGES.length;
-          const cx = cellW * i + cellW / 2;
-          const cy = 90;
-          const w = cellW - 24;
-          const h = 64;
+
+        {/* Rail base */}
+        <line
+          x1={RAIL_START}
+          y1="62"
+          x2={RAIL_END}
+          y2="62"
+          stroke="#cbd2dd"
+          strokeWidth="2"
+        />
+        {/* Rail progress — drawn on scroll */}
+        <line
+          className="draw"
+          data-inview={state}
+          style={{ ["--dash" as string]: RAIL_END - RAIL_START }}
+          x1={RAIL_START}
+          y1="62"
+          x2={RAIL_END}
+          y2="62"
+          stroke="#033EAD"
+          strokeWidth="2"
+        />
+
+        {STAGES.map((stage, i) => {
+          const cx = RAIL_START + i * RAIL_STEP;
           const emphasized = EMPHASIZED.has(i);
+          const isHovered = hovered === i;
+          const r = emphasized ? 16 : 12;
           return (
-            <g key={label}>
-              {i < STAGES.length - 1 && (
-                <line
-                  x1={cx + w / 2}
-                  y1={cy}
-                  x2={cx + w / 2 + 24}
-                  y2={cy}
-                  stroke="#031436"
-                  strokeWidth="1.25"
-                  markerEnd="url(#mfd-arrow)"
-                />
-              )}
-              <rect
-                x={cx - w / 2}
-                y={cy - h / 2}
-                width={w}
-                height={h}
-                fill={emphasized ? "#eef2fb" : "#ffffff"}
-                stroke={emphasized ? "#033EAD" : "#cbd2dd"}
-                strokeWidth={emphasized ? 1.75 : 1}
+            <g
+              key={stage.full}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+              style={{ cursor: "default" }}
+            >
+              <circle cx={cx} cy="62" r={r + 12} fill="transparent" />
+              <circle
+                cx={cx}
+                cy="62"
+                r={r}
+                fill={emphasized || isHovered ? "#033EAD" : "#ffffff"}
+                stroke={emphasized || isHovered ? "#033EAD" : "#9aa5b6"}
+                strokeWidth="2"
+                className="reveal reveal-stagger"
+                data-inview={state}
+                {...{ style: { ["--stagger" as string]: i } }}
               />
               <text
                 x={cx}
-                y={cy - 20}
+                y="67"
                 textAnchor="middle"
                 fontFamily="ui-monospace, monospace"
-                fontSize="9"
-                letterSpacing="1.2"
-                fill={emphasized ? "#033EAD" : "#031436"}
+                fontSize={emphasized ? 11 : 10}
+                fontWeight="700"
+                fill={emphasized || isHovered ? "#ffffff" : "#4a566b"}
               >
                 {String(i + 1).padStart(2, "0")}
               </text>
               <text
                 x={cx}
-                y={cy + 6}
+                y="102"
                 textAnchor="middle"
                 fontFamily="ui-sans-serif, system-ui"
-                fontSize="12"
+                fontSize="11"
                 fontWeight={emphasized ? 700 : 500}
-                fill="#031436"
+                fill={emphasized || isHovered ? "#033EAD" : "#031436"}
               >
-                {label.length > 18 ? label.split(" ")[0] : label}
+                {stage.short}
               </text>
-              {label.length > 18 && (
-                <text
-                  x={cx}
-                  y={cy + 22}
-                  textAnchor="middle"
-                  fontFamily="ui-sans-serif, system-ui"
-                  fontSize="12"
-                  fontWeight={emphasized ? 700 : 500}
-                  fill="#031436"
-                >
-                  {label.split(" ").slice(1).join(" ")}
-                </text>
-              )}
             </g>
           );
         })}
+
+        {/* Single detail line — only the hovered / emphasized stage speaks */}
+        <text
+          x="600"
+          y="146"
+          textAnchor="middle"
+          fontFamily="ui-monospace, monospace"
+          fontSize="11"
+          letterSpacing="1.2"
+          fill="#033EAD"
+        >
+          {(hovered !== null
+            ? STAGES[hovered].full
+            : "HOVER A STAGE — BEHAVIORAL TRUTH COMMITS AT 04 AND 08"
+          ).toUpperCase()}
+        </text>
       </svg>
 
       {/* Mobile — vertical semantic list */}
       <ol className="flex flex-col gap-2 md:hidden" aria-label={DESC}>
-        {STAGES.map((label, i) => {
+        {STAGES.map((stage, i) => {
           const emphasized = EMPHASIZED.has(i);
           return (
             <li
-              key={label}
+              key={stage.full}
+              data-inview={state}
+              style={{ ["--stagger" as string]: i }}
               className={
-                "flex items-start gap-3 border p-3 " +
+                "reveal reveal-stagger flex items-start gap-3 border p-3 " +
                 (emphasized
                   ? "border-accent bg-accent/5"
                   : "border-foreground/20 bg-card")
@@ -145,7 +167,7 @@ export function MethodologyFlowDiagram() {
                   (emphasized ? "font-bold text-foreground" : "text-foreground")
                 }
               >
-                {label}
+                {stage.full}
               </span>
             </li>
           );
