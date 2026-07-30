@@ -298,3 +298,146 @@
 
 
 
+
+/* ---------- Illustration system (flat-design accents) ----------
+ * Coral and mustard exist ONLY inside illustrations and their decorative
+ * accents. They must never be used for UI chrome, text or controls —
+ * the locked brief palette (navy / cobalt / azure) owns all of that.
+ */
+:root {
+  --illus-coral: #ff8c42;
+  --illus-mustard: #f2b134;
+  --illus-sky: #dce6f7;
+  --illus-sky-soft: #eaf0fa;
+}
+
+.illus-blob {
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--illus-sky) 0%,
+    var(--illus-sky-soft) 62%,
+    transparent 72%
+  );
+}
+
+/* ---------- Scroll-reveal primitives ---------- */
+@keyframes illus-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes illus-scale-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes illus-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes illus-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes illus-pulse-once {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+.reveal[data-inview="true"] {
+  animation: illus-rise 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.reveal-scale[data-inview="true"] {
+  animation: illus-scale-in 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.reveal-delay-1[data-inview="true"] {
+  animation-delay: 120ms;
+}
+.reveal-delay-2[data-inview="true"] {
+  animation-delay: 240ms;
+}
+.reveal-delay-3[data-inview="true"] {
+  animation-delay: 340ms;
+}
+.reveal-delay-4[data-inview="true"] {
+  animation-delay: 440ms;
+}
+
+/* Stagger helper for grids: set --stagger on each child. */
+.reveal-stagger[data-inview="true"] {
+  animation-delay: calc(var(--stagger, 0) * 90ms);
+}
+
+/* SVG stroke drawing: element sets --dash to its path length. */
+.draw {
+  stroke-dasharray: var(--dash, 400);
+  stroke-dashoffset: var(--dash, 400);
+}
+.draw[data-inview="true"] {
+  animation: illus-draw 900ms cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+.draw-delay-1[data-inview="true"] {
+  animation-delay: 150ms;
+}
+.draw-delay-2[data-inview="true"] {
+  animation-delay: 300ms;
+}
+.draw-delay-3[data-inview="true"] {
+  animation-delay: 450ms;
+}
+
+/* Width/height growth for bars driven by an inline final value. */
+.grow-x {
+  width: 0;
+  transition: width 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.grow-x[data-inview="true"] {
+  width: var(--target-w, 100%);
+}
+
+/* Reduced motion: land on the final state instantly, never hide content. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal[data-inview="true"],
+  .reveal[data-inview="false"] {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+  .draw,
+  .draw[data-inview="false"] {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+  .grow-x {
+    transition: none !important;
+    width: var(--target-w, 100%) !important;
+  }
+}
