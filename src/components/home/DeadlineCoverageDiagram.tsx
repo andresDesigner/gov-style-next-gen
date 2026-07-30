@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useInView } from "@/hooks/use-in-view";
 
 function monthsUntil(target: Date, now: Date = new Date()) {
   const months =
@@ -19,8 +20,12 @@ export function DeadlineCoverageDiagram() {
     `Second: April 26, 2028 for smaller entities and special districts. ` +
     `Approximately ${monthsRemaining} months remain until the first deadline.`;
 
+  const { ref, inView } = useInView<HTMLElement>();
+  const state = inView ? "true" : "false";
+
   return (
     <figure
+      ref={ref}
       aria-label="ADA Title II deadline coverage"
       className="mt-6 border border-foreground/15 bg-card/60 p-5"
     >
@@ -46,6 +51,9 @@ export function DeadlineCoverageDiagram() {
         />
         {/* Runway (now → 2027) filled with cobalt */}
         <line
+          className="draw"
+          data-inview={state}
+          style={{ ["--dash" as string]: 180 }}
           x1="40"
           y1="70"
           x2="220"

@@ -1,4 +1,5 @@
 import { primaryServices, secondaryServices } from "./shared";
+import { useInView } from "@/hooks/use-in-view";
 
 type Phase = "mvp" | "p1" | "p2";
 
@@ -17,16 +18,30 @@ const phases: { key: Phase; label: string; sub: string }[] = [
   { key: "p2", label: "Phase 2", sub: "Post-April 2027" },
 ];
 
-function Dot({ filled }: { filled: boolean }) {
+function Dot({
+  filled,
+  state,
+  stagger = 0,
+}: {
+  filled: boolean;
+  state?: "true" | "false";
+  stagger?: number;
+}) {
+  const anim = "reveal reveal-stagger ";
+  const style = { ["--stagger" as string]: stagger };
   return filled ? (
     <span
       aria-label="Included"
-      className="inline-block h-2.5 w-2.5 rounded-full bg-accent"
+      data-inview={state}
+      style={style}
+      className={anim + "inline-block h-2.5 w-2.5 rounded-full bg-accent"}
     />
   ) : (
     <span
       aria-label="Not included"
-      className="inline-block h-2.5 w-2.5 rounded-full border border-foreground/25"
+      data-inview={state}
+      style={style}
+      className={anim + "inline-block h-2.5 w-2.5 rounded-full border border-foreground/25"}
     />
   );
 }
