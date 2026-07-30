@@ -1,50 +1,59 @@
-## Ajustes transversales V1–V4 (una sola pasada)
+## Objetivo
 
-### 1. Jerarquía de CTA — corregir en las 4 versiones
-Hoy "Download Capability Statement" compite visualmente con "Book a Readiness Call" (o incluso lo supera en V4). Se invierte para alinear con Funnels 1 y 3 del brief.
+Quitar la sensación de "PowerPoint con mucho texto": incorporar ilustración vectorial flat con personajes, reducir densidad textual en los diagramas y agregar movimiento controlado (nivel 4/5) en hero, diagramas, servicios y secciones narrativas.
 
-- **Botón primario** (relleno sólido, alto contraste, ícono `Phone` / `CalendarCheck`): `Book a Readiness Call`.
-- **Botón secundario** (outline sobre la misma superficie, sin relleno): `Download Capability Statement`.
-- Aplicar en: nav superior, hero, y CTA final de cada versión.
-- V1: nav actualmente solo tiene "Book a Call" como link de menú — se convierte en botón primario visible a la derecha, igual que V2/V3/V4.
-- V4: hoy el outline usa `border-2 border-primary` con el mismo peso visual que el primary; se baja a `border` (1px) `border-foreground/25` con texto `text-foreground` para que no compita.
+## Nota sobre la paleta (decisión necesaria)
 
-### 2. Header y logo
-- Aumentar el logo en el nav de las 4 versiones: V2 `h-9 → h-11`, V3 `h-9 → h-11`, V4 `h-11 → h-12`, V1 masthead `h-16/h-20 → h-20/h-24`.
-- Cerrar el aire vertical entre header y primer bloque de texto (hero eyebrow / H1): reducir el `py-24 lg:py-36` de V3 y equivalentes a `py-16 lg:py-24`, y en V4 elevar el hero eyebrow con una línea corta de contexto (`§00 · Title II Readiness`) para llenar el gap sin agregar decoración.
+El estilo de referencia usa coral/naranja + azul-violeta + mostaza. El brief del cliente fija navy `#031436` y cobalt `#033EAD`. Propuesta: mantener navy/cobalt como base estructural y usar **coral `#FF8C42` y mostaza como acentos exclusivos de las ilustraciones** (nunca en UI, botones ni texto). Así el sitio gana calidez y personalidad sin violar la especificación. El violeta se sustituye por el cobalt del brief, que es prácticamente el mismo rol cromático.
 
-### 3. Incorporaciones cruzadas (con permiso explícito para proponer)
-- **V1, V3, V4** reciben, en su banda de tesis / pull-quote, el copy de V2:
-  > "Scanners passed. The user still couldn't use it. That gap is what we document."
-  V3 ya lo tiene — se replica el mismo patrón en V1 (reemplaza "Evidence you can defend…") y V4 (nueva banda cobalt corta antes de servicios).
-- **V1, V3** reciben, como headline alternativo propuesto, el H1 de V3 "Evidence, not assertions." como opción A/B en un comentario del componente (no reemplaza el H1 aprobado por defecto; queda comentado para que el cliente decida en revisión).
-- **V1, V3** adoptan la tabla de cumplimiento de V4 en la sección "Deadline Reality":
-  ```text
-  STANDARD   | WCAG 2.1 AA         | mandatory baseline for all digital assets
-  COVERAGE   | Web · App · PDF     | third-party content and vendor platforms
-  EVIDENCE   | Behavioral          | native screen-reader verification
-  RUNWAY     | ≈ 9 months          | to April 26, 2027 Phase 1 deadline
-  ```
-- **V2, V3, V4** reciben `PDF/UA-1 aligned` en el footer meta (V1 ya lo trae). Se añade a la línea `WCAG 2.1 AA · Section 508 · PDF/UA-1 aligned`.
-- **V2, V3, V4** reciben el patrón de card del hero de V1: `TRACE-001 · STATUS: ACTIVE` + fecha grande. V4 ya lo tiene; V2 y V3 lo suman como microheader sobre la fecha del hero (V3 hoy solo muestra "Phase 1 deadline" + fecha).
+## 1. Set de ilustraciones (nuevas)
 
-### 4. Contraste en "Practice-level operating facts"
-El párrafo descriptivo actualmente usa `text-foreground/70` sobre `bg-secondary/40` — cerca del umbral WCAG 1.4.3.
-- Subir de `/70` a `/85` en las descripciones de operations en V1, V2, V3, V4.
-- La label de la fila (`text-foreground/50`) sube a `/70`.
-- Se verifica con el DevTools de contraste que quede ≥ 4.5:1 sobre `--secondary`.
+Generar 5 ilustraciones flat, mismo sistema visual: personajes sin rasgos faciales, proporciones estilizadas, formas geométricas limpias, fondo circular/orgánico celeste pastel, íconos decorativos (destello, cruz, líneas de movimiento). Sin gradientes ni sombras complejas.
 
-### 5. Renombrar la etiqueta "FILED · 2026-07-16"
-El término "Filed" en contexto gubernamental sugiere radicación legal. Se renombra en V1 (única versión que la usa así):
-- `Filed · 2026-07-16` → `Last reviewed · 2026-07-16`
-- Alineado con el disclaimer de V2/V3 (`Last reviewed 2026-07-16. Source: ADA.gov / DOJ. Informational, not legal advice.`).
+- **IL-01 Hero** — dos personajes: uno señalando una pantalla con hallazgos de accesibilidad, otro con laptop sobre pila de libros. Es la pieza principal.
+- **IL-02 Verificación** — persona con audífonos junto a una ventana de lector de pantalla (para "How We Verify").
+- **IL-03 Documentos** — persona reparando/etiquetando un documento (sección PDF / remediación).
+- **IL-04 Gobierno / audiencias** — tres figuras institucionales conectadas a rutas (encabeza el diagrama de routing).
+- **IL-05 Deadline** — figura frente a un calendario/línea de tiempo (sección Deadline Reality).
 
-### 6. Rediseño de las tres métricas de urgencia (`50k+ / 2027 / AA` y `≈9 mo / AA / 6`)
-Hoy usan `text-foreground/40` sobre paper — se leen como decorativas.
-- Migrar ambos strips a `MetricStrip` en variante `surface-cobalt` (no navy) para que las tres cifras aparezcan sobre azul cobalto con `num-display-md` en `text-primary-foreground` — máximo contraste, coherente con la banda de tesis.
-- Añadir una **línea de urgencia** sobre la primera métrica: `URGENT · Runway to Phase 1 shrinks daily` en mono `text-accent`.
-- Reforzar `50k+` con un sub-label `residents served → federally mandated Phase 1 threshold` (hoy solo dice "Phase 1 threshold").
-- Aplicar el cambio en V1 (§01 Scale of Deadline), V2 (banda cobalt bajo trust strip), V3 (`Practice at a Glance`), V4 (banda cobalt bajo hero).
+Se generan como PNG con fondo transparente y se suben como assets CDN.
 
-### Fuera de alcance (confirmado)
-No se toca: paleta, tipografía, radius, sombras, animaciones, estructura de rutas ni la lógica del `VariantSelector`. Todo el trabajo permanece en `src/components/home/HomeV1–V4.tsx`, `MetricStrip.tsx` y `LabValueRow.tsx`.
+## 2. Hero rediseñado
+
+- Layout asimétrico 55/45: a la izquierda H1 + subtítulo + CTAs; a la derecha **IL-01** con el card "Engagement Status Preview" superpuesto parcialmente sobre la ilustración (overlap real, no dos bloques apilados).
+- El card se reduce a lo esencial: badge TRACE, stepper, barra de progreso. Sale texto sobrante.
+- Movimiento: entrada escalonada de la ilustración por capas (fondo circular → personajes → íconos decorativos), barra de progreso que se anima de 0 a 38%, chispas con flotación sutil en loop.
+
+## 3. Diagramas: menos texto, más ritmo
+
+Regla transversal: cada diagrama pierde entre 30% y 50% de su texto visible; lo que se elimina de la superficie se conserva en `<desc>` y en la lista semántica para accesibilidad.
+
+- **MethodologyFlowDiagram** — de 9 cajas iguales a un carril con nodos: número grande, etiqueta corta, y detalle solo en el nodo activo/hover. Animación de trazado de la línea al entrar en viewport y avance secuencial de nodos.
+- **DocumentArchitectureDiagram** — sustituir el bloque de texto centrado por un badge compacto en la banda de discrepancia; conectores animados que "caen" de la capa de tags a la capa expuesta; los nodos que fallan pulsan una vez en coral.
+- **AudienceRoutingDiagram** — encabezado con **IL-04**; las líneas se dibujan de rol a destino al entrar en viewport; hover resalta una ruta y atenúa las otras.
+- **DeadlineCoverageDiagram** — barra de progreso temporal que crece al entrar en viewport y contador de meses restantes que se anima; **IL-05** al costado.
+- **PhaseScopeDiagram** — los puntos aparecen en cascada por columna en vez de todos a la vez.
+
+## 4. Service cards con más carácter
+
+- Número grande fantasma (01–06) al estilo de la referencia adjunta, en gris muy claro, con el ícono de línea en la esquina opuesta.
+- Hover: el número toma cobalt, la card se eleva y el ícono hace un micro-movimiento.
+- Entrada escalonada de la grilla al hacer scroll.
+
+## 5. Secciones narrativas
+
+- Insertar **IL-02** en "How We Verify" y **IL-03** en la sección de documentos, en composiciones alternadas (zigzag) para romper la monotonía vertical.
+- Contadores numéricos animados en las métricas.
+- Banda CTA final: acentos decorativos ligeros del sistema de ilustración sobre el navy.
+
+## 6. Detalles técnicos
+
+- Hook `useInView` propio (IntersectionObserver, sin dependencias nuevas) para disparar animaciones una sola vez al entrar en viewport.
+- Animaciones SVG con `stroke-dasharray` / `stroke-dashoffset` y transiciones CSS; nada de librerías pesadas.
+- Todas las animaciones anuladas bajo `prefers-reduced-motion` (la regla global ya existe en `styles.css`; se verifica que cubra los nuevos casos, incluido el estado final visible).
+- Las ilustraciones se marcan `aria-hidden` cuando son decorativas y llevan `alt` descriptivo cuando aportan significado.
+- Tokens nuevos en `styles.css`: `--illus-coral`, `--illus-mustard`, `--illus-sky`, restringidos por convención al uso ilustrativo.
+
+## Entregable
+
+Se genera primero **IL-01** para validar el estilo contigo antes de producir las otras cuatro, así evitamos rehacer el set completo si la dirección no convence.

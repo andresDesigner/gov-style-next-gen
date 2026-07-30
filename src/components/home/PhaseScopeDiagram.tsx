@@ -1,4 +1,5 @@
 import { primaryServices, secondaryServices } from "./shared";
+import { useInView } from "@/hooks/use-in-view";
 
 type Phase = "mvp" | "p1" | "p2";
 
@@ -17,24 +18,45 @@ const phases: { key: Phase; label: string; sub: string }[] = [
   { key: "p2", label: "Phase 2", sub: "Post-April 2027" },
 ];
 
-function Dot({ filled }: { filled: boolean }) {
+function inViewAnim(state?: "true" | "false") {
+  return state === "true" ? "reveal reveal-stagger " : "";
+}
+
+function Dot({
+  filled,
+  state,
+  stagger = 0,
+}: {
+  filled: boolean;
+  state?: "true" | "false";
+  stagger?: number;
+}) {
+  const anim = inViewAnim(state);
+  const style = { ["--stagger" as string]: stagger };
   return filled ? (
     <span
       aria-label="Included"
-      className="inline-block h-2.5 w-2.5 rounded-full bg-accent"
+      data-inview={state}
+      style={style}
+      className={anim + "inline-block h-2.5 w-2.5 rounded-full bg-accent"}
     />
   ) : (
     <span
       aria-label="Not included"
-      className="inline-block h-2.5 w-2.5 rounded-full border border-foreground/25"
+      data-inview={state}
+      style={style}
+      className={anim + "inline-block h-2.5 w-2.5 rounded-full border border-foreground/25"}
     />
   );
 }
 
 export function PhaseScopeDiagram() {
   const services = [...primaryServices, ...secondaryServices];
+  const { ref, inView } = useInView<HTMLElement>();
+  const state = inView ? "true" : "false";
   return (
     <figure
+      ref={ref}
       aria-labelledby="phase-scope-title"
       className="mt-12 border border-foreground/15 bg-card"
     >
@@ -81,7 +103,7 @@ export function PhaseScopeDiagram() {
             </tr>
           </thead>
           <tbody>
-            {services.map((s) => {
+            {services.map((s, ri) => {
               const activePhase = scope[s.id];
               return (
                 <tr key={s.id} className="border-b border-foreground/10 last:border-b-0">
@@ -96,7 +118,7 @@ export function PhaseScopeDiagram() {
                       {s.title}
                     </div>
                   </th>
-                  {phases.map((p) => {
+                  {phases.map((p, pi) => {
                     const included =
                       (p.key === "mvp" && activePhase === "mvp") ||
                       (p.key === "p1" && (activePhase === "mvp" || activePhase === "p1")) ||
@@ -108,7 +130,7 @@ export function PhaseScopeDiagram() {
                         className="px-6 py-4 text-center align-middle"
                       >
                         <div className="inline-flex flex-col items-center gap-1">
-                          <Dot filled={included} />
+                          <Dot filled={included} state={state} stagger={pi * 3 + ri} />
                           {first ? (
                             <span className="font-mono text-[9px] uppercase tracking-widest text-accent">
                               Launches
@@ -138,7 +160,7 @@ export function PhaseScopeDiagram() {
                 {s.title}
               </div>
               <dl className="mt-3 grid grid-cols-3 gap-2">
-                {phases.map((p) => {
+                {phases.map((p, pi) => {
                   const included =
                     (p.key === "mvp" && activePhase === "mvp") ||
                     (p.key === "p1" && (activePhase === "mvp" || activePhase === "p1")) ||
@@ -149,7 +171,7 @@ export function PhaseScopeDiagram() {
                         {p.label}
                       </dt>
                       <dd>
-                        <Dot filled={included} />
+                        <Dot filled={included} state={state} stagger={pi} />
                       </dd>
                     </div>
                   );

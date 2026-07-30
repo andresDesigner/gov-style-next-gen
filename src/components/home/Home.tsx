@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Accessibility, Download, Menu, Phone, Sparkles } from "lucide-react";
 import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
+import { Illustration } from "./Illustration";
+import { useInView } from "@/hooks/use-in-view";
+import ilHero from "@/assets/il-01-hero.png";
+import ilVerify from "@/assets/il-02-verify.png";
+import ilDeadline from "@/assets/il-05-deadline.png";
 import { EvidenceArtifactCard } from "./EvidenceArtifactCard";
 import { DocumentArchitectureDiagram } from "./DocumentArchitectureDiagram";
 import { Logo } from "./Logo";
@@ -110,6 +115,47 @@ function TriStep() {
             </li>
           ))}
         </ol>
+      </div>
+    </div>
+  );
+}
+
+function RevealGrid({
+  className,
+  children,
+}: {
+  className?: string;
+  children: (state: "true" | "false") => ReactNode;
+}) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  return (
+    <div ref={ref} className={className}>
+      {children(inView ? "true" : "false")}
+    </div>
+  );
+}
+
+function ProgressMeter({ value }: { value: number }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  return (
+    <div ref={ref} className="mt-5">
+      <div
+        className="h-1.5 w-full overflow-hidden bg-foreground/10"
+        role="progressbar"
+        aria-valuenow={value}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label="Engagement progress"
+      >
+        <div
+          className="grow-x h-full bg-primary"
+          data-inview={inView ? "true" : "false"}
+          style={{ ["--target-w" as string]: `${value}%` }}
+        />
+      </div>
+      <div className="mt-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-foreground/55">
+        <span>Progress</span>
+        <span className="tabular-nums">{value}%</span>
       </div>
     </div>
   );
@@ -226,7 +272,7 @@ export function Home() {
                 Independent audits and remediation from a governmental web accessibility
                 consultancy — scoped for Title II readiness, defensible under audit.
               </p>
-              <DeadlineCoverageDiagram />
+              
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#book"
@@ -245,43 +291,41 @@ export function Home() {
               </div>
             </div>
 
-            <aside
-              aria-label="Engagement status preview"
-              className="col-span-12 lg:col-span-5"
-            >
-              <div className="border border-foreground/15 bg-card p-6 shadow-[0_2px_0_0_rgba(15,23,42,0.06)]">
-                <div className="inline-flex items-center gap-2 bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground/70">
-                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  Trace-001 · Status: Active
-                </div>
-                <div className="mt-5 text-lg font-semibold tracking-tight text-foreground">
-                  Engagement Status Preview
-                </div>
-                <p className="mt-1 text-sm leading-relaxed text-foreground/70">
-                  How your engagement tracks from capture to verified evidence.
-                </p>
-                <TriStep />
-                <div
-                  className="mt-6 h-1.5 w-full overflow-hidden bg-foreground/10"
-                  role="progressbar"
-                  aria-valuenow={38}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  aria-label="Engagement progress"
-                >
-                  <div className="h-full bg-primary" style={{ width: "38%" }} />
-                </div>
-                <div className="mt-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-foreground/55">
-                  <span>Progress</span>
-                  <span className="tabular-nums">38%</span>
-                </div>
-                <div className="mt-4 border-t border-foreground/10 pt-3 text-xs text-foreground/55">
-                  Ref · Title II deadline 04.26.2027 — see timeline above.
-                </div>
-              </div>
-            </aside>
+            <div className="relative col-span-12 lg:col-span-5">
+              <Illustration
+                src={ilHero}
+                alt="Two accessibility specialists reviewing an audit dashboard together."
+                width={1200}
+                height={1008}
+                eager
+                blob={false}
+                className="mx-auto max-w-[420px] lg:max-w-none"
+              />
 
+              <aside
+                aria-label="Engagement status preview"
+                className="relative z-10 mx-auto -mt-12 max-w-[340px] lg:absolute lg:bottom-[-1.5rem] lg:left-[-1.5rem] lg:mt-0 lg:max-w-[310px]"
+              >
+                <div className="border border-foreground/15 bg-card p-5 shadow-[0_10px_30px_-12px_rgba(3,20,54,0.35)]">
+                  <div className="inline-flex items-center gap-2 bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground/70">
+                    <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    Trace-001 · Active
+                  </div>
+                  <div className="mt-4 text-base font-semibold tracking-tight text-foreground">
+                    Engagement Status Preview
+                  </div>
+                  <TriStep />
+                  <ProgressMeter value={38} />
+                </div>
+              </aside>
+            </div>
+
+            {/* Regulatory map — full width so it never collides with the card */}
+            <div className="col-span-12 mt-10 lg:mt-16">
+              <DeadlineCoverageDiagram />
+            </div>
           </div>
+
 
           {/* Dark trust strip */}
           <div className="surface-navy">
@@ -361,7 +405,18 @@ export function Home() {
                 Last reviewed: 2026-07-16 · Informational, not legal advice.<br />
                 Source: ADA.gov / DOJ (per brief §6A)
               </div>
+              <Illustration
+                src={ilDeadline}
+                alt=""
+                width={1008}
+                height={1008}
+                accents={false}
+                blob={false}
+                className="mt-8 hidden max-w-[230px] lg:block"
+              />
+
             </div>
+
             <div className="col-span-12 lg:col-span-7">
               <div className="grid grid-cols-1 gap-0 border border-foreground/20 sm:grid-cols-2">
                 {[
@@ -414,35 +469,50 @@ export function Home() {
                 })}
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {primaryServices.map((s, i) => {
-                const Icon = serviceIconMap[s.id];
-                const status = i === 0 ? "ACTIVE" : i === 1 ? "PENDING" : "VERIFIED";
-                const statusColor =
-                  status === "PENDING" ? "text-foreground/45" : "text-accent";
-                return (
-                  <article
-                    key={s.id}
-                    className="group flex flex-col rounded-xl border border-foreground/15 bg-card p-6 shadow-sm motion-safe:transition-shadow motion-safe:hover:shadow-md"
-                  >
-                    <div className="mb-4 flex items-center gap-2 font-mono text-xs tracking-widest text-foreground/60">
-                      {Icon ? (
-                        <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-primary" />
-                      ) : null}
-                      <span>
-                        TRACE-1{String(i + 1).padStart(2, "0")}
-                        <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
-                        <span className={statusColor}>STATUS: {status}</span>
+            <RevealGrid className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {(state) =>
+                primaryServices.map((s, i) => {
+                  const Icon = serviceIconMap[s.id];
+                  const status = i === 0 ? "ACTIVE" : i === 1 ? "PENDING" : "VERIFIED";
+                  const statusColor =
+                    status === "PENDING" ? "text-foreground/45" : "text-accent";
+                  return (
+                    <article
+                      key={s.id}
+                      data-inview={state}
+                      style={{ ["--stagger" as string]: i }}
+                      className="reveal reveal-stagger group relative flex flex-col overflow-hidden rounded-xl border border-foreground/15 bg-card p-6 shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -right-2 -top-6 select-none text-[7rem] font-bold leading-none tracking-tighter text-foreground/[0.045] transition-colors duration-300 group-hover:text-primary/10"
+                      >
+                        {String(i + 1).padStart(2, "0")}
                       </span>
-                    </div>
 
-                    <div className="font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
-                    <h3 className="mt-2 text-lg font-semibold leading-tight">{s.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-foreground/75">{s.desc}</p>
-                  </article>
-                );
-              })}
-            </div>
+                      <div className="relative mb-4 flex items-center gap-2 font-mono text-xs tracking-widest text-foreground/60">
+                        {Icon ? (
+                          <Icon
+                            aria-hidden="true"
+                            className="h-5 w-5 shrink-0 text-primary motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5"
+                          />
+                        ) : null}
+                        <span>
+                          TRACE-1{String(i + 1).padStart(2, "0")}
+                          <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
+                          <span className={statusColor}>STATUS: {status}</span>
+                        </span>
+                      </div>
+
+                      <div className="relative font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
+                      <h3 className="relative mt-2 text-lg font-semibold leading-tight">{s.title}</h3>
+                      <p className="relative mt-3 text-sm leading-relaxed text-foreground/75">{s.desc}</p>
+                    </article>
+                  );
+                })
+              }
+            </RevealGrid>
+
 
             {/* Divider between primary & Phase 2 */}
             <div className="mt-10 border-t border-foreground/15 pt-8">
@@ -512,7 +582,15 @@ export function Home() {
             <aside aria-labelledby="audience-v4" className="col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Who We Help</div>
               <h3 id="audience-v4" className="mt-2 text-2xl font-medium tracking-tight">Built for procurement-driven buyers.</h3>
+              <Illustration
+                src={ilVerify}
+                alt=""
+                width={1008}
+                height={1008}
+                className="mt-6 max-w-[320px]"
+              />
               <dl className="mt-8 divide-y divide-foreground/10">
+
                 {audience.map((item) => (
                   <div key={item.role} className="grid grid-cols-[140px_1fr] gap-4 py-4">
                     <dt className="text-sm font-semibold">{item.role}</dt>
