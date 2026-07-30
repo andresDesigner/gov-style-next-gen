@@ -19,7 +19,7 @@ const phases: { key: Phase; label: string; sub: string }[] = [
 ];
 
 function inViewAnim(state?: "true" | "false") {
-  return state ? "reveal reveal-stagger " : "";
+  return state === "true" ? "reveal reveal-stagger " : "";
 }
 
 function Dot({
