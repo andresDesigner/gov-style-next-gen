@@ -575,7 +575,15 @@ export function Home() {
             <aside aria-labelledby="audience-v4" className="col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Who We Help</div>
               <h3 id="audience-v4" className="mt-2 text-2xl font-medium tracking-tight">Built for procurement-driven buyers.</h3>
+              <Illustration
+                src={ilVerify}
+                alt=""
+                width={1008}
+                height={1008}
+                className="mt-6 max-w-[320px]"
+              />
               <dl className="mt-8 divide-y divide-foreground/10">
+
                 {audience.map((item) => (
                   <div key={item.role} className="grid grid-cols-[140px_1fr] gap-4 py-4">
                     <dt className="text-sm font-semibold">{item.role}</dt>
