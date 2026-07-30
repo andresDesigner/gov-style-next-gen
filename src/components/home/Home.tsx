@@ -385,7 +385,16 @@ export function Home() {
                 Last reviewed: 2026-07-16 · Informational, not legal advice.<br />
                 Source: ADA.gov / DOJ (per brief §6A)
               </div>
+              <Illustration
+                src={ilDeadline}
+                alt=""
+                width={1008}
+                height={1008}
+                accents={false}
+                className="mt-10 hidden max-w-[300px] lg:block"
+              />
             </div>
+
             <div className="col-span-12 lg:col-span-7">
               <div className="grid grid-cols-1 gap-0 border border-foreground/20 sm:grid-cols-2">
                 {[
