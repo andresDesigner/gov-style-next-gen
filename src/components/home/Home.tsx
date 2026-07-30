@@ -272,7 +272,7 @@ export function Home() {
                 Independent audits and remediation from a governmental web accessibility
                 consultancy — scoped for Title II readiness, defensible under audit.
               </p>
-              <DeadlineCoverageDiagram />
+              
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#book"
