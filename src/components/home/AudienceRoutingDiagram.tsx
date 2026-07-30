@@ -1,3 +1,7 @@
+import { useInView } from "@/hooks/use-in-view";
+import { Illustration } from "./Illustration";
+import ilGov from "@/assets/il-04-gov.png";
+
 const ROUTES = [
   { role: "Procurement Officer", dest: "Capability Statement", href: "#capability" },
   { role: "Accessibility Program Manager", dest: "How We Verify", href: "/verify" },
@@ -10,17 +14,30 @@ const DESC =
   "to their evaluation needs: Capability Statement, How We Verify, and Book a Call respectively.";
 
 export function AudienceRoutingDiagram() {
+  const { ref, inView } = useInView<HTMLElement>();
+  const state = inView ? "true" : "false";
+
   return (
     <figure
+      ref={ref}
       role="group"
       aria-label="Audience routing to conversion paths"
       className="mt-6 border border-foreground/15 bg-card/60 p-5"
     >
+      <Illustration
+        src={ilGov}
+        alt=""
+        width={1200}
+        height={912}
+        accents={false}
+        className="mx-auto mb-2 max-w-[340px]"
+      />
+
       <svg
         role="img"
         aria-labelledby="ard-title"
         viewBox="0 0 900 260"
-        className="hidden h-auto w-full md:block"
+        className="hidden h-auto w-full md:block [&_g]:transition-opacity [&_g]:duration-200 [&:hover_g]:opacity-40 [&_g:hover]:opacity-100"
         preserveAspectRatio="xMidYMid meet"
       >
         <title id="ard-title">Audience routing</title>
@@ -73,8 +90,11 @@ export function AudienceRoutingDiagram() {
                 {r.role}
               </text>
 
-              {/* connector */}
+              {/* connector — drawn on scroll, staggered per route */}
               <line
+                className={"draw draw-delay-" + (i + 1)}
+                data-inview={state}
+                style={{ ["--dash" as string]: 300 }}
                 x1="300"
                 y1={y}
                 x2="600"
@@ -111,8 +131,13 @@ export function AudienceRoutingDiagram() {
 
       {/* Mobile — semantic list */}
       <ul className="flex flex-col gap-3 md:hidden" aria-label={DESC}>
-        {ROUTES.map((r) => (
-          <li key={r.role} className="border border-foreground/20">
+        {ROUTES.map((r, i) => (
+          <li
+            key={r.role}
+            data-inview={state}
+            style={{ ["--stagger" as string]: i }}
+            className="reveal reveal-stagger border border-foreground/20"
+          >
             <div className="border-b border-foreground/10 bg-card p-3">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">
                 Role
