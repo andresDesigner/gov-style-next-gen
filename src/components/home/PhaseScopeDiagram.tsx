@@ -99,7 +99,7 @@ export function PhaseScopeDiagram() {
             </tr>
           </thead>
           <tbody>
-            {services.map((s) => {
+            {services.map((s, ri) => {
               const activePhase = scope[s.id];
               return (
                 <tr key={s.id} className="border-b border-foreground/10 last:border-b-0">
