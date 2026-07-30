@@ -579,16 +579,20 @@ export function Home() {
 
             </div>
 
-            <aside aria-labelledby="audience-v4" className="col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
+            <aside aria-labelledby="audience-v4" className="relative isolate col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Who We Help</div>
               <h3 id="audience-v4" className="mt-2 text-2xl font-medium tracking-tight">Built for procurement-driven buyers.</h3>
-              <Illustration
-                src={ilVerify}
-                alt=""
-                width={1008}
-                height={1008}
-                className="mt-6 max-w-[320px]"
-              />
+              <div className="relative mt-6 overflow-hidden">
+                <Illustration
+                  src={ilVerify}
+                  alt=""
+                  width={1008}
+                  height={1008}
+                  blob={false}
+                  className="max-w-[320px]"
+                />
+              </div>
+
               <dl className="mt-8 divide-y divide-foreground/10">
 
                 {audience.map((item) => (
