@@ -120,6 +120,32 @@ function TriStep() {
   );
 }
 
+function ProgressMeter({ value }: { value: number }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  return (
+    <div ref={ref} className="mt-5">
+      <div
+        className="h-1.5 w-full overflow-hidden bg-foreground/10"
+        role="progressbar"
+        aria-valuenow={value}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label="Engagement progress"
+      >
+        <div
+          className="grow-x h-full bg-primary"
+          data-inview={inView ? "true" : "false"}
+          style={{ ["--target-w" as string]: `${value}%` }}
+        />
+      </div>
+      <div className="mt-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-foreground/55">
+        <span>Progress</span>
+        <span className="tabular-nums">{value}%</span>
+      </div>
+    </div>
+  );
+}
+
 export function Home() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   return (
