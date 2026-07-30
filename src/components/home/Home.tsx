@@ -411,8 +411,10 @@ export function Home() {
                 width={1008}
                 height={1008}
                 accents={false}
-                className="mt-10 hidden max-w-[300px] lg:block"
+                blob={false}
+                className="mt-8 hidden max-w-[230px] lg:block"
               />
+
             </div>
 
             <div className="col-span-12 lg:col-span-7">
