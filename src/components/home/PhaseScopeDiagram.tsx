@@ -48,8 +48,11 @@ function Dot({
 
 export function PhaseScopeDiagram() {
   const services = [...primaryServices, ...secondaryServices];
+  const { ref, inView } = useInView<HTMLElement>();
+  const state = inView ? "true" : "false";
   return (
     <figure
+      ref={ref}
       aria-labelledby="phase-scope-title"
       className="mt-12 border border-foreground/15 bg-card"
     >
@@ -111,7 +114,7 @@ export function PhaseScopeDiagram() {
                       {s.title}
                     </div>
                   </th>
-                  {phases.map((p) => {
+                  {phases.map((p, pi) => {
                     const included =
                       (p.key === "mvp" && activePhase === "mvp") ||
                       (p.key === "p1" && (activePhase === "mvp" || activePhase === "p1")) ||
@@ -123,7 +126,7 @@ export function PhaseScopeDiagram() {
                         className="px-6 py-4 text-center align-middle"
                       >
                         <div className="inline-flex flex-col items-center gap-1">
-                          <Dot filled={included} />
+                          <Dot filled={included} state={state} stagger={pi * 3 + ri} />
                           {first ? (
                             <span className="font-mono text-[9px] uppercase tracking-widest text-accent">
                               Launches
@@ -153,7 +156,7 @@ export function PhaseScopeDiagram() {
                 {s.title}
               </div>
               <dl className="mt-3 grid grid-cols-3 gap-2">
-                {phases.map((p) => {
+                {phases.map((p, pi) => {
                   const included =
                     (p.key === "mvp" && activePhase === "mvp") ||
                     (p.key === "p1" && (activePhase === "mvp" || activePhase === "p1")) ||
@@ -164,7 +167,7 @@ export function PhaseScopeDiagram() {
                         {p.label}
                       </dt>
                       <dd>
-                        <Dot filled={included} />
+                        <Dot filled={included} state={state} stagger={pi} />
                       </dd>
                     </div>
                   );
