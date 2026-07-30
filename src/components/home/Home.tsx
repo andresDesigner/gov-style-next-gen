@@ -125,7 +125,7 @@ function RevealGrid({
   children,
 }: {
   className?: string;
-  children: (state: "true" | "false") => React.ReactNode;
+  children: (state: "true" | "false") => ReactNode;
 }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   return (
