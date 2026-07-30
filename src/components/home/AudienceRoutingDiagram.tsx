@@ -24,14 +24,17 @@ export function AudienceRoutingDiagram() {
       aria-label="Audience routing to conversion paths"
       className="mt-6 border border-foreground/15 bg-card/60 p-5"
     >
-      <Illustration
-        src={ilGov}
-        alt=""
-        width={1200}
-        height={912}
-        accents={false}
-        className="mx-auto mb-2 max-w-[340px]"
-      />
+      <div className="relative mb-2 overflow-hidden">
+        <Illustration
+          src={ilGov}
+          alt=""
+          width={1200}
+          height={912}
+          accents={false}
+          className="mx-auto max-w-[340px]"
+        />
+      </div>
+
 
       <svg
         role="img"
