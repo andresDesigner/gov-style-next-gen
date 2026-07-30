@@ -298,12 +298,13 @@ export function Home() {
                 width={1200}
                 height={1008}
                 eager
-                className="mx-auto max-w-[440px] lg:max-w-none"
+                blob={false}
+                className="mx-auto max-w-[420px] lg:max-w-none"
               />
 
               <aside
                 aria-label="Engagement status preview"
-                className="relative z-10 mx-auto -mt-10 max-w-[360px] lg:absolute lg:bottom-[-2.5rem] lg:left-[-3.5rem] lg:mt-0 lg:max-w-[330px]"
+                className="relative z-10 mx-auto -mt-12 max-w-[340px] lg:absolute lg:bottom-[-1.5rem] lg:left-[-1.5rem] lg:mt-0 lg:max-w-[310px]"
               >
                 <div className="border border-foreground/15 bg-card p-5 shadow-[0_10px_30px_-12px_rgba(3,20,54,0.35)]">
                   <div className="inline-flex items-center gap-2 bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground/70">
@@ -319,8 +320,12 @@ export function Home() {
               </aside>
             </div>
 
-
+            {/* Regulatory map — full width so it never collides with the card */}
+            <div className="col-span-12 mt-10 lg:mt-16">
+              <DeadlineCoverageDiagram />
+            </div>
           </div>
+
 
           {/* Dark trust strip */}
           <div className="surface-navy">
