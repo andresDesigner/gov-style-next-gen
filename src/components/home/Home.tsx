@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Accessibility, Download, Menu, Phone, Sparkles } from "lucide-react";
 import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
 import { Illustration } from "./Illustration";
