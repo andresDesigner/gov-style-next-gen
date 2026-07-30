@@ -120,6 +120,21 @@ function TriStep() {
   );
 }
 
+function RevealGrid({
+  className,
+  children,
+}: {
+  className?: string;
+  children: (state: "true" | "false") => React.ReactNode;
+}) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  return (
+    <div ref={ref} className={className}>
+      {children(inView ? "true" : "false")}
+    </div>
+  );
+}
+
 function ProgressMeter({ value }: { value: number }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   return (
