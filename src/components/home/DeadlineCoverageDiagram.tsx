@@ -29,12 +29,15 @@ export function DeadlineCoverageDiagram() {
       aria-label="ADA Title II deadline coverage"
       className="mt-6 border border-foreground/15 bg-card/60 p-5"
     >
+      <figcaption className="mb-4 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+        Regulatory map · ADA Title II compliance deadlines
+      </figcaption>
       {/* Desktop / tablet: horizontal SVG timeline */}
       <svg
         role="img"
         aria-labelledby="dcd-title"
         viewBox="0 0 600 120"
-        className="hidden h-auto w-full sm:block"
+        className="mx-auto hidden h-auto w-full max-w-[860px] sm:block"
         preserveAspectRatio="xMidYMid meet"
       >
         <title id="dcd-title">Title II deadline coverage timeline</title>
@@ -144,9 +147,9 @@ export function DeadlineCoverageDiagram() {
             April 26, 2028
           </text>
           <text
-            x="500"
+            x="560"
             y="92"
-            textAnchor="middle"
+            textAnchor="end"
             fontFamily="ui-monospace, monospace"
             fontSize="9"
             letterSpacing="1"
