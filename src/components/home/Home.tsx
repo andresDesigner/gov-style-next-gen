@@ -245,41 +245,34 @@ export function Home() {
               </div>
             </div>
 
-            <aside
-              aria-label="Engagement status preview"
-              className="col-span-12 lg:col-span-5"
-            >
-              <div className="border border-foreground/15 bg-card p-6 shadow-[0_2px_0_0_rgba(15,23,42,0.06)]">
-                <div className="inline-flex items-center gap-2 bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground/70">
-                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  Trace-001 · Status: Active
+            <div className="relative col-span-12 lg:col-span-5">
+              <Illustration
+                src={ilHero}
+                alt="Two accessibility specialists reviewing an audit dashboard together."
+                width={1200}
+                height={1008}
+                eager
+                className="mx-auto max-w-[440px] lg:max-w-none"
+              />
+
+              <aside
+                aria-label="Engagement status preview"
+                className="relative z-10 mx-auto -mt-10 max-w-[360px] lg:absolute lg:bottom-[-2.5rem] lg:left-[-3.5rem] lg:mt-0 lg:max-w-[330px]"
+              >
+                <div className="border border-foreground/15 bg-card p-5 shadow-[0_10px_30px_-12px_rgba(3,20,54,0.35)]">
+                  <div className="inline-flex items-center gap-2 bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground/70">
+                    <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    Trace-001 · Active
+                  </div>
+                  <div className="mt-4 text-base font-semibold tracking-tight text-foreground">
+                    Engagement Status Preview
+                  </div>
+                  <TriStep />
+                  <ProgressMeter value={38} />
                 </div>
-                <div className="mt-5 text-lg font-semibold tracking-tight text-foreground">
-                  Engagement Status Preview
-                </div>
-                <p className="mt-1 text-sm leading-relaxed text-foreground/70">
-                  How your engagement tracks from capture to verified evidence.
-                </p>
-                <TriStep />
-                <div
-                  className="mt-6 h-1.5 w-full overflow-hidden bg-foreground/10"
-                  role="progressbar"
-                  aria-valuenow={38}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  aria-label="Engagement progress"
-                >
-                  <div className="h-full bg-primary" style={{ width: "38%" }} />
-                </div>
-                <div className="mt-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-foreground/55">
-                  <span>Progress</span>
-                  <span className="tabular-nums">38%</span>
-                </div>
-                <div className="mt-4 border-t border-foreground/10 pt-3 text-xs text-foreground/55">
-                  Ref · Title II deadline 04.26.2027 — see timeline above.
-                </div>
-              </div>
-            </aside>
+              </aside>
+            </div>
+
 
           </div>
 
