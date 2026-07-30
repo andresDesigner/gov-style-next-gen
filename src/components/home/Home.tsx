@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Accessibility, Download, Menu, Phone, Sparkles } from "lucide-react";
 import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
+import { Illustration } from "./Illustration";
+import { useInView } from "@/hooks/use-in-view";
+import ilHero from "@/assets/il-01-hero.png";
+import ilVerify from "@/assets/il-02-verify.png";
+import ilDeadline from "@/assets/il-05-deadline.png";
 import { EvidenceArtifactCard } from "./EvidenceArtifactCard";
 import { DocumentArchitectureDiagram } from "./DocumentArchitectureDiagram";
 import { Logo } from "./Logo";
