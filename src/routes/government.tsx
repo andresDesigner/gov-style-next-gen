@@ -110,12 +110,14 @@ function GovernmentPage() {
         </section>
       </main>
 
-      <footer className="bg-primary text-primary-foreground">
-        <div className="mx-auto flex max-w-[1200px] flex-col gap-2 px-6 py-10 font-mono text-[11px] uppercase tracking-widest">
-          <div>ACT Verified — a Zenzo LLC consulting practice</div>
-          <div className="text-primary-foreground/70">WCAG 2.1 AA · Section 508 · PDF/UA-1 aligned</div>
-        </div>
-      </footer>
+        <CtaBand
+          title="Bring us the decision you have to defend."
+          lead="We scope the shortest path to a record your legal, procurement, and technical reviewers can all read."
+        />
+      </main>
+
+      <SiteFooter />
     </div>
   );
+
 }
