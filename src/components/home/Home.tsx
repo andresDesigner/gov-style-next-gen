@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Accessibility, Download, Phone, Sparkles } from "lucide-react";
-import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
+import { DeadlineSection } from "./DeadlineSection";
 import { Illustration } from "./Illustration";
 import { useInView } from "@/hooks/use-in-view";
 import ilHero from "@/assets/il-01-hero.png";
@@ -224,11 +224,8 @@ export function Home() {
               </aside>
             </div>
 
-            {/* Regulatory map — full width so it never collides with the card */}
-            <div className="col-span-12 mt-10 lg:mt-16">
-              <DeadlineCoverageDiagram />
-            </div>
           </div>
+
 
 
           {/* Dark trust strip */}
@@ -248,6 +245,9 @@ export function Home() {
             </div>
           </div>
         </header>
+
+        <DeadlineSection />
+
 
         {/* Overview transition strip — soften navy → paper */}
         <section aria-label="Overview" className="border-b border-foreground/10 bg-secondary/50">
