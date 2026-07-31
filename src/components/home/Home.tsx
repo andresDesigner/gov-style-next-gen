@@ -351,7 +351,7 @@ export function Home() {
                 <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Services · 4 primary + 2 Phase 2</div>
                 <h2 id="services-v4" className="mt-2 max-w-[24ch] text-balance text-3xl font-medium tracking-tight md:text-4xl">Six services scoped for public-sector accessibility work.</h2>
               </div>
-              <a href="#" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</a>
+              <Link to="/services" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</Link>
             </div>
             {/* Node connector (sutil, decorativo) — iconos por servicio */}
             <div aria-hidden="true" className="relative mb-4 hidden h-8 lg:block">
