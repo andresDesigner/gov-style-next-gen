@@ -55,51 +55,25 @@ function GovernmentPage() {
     <div className="min-h-dvh bg-background text-foreground">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-foreground focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:text-background"
       >
         Skip to main content
       </a>
-      <header className="sticky top-0 z-40 border-b border-foreground/10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-6 py-4">
-          <Link to="/" aria-label="ACT Verified home">
-            <Logo className="h-11 w-auto" />
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link to="/" className="hidden sm:inline font-mono text-[11px] uppercase tracking-widest text-foreground/70 hover:text-foreground">
-              ← Home
-            </Link>
-            <a
-              href="/#book"
-              className="btn-gov inline-flex items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
-            >
-              <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
-              Book a Readiness Call
-            </a>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main id="main">
-        <section className="dot-grid border-b border-foreground/10">
+        <PageHero
+          kicker="For Government · Hub"
+          title="Three roles. Three paths to a Title II decision."
+          lead="Different roles need different evidence at different moments. Route yourself to the record that matches the decision on your desk today."
+        />
+
+        <section className="border-b border-foreground/10">
           <div className="mx-auto max-w-[1200px] px-6 py-20">
-
-            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">
-              For Government · Hub
-            </div>
-            <h1
-              className="mt-3 font-medium tracking-tight"
-              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
-            >
-              Three roles. Three paths to a Title II decision.
-            </h1>
-            <p className="mt-6 max-w-[65ch] text-lg text-foreground/80">
-              Different roles need different evidence at different moments. Route yourself to the
-              record that matches the decision on your desk today.
-            </p>
-
             <AudienceRoutingDiagram />
           </div>
         </section>
+
 
         <section className="border-b border-foreground/10 bg-paper-100/40">
           <div className="mx-auto max-w-[1200px] px-6 py-20">
