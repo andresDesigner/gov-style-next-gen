@@ -557,28 +557,8 @@ export function Home() {
         </section>
       </main>
 
-      <footer className="bg-secondary/50 border-t border-foreground/10">
-        <div className="mx-auto max-w-[1200px] px-6 py-16">
-          <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
-            {footerCols.map((col) => (
-              <div key={col.head}>
-                <h4 className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">{col.head}</h4>
-                <ul className="mt-4 space-y-3">
-                  {col.items.map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-sm text-foreground/75 decoration-primary decoration-1 underline-offset-4 transition-[text-decoration-thickness] hover:text-foreground hover:underline hover:decoration-2">{item}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-foreground/10 pt-6 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-            <span>ACT Verified — a Zenzo LLC consulting practice</span>
-            <span>WCAG 2.1 AA · Section 508 · PDF/UA-1 aligned</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
+
     </div>
   );
 }
