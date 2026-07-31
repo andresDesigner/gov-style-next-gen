@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { CalendarClock } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 function monthsUntil(target: Date, now: Date = new Date()) {
