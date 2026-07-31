@@ -76,7 +76,7 @@ export function DeadlineSection() {
                   ? "border border-foreground/15"
                   : "border border-dashed border-foreground/25")
               }
-              style={{ ["--stagger" as string]: `${i * 90}ms` }}
+              style={{ ["--stagger" as string]: i }}
             >
               {card.urgent ? (
                 <span
