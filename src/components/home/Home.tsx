@@ -224,11 +224,8 @@ export function Home() {
               </aside>
             </div>
 
-            {/* Regulatory map — full width so it never collides with the card */}
-            <div className="col-span-12 mt-10 lg:mt-16">
-              <DeadlineCoverageDiagram />
-            </div>
           </div>
+
 
 
           {/* Dark trust strip */}
