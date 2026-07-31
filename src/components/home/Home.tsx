@@ -1,5 +1,6 @@
-import { useState, type ReactNode } from "react";
-import { Accessibility, Download, Menu, Phone, Sparkles } from "lucide-react";
+import { type ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
+import { Accessibility, Download, Phone, Sparkles } from "lucide-react";
 import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
 import { Illustration } from "./Illustration";
 import { useInView } from "@/hooks/use-in-view";
@@ -8,12 +9,13 @@ import ilVerify from "@/assets/il-02-verify.png";
 import ilDeadline from "@/assets/il-05-deadline.png";
 import { EvidenceArtifactCard } from "./EvidenceArtifactCard";
 import { DocumentArchitectureDiagram } from "./DocumentArchitectureDiagram";
-import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
 import { engagementIcons, operationsIcons } from "./serviceIcons";
 import { serviceIconMap } from "./ServiceIcon";
 import { PhaseScopeDiagram } from "./PhaseScopeDiagram";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
 import {
   primaryServices,
   secondaryServices,
@@ -24,24 +26,6 @@ import {
   evidenceFindingF20270142,
 } from "./shared";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-
-
-const NAV = [
-  { label: "Home", href: "/", active: true },
-  { label: "Services", href: "#services-v4" },
-  { label: "How We Verify", href: "/verify" },
-  { label: "For Government", href: "/government" },
-  { label: "Resources", href: "#" },
-  { label: "About", href: "#" },
-  { label: "Book a Call", href: "#book" },
-];
 
 function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -162,7 +146,6 @@ function ProgressMeter({ value }: { value: number }) {
 }
 
 export function Home() {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   return (
     <div className="min-h-screen bg-background text-foreground">
       <a
@@ -172,87 +155,8 @@ export function Home() {
         Skip to main content
       </a>
 
-      {/* Nav */}
-      <nav aria-label="Primary" className="sticky top-0 z-40 border-b border-foreground/10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-        <div className="mx-auto grid max-w-[1240px] grid-cols-[auto_1fr_auto] items-center gap-6 px-6 py-4">
-          <a href="/" aria-label="ACT Verified home" className="inline-flex shrink-0">
-            <Logo className="h-12 w-auto" />
-          </a>
-          <ul className="hidden lg:flex items-center justify-center gap-9 text-[15px] font-medium">
-            {NAV.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  aria-current={item.active ? "page" : undefined}
-                  className={
-                    item.active
-                      ? "text-primary underline decoration-primary decoration-2 underline-offset-[10px]"
-                      : "text-foreground/85 hover:text-primary transition-colors"
-                  }
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          
-          <a
-            href="#book"
-            className="btn-gov hidden lg:inline-flex items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
-          >
-            <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
-            Book a Readiness Call
-          </a>
+      <SiteHeader />
 
-          {/* Mobile menu trigger */}
-          <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
-            <SheetTrigger asChild>
-              <button
-                type="button"
-                aria-label="Open navigation menu"
-                className="lg:hidden inline-flex h-11 w-11 items-center justify-center border border-foreground/20 text-foreground"
-              >
-                <Menu aria-hidden="true" className="h-5 w-5" />
-              </button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[86vw] max-w-sm bg-white p-0">
-              <SheetHeader className="border-b border-foreground/10 px-6 py-4 text-left">
-                <SheetTitle className="font-mono text-xs uppercase tracking-widest text-foreground/60">
-                  Menu
-                </SheetTitle>
-              </SheetHeader>
-              <div className="flex h-[calc(100dvh-64px)] flex-col justify-between px-6 py-6">
-                <ul className="flex flex-col gap-1 text-base font-medium">
-                  {NAV.map((item) => (
-                    <li key={item.label}>
-                      <a
-                        href={item.href}
-                        onClick={() => setMobileNavOpen(false)}
-                        aria-current={item.active ? "page" : undefined}
-                        className={
-                          item.active
-                            ? "block py-3 text-primary border-b border-foreground/10"
-                            : "block py-3 text-foreground/85 hover:text-primary border-b border-foreground/10"
-                        }
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="#book"
-                  onClick={() => setMobileNavOpen(false)}
-                  className="btn-gov mt-6 inline-flex w-full items-center justify-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground hover:bg-accent/90"
-                >
-                  <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
-                  Book a Readiness Call
-                </a>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </nav>
 
       <main id="main">
         {/* Hero */}
@@ -448,7 +352,7 @@ export function Home() {
                 <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Services · 4 primary + 2 Phase 2</div>
                 <h2 id="services-v4" className="mt-2 max-w-[24ch] text-balance text-3xl font-medium tracking-tight md:text-4xl">Six services scoped for public-sector accessibility work.</h2>
               </div>
-              <a href="#" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</a>
+              <Link to="/services" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</Link>
             </div>
             {/* Node connector (sutil, decorativo) — iconos por servicio */}
             <div aria-hidden="true" className="relative mb-4 hidden h-8 lg:block">
@@ -655,28 +559,8 @@ export function Home() {
         </section>
       </main>
 
-      <footer className="bg-secondary/50 border-t border-foreground/10">
-        <div className="mx-auto max-w-[1200px] px-6 py-16">
-          <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
-            {footerCols.map((col) => (
-              <div key={col.head}>
-                <h4 className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">{col.head}</h4>
-                <ul className="mt-4 space-y-3">
-                  {col.items.map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-sm text-foreground/75 decoration-primary decoration-1 underline-offset-4 transition-[text-decoration-thickness] hover:text-foreground hover:underline hover:decoration-2">{item}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-foreground/10 pt-6 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-            <span>ACT Verified — a Zenzo LLC consulting practice</span>
-            <span>WCAG 2.1 AA · Section 508 · PDF/UA-1 aligned</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
+
     </div>
   );
 }
