@@ -1,7 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Phone } from "lucide-react";
-import { Logo } from "@/components/home/Logo";
+import { createFileRoute } from "@tanstack/react-router";
 import { AudienceRoutingDiagram } from "@/components/home/AudienceRoutingDiagram";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { PageHero } from "@/components/site/PageHero";
+import { CtaBand } from "@/components/site/CtaBand";
+
 
 
 export const Route = createFileRoute("/government")({
