@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { CalendarClock } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 function monthsUntil(target: Date, now: Date = new Date()) {
@@ -54,13 +55,22 @@ export function DeadlineSection() {
         <div className="font-mono text-[11px] uppercase tracking-widest text-foreground/60">
           Regulatory map · ADA Title II compliance deadlines
         </div>
-        <h2
-          id="deadlines-title"
-          className="mt-3 max-w-[22ch] text-balance font-bold leading-[1.1] tracking-[-0.02em] text-foreground"
-          style={{ fontSize: "clamp(1.75rem, 3.4vw, 2.5rem)" }}
-        >
-          When does this apply to your entity?
-        </h2>
+        <div className="mt-3 flex items-start gap-4">
+          <span
+            aria-hidden="true"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-primary"
+            style={{ backgroundColor: "color-mix(in oklab, var(--primary) 10%, transparent)" }}
+          >
+            <CalendarClock className="h-5 w-5" strokeWidth={1.5} />
+          </span>
+          <h2
+            id="deadlines-title"
+            className="max-w-[22ch] text-balance font-bold leading-[1.1] tracking-[-0.02em] text-foreground"
+            style={{ fontSize: "clamp(1.75rem, 3.4vw, 2.5rem)" }}
+          >
+            When does this apply to your entity?
+          </h2>
+        </div>
         <p className="mt-4 max-w-[62ch] text-lg leading-relaxed text-foreground/70">
           Compliance dates differ by population served — find your entity&apos;s date below.
         </p>

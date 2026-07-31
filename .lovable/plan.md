@@ -1,52 +1,36 @@
-## Objetivo
+## Plan: Ícono en el título de la sección Regulatory Map
 
-Sacar el bloque "Regulatory Map · ADA Title II Compliance Deadlines" del Hero y convertirlo en una sección independiente justo después del Hero, rediseñada como dos cards comparativas en vez de un timeline lineal.
+### Alcance
+Modificación visual pequeña y autocontenida en `src/components/home/DeadlineSection.tsx`.
 
-## Cambios
+### Cambio propuesto
+Acompañar el título "When does this apply to your entity?" con un ícono decorativo a la izquierda, alineado a la primera línea del título.
 
-**1. Hero (`src/components/home/Home.tsx`)**
-- Eliminar el bloque `col-span-12` que contiene `<DeadlineCoverageDiagram />` (líneas 227-230). El Hero queda con título, subtítulo, CTAs, ilustración y card de status.
-- Insertar la nueva sección `<DeadlineSection />` inmediatamente después del `</header>` del Hero, antes del strip "Overview".
+### Opciones de ícono (Lucide)
 
-**2. Nuevo componente `src/components/home/DeadlineSection.tsx`**
+1. **Recomendado: `CalendarClock`**
+   - Comunica inmediatamente "plazos" y "cumplimiento temporal".
+   - Estilo institucional, no excesivamente legal.
+   - Se colocaría dentro de un círculo sutil de fondo `primary/10` con trazo `primary`.
 
-Sección full-width sobre el fondo lavanda existente (`#e6ecf5`) para separarla visualmente del Hero blanco/paper, con padding vertical generoso (`py-20 lg:py-24`) y contenedor `max-w-[1240px] px-6`, igual que las demás secciones.
+2. **Alternativa A: `Map`**
+   - Hace eco del eyebrow "Regulatory Map".
+   - Más abstracto, útil si quieres reforzar la metáfora de "mapa regulatorio".
 
-Encabezado de sección:
-- Eyebrow en mono uppercase tracking-widest (mismo estilo del label "Published · 2026-07-16"): `REGULATORY MAP · ADA TITLE II COMPLIANCE DEADLINES`
-- H2 — propuestas para confirmar tras ver la preview:
-  1. "When does this apply to your entity?"
-  2. "Two deadlines. Which one is yours?"
-  3. "Your deadline depends on who you serve."
-- Descripción de una línea: "Compliance dates differ by population served — find your entity's date below."
+3. **Alternativa B: `Scale`**
+   - Más formal/legal.
+   - Puede sentirse demasiado judicial; usar solo si se quiere énfasis en normativa.
 
-Dos cards lado a lado (`grid-cols-1 md:grid-cols-2 gap-6`), reutilizando exactamente el lenguaje de card ya existente (fondo `bg-card`, `border border-foreground/15`, `rounded-xl`, `shadow-sm`, hover `shadow-md`, mismos tokens tipográficos):
+### Implementación técnica
+- Importar el ícono elegido de `lucide-react`.
+- Renderizarlo como elemento decorativo (`aria-hidden="true"`) dentro de un contenedor flex alineado al título.
+- Tamaño del ícono: `24px` en desktop, `20px` en mobile.
+- Contenedor: círculo `40px` con fondo `color-mix(in oklab, var(--primary) 8%, transparent)` y trazo `var(--primary)`.
+- No agregar animación adicional; respeta `prefers-reduced-motion` heredado.
 
-Card 1 — plazo urgente:
-- Acento naranja de marca (`--illus-coral`, el mismo del rayo del Hero) como borde izquierdo de 3px
-- Pill/badge: "Due in ~9 months" (cálculo dinámico ya existente en `DeadlineCoverageDiagram`, se reutiliza la función `monthsUntil`), en tono naranja suave
-- Dato clave grande y bold: "50,000+ residents"
-- Descripción: "Larger public entities"
-- Fecha secundaria en azul de marca: "April 26, 2027"
+### Validación
+- Verificar alineación visual en mobile y desktop.
+- Confirmar que no se desborda el título ni se rompe el `max-w-[22ch]`.
 
-Card 2 — plazo lejano:
-- Borde punteado (`border-dashed border-foreground/25`), sin acento de color, texto en tonos más neutros
-- Pill: "Due in ~21 months"
-- Dato clave: "Under 50,000 residents"
-- Descripción: "Smaller entities · Special districts"
-- Fecha en azul de marca, con menos peso: "April 26, 2028"
-
-Debajo de las cards: barra de progreso horizontal simple (misma altura y colores que `ProgressMeter` del Hero) con un punto marcando "NOW" al inicio y marcas discretas para 2027 y 2028. Elemento secundario, no protagonista.
-
-Accesibilidad: la sección se marca con `aria-labelledby`, las cards son una `<ol>` semántica, la barra de progreso es decorativa (`aria-hidden`) porque los datos ya están en texto. Se conserva la animación de entrada por scroll usando el hook `useInView` existente.
-
-**3. `DeadlineCoverageDiagram.tsx`**
-- Se deja de usar en el Home. Se extrae `monthsUntil` a la nueva sección (o se importa) y se elimina el componente si no queda referenciado en otras rutas (verificar `/verify` y `/government` antes de borrar).
-
-## Notas técnicas
-
-- Sin colores, fuentes ni radios nuevos: todo sale de los tokens ya definidos en `src/styles.css` (`--accent`, `--primary`, `--illus-coral`, `bg-card`, `rounded-xl`).
-- Los meses restantes se calculan en cliente a partir de la fecha actual, igual que hoy.
-- Sin cambios de backend ni de datos.
-
-Tras implementar, te muestro la preview para confirmar el título final y los textos.
+### Pregunta al usuario
+¿Te quedas con `CalendarClock` (recomendado por claridad de plazos), prefieres `Map` (eco de "Regulatory Map") o `Scale` (énfasis legal)?
