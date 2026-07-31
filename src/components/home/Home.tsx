@@ -1,5 +1,5 @@
-import { useState, type ReactNode } from "react";
-import { Accessibility, Download, Menu, Phone, Sparkles } from "lucide-react";
+import { type ReactNode } from "react";
+import { Accessibility, Download, Phone, Sparkles } from "lucide-react";
 import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
 import { Illustration } from "./Illustration";
 import { useInView } from "@/hooks/use-in-view";
@@ -8,12 +8,12 @@ import ilVerify from "@/assets/il-02-verify.png";
 import ilDeadline from "@/assets/il-05-deadline.png";
 import { EvidenceArtifactCard } from "./EvidenceArtifactCard";
 import { DocumentArchitectureDiagram } from "./DocumentArchitectureDiagram";
-import { Logo } from "./Logo";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
 import { engagementIcons, operationsIcons } from "./serviceIcons";
 import { serviceIconMap } from "./ServiceIcon";
 import { PhaseScopeDiagram } from "./PhaseScopeDiagram";
+import { SiteHeader } from "@/components/site/SiteHeader";
 import {
   primaryServices,
   secondaryServices,
@@ -24,24 +24,6 @@ import {
   evidenceFindingF20270142,
 } from "./shared";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-
-
-const NAV = [
-  { label: "Home", href: "/", active: true },
-  { label: "Services", href: "#services-v4" },
-  { label: "How We Verify", href: "/verify" },
-  { label: "For Government", href: "/government" },
-  { label: "Resources", href: "#" },
-  { label: "About", href: "#" },
-  { label: "Book a Call", href: "#book" },
-];
 
 function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
