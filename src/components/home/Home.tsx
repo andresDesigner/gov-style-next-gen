@@ -1,4 +1,5 @@
 import { type ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 import { Accessibility, Download, Phone, Sparkles } from "lucide-react";
 import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
 import { Illustration } from "./Illustration";
