@@ -1,0 +1,172 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { PageHero } from "@/components/site/PageHero";
+import { CtaBand } from "@/components/site/CtaBand";
+import { operatingPrinciples, founderBio } from "@/components/site/content";
+import { useInView } from "@/hooks/use-in-view";
+
+const TITLE = "About — Why ACT Verified exists";
+const DESC =
+  "ACT Verified is a consulting-led accessibility assurance practice under Zenzo LLC, bringing evidence-grade rigor to ADA Title II verification for public-sector organizations.";
+const URL = "https://actweb.blitzagencia.online/about";
+
+export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESC },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESC },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: URL },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESC },
+    ],
+    links: [{ rel: "canonical", href: URL }],
+  }),
+  component: AboutPage,
+});
+
+function PrinciplesGrid() {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  const state = inView ? "true" : "false";
+  return (
+    <div ref={ref} className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+      {operatingPrinciples.map((p, i) => (
+        <article
+          key={p.n}
+          data-inview={state}
+          style={{ ["--stagger" as string]: i }}
+          className="reveal reveal-stagger group relative overflow-hidden border border-foreground/15 bg-card p-8"
+        >
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-3 -top-8 select-none text-[8rem] font-bold leading-none tracking-tighter text-foreground/[0.05] transition-colors duration-300 group-hover:text-primary/10"
+          >
+            {p.n}
+          </span>
+          <div className="relative font-mono text-[10px] uppercase tracking-widest text-primary">
+            Principle {p.n}
+          </div>
+          <h3 className="relative mt-3 text-lg font-semibold leading-tight tracking-tight">
+            {p.title}
+          </h3>
+          <p className="relative mt-3 max-w-[34ch] text-sm leading-relaxed text-foreground/75">
+            {p.body}
+          </p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function AboutPage() {
+  return (
+    <div className="min-h-dvh bg-background text-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-foreground focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:text-background"
+      >
+        Skip to main content
+      </a>
+      <SiteHeader />
+
+      <main id="main">
+        <PageHero
+          kicker="About · Practice"
+          title="Why ACT Verified exists."
+          lead="ACT Verified is a consulting-led accessibility assurance practice operated under Zenzo LLC, built to bring evidence-grade rigor to accessibility verification for public-sector and regulated organizations facing legal exposure under ADA Title II."
+        />
+
+        <section aria-labelledby="founder" className="border-b border-foreground/10">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-10 px-6 py-20">
+            <div className="col-span-12 lg:col-span-4">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                Practice Lead
+              </div>
+              <div
+                aria-hidden="true"
+                className="mt-4 grid aspect-[4/5] w-full max-w-[260px] place-items-center border border-dashed border-foreground/30 bg-secondary/40 font-mono text-[10px] uppercase tracking-widest text-foreground/40"
+              >
+                Photo — optional
+              </div>
+            </div>
+            <div className="col-span-12 lg:col-span-8 lg:border-l lg:border-foreground/10 lg:pl-10">
+              <h2
+                id="founder"
+                className="text-3xl font-medium tracking-tight md:text-4xl"
+              >
+                A Trusted Tester–led practice.
+              </h2>
+              <blockquote className="mt-6 border-l-2 border-primary pl-6 text-lg leading-relaxed text-foreground/85">
+                {founderBio}
+              </blockquote>
+              <dl className="mt-8 grid grid-cols-1 gap-0 border border-foreground/20 sm:grid-cols-3">
+                {[
+                  { k: "Certification", v: "Section 508 Trusted Tester" },
+                  { k: "Experience", v: "10+ years" },
+                  { k: "Levels served", v: "Federal · State · Local" },
+                ].map((c, i) => (
+                  <div
+                    key={c.k}
+                    className={
+                      "bg-card p-5 " +
+                      (i < 2 ? "border-b border-foreground/20 sm:border-b-0 sm:border-r" : "")
+                    }
+                  >
+                    <dt className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                      {c.k}
+                    </dt>
+                    <dd className="mt-2 text-base font-semibold tracking-tight">{c.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="principles" className="border-b border-foreground/10 bg-secondary/30">
+          <div className="mx-auto max-w-[1200px] px-6 py-20">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              Operating Principles
+            </div>
+            <h2
+              id="principles"
+              className="mt-2 max-w-[26ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
+            >
+              Three rules the work never bends.
+            </h2>
+            <PrinciplesGrid />
+          </div>
+        </section>
+
+        <section aria-labelledby="entity" className="border-b border-foreground/10">
+          <div className="mx-auto max-w-[1200px] px-6 py-16">
+            <div className="max-w-[70ch] border-l-2 border-primary bg-secondary/60 px-6 py-5">
+              <h2
+                id="entity"
+                className="font-mono text-[10px] uppercase tracking-widest text-foreground/60"
+              >
+                Parent Entity Disclosure
+              </h2>
+              <p className="mt-3 text-base leading-relaxed text-foreground/85">
+                ACT Verified is a consulting practice operated under Zenzo LLC, the legal entity
+                behind the brand. The same disclosure appears in the site footer and on every
+                contracting document.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <CtaBand
+          title="Talk to the people who will do the work."
+          lead="No account layer, no handoff to a junior queue. The practice lead scopes the engagement."
+        />
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
