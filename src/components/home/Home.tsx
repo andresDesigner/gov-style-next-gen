@@ -246,6 +246,9 @@ export function Home() {
           </div>
         </header>
 
+        <DeadlineSection />
+
+
         {/* Overview transition strip — soften navy → paper */}
         <section aria-label="Overview" className="border-b border-foreground/10 bg-secondary/50">
           <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-4 px-6 py-4">
