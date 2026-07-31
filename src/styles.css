@@ -423,6 +423,15 @@
   width: var(--target-w, 100%);
 }
 
+/* Horizontal rule that draws itself left-to-right (engagement rail). */
+.rail-grow {
+  transform: scaleX(0);
+  transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rail-grow[data-inview="true"] {
+  transform: scaleX(1);
+}
+
 /* Reduced motion: land on the final state instantly, never hide content. */
 @media (prefers-reduced-motion: reduce) {
   .reveal,
@@ -440,4 +449,9 @@
     transition: none !important;
     width: var(--target-w, 100%) !important;
   }
+  .rail-grow {
+    transition: none !important;
+    transform: scaleX(1) !important;
+  }
 }
+
