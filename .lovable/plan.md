@@ -1,62 +1,52 @@
 ## Objetivo
 
-Extender el sitio con Services hub, About, Contact y ampliar How We Verify, reutilizando el sistema visual ya validado en Home (navy/cobalt, mono kickers, TRACE badges, ilustraciones flat con acento coral, reveals en scroll, sin bordes redondeados en botones).
+Sacar el bloque "Regulatory Map · ADA Title II Compliance Deadlines" del Hero y convertirlo en una sección independiente justo después del Hero, rediseñada como dos cards comparativas en vez de un timeline lineal.
 
-## Unificación primero
+## Cambios
 
-Hoy cada página repite su header y footer con variantes distintas. Antes de agregar páginas:
+**1. Hero (`src/components/home/Home.tsx`)**
+- Eliminar el bloque `col-span-12` que contiene `<DeadlineCoverageDiagram />` (líneas 227-230). El Hero queda con título, subtítulo, CTAs, ilustración y card de status.
+- Insertar la nueva sección `<DeadlineSection />` inmediatamente después del `</header>` del Hero, antes del strip "Overview".
 
-- `SiteHeader.tsx` — header sticky blanco con blur, logo, nav completo (Services, How We Verify, For Government, Resources, About, Contact), estado activo con `activeProps`, CTA cobalt "Book a Readiness Call" con ícono Phone, y menú mobile en Sheet.
-- `SiteFooter.tsx` — footer de 5 columnas ya definido en `shared.ts` (footerCols) + créditos Zenzo LLC y línea "WCAG 2.1 AA · Section 508 · PDF/UA-1 aligned".
-- `PageHero.tsx` — hero reutilizable: fondo celeste con dot-grid, kicker mono, H1 con `clamp()`, subtítulo, slot de CTAs y slot lateral para visual.
-- `CtaBand.tsx` — banda navy final con CTA blanco, usada al cierre de cada página.
+**2. Nuevo componente `src/components/home/DeadlineSection.tsx`**
 
-Se aplican también a `/verify` y `/government` para que todo el sitio quede consistente.
+Sección full-width sobre el fondo lavanda existente (`#e6ecf5`) para separarla visualmente del Hero blanco/paper, con padding vertical generoso (`py-20 lg:py-24`) y contenedor `max-w-[1240px] px-6`, igual que las demás secciones.
 
-## /services — Services hub (nuevo)
+Encabezado de sección:
+- Eyebrow en mono uppercase tracking-widest (mismo estilo del label "Published · 2026-07-16"): `REGULATORY MAP · ADA TITLE II COMPLIANCE DEADLINES`
+- H2 — propuestas para confirmar tras ver la preview:
+  1. "When does this apply to your entity?"
+  2. "Two deadlines. Which one is yours?"
+  3. "Your deadline depends on who you serve."
+- Descripción de una línea: "Compliance dates differ by population served — find your entity's date below."
 
-- Hero: "Accessibility consulting built around evidence" + subtítulo de seis servicios / un modelo operativo.
-- **Engagement Model Rail**: los 6 pasos (Scope → Test → Prioritize → Remediate → Verify → Govern) como riel horizontal animado — línea que se dibuja al entrar en viewport, nodos numerados que se encienden en cascada, scroll horizontal en mobile con snap. Reutiliza el patrón de `MethodologyFlowDiagram`.
-- 4 tarjetas primarias (S-01 a S-04) con ícono de `ServiceIcon`, TRACE badge, estado ACTIVE/VERIFIED, borde sólido y hover con elevación + flecha "Learn more" que se desplaza.
-- Divisor "PHASE 2 — UPCOMING" y 2 tarjetas secundarias con borde punteado y badge navy.
-- `PhaseScopeDiagram` existente reubicado aquí como cierre analítico.
-- Banda CTA navy.
+Dos cards lado a lado (`grid-cols-1 md:grid-cols-2 gap-6`), reutilizando exactamente el lenguaje de card ya existente (fondo `bg-card`, `border border-foreground/15`, `rounded-xl`, `shadow-sm`, hover `shadow-md`, mismos tokens tipográficos):
 
-## /verify — ampliación
+Card 1 — plazo urgente:
+- Acento naranja de marca (`--illus-coral`, el mismo del rayo del Hero) como borde izquierdo de 3px
+- Pill/badge: "Due in ~9 months" (cálculo dinámico ya existente en `DeadlineCoverageDiagram`, se reutiliza la función `monthsUntil`), en tono naranja suave
+- Dato clave grande y bold: "50,000+ residents"
+- Descripción: "Larger public entities"
+- Fecha secundaria en azul de marca: "April 26, 2027"
 
-Se conservan los diagramas actuales y se agregan las secciones faltantes del wireframe:
+Card 2 — plazo lejano:
+- Borde punteado (`border-dashed border-foreground/25`), sin acento de color, texto en tonos más neutros
+- Pill: "Due in ~21 months"
+- Dato clave: "Under 50,000 residents"
+- Descripción: "Smaller entities · Special districts"
+- Fecha en azul de marca, con menos peso: "April 26, 2028"
 
-- Bloque "What changes for you": 4 tarjetas de audiencia (procurement officer, accessibility coordinator, technical evaluator, legal counsel) con entrada escalonada.
-- Tabla comparativa **Static-only vs Behavioral Verification** rediseñada: no una tabla plana sino dos columnas contrapuestas, la de la derecha en navy sólido, con filas que se revelan una a una.
-- El flujo de 9 etapas: verificar que enfatice visualmente las etapas 4 (Native NVDA capture) y 8 (Evidence sufficiency) con relleno cobalt y anillo, más su equivalente textual por nodo.
-- "Scoped non-conclusions" — bloque editorial de ancho corto con pull quote y regla gruesa.
-- "How this differs from manual review" + "Where human review still matters" como par de columnas.
-- Segunda `EvidenceArtifactCard` con el ejemplo del wireframe (Trace ID AV-2026-0xxx, Evidence sufficiency: Sufficient, Result: Pass).
-- Franja de cross-link: "Already remediated? → Post-Remediation Verification".
-- "Honest limits" con la afirmación final en peso alto sobre fondo paper.
-- Banda CTA navy con doble botón (Request a sample report walkthrough / Book a Readiness Call).
+Debajo de las cards: barra de progreso horizontal simple (misma altura y colores que `ProgressMeter` del Hero) con un punto marcando "NOW" al inicio y marcas discretas para 2027 y 2028. Elemento secundario, no protagonista.
 
-## /about (nuevo)
+Accesibilidad: la sección se marca con `aria-labelledby`, las cards son una `<ol>` semántica, la barra de progreso es decorativa (`aria-hidden`) porque los datos ya están en texto. Se conserva la animación de entrada por scroll usando el hook `useInView` existente.
 
-- Hero "Why ACT Verified exists" con el párrafo de Zenzo LLC.
-- Bio del fundador: layout asimétrico con marco para foto (placeholder marcado), cita en tipografía editorial. El nombre queda como `[Name]` hasta que lo confirmes — centralizado en una constante para cambiarlo en un solo punto.
-- **Operating principles**: los 3 principios como tarjetas numeradas grandes (01/02/03) con número decorativo gigante en gris claro, mismo tratamiento que los service cards del Home.
-- Divulgación de entidad matriz en bloque contenido con regla lateral cobalt.
-- Banda CTA navy.
+**3. `DeadlineCoverageDiagram.tsx`**
+- Se deja de usar en el Home. Se extrae `monthsUntil` a la nueva sección (o se importa) y se elimina el componente si no queda referenciado en otras rutas (verificar `/verify` y `/government` antes de borrar).
 
-## /contact (nuevo, solo diseño)
+## Notas técnicas
 
-- Hero corto "Let's talk about your Title II timeline".
-- Formulario en grilla de 2 columnas con los 9 campos del wireframe (Name, Organization, Email, Phone opcional, Service of interest, Entity type, Approximate timeline, Population served, Brief description). Componentes shadcn Input/Select/Textarea, labels visibles, `aria-describedby` para errores.
-- Validación en cliente con Zod + estados de error accesibles; al enviar muestra un estado de confirmación en pantalla (sin backend, según lo confirmado).
-- Panel lateral sticky con la nota de Secure Intake (`upload.actverified.com`) para compromisos activos, más tiempos de respuesta y ruta alternativa.
-- Banda CTA no aplica; cierra con footer.
+- Sin colores, fuentes ni radios nuevos: todo sale de los tokens ya definidos en `src/styles.css` (`--accent`, `--primary`, `--illus-coral`, `bg-card`, `rounded-xl`).
+- Los meses restantes se calculan en cliente a partir de la fecha actual, igual que hoy.
+- Sin cambios de backend ni de datos.
 
-## Detalles técnicos
-
-- Rutas nuevas: `src/routes/services.tsx`, `about.tsx`, `contact.tsx`; ampliación de `verify.tsx`.
-- Cada ruta con su propio `head()` (title, description, og:title, og:description, og:type, twitter:card, canonical). Sin og:image salvo que exista imagen absoluta real.
-- Contenido estructurado en `shared.ts` para no duplicar strings entre Home y hubs.
-- Animaciones vía `useInView` + clases `reveal` / `draw` ya existentes en `styles.css`, todas respetando `prefers-reduced-motion`.
-- Sin backend, sin nuevas dependencias más allá de las ya instaladas (zod, shadcn).
-- Contraste verificado a WCAG 2.1 AA en todos los pares de color nuevos.
+Tras implementar, te muestro la preview para confirmar el título final y los textos.
