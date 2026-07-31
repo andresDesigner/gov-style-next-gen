@@ -1,59 +1,62 @@
 ## Objetivo
 
-Quitar la sensación de "PowerPoint con mucho texto": incorporar ilustración vectorial flat con personajes, reducir densidad textual en los diagramas y agregar movimiento controlado (nivel 4/5) en hero, diagramas, servicios y secciones narrativas.
+Extender el sitio con Services hub, About, Contact y ampliar How We Verify, reutilizando el sistema visual ya validado en Home (navy/cobalt, mono kickers, TRACE badges, ilustraciones flat con acento coral, reveals en scroll, sin bordes redondeados en botones).
 
-## Nota sobre la paleta (decisión necesaria)
+## Unificación primero
 
-El estilo de referencia usa coral/naranja + azul-violeta + mostaza. El brief del cliente fija navy `#031436` y cobalt `#033EAD`. Propuesta: mantener navy/cobalt como base estructural y usar **coral `#FF8C42` y mostaza como acentos exclusivos de las ilustraciones** (nunca en UI, botones ni texto). Así el sitio gana calidez y personalidad sin violar la especificación. El violeta se sustituye por el cobalt del brief, que es prácticamente el mismo rol cromático.
+Hoy cada página repite su header y footer con variantes distintas. Antes de agregar páginas:
 
-## 1. Set de ilustraciones (nuevas)
+- `SiteHeader.tsx` — header sticky blanco con blur, logo, nav completo (Services, How We Verify, For Government, Resources, About, Contact), estado activo con `activeProps`, CTA cobalt "Book a Readiness Call" con ícono Phone, y menú mobile en Sheet.
+- `SiteFooter.tsx` — footer de 5 columnas ya definido en `shared.ts` (footerCols) + créditos Zenzo LLC y línea "WCAG 2.1 AA · Section 508 · PDF/UA-1 aligned".
+- `PageHero.tsx` — hero reutilizable: fondo celeste con dot-grid, kicker mono, H1 con `clamp()`, subtítulo, slot de CTAs y slot lateral para visual.
+- `CtaBand.tsx` — banda navy final con CTA blanco, usada al cierre de cada página.
 
-Generar 5 ilustraciones flat, mismo sistema visual: personajes sin rasgos faciales, proporciones estilizadas, formas geométricas limpias, fondo circular/orgánico celeste pastel, íconos decorativos (destello, cruz, líneas de movimiento). Sin gradientes ni sombras complejas.
+Se aplican también a `/verify` y `/government` para que todo el sitio quede consistente.
 
-- **IL-01 Hero** — dos personajes: uno señalando una pantalla con hallazgos de accesibilidad, otro con laptop sobre pila de libros. Es la pieza principal.
-- **IL-02 Verificación** — persona con audífonos junto a una ventana de lector de pantalla (para "How We Verify").
-- **IL-03 Documentos** — persona reparando/etiquetando un documento (sección PDF / remediación).
-- **IL-04 Gobierno / audiencias** — tres figuras institucionales conectadas a rutas (encabeza el diagrama de routing).
-- **IL-05 Deadline** — figura frente a un calendario/línea de tiempo (sección Deadline Reality).
+## /services — Services hub (nuevo)
 
-Se generan como PNG con fondo transparente y se suben como assets CDN.
+- Hero: "Accessibility consulting built around evidence" + subtítulo de seis servicios / un modelo operativo.
+- **Engagement Model Rail**: los 6 pasos (Scope → Test → Prioritize → Remediate → Verify → Govern) como riel horizontal animado — línea que se dibuja al entrar en viewport, nodos numerados que se encienden en cascada, scroll horizontal en mobile con snap. Reutiliza el patrón de `MethodologyFlowDiagram`.
+- 4 tarjetas primarias (S-01 a S-04) con ícono de `ServiceIcon`, TRACE badge, estado ACTIVE/VERIFIED, borde sólido y hover con elevación + flecha "Learn more" que se desplaza.
+- Divisor "PHASE 2 — UPCOMING" y 2 tarjetas secundarias con borde punteado y badge navy.
+- `PhaseScopeDiagram` existente reubicado aquí como cierre analítico.
+- Banda CTA navy.
 
-## 2. Hero rediseñado
+## /verify — ampliación
 
-- Layout asimétrico 55/45: a la izquierda H1 + subtítulo + CTAs; a la derecha **IL-01** con el card "Engagement Status Preview" superpuesto parcialmente sobre la ilustración (overlap real, no dos bloques apilados).
-- El card se reduce a lo esencial: badge TRACE, stepper, barra de progreso. Sale texto sobrante.
-- Movimiento: entrada escalonada de la ilustración por capas (fondo circular → personajes → íconos decorativos), barra de progreso que se anima de 0 a 38%, chispas con flotación sutil en loop.
+Se conservan los diagramas actuales y se agregan las secciones faltantes del wireframe:
 
-## 3. Diagramas: menos texto, más ritmo
+- Bloque "What changes for you": 4 tarjetas de audiencia (procurement officer, accessibility coordinator, technical evaluator, legal counsel) con entrada escalonada.
+- Tabla comparativa **Static-only vs Behavioral Verification** rediseñada: no una tabla plana sino dos columnas contrapuestas, la de la derecha en navy sólido, con filas que se revelan una a una.
+- El flujo de 9 etapas: verificar que enfatice visualmente las etapas 4 (Native NVDA capture) y 8 (Evidence sufficiency) con relleno cobalt y anillo, más su equivalente textual por nodo.
+- "Scoped non-conclusions" — bloque editorial de ancho corto con pull quote y regla gruesa.
+- "How this differs from manual review" + "Where human review still matters" como par de columnas.
+- Segunda `EvidenceArtifactCard` con el ejemplo del wireframe (Trace ID AV-2026-0xxx, Evidence sufficiency: Sufficient, Result: Pass).
+- Franja de cross-link: "Already remediated? → Post-Remediation Verification".
+- "Honest limits" con la afirmación final en peso alto sobre fondo paper.
+- Banda CTA navy con doble botón (Request a sample report walkthrough / Book a Readiness Call).
 
-Regla transversal: cada diagrama pierde entre 30% y 50% de su texto visible; lo que se elimina de la superficie se conserva en `<desc>` y en la lista semántica para accesibilidad.
+## /about (nuevo)
 
-- **MethodologyFlowDiagram** — de 9 cajas iguales a un carril con nodos: número grande, etiqueta corta, y detalle solo en el nodo activo/hover. Animación de trazado de la línea al entrar en viewport y avance secuencial de nodos.
-- **DocumentArchitectureDiagram** — sustituir el bloque de texto centrado por un badge compacto en la banda de discrepancia; conectores animados que "caen" de la capa de tags a la capa expuesta; los nodos que fallan pulsan una vez en coral.
-- **AudienceRoutingDiagram** — encabezado con **IL-04**; las líneas se dibujan de rol a destino al entrar en viewport; hover resalta una ruta y atenúa las otras.
-- **DeadlineCoverageDiagram** — barra de progreso temporal que crece al entrar en viewport y contador de meses restantes que se anima; **IL-05** al costado.
-- **PhaseScopeDiagram** — los puntos aparecen en cascada por columna en vez de todos a la vez.
+- Hero "Why ACT Verified exists" con el párrafo de Zenzo LLC.
+- Bio del fundador: layout asimétrico con marco para foto (placeholder marcado), cita en tipografía editorial. El nombre queda como `[Name]` hasta que lo confirmes — centralizado en una constante para cambiarlo en un solo punto.
+- **Operating principles**: los 3 principios como tarjetas numeradas grandes (01/02/03) con número decorativo gigante en gris claro, mismo tratamiento que los service cards del Home.
+- Divulgación de entidad matriz en bloque contenido con regla lateral cobalt.
+- Banda CTA navy.
 
-## 4. Service cards con más carácter
+## /contact (nuevo, solo diseño)
 
-- Número grande fantasma (01–06) al estilo de la referencia adjunta, en gris muy claro, con el ícono de línea en la esquina opuesta.
-- Hover: el número toma cobalt, la card se eleva y el ícono hace un micro-movimiento.
-- Entrada escalonada de la grilla al hacer scroll.
+- Hero corto "Let's talk about your Title II timeline".
+- Formulario en grilla de 2 columnas con los 9 campos del wireframe (Name, Organization, Email, Phone opcional, Service of interest, Entity type, Approximate timeline, Population served, Brief description). Componentes shadcn Input/Select/Textarea, labels visibles, `aria-describedby` para errores.
+- Validación en cliente con Zod + estados de error accesibles; al enviar muestra un estado de confirmación en pantalla (sin backend, según lo confirmado).
+- Panel lateral sticky con la nota de Secure Intake (`upload.actverified.com`) para compromisos activos, más tiempos de respuesta y ruta alternativa.
+- Banda CTA no aplica; cierra con footer.
 
-## 5. Secciones narrativas
+## Detalles técnicos
 
-- Insertar **IL-02** en "How We Verify" y **IL-03** en la sección de documentos, en composiciones alternadas (zigzag) para romper la monotonía vertical.
-- Contadores numéricos animados en las métricas.
-- Banda CTA final: acentos decorativos ligeros del sistema de ilustración sobre el navy.
-
-## 6. Detalles técnicos
-
-- Hook `useInView` propio (IntersectionObserver, sin dependencias nuevas) para disparar animaciones una sola vez al entrar en viewport.
-- Animaciones SVG con `stroke-dasharray` / `stroke-dashoffset` y transiciones CSS; nada de librerías pesadas.
-- Todas las animaciones anuladas bajo `prefers-reduced-motion` (la regla global ya existe en `styles.css`; se verifica que cubra los nuevos casos, incluido el estado final visible).
-- Las ilustraciones se marcan `aria-hidden` cuando son decorativas y llevan `alt` descriptivo cuando aportan significado.
-- Tokens nuevos en `styles.css`: `--illus-coral`, `--illus-mustard`, `--illus-sky`, restringidos por convención al uso ilustrativo.
-
-## Entregable
-
-Se genera primero **IL-01** para validar el estilo contigo antes de producir las otras cuatro, así evitamos rehacer el set completo si la dirección no convence.
+- Rutas nuevas: `src/routes/services.tsx`, `about.tsx`, `contact.tsx`; ampliación de `verify.tsx`.
+- Cada ruta con su propio `head()` (title, description, og:title, og:description, og:type, twitter:card, canonical). Sin og:image salvo que exista imagen absoluta real.
+- Contenido estructurado en `shared.ts` para no duplicar strings entre Home y hubs.
+- Animaciones vía `useInView` + clases `reveal` / `draw` ya existentes en `styles.css`, todas respetando `prefers-reduced-motion`.
+- Sin backend, sin nuevas dependencias más allá de las ya instaladas (zod, shadcn).
+- Contraste verificado a WCAG 2.1 AA en todos los pares de color nuevos.
