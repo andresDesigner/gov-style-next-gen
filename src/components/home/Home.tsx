@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Accessibility, Download, Phone, Sparkles } from "lucide-react";
-import { DeadlineCoverageDiagram } from "./DeadlineCoverageDiagram";
+import { DeadlineSection } from "./DeadlineSection";
 import { Illustration } from "./Illustration";
 import { useInView } from "@/hooks/use-in-view";
 import ilHero from "@/assets/il-01-hero.png";
