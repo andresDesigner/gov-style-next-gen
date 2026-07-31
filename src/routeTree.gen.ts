@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VerifyRouteImport } from './routes/verify'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as GovernmentRouteImport } from './routes/government'
 import { Route as IndexRouteImport } from './routes/index'
 
 const VerifyRoute = VerifyRouteImport.update({
   id: '/verify',
   path: '/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GovernmentRoute = GovernmentRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/government': typeof GovernmentRoute
+  '/services': typeof ServicesRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/government': typeof GovernmentRoute
+  '/services': typeof ServicesRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/government': typeof GovernmentRoute
+  '/services': typeof ServicesRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/government' | '/verify'
+  fullPaths: '/' | '/government' | '/services' | '/verify'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/government' | '/verify'
-  id: '__root__' | '/' | '/government' | '/verify'
+  to: '/' | '/government' | '/services' | '/verify'
+  id: '__root__' | '/' | '/government' | '/services' | '/verify'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   GovernmentRoute: typeof GovernmentRoute
+  ServicesRoute: typeof ServicesRoute
   VerifyRoute: typeof VerifyRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/verify'
       fullPath: '/verify'
       preLoaderRoute: typeof VerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/government': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   GovernmentRoute: GovernmentRoute,
+  ServicesRoute: ServicesRoute,
   VerifyRoute: VerifyRoute,
 }
 export const routeTree = rootRouteImport
