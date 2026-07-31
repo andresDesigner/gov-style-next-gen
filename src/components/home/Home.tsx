@@ -162,7 +162,6 @@ function ProgressMeter({ value }: { value: number }) {
 }
 
 export function Home() {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   return (
     <div className="min-h-screen bg-background text-foreground">
       <a
@@ -172,87 +171,8 @@ export function Home() {
         Skip to main content
       </a>
 
-      {/* Nav */}
-      <nav aria-label="Primary" className="sticky top-0 z-40 border-b border-foreground/10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-        <div className="mx-auto grid max-w-[1240px] grid-cols-[auto_1fr_auto] items-center gap-6 px-6 py-4">
-          <a href="/" aria-label="ACT Verified home" className="inline-flex shrink-0">
-            <Logo className="h-12 w-auto" />
-          </a>
-          <ul className="hidden lg:flex items-center justify-center gap-9 text-[15px] font-medium">
-            {NAV.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  aria-current={item.active ? "page" : undefined}
-                  className={
-                    item.active
-                      ? "text-primary underline decoration-primary decoration-2 underline-offset-[10px]"
-                      : "text-foreground/85 hover:text-primary transition-colors"
-                  }
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          
-          <a
-            href="#book"
-            className="btn-gov hidden lg:inline-flex items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
-          >
-            <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
-            Book a Readiness Call
-          </a>
+      <SiteHeader />
 
-          {/* Mobile menu trigger */}
-          <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
-            <SheetTrigger asChild>
-              <button
-                type="button"
-                aria-label="Open navigation menu"
-                className="lg:hidden inline-flex h-11 w-11 items-center justify-center border border-foreground/20 text-foreground"
-              >
-                <Menu aria-hidden="true" className="h-5 w-5" />
-              </button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[86vw] max-w-sm bg-white p-0">
-              <SheetHeader className="border-b border-foreground/10 px-6 py-4 text-left">
-                <SheetTitle className="font-mono text-xs uppercase tracking-widest text-foreground/60">
-                  Menu
-                </SheetTitle>
-              </SheetHeader>
-              <div className="flex h-[calc(100dvh-64px)] flex-col justify-between px-6 py-6">
-                <ul className="flex flex-col gap-1 text-base font-medium">
-                  {NAV.map((item) => (
-                    <li key={item.label}>
-                      <a
-                        href={item.href}
-                        onClick={() => setMobileNavOpen(false)}
-                        aria-current={item.active ? "page" : undefined}
-                        className={
-                          item.active
-                            ? "block py-3 text-primary border-b border-foreground/10"
-                            : "block py-3 text-foreground/85 hover:text-primary border-b border-foreground/10"
-                        }
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="#book"
-                  onClick={() => setMobileNavOpen(false)}
-                  className="btn-gov mt-6 inline-flex w-full items-center justify-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground hover:bg-accent/90"
-                >
-                  <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
-                  Book a Readiness Call
-                </a>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </nav>
 
       <main id="main">
         {/* Hero */}
