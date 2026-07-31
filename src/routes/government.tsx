@@ -108,7 +108,6 @@ function GovernmentPage() {
             </div>
           </div>
         </section>
-      </main>
 
         <CtaBand
           title="Bring us the decision you have to defend."
