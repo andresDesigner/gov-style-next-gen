@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as GovernmentRouteImport } from './routes/government'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const VerifyRoute = VerifyRouteImport.update({
@@ -29,6 +30,11 @@ const GovernmentRoute = GovernmentRouteImport.update({
   path: '/government',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/government': typeof GovernmentRoute
   '/services': typeof ServicesRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/government': typeof GovernmentRoute
   '/services': typeof ServicesRoute
   '/verify': typeof VerifyRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/government': typeof GovernmentRoute
   '/services': typeof ServicesRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/government' | '/services' | '/verify'
+  fullPaths: '/' | '/about' | '/government' | '/services' | '/verify'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/government' | '/services' | '/verify'
-  id: '__root__' | '/' | '/government' | '/services' | '/verify'
+  to: '/' | '/about' | '/government' | '/services' | '/verify'
+  id: '__root__' | '/' | '/about' | '/government' | '/services' | '/verify'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   GovernmentRoute: typeof GovernmentRoute
   ServicesRoute: typeof ServicesRoute
   VerifyRoute: typeof VerifyRoute
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GovernmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   GovernmentRoute: GovernmentRoute,
   ServicesRoute: ServicesRoute,
   VerifyRoute: VerifyRoute,
