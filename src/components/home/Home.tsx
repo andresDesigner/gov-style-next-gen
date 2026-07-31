@@ -14,6 +14,7 @@ import { engagementIcons, operationsIcons } from "./serviceIcons";
 import { serviceIconMap } from "./ServiceIcon";
 import { PhaseScopeDiagram } from "./PhaseScopeDiagram";
 import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
 import {
   primaryServices,
   secondaryServices,
