@@ -425,6 +425,39 @@
   animation-delay: calc(var(--stagger, 0) * 70ms + 140ms);
 }
 
+/* Horizontal assembly: rows slide in from alternating sides. */
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-38px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(38px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.reveal-x {
+  opacity: 0;
+}
+.reveal-x[data-inview="true"] {
+  animation: slide-in-left 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 110ms);
+}
+.reveal-x-right[data-inview="true"] {
+  animation-name: slide-in-right;
+}
+
+
 
 
 /* SVG stroke drawing: element sets --dash to its path length. */
@@ -470,10 +503,15 @@
   .reveal[data-inview="false"],
   .reveal-icon,
   .reveal-icon[data-inview="true"],
-  .reveal-icon[data-inview="false"] {
+  .reveal-icon[data-inview="false"],
+  .reveal-x,
+  .reveal-x[data-inview="true"],
+  .reveal-x[data-inview="false"] {
     opacity: 1 !important;
     animation: none !important;
+    transform: none !important;
   }
+
 
   .draw,
   .draw[data-inview="false"] {
