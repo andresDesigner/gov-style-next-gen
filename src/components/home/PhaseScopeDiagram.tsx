@@ -149,7 +149,7 @@ export function PhaseScopeDiagram() {
       </figcaption>
 
       {/* Column headers (desktop) */}
-      <div className="mt-2 hidden grid-cols-[minmax(0,1fr)_repeat(3,7.5rem)] items-end gap-4 rounded-t-xl bg-accent px-6 py-4 md:grid">
+      <div className="mt-2 hidden grid-cols-[minmax(0,1fr)_repeat(3,7.5rem)] items-end gap-4 rounded-t-xl bg-brand-header px-6 py-4 md:grid">
         <div className="font-mono text-xs font-semibold uppercase tracking-widest text-white">
           Service
         </div>
