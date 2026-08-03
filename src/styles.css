@@ -309,7 +309,13 @@
   --illus-mustard: #f2b134;
   --illus-sky: #dce6f7;
   --illus-sky-soft: #eaf0fa;
+
+  /* Signal orange — complementary accent approved for iconography,
+   * numbering and micro-accents. Never for CTAs or body copy. */
+  --signal: #ff8c42;
+  --signal-strong: #c2410c;
 }
+
 
 .illus-blob {
   background: radial-gradient(
