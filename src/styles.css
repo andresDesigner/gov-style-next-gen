@@ -405,6 +405,28 @@
   animation-delay: calc(var(--stagger, 0) * 90ms);
 }
 
+/* Icon entrance: fade + rise + slight scale, offset from its parent card. */
+@keyframes icon-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.reveal-icon {
+  opacity: 0;
+}
+.reveal-icon[data-inview="true"] {
+  animation: icon-pop 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger, 0) * 70ms + 140ms);
+}
+
+
+
 /* SVG stroke drawing: element sets --dash to its path length. */
 .draw {
   stroke-dasharray: var(--dash, 400);
