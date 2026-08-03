@@ -149,14 +149,14 @@ export function PhaseScopeDiagram() {
       </figcaption>
 
       {/* Column headers (desktop) */}
-      <div className="mt-2 hidden grid-cols-[minmax(0,1fr)_repeat(3,7.5rem)] items-end gap-4 px-6 py-3 md:grid">
-        <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+      <div className="mt-2 hidden grid-cols-[minmax(0,1fr)_repeat(3,7.5rem)] items-end gap-4 rounded-t-xl bg-accent px-6 py-4 md:grid">
+        <div className="font-mono text-xs font-semibold uppercase tracking-widest text-white">
           Service
         </div>
         {phases.map((p) => (
-          <div key={p.key} className="text-center font-mono text-[10px] uppercase tracking-widest">
-            <div className="text-foreground">{p.label}</div>
-            <div className="mt-1 normal-case tracking-normal text-foreground/50">{p.sub}</div>
+          <div key={p.key} className="text-center font-mono text-xs font-semibold uppercase tracking-widest text-white">
+            <div>{p.label}</div>
+            <div className="mt-1 normal-case tracking-normal text-white/70">{p.sub}</div>
           </div>
         ))}
       </div>
