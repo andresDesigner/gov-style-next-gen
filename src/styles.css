@@ -113,6 +113,9 @@
   --input: oklch(0.161 0.062 267 / 0.15);
   --ring: oklch(0.615 0.211 262);
 
+  /* brand-header: cobalt-deep #0442AC — table headers & brand frames */
+  --brand-header: oklch(0.419 0.200 215.29);
+
   --chart-1: oklch(0.362 0.201 267);
   --chart-2: oklch(0.615 0.211 262);
   --chart-3: oklch(0.42 0.05 267);
@@ -152,6 +155,7 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.551 0.027 264.364);
+  --brand-header: oklch(0.419 0.200 215.29);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
