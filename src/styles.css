@@ -503,10 +503,15 @@
   .reveal[data-inview="false"],
   .reveal-icon,
   .reveal-icon[data-inview="true"],
-  .reveal-icon[data-inview="false"] {
+  .reveal-icon[data-inview="false"],
+  .reveal-x,
+  .reveal-x[data-inview="true"],
+  .reveal-x[data-inview="false"] {
     opacity: 1 !important;
     animation: none !important;
+    transform: none !important;
   }
+
 
   .draw,
   .draw[data-inview="false"] {
