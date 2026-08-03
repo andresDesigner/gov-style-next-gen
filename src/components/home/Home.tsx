@@ -296,8 +296,8 @@ export function Home() {
         </section>
 
         <section aria-labelledby="deadline-reality-v4" className="overflow-x-hidden border-b border-foreground/10">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
-            <div className="col-span-12 lg:col-span-5">
+          <div className="mx-auto max-w-[1200px] px-6 py-24">
+            <div className="max-w-[68ch]">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Deadline Reality</div>
               <h2 id="deadline-reality-v4" className="mt-3 text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl">
                 The deadline is not optional, and the backlog is bigger than it looks.
@@ -309,37 +309,45 @@ export function Home() {
                 Last reviewed: 2026-07-16 · Informational, not legal advice.<br />
                 Source: ADA.gov / DOJ (per brief §6A)
               </div>
-              <Illustration
-                src={ilDeadline}
-                alt=""
-                width={1008}
-                height={1008}
-                accents={false}
-                blob={false}
-                className="mt-8 hidden max-w-[230px] lg:block"
-              />
-
             </div>
 
-            <div className="col-span-12 lg:col-span-7">
-              <div className="grid grid-cols-1 gap-0 border border-foreground/20 sm:grid-cols-2">
-                {[
-                  { label: "Standard", value: "AA", note: "WCAG 2.1 · mandatory baseline for all digital assets." },
-                  { label: "Runway", value: "9 mo", note: "From today to the Phase 1 deadline of April 26, 2027." },
-                  { label: "Coverage", value: "Web · App · PDF", note: "Third-party content and vendor platforms included." },
-                  { label: "Evidence", value: "Behavioral", note: "Native screen-reader verification, not scanner-only." },
-                ].map((cell, idx) => (
-                  <div
-                    key={cell.label}
-                    className={`bg-card p-6 border-b border-foreground/20 ${idx % 2 === 0 ? "sm:border-r" : ""} ${idx > 1 ? "sm:border-b-0" : ""}`}
-                  >
-                    <div className="font-mono text-[11px] uppercase tracking-widest text-foreground/50">{cell.label}</div>
-                    <div className="mt-2 text-3xl font-bold tracking-tight text-foreground tabular-nums sm:text-4xl">
-                      {cell.value}
+            <div className="mt-10 grid grid-cols-1 items-end gap-8 lg:grid-cols-12">
+              <div className="order-2 flex justify-center lg:order-1 lg:col-span-4">
+                <Illustration
+                  src={ilDeadline}
+                  alt=""
+                  width={1008}
+                  height={1008}
+                  accents={false}
+                  blob={false}
+                  className="max-w-[200px] lg:max-w-[230px]"
+                />
+              </div>
+
+              <div className="order-1 lg:order-2 lg:col-span-8">
+                <div className="border border-foreground/20 bg-card">
+                  {[
+                    { label: "Standard", value: "AA", note: "WCAG 2.1 · mandatory baseline for all digital assets." },
+                    { label: "Runway", value: "9 mo", note: "From today to the Phase 1 deadline of April 26, 2027." },
+                    { label: "Coverage", value: "Web · App · PDF", note: "Third-party content and vendor platforms included." },
+                    { label: "Evidence", value: "Behavioral", note: "Native screen-reader verification, not scanner-only." },
+                  ].map((cell, idx, arr) => (
+                    <div
+                      key={cell.label}
+                      className={`flex items-start gap-6 px-6 py-5 ${idx !== arr.length - 1 ? "border-b border-foreground/20" : ""}`}
+                    >
+                      <div className="w-28 shrink-0 pt-1 font-mono text-[11px] uppercase tracking-widest text-foreground/50">
+                        {cell.label}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-2xl font-bold tracking-tight text-foreground tabular-nums sm:text-3xl">
+                          {cell.value}
+                        </div>
+                        <p className="mt-1 max-w-[42ch] text-sm leading-relaxed text-foreground/70">{cell.note}</p>
+                      </div>
                     </div>
-                    <p className="mt-3 text-sm leading-relaxed text-foreground/70">{cell.note}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
