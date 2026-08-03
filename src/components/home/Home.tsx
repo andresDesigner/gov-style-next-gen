@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { Accessibility, Download, Phone, Sparkles } from "lucide-react";
+import { Accessibility, BadgeCheck, CalendarClock, Download, Layers, Phone, ScanEye, Sparkles } from "lucide-react";
 import { DeadlineSection } from "./DeadlineSection";
 import { Illustration } from "./Illustration";
 import { useInView } from "@/hooks/use-in-view";
@@ -334,17 +334,24 @@ export function Home() {
                 <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-[1fr_auto]">
                   <div className="border border-foreground/20 bg-card">
                     {[
-                      { label: "Standard", value: "AA", note: "WCAG 2.1 · mandatory baseline for all digital assets." },
-                      { label: "Runway", value: "9 mo", note: "From today to the Phase 1 deadline of April 26, 2027." },
-                      { label: "Coverage", value: "Web · App · PDF", note: "Third-party content and vendor platforms included." },
-                      { label: "Evidence", value: "Behavioral", note: "Native screen-reader verification, not scanner-only." },
+                      { label: "Standard", icon: BadgeCheck, value: "AA", note: "WCAG 2.1 · mandatory baseline for all digital assets." },
+                      { label: "Runway", icon: CalendarClock, value: "9 mo", note: "From today to the Phase 1 deadline of April 26, 2027." },
+                      { label: "Coverage", icon: Layers, value: "Web · App · PDF", note: "Third-party content and vendor platforms included." },
+                      { label: "Evidence", icon: ScanEye, value: "Behavioral", note: "Native screen-reader verification, not scanner-only." },
                     ].map((cell, idx, arr) => (
                       <div
                         key={cell.label}
                         className={`flex items-start gap-4 px-4 py-3 ${idx !== arr.length - 1 ? "border-b border-foreground/20" : ""}`}
                       >
-                        <div className="w-20 shrink-0 pt-1 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-                          {cell.label}
+                        <div className="w-20 shrink-0 pt-1">
+                          <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                            {cell.label}
+                          </div>
+                          <cell.icon
+                            aria-hidden="true"
+                            strokeWidth={1.5}
+                            className="mt-2 h-7 w-7 text-accent"
+                          />
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="text-lg font-bold tracking-tight text-foreground tabular-nums sm:text-xl">
