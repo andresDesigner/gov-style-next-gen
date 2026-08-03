@@ -280,25 +280,24 @@ export function Home() {
                         key={step.n}
                         data-inview={state}
                         style={{ ["--stagger" as string]: i }}
-                        className={`reveal reveal-stagger border-r border-b border-foreground/20 p-6 ${i === 0 ? "bg-card" : ""}`}
+                        className={`reveal reveal-stagger group border-r border-b border-foreground/20 p-6 motion-safe:transition-colors motion-safe:duration-300 hover:bg-card ${i === 0 ? "bg-card" : ""}`}
                       >
                         <div className="mb-4 flex items-start justify-between">
-                          <div className={`num-display-sm tabular-nums ${i === 0 ? "text-primary" : "text-foreground/25"}`}>{step.n}</div>
+                          <div className={`num-display-sm tabular-nums transition-colors duration-300 ${i === 0 ? "text-primary" : "text-foreground/25 group-hover:text-primary"}`}>{step.n}</div>
                           {Icon ? (
                             <span
                               aria-hidden="true"
                               data-inview={state}
                               style={{ ["--stagger" as string]: i }}
-                              className={`reveal-icon grid h-12 w-12 shrink-0 place-items-center rounded-lg ${
-                                i === 0
-                                  ? "bg-[color-mix(in_oklab,var(--signal)_16%,transparent)] text-primary"
-                                  : "bg-foreground/[0.05] text-foreground/45"
+                              className={`reveal-icon grid h-12 w-12 shrink-0 place-items-center transition-colors duration-300 ${
+                                i === 0 ? "text-signal" : "text-foreground/35 group-hover:text-signal"
                               }`}
                             >
                               <Icon strokeWidth={1.75} className="h-7 w-7" />
                             </span>
                           ) : null}
                         </div>
+
                         <h3 className="text-sm font-semibold">{step.label}</h3>
                         <p className="mt-2 text-xs leading-relaxed text-foreground/65">{step.desc}</p>
                       </li>
