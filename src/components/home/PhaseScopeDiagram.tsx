@@ -39,13 +39,98 @@ function Dot({ filled }: { filled: boolean }) {
   );
 }
 
-export function PhaseScopeDiagram() {
-  const services = [...primaryServices, ...secondaryServices];
-  const { ref, inView } = useInView<HTMLElement>();
+/**
+ * One independent row. Each row owns its IntersectionObserver, so it animates
+ * exactly when it enters the viewport; `--stagger` sequences cells inside it.
+ * prefers-reduced-motion is handled by the .reveal-x / .reveal-icon rules.
+ */
+function ScopeRow({ id, title, index }: { id: string; title: string; index: number }) {
+  const active = scope[id];
+  const Icon = serviceIconMap[id];
+  const fromRight = index % 2 === 1;
+  const { ref, inView } = useInView<HTMLLIElement>({
+    rootMargin: "0px 0px -10% 0px",
+    threshold: 0.25,
+  });
   const state = inView ? "true" : "false";
 
   return (
-    <figure ref={ref} aria-labelledby="phase-scope-title" className="mt-12">
+    <li
+      ref={ref}
+      data-inview={state}
+      style={{ ["--stagger" as string]: 0 }}
+      className={`reveal-x ${
+        fromRight ? "reveal-x-right" : ""
+      } group grid grid-cols-1 items-center gap-4 rounded-xl border border-foreground/15 bg-card px-5 py-4 shadow-sm motion-safe:transition-shadow motion-safe:duration-300 hover:shadow-md md:grid-cols-[minmax(0,1fr)_repeat(3,7.5rem)] md:px-6`}
+    >
+      <div className="flex items-center gap-4">
+        {Icon ? (
+          <span
+            aria-hidden="true"
+            data-inview={state}
+            style={{ ["--stagger" as string]: 0 }}
+            className="reveal-icon grid h-11 w-11 shrink-0 place-items-center text-signal motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5"
+          >
+            <Icon strokeWidth={1.75} className="h-7 w-7" />
+          </span>
+        ) : null}
+        <div className="min-w-0">
+          <div className="font-mono text-[10px] tracking-widest text-primary">{id}</div>
+          <div className="mt-1 text-sm font-semibold text-foreground">{title}</div>
+        </div>
+      </div>
+
+      {/* Mobile phase strip */}
+      <dl className="grid grid-cols-3 gap-2 md:hidden">
+        {phases.map((p, pi) => (
+          <div
+            key={p.key}
+            data-inview={state}
+            style={{ ["--stagger" as string]: pi + 1 }}
+            className="reveal reveal-stagger flex flex-col items-center gap-1 border border-foreground/10 py-2"
+          >
+            <dt className="font-mono text-[9px] uppercase tracking-widest text-foreground/60">
+              {p.label}
+            </dt>
+            <dd className="flex flex-col items-center gap-1">
+              <Dot filled={isIncluded(p.key, active)} />
+              {p.key === active ? (
+                <span className="font-mono text-[8px] uppercase tracking-widest text-accent">
+                  Launches
+                </span>
+              ) : null}
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      {/* Desktop phase cells */}
+      {phases.map((p, pi) => (
+        <div
+          key={p.key}
+          data-inview={state}
+          style={{ ["--stagger" as string]: pi + 1 }}
+          className="reveal reveal-stagger hidden text-center md:block"
+        >
+          <div className="inline-flex flex-col items-center gap-1">
+            <Dot filled={isIncluded(p.key, active)} />
+            {p.key === active ? (
+              <span className="font-mono text-[9px] uppercase tracking-widest text-accent">
+                Launches
+              </span>
+            ) : null}
+          </div>
+        </div>
+      ))}
+    </li>
+  );
+}
+
+export function PhaseScopeDiagram() {
+  const services = [...primaryServices, ...secondaryServices];
+
+  return (
+    <figure aria-labelledby="phase-scope-title" className="mt-12">
       <figcaption
         id="phase-scope-title"
         className="flex flex-wrap items-baseline justify-between gap-4 border border-foreground/15 bg-card px-6 py-4"
@@ -76,74 +161,11 @@ export function PhaseScopeDiagram() {
         ))}
       </div>
 
-      {/* Rows as independent containers */}
+      {/* Rows as independent, individually-observed containers */}
       <ul className="space-y-2 overflow-x-hidden">
-        {services.map((s, ri) => {
-          const active = scope[s.id];
-          const Icon = serviceIconMap[s.id];
-          const fromRight = ri % 2 === 1;
-          return (
-            <li
-              key={s.id}
-              data-inview={state}
-              style={{ ["--stagger" as string]: ri }}
-              className={`reveal-x ${
-                fromRight ? "reveal-x-right" : ""
-              } group grid grid-cols-1 items-center gap-4 rounded-xl border border-foreground/15 bg-card px-5 py-4 shadow-sm motion-safe:transition-shadow motion-safe:duration-300 hover:shadow-md md:grid-cols-[minmax(0,1fr)_repeat(3,7.5rem)] md:px-6`}
-            >
-              <div className="flex items-center gap-4">
-                {Icon ? (
-                  <span
-                    aria-hidden="true"
-                    className="grid h-11 w-11 shrink-0 place-items-center text-signal motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5"
-                  >
-                    <Icon strokeWidth={1.75} className="h-7 w-7" />
-                  </span>
-                ) : null}
-                <div className="min-w-0">
-                  <div className="font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
-                  <div className="mt-1 text-sm font-semibold text-foreground">{s.title}</div>
-                </div>
-              </div>
-
-              {/* Mobile phase strip */}
-              <dl className="grid grid-cols-3 gap-2 md:hidden">
-                {phases.map((p) => (
-                  <div
-                    key={p.key}
-                    className="flex flex-col items-center gap-1 border border-foreground/10 py-2"
-                  >
-                    <dt className="font-mono text-[9px] uppercase tracking-widest text-foreground/60">
-                      {p.label}
-                    </dt>
-                    <dd className="flex flex-col items-center gap-1">
-                      <Dot filled={isIncluded(p.key, active)} />
-                      {p.key === active ? (
-                        <span className="font-mono text-[8px] uppercase tracking-widest text-accent">
-                          Launches
-                        </span>
-                      ) : null}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-
-              {/* Desktop phase cells */}
-              {phases.map((p) => (
-                <div key={p.key} className="hidden text-center md:block">
-                  <div className="inline-flex flex-col items-center gap-1">
-                    <Dot filled={isIncluded(p.key, active)} />
-                    {p.key === active ? (
-                      <span className="font-mono text-[9px] uppercase tracking-widest text-accent">
-                        Launches
-                      </span>
-                    ) : null}
-                  </div>
-                </div>
-              ))}
-            </li>
-          );
-        })}
+        {services.map((s, ri) => (
+          <ScopeRow key={s.id} id={s.id} title={s.title} index={ri} />
+        ))}
       </ul>
 
       <div className="mt-2 flex flex-wrap items-center gap-4 border border-foreground/15 bg-secondary/30 px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
