@@ -270,27 +270,44 @@ export function Home() {
             </div>
           </div>
           <div className="mx-auto max-w-[1200px]">
-            <ol className="grid grid-cols-2 border-l border-foreground/20 md:grid-cols-3 lg:grid-cols-6">
-              {engagement.map((step, i) => {
-                const Icon = engagementIcons[step.n];
-                return (
-                  <li key={step.n} className={`border-r border-b border-foreground/20 p-6 ${i === 0 ? "bg-card" : ""}`}>
-                    <div className="mb-4 flex items-start justify-between">
-                      <div className={`num-display-sm tabular-nums ${i === 0 ? "text-primary" : "text-foreground/25"}`}>{step.n}</div>
-                      {Icon ? (
-                        <Icon
-                          aria-hidden="true"
-                          strokeWidth={1.5}
-                          className={`h-5 w-5 ${i === 0 ? "text-primary" : "text-foreground/25"}`}
-                        />
-                      ) : null}
-                    </div>
-                    <h3 className="text-sm font-semibold">{step.label}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-foreground/65">{step.desc}</p>
-                  </li>
-                );
-              })}
-            </ol>
+            <RevealGrid className="block">
+              {(state) => (
+                <ol className="grid grid-cols-2 border-l border-foreground/20 md:grid-cols-3 lg:grid-cols-6">
+                  {engagement.map((step, i) => {
+                    const Icon = engagementIcons[step.n];
+                    return (
+                      <li
+                        key={step.n}
+                        data-inview={state}
+                        style={{ ["--stagger" as string]: i }}
+                        className={`reveal reveal-stagger border-r border-b border-foreground/20 p-6 ${i === 0 ? "bg-card" : ""}`}
+                      >
+                        <div className="mb-4 flex items-start justify-between">
+                          <div className={`num-display-sm tabular-nums ${i === 0 ? "text-primary" : "text-foreground/25"}`}>{step.n}</div>
+                          {Icon ? (
+                            <span
+                              aria-hidden="true"
+                              data-inview={state}
+                              style={{ ["--stagger" as string]: i }}
+                              className={`reveal-icon grid h-12 w-12 shrink-0 place-items-center rounded-lg ${
+                                i === 0
+                                  ? "bg-[color-mix(in_oklab,var(--signal)_16%,transparent)] text-primary"
+                                  : "bg-foreground/[0.05] text-foreground/45"
+                              }`}
+                            >
+                              <Icon strokeWidth={1.75} className="h-7 w-7" />
+                            </span>
+                          ) : null}
+                        </div>
+                        <h3 className="text-sm font-semibold">{step.label}</h3>
+                        <p className="mt-2 text-xs leading-relaxed text-foreground/65">{step.desc}</p>
+                      </li>
+                    );
+                  })}
+                </ol>
+              )}
+            </RevealGrid>
+
 
           </div>
         </section>
