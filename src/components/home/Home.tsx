@@ -315,7 +315,7 @@ export function Home() {
 
               {/* Right column: data card + illustration, side by side */}
               <div className="lg:col-span-7">
-                <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-[1fr_auto]">
+                <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-[1fr_auto]">
                   <div className="border border-foreground/20 bg-card">
                     {[
                       { label: "Standard", value: "AA", note: "WCAG 2.1 · mandatory baseline for all digital assets." },
@@ -325,16 +325,16 @@ export function Home() {
                     ].map((cell, idx, arr) => (
                       <div
                         key={cell.label}
-                        className={`flex items-start gap-4 px-5 py-4 ${idx !== arr.length - 1 ? "border-b border-foreground/20" : ""}`}
+                        className={`flex items-start gap-4 px-4 py-3 ${idx !== arr.length - 1 ? "border-b border-foreground/20" : ""}`}
                       >
-                        <div className="w-24 shrink-0 pt-1 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                        <div className="w-20 shrink-0 pt-1 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
                           {cell.label}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <div className="text-xl font-bold tracking-tight text-foreground tabular-nums sm:text-2xl">
+                          <div className="text-lg font-bold tracking-tight text-foreground tabular-nums sm:text-xl">
                             {cell.value}
                           </div>
-                          <p className="mt-0.5 max-w-[38ch] text-sm leading-relaxed text-foreground/70">{cell.note}</p>
+                          <p className="mt-0.5 max-w-[36ch] text-sm leading-snug text-foreground/70">{cell.note}</p>
                         </div>
                       </div>
                     ))}
@@ -348,7 +348,7 @@ export function Home() {
                       height={1008}
                       accents={false}
                       blob={false}
-                      className="max-w-[180px] md:max-w-[200px]"
+                      className="max-w-[200px] md:max-w-[240px]"
                     />
                   </div>
                 </div>
