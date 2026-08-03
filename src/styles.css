@@ -467,10 +467,14 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal[data-inview="true"],
-  .reveal[data-inview="false"] {
+  .reveal[data-inview="false"],
+  .reveal-icon,
+  .reveal-icon[data-inview="true"],
+  .reveal-icon[data-inview="false"] {
     opacity: 1 !important;
     animation: none !important;
   }
+
   .draw,
   .draw[data-inview="false"] {
     stroke-dashoffset: 0 !important;
