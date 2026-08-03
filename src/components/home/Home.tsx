@@ -270,27 +270,44 @@ export function Home() {
             </div>
           </div>
           <div className="mx-auto max-w-[1200px]">
-            <ol className="grid grid-cols-2 border-l border-foreground/20 md:grid-cols-3 lg:grid-cols-6">
-              {engagement.map((step, i) => {
-                const Icon = engagementIcons[step.n];
-                return (
-                  <li key={step.n} className={`border-r border-b border-foreground/20 p-6 ${i === 0 ? "bg-card" : ""}`}>
-                    <div className="mb-4 flex items-start justify-between">
-                      <div className={`num-display-sm tabular-nums ${i === 0 ? "text-primary" : "text-foreground/25"}`}>{step.n}</div>
-                      {Icon ? (
-                        <Icon
-                          aria-hidden="true"
-                          strokeWidth={1.5}
-                          className={`h-5 w-5 ${i === 0 ? "text-primary" : "text-foreground/25"}`}
-                        />
-                      ) : null}
-                    </div>
-                    <h3 className="text-sm font-semibold">{step.label}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-foreground/65">{step.desc}</p>
-                  </li>
-                );
-              })}
-            </ol>
+            <RevealGrid className="block">
+              {(state) => (
+                <ol className="grid grid-cols-2 border-l border-foreground/20 md:grid-cols-3 lg:grid-cols-6">
+                  {engagement.map((step, i) => {
+                    const Icon = engagementIcons[step.n];
+                    return (
+                      <li
+                        key={step.n}
+                        data-inview={state}
+                        style={{ ["--stagger" as string]: i }}
+                        className={`reveal reveal-stagger border-r border-b border-foreground/20 p-6 ${i === 0 ? "bg-card" : ""}`}
+                      >
+                        <div className="mb-4 flex items-start justify-between">
+                          <div className={`num-display-sm tabular-nums ${i === 0 ? "text-primary" : "text-foreground/25"}`}>{step.n}</div>
+                          {Icon ? (
+                            <span
+                              aria-hidden="true"
+                              data-inview={state}
+                              style={{ ["--stagger" as string]: i }}
+                              className={`reveal-icon grid h-12 w-12 shrink-0 place-items-center rounded-lg ${
+                                i === 0
+                                  ? "bg-[color-mix(in_oklab,var(--signal)_16%,transparent)] text-primary"
+                                  : "bg-foreground/[0.05] text-foreground/45"
+                              }`}
+                            >
+                              <Icon strokeWidth={1.75} className="h-7 w-7" />
+                            </span>
+                          ) : null}
+                        </div>
+                        <h3 className="text-sm font-semibold">{step.label}</h3>
+                        <p className="mt-2 text-xs leading-relaxed text-foreground/65">{step.desc}</p>
+                      </li>
+                    );
+                  })}
+                </ol>
+              )}
+            </RevealGrid>
+
 
           </div>
         </section>
@@ -367,24 +384,32 @@ export function Home() {
               <Link to="/services" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</Link>
             </div>
             {/* Node connector (sutil, decorativo) — iconos por servicio */}
-            <div aria-hidden="true" className="relative mb-4 hidden h-8 lg:block">
-              <div className="absolute left-16 right-16 top-1/2 h-px bg-foreground/20" />
-              <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-between px-8">
-                {primaryServices.map((s) => {
-                  const Icon = serviceIconMap[s.id];
-                  return (
-                    <span
-                      key={s.id}
-                      className="grid h-7 w-7 place-items-center rounded-full border border-primary/40 bg-background"
-                    >
-                      {Icon ? (
-                        <Icon strokeWidth={1.5} className="h-3.5 w-3.5 text-primary" />
-                      ) : null}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
+            <RevealGrid className="relative mb-6 hidden h-12 lg:block">
+              {(state) => (
+                <div aria-hidden="true">
+                  <div className="absolute left-16 right-16 top-1/2 h-px overflow-hidden">
+                    <span data-inview={state} className="rail-grow block h-px w-full origin-left bg-foreground/20" />
+                  </div>
+                  <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-between px-8">
+                    {primaryServices.map((s, i) => {
+                      const Icon = serviceIconMap[s.id];
+                      return (
+                        <span
+                          key={s.id}
+                          data-inview={state}
+                          style={{ ["--stagger" as string]: i }}
+                          className="reveal-icon grid h-12 w-12 place-items-center rounded-full border-[1.5px] border-signal/45 bg-background shadow-[0_0_0_5px_color-mix(in_oklab,var(--signal)_9%,transparent)]"
+                        >
+                          {Icon ? (
+                            <Icon strokeWidth={1.75} className="h-[22px] w-[22px] text-primary" />
+                          ) : null}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </RevealGrid>
             <RevealGrid className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {(state) =>
                 primaryServices.map((s, i) => {
@@ -406,19 +431,25 @@ export function Home() {
                         {String(i + 1).padStart(2, "0")}
                       </span>
 
+                      {Icon ? (
+                        <span
+                          aria-hidden="true"
+                          data-inview={state}
+                          style={{ ["--stagger" as string]: i }}
+                          className="reveal-icon relative mb-4 grid h-14 w-14 place-items-center rounded-lg bg-[color-mix(in_oklab,var(--signal)_12%,transparent)] text-primary motion-safe:transition-[background-color,transform] motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:bg-[color-mix(in_oklab,var(--signal)_22%,transparent)]"
+                        >
+                          <Icon strokeWidth={1.75} className="h-8 w-8" />
+                        </span>
+                      ) : null}
+
                       <div className="relative mb-4 flex items-center gap-2 font-mono text-xs tracking-widest text-foreground/60">
-                        {Icon ? (
-                          <Icon
-                            aria-hidden="true"
-                            className="h-5 w-5 shrink-0 text-primary motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5"
-                          />
-                        ) : null}
                         <span>
                           TRACE-1{String(i + 1).padStart(2, "0")}
                           <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
                           <span className={statusColor}>STATUS: {status}</span>
                         </span>
                       </div>
+
 
                       <div className="relative font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
                       <h3 className="relative mt-2 text-lg font-semibold leading-tight">{s.title}</h3>
@@ -446,16 +477,21 @@ export function Home() {
                       <span className="absolute right-4 top-4 inline-flex items-center bg-primary px-2 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
                         Phase 2
                       </span>
-                      <div className="mb-3 flex items-start gap-3 pr-24">
+                      <div className="mb-3 flex items-start gap-4 pr-24">
                         {Icon ? (
-                          <Icon aria-hidden="true" strokeWidth={1.5} className="mt-0.5 h-5 w-5 text-foreground/60" />
-
+                          <span
+                            aria-hidden="true"
+                            className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-foreground/[0.06] text-foreground/60"
+                          >
+                            <Icon strokeWidth={1.75} className="h-8 w-8" />
+                          </span>
                         ) : null}
                         <div className="min-w-0">
                           <div className="font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
                           <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
                         </div>
                       </div>
+
                       <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-foreground/75">{s.desc}</p>
                       <div className="mt-4 font-mono text-xs tracking-widest text-foreground/55">
                         TRACE-2{String(i + 1).padStart(2, "0")}

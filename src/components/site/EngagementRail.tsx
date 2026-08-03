@@ -17,7 +17,7 @@ export function EngagementRail() {
         {/* connecting rule */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute left-0 right-0 top-[26px] hidden h-px overflow-hidden md:block"
+          className="pointer-events-none absolute left-0 right-0 top-[32px] hidden h-px overflow-hidden md:block"
         >
           <span
             data-inview={state}
@@ -37,14 +37,16 @@ export function EngagementRail() {
               >
                 <span
                   aria-hidden="true"
-                  className="relative z-10 grid h-[52px] w-[52px] place-items-center border border-foreground/20 bg-background text-primary transition-colors"
+                  data-inview={state}
+                  className="reveal-icon relative z-10 grid h-16 w-16 place-items-center border-[1.5px] border-signal/45 bg-background text-primary shadow-[0_0_0_5px_color-mix(in_oklab,var(--signal)_9%,transparent)] transition-colors"
                 >
-                  {Icon ? <Icon strokeWidth={1.5} className="h-5 w-5" /> : null}
+                  {Icon ? <Icon strokeWidth={1.75} className="h-7 w-7" /> : null}
                 </span>
                 <div className="mt-4 flex items-baseline gap-2">
-                  <span className="font-mono text-[10px] tabular-nums text-accent">{step.n}</span>
+                  <span className="font-mono text-[10px] tabular-nums text-signal-strong">{step.n}</span>
                   <span className="text-sm font-semibold tracking-tight">{step.label}</span>
                 </div>
+
                 <p className="mt-1 max-w-[24ch] text-sm text-foreground/70">{step.desc}</p>
               </li>
             );
