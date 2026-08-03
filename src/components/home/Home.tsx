@@ -400,7 +400,7 @@ export function Home() {
                           className="reveal-icon grid h-12 w-12 place-items-center rounded-full border-[1.5px] border-signal/45 bg-background shadow-[0_0_0_5px_color-mix(in_oklab,var(--signal)_9%,transparent)]"
                         >
                           {Icon ? (
-                            <Icon strokeWidth={1.75} className="h-[22px] w-[22px] text-primary" />
+                            <Icon strokeWidth={1.75} className="h-[22px] w-[22px] text-signal" />
                           ) : null}
                         </span>
                       );
@@ -435,7 +435,7 @@ export function Home() {
                           aria-hidden="true"
                           data-inview={state}
                           style={{ ["--stagger" as string]: i }}
-                          className="reveal-icon relative mb-4 grid h-14 w-14 place-items-center rounded-lg bg-[color-mix(in_oklab,var(--signal)_12%,transparent)] text-primary motion-safe:transition-[background-color,transform] motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:bg-[color-mix(in_oklab,var(--signal)_22%,transparent)]"
+                          className="reveal-icon relative mb-4 grid h-14 w-14 place-items-center text-signal motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5"
                         >
                           <Icon strokeWidth={1.75} className="h-8 w-8" />
                         </span>
