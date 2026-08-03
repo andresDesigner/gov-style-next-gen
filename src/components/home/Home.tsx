@@ -367,24 +367,32 @@ export function Home() {
               <Link to="/services" className="font-mono text-[11px] uppercase tracking-wider text-primary hover:underline underline-offset-4 decoration-2">All services →</Link>
             </div>
             {/* Node connector (sutil, decorativo) — iconos por servicio */}
-            <div aria-hidden="true" className="relative mb-4 hidden h-8 lg:block">
-              <div className="absolute left-16 right-16 top-1/2 h-px bg-foreground/20" />
-              <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-between px-8">
-                {primaryServices.map((s) => {
-                  const Icon = serviceIconMap[s.id];
-                  return (
-                    <span
-                      key={s.id}
-                      className="grid h-7 w-7 place-items-center rounded-full border border-primary/40 bg-background"
-                    >
-                      {Icon ? (
-                        <Icon strokeWidth={1.5} className="h-3.5 w-3.5 text-primary" />
-                      ) : null}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
+            <RevealGrid className="relative mb-6 hidden h-12 lg:block">
+              {(state) => (
+                <div aria-hidden="true">
+                  <div className="absolute left-16 right-16 top-1/2 h-px overflow-hidden">
+                    <span data-inview={state} className="rail-grow block h-px w-full origin-left bg-foreground/20" />
+                  </div>
+                  <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-between px-8">
+                    {primaryServices.map((s, i) => {
+                      const Icon = serviceIconMap[s.id];
+                      return (
+                        <span
+                          key={s.id}
+                          data-inview={state}
+                          style={{ ["--stagger" as string]: i }}
+                          className="reveal-icon grid h-12 w-12 place-items-center rounded-full border-[1.5px] border-signal/45 bg-background shadow-[0_0_0_5px_color-mix(in_oklab,var(--signal)_9%,transparent)]"
+                        >
+                          {Icon ? (
+                            <Icon strokeWidth={1.75} className="h-[22px] w-[22px] text-primary" />
+                          ) : null}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </RevealGrid>
             <RevealGrid className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {(state) =>
                 primaryServices.map((s, i) => {
@@ -406,15 +414,19 @@ export function Home() {
                         {String(i + 1).padStart(2, "0")}
                       </span>
 
+                      {Icon ? (
+                        <span
+                          aria-hidden="true"
+                          data-inview={state}
+                          style={{ ["--stagger" as string]: i }}
+                          className="reveal-icon relative mb-4 grid h-14 w-14 place-items-center rounded-lg bg-[color-mix(in_oklab,var(--signal)_12%,transparent)] text-primary motion-safe:transition-[background-color,transform] motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:bg-[color-mix(in_oklab,var(--signal)_22%,transparent)]"
+                        >
+                          <Icon strokeWidth={1.75} className="h-8 w-8" />
+                        </span>
+                      ) : null}
+
                       <div className="relative mb-4 flex items-center gap-2 font-mono text-xs tracking-widest text-foreground/60">
-                        {Icon ? (
-                          <Icon
-                            aria-hidden="true"
-                            className="h-5 w-5 shrink-0 text-primary motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5"
-                          />
-                        ) : null}
-                        <span>
-                          TRACE-1{String(i + 1).padStart(2, "0")}
+
                           <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
                           <span className={statusColor}>STATUS: {status}</span>
                         </span>
