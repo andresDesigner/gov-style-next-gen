@@ -426,11 +426,13 @@ export function Home() {
                       ) : null}
 
                       <div className="relative mb-4 flex items-center gap-2 font-mono text-xs tracking-widest text-foreground/60">
-
+                        <span>
+                          TRACE-1{String(i + 1).padStart(2, "0")}
                           <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
                           <span className={statusColor}>STATUS: {status}</span>
                         </span>
                       </div>
+
 
                       <div className="relative font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
                       <h3 className="relative mt-2 text-lg font-semibold leading-tight">{s.title}</h3>
