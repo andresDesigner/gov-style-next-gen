@@ -19,6 +19,7 @@
  */
 
 @theme inline {
+  --color-brand-header: var(--brand-header);
   --color-signal: var(--signal);
   --color-signal-strong: var(--signal-strong);
   --radius-sm: calc(var(--radius) - 4px);
