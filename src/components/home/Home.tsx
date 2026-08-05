@@ -118,10 +118,10 @@ function RevealGrid({
   );
 }
 
-function ProgressMeter({ value }: { value: number }) {
+function ProgressMeter({ value, compact = false }: { value: number; compact?: boolean }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   return (
-    <div ref={ref} className="mt-5">
+    <div ref={ref} className={compact ? "" : "mt-5"}>
       <div
         className="h-1.5 w-full overflow-hidden bg-foreground/10"
         role="progressbar"
