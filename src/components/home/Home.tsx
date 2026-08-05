@@ -211,19 +211,13 @@ export function Home() {
               >
                 <div className="border border-foreground/15 bg-card p-4 shadow-[0_10px_30px_-12px_rgba(3,20,54,0.35)]">
                   <div className="flex flex-col gap-3.5">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="inline-flex items-center gap-2 bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground/70">
-                          <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
-                          Trace-001 · Active
-                        </div>
-                        <div className="mt-2 text-base font-semibold tracking-tight text-foreground">
-                          Engagement Status Preview
-                        </div>
+                    <div className="min-w-0">
+                      <div className="inline-flex items-center gap-2 bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground/70">
+                        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
+                        Trace-001 · Active
                       </div>
-                      <div className="shrink-0 text-right">
-                        <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/55">Progress</div>
-                        <div className="text-lg font-semibold tabular-nums text-primary">38%</div>
+                      <div className="mt-2 text-base font-semibold tracking-tight text-foreground">
+                        Engagement Status Preview
                       </div>
                     </div>
                     <TriStep compact />
