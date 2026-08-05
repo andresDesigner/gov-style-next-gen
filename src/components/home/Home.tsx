@@ -12,7 +12,7 @@ import { DocumentArchitectureDiagram } from "./DocumentArchitectureDiagram";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
 import { engagementIcons, operationsIcons } from "./serviceIcons";
-import { serviceIconMap } from "./ServiceIcon";
+import { serviceIconMap, IconAccessibilityTraditional } from "./ServiceIcon";
 import { PhaseScopeDiagram } from "./PhaseScopeDiagram";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
