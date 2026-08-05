@@ -69,7 +69,7 @@ export function DocumentArchitectureDiagram() {
                 fill="#ffffff"
                 stroke="#cbd2dd"
                 strokeWidth="1"
-                className="reveal reveal-stagger"
+                className="reveal reveal-stagger reveal-loop"
                 data-inview={state}
                 {...{ style: { ["--stagger" as string]: i } }}
               />
@@ -96,7 +96,7 @@ export function DocumentArchitectureDiagram() {
           return (
             <line
               key={"conn-" + i}
-              className={"draw draw-delay-" + Math.min(i + 1, 3)}
+              className={"draw draw-loop draw-delay-" + Math.min(i + 1, 3)}
               data-inview={state}
               style={{ ["--dash" as string]: 148 }}
               x1={x}
@@ -113,7 +113,7 @@ export function DocumentArchitectureDiagram() {
         <rect x="0" y="128" width="800" height="72" fill="#dbe4f7" />
         <line x1="0" y1="128" x2="800" y2="128" stroke="#033EAD" strokeWidth="1.25" strokeDasharray="4 4" />
         <line x1="0" y1="200" x2="800" y2="200" stroke="#033EAD" strokeWidth="1.25" strokeDasharray="4 4" />
-        <g className="reveal reveal-delay-2" data-inview={state}>
+        <g className="reveal reveal-delay-2 reveal-loop" data-inview={state}>
           <rect x="20" y="152" width="196" height="24" fill="#033EAD" />
           <text
             x="32"
@@ -143,7 +143,7 @@ export function DocumentArchitectureDiagram() {
                 rx={4}
                 fill="#031436"
                 stroke="#031436"
-                className="reveal reveal-stagger"
+                className="reveal reveal-stagger reveal-loop"
                 data-inview={state}
                 {...{ style: { ["--stagger" as string]: i + 2 } }}
               />
