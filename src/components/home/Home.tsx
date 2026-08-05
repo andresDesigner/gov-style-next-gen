@@ -521,7 +521,7 @@ export function Home() {
             <div className="col-span-12 lg:col-span-7">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Methodology Preview</div>
               <h2 className="mt-2 flex items-center gap-3 text-3xl font-medium tracking-tight md:text-4xl">
-                <Accessibility aria-hidden="true" strokeWidth={1.5} className="h-8 w-8 text-primary" />
+                <IconAccessibilityTraditional className="h-8 w-8 text-primary" />
                 Behavioral Verification.
               </h2>
               <p className="mt-4 max-w-[60ch] text-lg leading-relaxed text-foreground/80">
