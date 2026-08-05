@@ -63,16 +63,15 @@ function EvidenceUnderline() {
   );
 }
 
-function TriStep() {
+function TriStep({ compact = false }: { compact?: boolean }) {
   const steps = [
     { label: "Capture", state: "idle" as const },
     { label: "Reconcile", state: "active" as const },
     { label: "Verify", state: "done" as const },
   ];
   return (
-    <div className="mt-5" aria-label="Verification pipeline">
+    <div className={compact ? "" : "mt-5"} aria-label="Verification pipeline">
       <div className="relative mx-auto w-full">
-
         <div className="absolute left-6 right-6 top-3 h-px bg-foreground/25" aria-hidden="true" />
         <ol className="relative flex items-start justify-between">
           {steps.map((s) => (
@@ -119,10 +118,10 @@ function RevealGrid({
   );
 }
 
-function ProgressMeter({ value }: { value: number }) {
+function ProgressMeter({ value, compact = false }: { value: number; compact?: boolean }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   return (
-    <div ref={ref} className="mt-5">
+    <div ref={ref} className={compact ? "" : "mt-5"}>
       <div
         className="h-1.5 w-full overflow-hidden bg-foreground/10"
         role="progressbar"
@@ -208,18 +207,24 @@ export function Home() {
 
               <aside
                 aria-label="Engagement status preview"
-                className="relative z-10 mx-auto -mt-12 max-w-[340px] lg:absolute lg:bottom-[-1.5rem] lg:left-[-1.5rem] lg:mt-0 lg:max-w-[460px]"
+                className="relative z-10 mx-auto -mt-10 w-full max-w-[540px] lg:absolute lg:bottom-[6%] lg:left-1/2 lg:mt-0 lg:-translate-x-1/2 lg:max-w-[560px]"
               >
-                <div className="border border-foreground/15 bg-card p-5 shadow-[0_10px_30px_-12px_rgba(3,20,54,0.35)]">
-                  <div className="inline-flex items-center gap-2 bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground/70">
-                    <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
-                    Trace-001 · Active
+                <div className="border border-foreground/15 bg-card p-4 shadow-[0_10px_30px_-12px_rgba(3,20,54,0.35)] sm:p-5">
+                  <div className="grid grid-cols-1 items-center gap-4 sm:grid-cols-[1fr_auto] sm:gap-5">
+                    <div className="min-w-0">
+                      <div className="inline-flex items-center gap-2 bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground/70">
+                        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
+                        Trace-001 · Active
+                      </div>
+                      <div className="mt-2.5 text-base font-semibold tracking-tight text-foreground">
+                        Engagement Status Preview
+                      </div>
+                      <ProgressMeter value={38} compact />
+                    </div>
+                    <div className="min-w-0 sm:w-[180px]">
+                      <TriStep compact />
+                    </div>
                   </div>
-                  <div className="mt-4 text-base font-semibold tracking-tight text-foreground">
-                    Engagement Status Preview
-                  </div>
-                  <TriStep />
-                  <ProgressMeter value={38} />
                 </div>
               </aside>
             </div>
