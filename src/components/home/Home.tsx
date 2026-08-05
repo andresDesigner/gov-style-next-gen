@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { Accessibility, BadgeCheck, CalendarClock, Download, Layers, Phone, ScanEye, Sparkles } from "lucide-react";
+import { BadgeCheck, CalendarClock, Download, Layers, Phone, ScanEye, Sparkles } from "lucide-react";
 import { DeadlineSection } from "./DeadlineSection";
 import { Illustration } from "./Illustration";
 import { useInView } from "@/hooks/use-in-view";
