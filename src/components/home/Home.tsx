@@ -63,16 +63,15 @@ function EvidenceUnderline() {
   );
 }
 
-function TriStep() {
+function TriStep({ compact = false }: { compact?: boolean }) {
   const steps = [
     { label: "Capture", state: "idle" as const },
     { label: "Reconcile", state: "active" as const },
     { label: "Verify", state: "done" as const },
   ];
   return (
-    <div className="mt-5" aria-label="Verification pipeline">
+    <div className={compact ? "" : "mt-5"} aria-label="Verification pipeline">
       <div className="relative mx-auto w-full">
-
         <div className="absolute left-6 right-6 top-3 h-px bg-foreground/25" aria-hidden="true" />
         <ol className="relative flex items-start justify-between">
           {steps.map((s) => (
