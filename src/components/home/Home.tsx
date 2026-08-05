@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { Accessibility, BadgeCheck, CalendarClock, Download, Layers, Phone, ScanEye, Sparkles } from "lucide-react";
+import { BadgeCheck, CalendarClock, Download, Layers, Phone, ScanEye, Sparkles } from "lucide-react";
 import { DeadlineSection } from "./DeadlineSection";
 import { Illustration } from "./Illustration";
 import { useInView } from "@/hooks/use-in-view";
@@ -12,7 +12,7 @@ import { DocumentArchitectureDiagram } from "./DocumentArchitectureDiagram";
 import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
 import { engagementIcons, operationsIcons } from "./serviceIcons";
-import { serviceIconMap } from "./ServiceIcon";
+import { serviceIconMap, IconAccessibilityTraditional } from "./ServiceIcon";
 import { PhaseScopeDiagram } from "./PhaseScopeDiagram";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -521,7 +521,7 @@ export function Home() {
             <div className="col-span-12 lg:col-span-7">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Methodology Preview</div>
               <h2 className="mt-2 flex items-center gap-3 text-3xl font-medium tracking-tight md:text-4xl">
-                <Accessibility aria-hidden="true" strokeWidth={1.5} className="h-8 w-8 text-primary" />
+                <IconAccessibilityTraditional className="h-8 w-8 text-primary" />
                 Behavioral Verification.
               </h2>
               <p className="mt-4 max-w-[60ch] text-lg leading-relaxed text-foreground/80">

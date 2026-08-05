@@ -13,6 +13,21 @@ const base = {
   "aria-hidden": true,
 };
 
+// Traditional International Symbol of Access (ISA) — wheelchair figure
+export function IconAccessibilityTraditional(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="16" cy="5" r="2.5" />
+      <path d="M14 10 L16 5" />
+      <path d="M14 10 L10 14" />
+      <path d="M14 10 L12 14" />
+      <path d="M10 14 L17 14" />
+      <circle cx="8.5" cy="16" r="5" />
+      <circle cx="18.5" cy="19" r="1.5" />
+    </svg>
+  );
+}
+
 // S-01 — Title II Readiness Sprint: clock + urgency notch
 export function IconReadinessSprint(props: IconProps) {
   return (
