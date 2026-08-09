@@ -286,18 +286,16 @@ export function Home() {
                         key={step.n}
                         data-inview={state}
                         style={{ ["--stagger" as string]: i }}
-                        className={`reveal reveal-stagger group border-r border-b border-foreground/20 p-6 motion-safe:transition-colors motion-safe:duration-300 hover:bg-card ${i === 0 ? "bg-card" : ""}`}
+                        className="reveal reveal-stagger group border-r border-b border-foreground/20 bg-transparent p-6 motion-safe:transition-colors motion-safe:duration-300 hover:bg-card"
                       >
                         <div className="mb-4 flex items-start justify-between">
-                          <div className={`num-display-sm tabular-nums transition-colors duration-300 ${i === 0 ? "text-primary" : "text-foreground/25 group-hover:text-primary"}`}>{step.n}</div>
+                          <div className="num-display-sm tabular-nums text-foreground/25 transition-colors duration-300 group-hover:text-primary">{step.n}</div>
                           {Icon ? (
                             <span
                               aria-hidden="true"
                               data-inview={state}
                               style={{ ["--stagger" as string]: i }}
-                              className={`reveal-icon grid h-12 w-12 shrink-0 place-items-center transition-colors duration-300 ${
-                                i === 0 ? "text-signal" : "text-foreground/35 group-hover:text-signal"
-                              }`}
+                              className="reveal-icon grid h-12 w-12 shrink-0 place-items-center text-foreground/35 transition-colors duration-300 group-hover:text-signal"
                             >
                               <Icon strokeWidth={1.75} className="h-7 w-7" />
                             </span>
