@@ -4,7 +4,7 @@ import { BadgeCheck, CalendarClock, Download, Layers, Phone, ScanEye, Sparkles }
 import { DeadlineSection } from "./DeadlineSection";
 import { Illustration } from "./Illustration";
 import { useInView } from "@/hooks/use-in-view";
-import ilHero from "@/assets/il-01-hero.png";
+import ilHero from "@/assets/hero-persons.png.asset.json";
 import ilVerify from "@/assets/il-02-verify.png";
 import ilDeadline from "@/assets/il-05-deadline.png";
 import { EvidenceArtifactCard } from "./EvidenceArtifactCard";
