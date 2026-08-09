@@ -195,19 +195,21 @@ export function Home() {
 
             <div className="relative col-span-12 lg:col-span-5">
               <Illustration
-                src={ilHero}
+                src={ilHero.url}
                 alt="Two accessibility specialists reviewing an audit dashboard together."
-                width={1200}
-                height={1008}
+                width={547}
+                height={381}
                 eager
                 blob={false}
-                className="mx-auto max-w-[420px] lg:max-w-none"
+                accents={false}
+                className="mx-auto w-full max-w-[460px] lg:max-w-[560px] lg:-mt-6"
               />
 
               <aside
                 aria-label="Engagement status preview"
-                className="relative z-10 mx-auto -mt-10 w-full max-w-[540px] lg:absolute lg:bottom-[6%] lg:left-1/2 lg:mt-0 lg:-translate-x-1/2 lg:max-w-[560px]"
+                className="relative z-10 mx-auto -mt-8 w-full max-w-[540px] lg:absolute lg:-bottom-6 lg:left-0 lg:right-0 lg:mt-0 lg:max-w-none"
               >
+
                 <div className="border border-foreground/15 bg-card p-4 shadow-[0_10px_30px_-12px_rgba(3,20,54,0.35)] sm:p-5">
                   <div className="grid grid-cols-1 items-center gap-4 sm:grid-cols-[1fr_auto] sm:gap-5">
                     <div className="min-w-0">
