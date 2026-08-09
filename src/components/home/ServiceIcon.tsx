@@ -13,17 +13,31 @@ const base = {
   "aria-hidden": true,
 };
 
-// Traditional International Symbol of Access (ISA) — wheelchair figure
+// Traditional International Symbol of Access (ISA) — filled wheelchair figure
 export function IconAccessibilityTraditional(props: IconProps) {
   return (
-    <svg {...base} {...props}>
-      <circle cx="16" cy="5" r="2.5" />
-      <path d="M14 10 L16 5" />
-      <path d="M14 10 L10 14" />
-      <path d="M14 10 L12 14" />
-      <path d="M10 14 L17 14" />
-      <circle cx="8.5" cy="16" r="5" />
-      <circle cx="18.5" cy="19" r="1.5" />
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      stroke="none"
+      aria-hidden="true"
+      {...props}
+    >
+      {/* Head */}
+      <circle cx="10.6" cy="4.9" r="2.2" />
+      {/* Body, arm, seat and leg as one solid shape */}
+      <path d="M8.8 7.4h3.6v4.6h6.4v2.2H10v5.2H8.8v-5.2H6.4v-2.2h2.4V7.4z" />
+      <path d="M12.4 10.6l4.4-0.1 3.4 5.2-1.8 1.2-2.8-4.3H12.4z" />
+      {/* Large wheel */}
+      <path
+        d="M5.5 12.5a5.3 5.3 0 1 1 9.8 0"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+      {/* Small rear wheel */}
+      <circle cx="18.6" cy="18.6" r="2.1" />
     </svg>
   );
 }
