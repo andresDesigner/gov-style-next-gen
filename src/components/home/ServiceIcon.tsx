@@ -17,47 +17,19 @@ const base = {
 export function IconAccessibilityTraditional(props: IconProps) {
   return (
     <svg
-      viewBox="0 0 24 24"
+      viewBox="0 0 315.86 391.01"
       fill="currentColor"
       stroke="none"
       aria-hidden="true"
       {...props}
     >
-      {/* Head */}
-      <circle cx="10.8" cy="4.8" r="2.2" />
-      {/* Torso, arm, seat and leg as a single solid silhouette */}
-      <path
-        d="
-          M 9.5 7.2
-          H 12
-          V 12.2
-          H 16.5
-          L 19.8 17.2
-          L 18.5 18.2
-          L 15.5 13.8
-          H 9.5
-          Z
-          M 10.8 9.8
-          H 16.2
-          V 11.4
-          H 10.8
-          Z
-        "
-        fill-rule="evenodd"
-      />
-      {/* Large wheel */}
-      <path
-        d="M5.4 12.5a5.4 5.4 0 1 1 9.8 0"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.3"
-        strokeLinecap="round"
-      />
-      {/* Small rear wheel */}
-      <circle cx="18.5" cy="18.5" r="2" />
+      <path d="M128.78,391h-17.38c-35.98-2.32-68.65-21.22-88.72-49.13C-.05,310.27-5.86,271,5.99,234.89c12.13-36.97,41.42-65.39,78.84-76.94l.04,36.13c-37.03,16.65-57.24,55.83-49.1,95.34,7.82,37.93,40.99,66.37,80.34,67.84s73.87-23.52,84.94-61.54l12.9-.2,13.42,26.42c-18.2,39.19-55.81,65.43-98.58,69.06Z" />
+      <path d="M175.46,227.42l66.61.08c7.89,0,15.66,4.44,19.3,11.58l51.81,101.67c6.01,11.79,1.55,25.49-9.86,31.13-11.84,5.85-24.84.69-30.86-11.14l-44.69-87.99-85.79-.1c-19.26-.02-33.83-15.29-34.47-34.27l.02-110.72c0-13.23,7.31-24.67,17.99-30.27,11.88-6.24,26.45-5.52,36.75,2.81,8.31,6.72,13.13,16.68,13.15,27.36l.08,50.82,57.02.03c5.62,0,10.51,2.92,13.48,6.86,3.4,4.49,4.37,10.49,2.22,15.64-3.03,7.24-9.11,11.51-16.87,11.5l-55.85-.03-.05,15.06Z" />
+      <circle cx="141.51" cy="38.48" r="38.48" />
     </svg>
   );
 }
+
 
 // S-01 — Title II Readiness Sprint: clock + urgency notch
 export function IconReadinessSprint(props: IconProps) {
