@@ -24,20 +24,25 @@ export function IconAccessibilityTraditional(props: IconProps) {
       {...props}
     >
       {/* Head */}
-      <circle cx="10.6" cy="4.9" r="2.2" />
-      {/* Body, arm, seat and leg as one solid shape */}
-      <path d="M8.8 7.4h3.6v4.6h6.4v2.2H10v5.2H8.8v-5.2H6.4v-2.2h2.4V7.4z" />
-      <path d="M12.4 10.6l4.4-0.1 3.4 5.2-1.8 1.2-2.8-4.3H12.4z" />
+      <circle cx="10.5" cy="5" r="2.2" />
+      {/* Torso */}
+      <rect x="9.3" y="7.4" width="2.4" height="5.4" rx="0.4" />
+      {/* Arm */}
+      <rect x="10.5" y="9.2" width="5.6" height="1.6" rx="0.4" />
+      {/* Seat / thigh */}
+      <rect x="6.3" y="12.2" width="9.4" height="1.6" rx="0.4" />
+      {/* Leg */}
+      <path d="M15.3 12.2l3.8 4.8-1.7 1.3-3.1-4H15.3z" />
       {/* Large wheel */}
       <path
-        d="M5.5 12.5a5.3 5.3 0 1 1 9.8 0"
+        d="M5.4 12.5a5.4 5.4 0 1 1 10 0"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2.4"
+        strokeWidth="2.3"
         strokeLinecap="round"
       />
       {/* Small rear wheel */}
-      <circle cx="18.6" cy="18.6" r="2.1" />
+      <circle cx="18.8" cy="18.8" r="2" />
     </svg>
   );
 }
