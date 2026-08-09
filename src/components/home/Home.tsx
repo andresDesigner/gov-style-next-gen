@@ -514,8 +514,6 @@ export function Home() {
               </div>
             </div>
 
-            <PhaseScopeDiagram />
-
           </div>
 
         </section>
