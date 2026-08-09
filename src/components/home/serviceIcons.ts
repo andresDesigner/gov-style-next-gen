@@ -24,12 +24,12 @@ export const serviceIcons: Record<string, LucideIcon> = {
 };
 
 export const engagementIcons: Record<string, LucideIcon> = {
-  "01": Search,
-  "02": TestTube2,
-  "03": ListChecks,
-  "04": Wrench,
-  "05": ShieldCheck,
-  "06": Landmark,
+  "1": Search,
+  "2": TestTube2,
+  "3": ListChecks,
+  "4": Wrench,
+  "5": ShieldCheck,
+  "6": Landmark,
 };
 
 export const operationsIcons: Record<string, LucideIcon> = {

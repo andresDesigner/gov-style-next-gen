@@ -35,12 +35,12 @@ export const secondaryServices = [
 ];
 
 export const engagement = [
-  { n: "01", label: "Scope", desc: "Inventory digital assets. Prioritize critical paths." },
-  { n: "02", label: "Test", desc: "Automated + native screen-reader behavioral evidence." },
-  { n: "03", label: "Prioritize", desc: "Risk-based roadmap for legal and procurement." },
-  { n: "04", label: "Remediate", desc: "Execution support for code and document repair." },
-  { n: "05", label: "Verify", desc: "Independent re-test confirming WCAG 2.1 AA." },
-  { n: "06", label: "Govern", desc: "Policy and procurement integration for the long term." },
+  { n: "1", label: "Scope", desc: "Inventory digital assets. Prioritize critical paths." },
+  { n: "2", label: "Test", desc: "Automated + native screen-reader behavioral evidence." },
+  { n: "3", label: "Prioritize", desc: "Risk-based roadmap for legal and procurement." },
+  { n: "4", label: "Remediate", desc: "Execution support for code and document repair." },
+  { n: "5", label: "Verify", desc: "Independent re-test confirming WCAG 2.1 AA." },
+  { n: "6", label: "Govern", desc: "Policy and procurement integration for the long term." },
 ];
 
 export const audience = [

@@ -13,7 +13,6 @@ import { SectionKicker } from "./SectionKicker";
 import { TraceBadge } from "./TraceBadge";
 import { engagementIcons, operationsIcons } from "./serviceIcons";
 import { serviceIconMap, IconAccessibilityTraditional } from "./ServiceIcon";
-import { PhaseScopeDiagram } from "./PhaseScopeDiagram";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import {
@@ -424,7 +423,6 @@ export function Home() {
             <RevealGrid className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {(state) =>
                 primaryServices.map((s, i) => {
-                  const Icon = serviceIconMap[s.id];
                   const status = i === 0 ? "ACTIVE" : i === 1 ? "PENDING" : "VERIFIED";
                   const statusColor =
                     status === "PENDING" ? "text-foreground/45" : "text-accent";
@@ -439,31 +437,17 @@ export function Home() {
                         aria-hidden="true"
                         className="pointer-events-none absolute -right-2 -top-6 select-none text-[7rem] font-bold leading-none tracking-tighter text-foreground/[0.045] transition-colors duration-300 group-hover:text-primary/10"
                       >
-                        {String(i + 1).padStart(2, "0")}
+                        {String(i + 1)}
                       </span>
 
-                      {Icon ? (
-                        <span
-                          aria-hidden="true"
-                          data-inview={state}
-                          style={{ ["--stagger" as string]: i }}
-                          className="reveal-icon relative mb-4 grid h-14 w-14 place-items-center text-signal motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5"
-                        >
-                          <Icon strokeWidth={1.75} className="h-8 w-8" />
-                        </span>
-                      ) : null}
-
-                      <div className="relative mb-4 flex items-center gap-2 font-mono text-xs tracking-widest text-foreground/60">
-                        <span>
-                          TRACE-1{String(i + 1).padStart(2, "0")}
-                          <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
-                          <span className={statusColor}>STATUS: {status}</span>
-                        </span>
+                      <div className="relative mb-3 font-mono text-sm font-bold tracking-widest text-foreground">
+                        <span>TRACE-1{String(i + 1)}</span>
+                        <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
+                        <span className={statusColor}>STATUS: {status}</span>
                       </div>
 
-
                       <div className="relative font-mono text-[10px] tracking-widest text-primary">{s.id}</div>
-                      <h3 className="relative mt-2 text-lg font-semibold leading-tight">{s.title}</h3>
+                      <h3 className="relative mt-1 text-base font-semibold leading-tight text-foreground/90">{s.title}</h3>
                       <p className="relative mt-3 text-sm leading-relaxed text-foreground/75">{s.desc}</p>
                     </article>
                   );
@@ -479,7 +463,6 @@ export function Home() {
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {secondaryServices.map((s, i) => {
-                  const Icon = serviceIconMap[s.id];
                   return (
                     <article
                       key={s.id}
@@ -488,34 +471,22 @@ export function Home() {
                       <span className="absolute right-4 top-4 inline-flex items-center bg-primary px-2 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
                         Phase 2
                       </span>
-                      <div className="mb-3 flex items-start gap-4 pr-24">
-                        {Icon ? (
-                          <span
-                            aria-hidden="true"
-                            className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-foreground/[0.06] text-foreground/60"
-                          >
-                            <Icon strokeWidth={1.75} className="h-8 w-8" />
-                          </span>
-                        ) : null}
-                        <div className="min-w-0">
-                          <div className="font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
-                          <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
-                        </div>
-                      </div>
 
-                      <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-foreground/75">{s.desc}</p>
-                      <div className="mt-4 font-mono text-xs tracking-widest text-foreground/55">
-                        TRACE-2{String(i + 1).padStart(2, "0")}
+                      <div className="relative mb-3 pr-24 font-mono text-sm font-bold tracking-widest text-foreground">
+                        <span>TRACE-2{String(i + 1)}</span>
                         <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
                         <span className="text-foreground/45">STATUS: PENDING</span>
                       </div>
+
+                      <div className="font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
+                      <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
+
+                      <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-foreground/75">{s.desc}</p>
                     </article>
                   );
                 })}
               </div>
             </div>
-
-            <PhaseScopeDiagram />
 
           </div>
 
