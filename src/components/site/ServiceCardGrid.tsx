@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { primaryServices, secondaryServices } from "@/components/home/shared";
-import { serviceIconMap } from "@/components/home/ServiceIcon";
 
 const STATUS = ["ACTIVE", "ACTIVE", "VERIFIED", "VERIFIED"] as const;
 
@@ -17,7 +16,6 @@ export function ServiceCardGrid() {
     <div ref={ref}>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {primaryServices.map((s, i) => {
-          const Icon = serviceIconMap[s.id];
           return (
             <article
               key={s.id}
@@ -29,29 +27,21 @@ export function ServiceCardGrid() {
                 aria-hidden="true"
                 className="pointer-events-none absolute -right-3 -top-8 select-none text-[8rem] font-bold leading-none tracking-tighter text-foreground/[0.045] transition-colors duration-300 group-hover:text-primary/10"
               >
-                {String(i + 1).padStart(2, "0")}
+                {String(i + 1)}
               </span>
 
-              <div className="relative flex items-center gap-2 font-mono text-xs tracking-widest text-foreground/60">
-                {Icon ? (
-                  <Icon
-                    aria-hidden="true"
-                    className="h-5 w-5 shrink-0 text-primary motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5"
-                  />
-                ) : null}
-                <span>
-                  TRACE-1{String(i + 1).padStart(2, "0")}
-                  <span aria-hidden="true" className="mx-1.5 text-foreground/30">
-                    ·
-                  </span>
-                  <span className="text-accent">STATUS: {STATUS[i]}</span>
+              <div className="relative mb-3 font-mono text-sm font-bold tracking-widest text-foreground">
+                <span>TRACE-1{String(i + 1)}</span>
+                <span aria-hidden="true" className="mx-1.5 text-foreground/30">
+                  ·
                 </span>
+                <span className="text-accent">STATUS: {STATUS[i]}</span>
               </div>
 
-              <div className="relative mt-5 font-mono text-[10px] tracking-widest text-primary">
+              <div className="relative font-mono text-[10px] tracking-widest text-primary">
                 {s.id}
               </div>
-              <h3 className="relative mt-2 text-xl font-semibold leading-tight tracking-tight">
+              <h3 className="relative mt-1 text-base font-semibold leading-tight tracking-tight text-foreground/90">
                 {s.title}
               </h3>
               <p className="relative mt-3 max-w-[46ch] text-sm leading-relaxed text-foreground/75">
@@ -76,7 +66,6 @@ export function ServiceCardGrid() {
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {secondaryServices.map((s, i) => {
-            const Icon = serviceIconMap[s.id];
             return (
               <article
                 key={s.id}
@@ -85,31 +74,23 @@ export function ServiceCardGrid() {
                 <span className="absolute right-4 top-4 inline-flex items-center bg-primary px-2 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
                   Phase 2
                 </span>
-                <div className="mb-3 flex items-start gap-3 pr-24">
-                  {Icon ? (
-                    <Icon
-                      aria-hidden="true"
-                      strokeWidth={1.5}
-                      className="mt-0.5 h-5 w-5 text-foreground/60"
-                    />
-                  ) : null}
-                  <div className="min-w-0">
-                    <div className="font-mono text-[10px] tracking-widest text-foreground/50">
-                      {s.id}
-                    </div>
-                    <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
-                  </div>
-                </div>
-                <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-foreground/75">
-                  {s.desc}
-                </p>
-                <div className="mt-4 font-mono text-xs tracking-widest text-foreground/55">
-                  TRACE-2{String(i + 1).padStart(2, "0")}
+
+                <div className="relative mb-3 pr-24 font-mono text-sm font-bold tracking-widest text-foreground">
+                  <span>TRACE-2{String(i + 1)}</span>
                   <span aria-hidden="true" className="mx-1.5 text-foreground/30">
                     ·
                   </span>
                   <span className="text-foreground/45">STATUS: PENDING</span>
                 </div>
+
+                <div className="font-mono text-[10px] tracking-widest text-foreground/50">
+                  {s.id}
+                </div>
+                <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
+
+                <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-foreground/75">
+                  {s.desc}
+                </p>
               </article>
             );
           })}
