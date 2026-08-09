@@ -122,7 +122,7 @@ function VerifyPage() {
         </section>
 
         <section aria-labelledby="static-vs" className="border-b border-foreground/10">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-10 px-6 py-20">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="col-span-12 lg:col-span-4">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
                 Approach Comparison
@@ -187,7 +187,7 @@ function VerifyPage() {
         </section>
 
         <section aria-labelledby="artifact" className="border-b border-foreground/10 bg-secondary/30">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-10 px-6 py-20">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="col-span-12 lg:col-span-5">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
                 Evidence Artifact

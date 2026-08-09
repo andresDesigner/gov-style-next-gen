@@ -21,7 +21,7 @@ export function PageHero({ kicker, title, lead, actions, aside, children }: Page
       className="dot-grid border-b border-foreground/10"
       style={{ backgroundColor: "#e6ecf5" }}
     >
-      <div className="mx-auto grid max-w-[1240px] grid-cols-12 items-center gap-10 px-6 py-16 lg:py-20">
+      <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
         <div className={aside ? "col-span-12 lg:col-span-7" : "col-span-12 lg:col-span-9"}>
           <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">
             {kicker}
@@ -35,7 +35,7 @@ export function PageHero({ kicker, title, lead, actions, aside, children }: Page
           {lead ? (
             <p className="mt-6 max-w-[62ch] text-lg text-foreground/80">{lead}</p>
           ) : null}
-          {actions ? <div className="mt-8 flex flex-wrap gap-3">{actions}</div> : null}
+          {actions ? <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">{actions}</div> : null}
           {children}
         </div>
         {aside ? <div className="col-span-12 lg:col-span-5">{aside}</div> : null}

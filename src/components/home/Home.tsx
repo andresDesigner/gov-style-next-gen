@@ -159,7 +159,7 @@ export function Home() {
       <main id="main">
         {/* Hero */}
         <header style={{ backgroundColor: "#e6ecf5" }}>
-          <div className="mx-auto grid max-w-[1240px] grid-cols-12 items-center gap-10 px-6 py-16 lg:py-20">
+          <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
             <div className="col-span-12 lg:col-span-7">
               <div className="mb-4 font-mono text-[11px] uppercase tracking-widest text-foreground/60">
                 Published · 2026-07-16
@@ -175,17 +175,17 @@ export function Home() {
                 consultancy — scoped for Title II readiness, defensible under audit.
               </p>
               
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href="#book"
-                  className="btn-gov inline-flex items-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+                  className="btn-gov inline-flex w-full items-center justify-center gap-2 bg-accent px-5 py-3 sm:w-auto text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
                 >
                   <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
                   Book a Readiness Call
                 </a>
                 <a
                   href="#capability"
-                  className="btn-gov inline-flex items-center gap-2 border-[1.5px] border-foreground/80 bg-transparent px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/[0.04]"
+                  className="btn-gov inline-flex w-full items-center justify-center gap-2 border-[1.5px] border-foreground/80 bg-transparent px-5 py-3 sm:w-auto text-sm font-medium text-foreground transition-colors hover:bg-foreground/[0.04]"
                 >
                   <Download aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
                   Download capability statement
@@ -240,9 +240,9 @@ export function Home() {
               <p className="max-w-[68ch] text-sm leading-relaxed text-background/85">
                 A Section 508 <strong className="font-semibold text-background">Trusted Tester-led practice with 10 years</strong> in accessibility compliance across federal, state, and local government.
               </p>
-              <div className="flex items-center gap-3">
+              <div className="flex min-w-0 flex-wrap items-center gap-3">
                 <TraceBadge id="TRACE-002" status="VERIFIED" variant="dark" />
-                <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-background/40 px-4 py-1.5 text-xs font-medium text-background">
+                <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-background/40 px-4 py-1.5 text-xs font-medium text-background">
                   <Sparkles aria-hidden="true" strokeWidth={1.5} className="h-3.5 w-3.5 text-accent" />
                   AI-assisted <span aria-hidden="true" className="text-background/40">|</span> Human-verified.
                 </span>
@@ -316,7 +316,7 @@ export function Home() {
         </section>
 
         <section aria-labelledby="deadline-reality-v4" className="overflow-x-hidden border-b border-foreground/10">
-          <div className="mx-auto max-w-[1200px] px-6 py-24">
+          <div className="mx-auto max-w-[1200px] px-6 py-16 sm:py-24">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
               {/* Left column: narrative */}
               <div className="lg:col-span-5">
@@ -493,7 +493,7 @@ export function Home() {
         </section>
 
         <section className="border-b border-foreground/10">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-24">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-6 py-16 sm:py-24 lg:grid-cols-12">
             <div className="col-span-12 lg:col-span-7">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Methodology Preview</div>
               <h2 className="mt-2 flex items-center gap-3 text-3xl font-medium tracking-tight md:text-4xl">
@@ -530,7 +530,7 @@ export function Home() {
               <dl className="mt-8 divide-y divide-foreground/10">
 
                 {audience.map((item) => (
-                  <div key={item.role} className="grid grid-cols-[140px_1fr] gap-4 py-4">
+                  <div key={item.role} className="grid grid-cols-1 gap-1 py-4 sm:grid-cols-[140px_1fr] sm:gap-4">
                     <dt className="text-sm font-semibold">{item.role}</dt>
                     <dd className="text-sm text-foreground/70">{item.desc}</dd>
                   </div>
@@ -568,18 +568,18 @@ export function Home() {
         </section>
 
         <section id="book" aria-labelledby="cta-v4" className="dot-grid-dark bg-primary text-primary-foreground">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-8 px-6 py-20">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="col-span-12 lg:col-span-8">
               <div className="font-mono text-[10px] uppercase tracking-widest text-accent">Book a Readiness Call</div>
               <h2 id="cta-v4" className="mt-3 max-w-[24ch] text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl">Get a defensible Title II readiness roadmap.</h2>
               <p className="mt-4 max-w-[52ch] text-base font-medium text-primary-foreground/95">No silent passes. No hidden uncertainty. A scoped read of what's exposed today and what has to change before April 2027.</p>
             </div>
             <div className="col-span-12 flex flex-col justify-end gap-3 lg:col-span-4 lg:items-end">
-              <a href="#" className="btn-gov inline-flex items-center justify-center gap-2 bg-accent px-6 py-3 text-center text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90">
+              <a href="#" className="btn-gov inline-flex w-full items-center justify-center gap-2 bg-accent px-6 py-3 sm:w-auto text-center text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90">
                 <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
                 Book a Readiness Call
               </a>
-              <a id="capability" href="#" className="btn-gov inline-flex items-center justify-center gap-2 border-[1.5px] border-primary-foreground/90 px-6 py-3 text-center text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10">
+              <a id="capability" href="#" className="btn-gov inline-flex w-full items-center justify-center gap-2 border-[1.5px] border-primary-foreground/90 px-6 py-3 sm:w-auto text-center text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10">
                 <Download aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
                 Download Capability Statement
               </a>

@@ -139,7 +139,7 @@ function ContactPage() {
         />
 
         <section className="border-b border-foreground/10">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-12 gap-10 px-6 py-16">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12">
             <div className="col-span-12 lg:col-span-8">
               {sent ? (
                 <div
