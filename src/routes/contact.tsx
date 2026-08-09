@@ -140,7 +140,7 @@ function ContactPage() {
 
         <section className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12">
-            <div className="col-span-12 lg:col-span-8">
+            <div className="lg:col-span-8">
               {sent ? (
                 <div
                   role="status"
@@ -308,7 +308,7 @@ function ContactPage() {
               )}
             </div>
 
-            <aside className="col-span-12 lg:col-span-4">
+            <aside className="lg:col-span-4">
               <div className="lg:sticky lg:top-28">
                 <div className="surface-navy p-6">
                   <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-background/70">

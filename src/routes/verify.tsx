@@ -123,7 +123,7 @@ function VerifyPage() {
 
         <section aria-labelledby="static-vs" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
-            <div className="col-span-12 lg:col-span-4">
+            <div className="lg:col-span-4">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
                 Approach Comparison
               </div>
@@ -138,7 +138,7 @@ function VerifyPage() {
               </p>
             </div>
 
-            <div className="col-span-12 lg:col-span-8">
+            <div className="lg:col-span-8">
               <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] border border-foreground/20">
                 <div className="border-b-2 border-foreground bg-card px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
                   Dimension
@@ -188,7 +188,7 @@ function VerifyPage() {
 
         <section aria-labelledby="artifact" className="border-b border-foreground/10 bg-secondary/30">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
-            <div className="col-span-12 lg:col-span-5">
+            <div className="lg:col-span-5">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
                 Evidence Artifact
               </div>
@@ -203,7 +203,7 @@ function VerifyPage() {
                 it came from. Reproducible by anyone who reads it.
               </p>
             </div>
-            <div className="col-span-12 lg:col-span-7">
+            <div className="lg:col-span-7">
               <EvidenceArtifactCard
                 caption="Excerpt from a verification finding record"
                 {...evidenceFindingF20270142}

@@ -26,7 +26,7 @@ export function CtaBand({
       className="dot-grid-dark bg-primary text-primary-foreground"
     >
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-6 py-14 sm:py-20 lg:grid-cols-12">
-        <div className="col-span-12 lg:col-span-8">
+        <div className="lg:col-span-8">
           <div className="font-mono text-[10px] uppercase tracking-widest text-accent">
             {kicker}
           </div>
@@ -42,7 +42,7 @@ export function CtaBand({
             </p>
           ) : null}
         </div>
-        <div className="col-span-12 flex flex-col justify-end gap-3 lg:col-span-4 lg:items-end">
+        <div className="flex flex-col justify-end gap-3 lg:col-span-4 lg:items-end">
           <a
             href="/#book"
             className="btn-gov inline-flex w-full items-center justify-center gap-2 bg-accent px-6 py-3 sm:w-auto text-center text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"

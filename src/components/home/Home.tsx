@@ -160,7 +160,7 @@ export function Home() {
         {/* Hero */}
         <header style={{ backgroundColor: "#e6ecf5" }}>
           <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
-            <div className="col-span-12 lg:col-span-7">
+            <div className="lg:col-span-7">
               <div className="mb-4 font-mono text-[11px] uppercase tracking-widest text-foreground/60">
                 Published · 2026-07-16
               </div>
@@ -193,7 +193,7 @@ export function Home() {
               </div>
             </div>
 
-            <div className="relative col-span-12 lg:col-span-5">
+            <div className="relative lg:col-span-5">
               <Illustration
                 src={ilHero.url}
                 alt="Two accessibility specialists reviewing an audit dashboard together."
@@ -494,7 +494,7 @@ export function Home() {
 
         <section className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-6 py-16 sm:py-24 lg:grid-cols-12">
-            <div className="col-span-12 lg:col-span-7">
+            <div className="lg:col-span-7">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Methodology Preview</div>
               <h2 className="mt-2 flex items-center gap-3 text-3xl font-medium tracking-tight md:text-4xl">
                 <IconAccessibilityTraditional className="h-8 w-8 text-primary" />
@@ -513,7 +513,7 @@ export function Home() {
 
             </div>
 
-            <aside aria-labelledby="audience-v4" className="relative isolate col-span-12 lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
+            <aside aria-labelledby="audience-v4" className="relative isolate lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Who We Help</div>
               <h3 id="audience-v4" className="mt-2 text-2xl font-medium tracking-tight">Built for procurement-driven buyers.</h3>
               <div className="relative mt-6 overflow-hidden">
@@ -569,12 +569,12 @@ export function Home() {
 
         <section id="book" aria-labelledby="cta-v4" className="dot-grid-dark bg-primary text-primary-foreground">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-6 py-14 sm:py-20 lg:grid-cols-12">
-            <div className="col-span-12 lg:col-span-8">
+            <div className="lg:col-span-8">
               <div className="font-mono text-[10px] uppercase tracking-widest text-accent">Book a Readiness Call</div>
               <h2 id="cta-v4" className="mt-3 max-w-[24ch] text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl">Get a defensible Title II readiness roadmap.</h2>
               <p className="mt-4 max-w-[52ch] text-base font-medium text-primary-foreground/95">No silent passes. No hidden uncertainty. A scoped read of what's exposed today and what has to change before April 2027.</p>
             </div>
-            <div className="col-span-12 flex flex-col justify-end gap-3 lg:col-span-4 lg:items-end">
+            <div className="flex flex-col justify-end gap-3 lg:col-span-4 lg:items-end">
               <a href="#" className="btn-gov inline-flex w-full items-center justify-center gap-2 bg-accent px-6 py-3 sm:w-auto text-center text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90">
                 <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
                 Book a Readiness Call

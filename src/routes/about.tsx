@@ -82,7 +82,7 @@ function AboutPage() {
 
         <section aria-labelledby="founder" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
-            <div className="col-span-12 lg:col-span-4">
+            <div className="lg:col-span-4">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
                 Practice Lead
               </div>
@@ -93,7 +93,7 @@ function AboutPage() {
                 Photo — optional
               </div>
             </div>
-            <div className="col-span-12 lg:col-span-8 lg:border-l lg:border-foreground/10 lg:pl-10">
+            <div className="lg:col-span-8 lg:border-l lg:border-foreground/10 lg:pl-10">
               <h2
                 id="founder"
                 className="text-3xl font-medium tracking-tight md:text-4xl"
