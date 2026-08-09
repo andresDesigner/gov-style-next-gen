@@ -463,7 +463,6 @@ export function Home() {
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {secondaryServices.map((s, i) => {
-                  const Icon = serviceIconMap[s.id];
                   return (
                     <article
                       key={s.id}
@@ -472,27 +471,17 @@ export function Home() {
                       <span className="absolute right-4 top-4 inline-flex items-center bg-primary px-2 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
                         Phase 2
                       </span>
-                      <div className="mb-3 flex items-start gap-4 pr-24">
-                        {Icon ? (
-                          <span
-                            aria-hidden="true"
-                            className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-foreground/[0.06] text-foreground/60"
-                          >
-                            <Icon strokeWidth={1.75} className="h-8 w-8" />
-                          </span>
-                        ) : null}
-                        <div className="min-w-0">
-                          <div className="font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
-                          <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
-                        </div>
-                      </div>
 
-                      <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-foreground/75">{s.desc}</p>
-                      <div className="mt-4 font-mono text-xs tracking-widest text-foreground/55">
-                        TRACE-2{String(i + 1).padStart(2, "0")}
+                      <div className="relative mb-3 pr-24 font-mono text-sm font-bold tracking-widest text-foreground">
+                        <span>TRACE-2{String(i + 1)}</span>
                         <span aria-hidden="true" className="mx-1.5 text-foreground/30">·</span>
                         <span className="text-foreground/45">STATUS: PENDING</span>
                       </div>
+
+                      <div className="font-mono text-[10px] tracking-widest text-foreground/50">{s.id}</div>
+                      <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
+
+                      <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-foreground/75">{s.desc}</p>
                     </article>
                   );
                 })}
