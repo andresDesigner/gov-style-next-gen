@@ -167,16 +167,20 @@ function ServicesPage() {
         <section aria-labelledby="phase-scope" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-                Availability
+              <div className="flex items-center gap-3">
+                <CalendarClock aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
+                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                  Availability
+                </div>
               </div>
               <h2
                 id="phase-scope"
-                className="mt-2 max-w-[20ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
+                className="mt-3 max-w-[20ch] text-balance font-medium tracking-tight"
+                style={{ fontSize: "clamp(1.85rem, 3.2vw, 2.75rem)" }}
               >
                 What you can contract today.
               </h2>
-              <p className="mt-4 max-w-[44ch] text-foreground/75">
+              <p className="mt-4 max-w-[44ch] text-lg text-foreground/75">
                 Hard MVP and Phase 1 services are contractable now. Phase 2 services are scoped and
                 scheduled, not sold ahead of delivery.
               </p>
@@ -185,10 +189,11 @@ function ServicesPage() {
                 alt=""
                 width={1024}
                 height={1024}
-                blob={false}
+                blob
                 accents={false}
                 className="mt-8 hidden max-w-[280px] lg:block"
               />
+
             </div>
             <div className="lg:col-span-8">
               <PhaseScopeDiagram />
