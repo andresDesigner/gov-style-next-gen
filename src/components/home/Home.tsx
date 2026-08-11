@@ -171,8 +171,8 @@ export function Home() {
                 Accessibility verification and compliance readiness for Title II.
               </h1>
               <p className="mt-6 max-w-[56ch] text-lg leading-relaxed text-foreground/70">
-                Independent audits and remediation from a governmental web accessibility
-                consultancy — scoped for Title II readiness, defensible under audit.
+                Independent audits and remediation for government and business — scoped to
+                your compliance deadline, defensible under audit.
               </p>
               
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -238,7 +238,7 @@ export function Home() {
           <div className="surface-navy">
             <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-4 px-6 py-5">
               <p className="max-w-[68ch] text-sm leading-relaxed text-background/85">
-                A Section 508 <strong className="font-semibold text-background">Trusted Tester-led practice with 10 years</strong> in accessibility compliance across federal, state, and local government.
+                A <strong className="font-semibold text-background">Trusted Tester–certified practice</strong>, testing to WCAG 2.1 AA and Section 508 standards, with 10 years of accessibility compliance work across federal, state, and local government.
               </p>
               <div className="flex min-w-0 flex-wrap items-center gap-3">
                 <TraceBadge id="TRACE-002" status="VERIFIED" variant="dark" />
@@ -515,7 +515,7 @@ export function Home() {
 
             <aside aria-labelledby="audience-v4" className="relative isolate lg:col-span-5 lg:border-l lg:border-foreground/10 lg:pl-8">
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Who We Help</div>
-              <h3 id="audience-v4" className="mt-2 text-2xl font-medium tracking-tight">Built for procurement-driven buyers.</h3>
+              <h3 id="audience-v4" className="mt-2 text-2xl font-medium tracking-tight">Answers for every stakeholder in the buying decision.</h3>
               <div className="relative mt-6 overflow-hidden">
                 <Illustration
                   src={ilVerify}
@@ -544,7 +544,7 @@ export function Home() {
           <div className="mx-auto max-w-[1200px] px-6 py-24">
             <div className="mb-10">
               <div className="eyebrow text-accent">Operations · Capability Statement</div>
-              <h2 id="operations-v4" className="mt-3 type-h2">Practice-level operating facts.</h2>
+              <h2 id="operations-v4" className="mt-3 type-h2">The infrastructure behind the audits.</h2>
             </div>
             <dl className="grid grid-cols-1 gap-px bg-background/15 border border-background/15 md:grid-cols-3">
               {operations.map((cell) => {
