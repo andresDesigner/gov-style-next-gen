@@ -78,6 +78,16 @@ function ServicesPage() {
           }
         />
 
+        <TrustBand
+          kicker="Why this scope"
+          statement="A Trusted Tester–certified practice, testing to WCAG 2.1 AA and Section 508 standards, with 10 years of accessibility compliance work across federal, state, and local government."
+          items={[
+            { icon: ShieldCheck, label: "Standards", value: "WCAG 2.1 AA · Section 508" },
+            { icon: FileCheck2, label: "Deliverable", value: "Trace-backed finding records" },
+            { icon: Timer, label: "Deadline", value: "April 26, 2027 coverage" },
+          ]}
+        />
+
         <section aria-labelledby="engagement-model" className="border-b border-foreground/10">
           <div className="mx-auto max-w-[1200px] px-6 py-20">
             <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
@@ -115,19 +125,37 @@ function ServicesPage() {
         </section>
 
         <section aria-labelledby="phase-scope" className="border-b border-foreground/10">
-          <div className="mx-auto max-w-[1200px] px-6 py-20">
-            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-              Availability
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                Availability
+              </div>
+              <h2
+                id="phase-scope"
+                className="mt-2 max-w-[20ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
+              >
+                What you can contract today.
+              </h2>
+              <p className="mt-4 max-w-[44ch] text-foreground/75">
+                Hard MVP and Phase 1 services are contractable now. Phase 2 services are scoped and
+                scheduled, not sold ahead of delivery.
+              </p>
+              <Illustration
+                src={ilDocs}
+                alt=""
+                width={1024}
+                height={1024}
+                blob={false}
+                accents={false}
+                className="mt-8 hidden max-w-[280px] lg:block"
+              />
             </div>
-            <h2
-              id="phase-scope"
-              className="mt-2 max-w-[26ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
-            >
-              What you can contract today.
-            </h2>
-            <PhaseScopeDiagram />
+            <div className="lg:col-span-8">
+              <PhaseScopeDiagram />
+            </div>
           </div>
         </section>
+
 
         <CtaBand
           title="Start with the service that matches your deadline."
