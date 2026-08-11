@@ -134,15 +134,6 @@ function VerifyPage() {
                 Intake, static extraction, behavioral capture, reconciliation, evidence sufficiency
                 — the same order on every engagement, so findings stay comparable over time.
               </p>
-              <Illustration
-                src={ilVerify}
-                alt=""
-                width={1024}
-                height={1024}
-                blob={false}
-                accents={false}
-                className="mt-8 hidden max-w-[260px] lg:block"
-              />
             </div>
             <div className="lg:col-span-8">
               <MethodologyFlowDiagram />
