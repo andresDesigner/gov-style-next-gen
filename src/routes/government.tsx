@@ -1,9 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { FileText, Workflow, Scale, ShieldCheck, Timer, Landmark, ArrowRight } from "lucide-react";
 import { AudienceRoutingDiagram } from "@/components/home/AudienceRoutingDiagram";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
+import { TrustBand } from "@/components/site/TrustBand";
+import { Illustration } from "@/components/home/Illustration";
+import { useInView } from "@/hooks/use-in-view";
+import ilGov from "@/assets/il-04-gov.png";
+
 
 
 
