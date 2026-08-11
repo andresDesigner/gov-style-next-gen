@@ -51,6 +51,13 @@ function ServicesPage() {
           kicker="Services · 4 primary + 2 Phase 2"
           title="Accessibility consulting built around evidence."
           lead="Six services, one operating model: scope, test, prioritize, remediate, verify, govern. Each engagement produces findings you can defend — not a checklist you have to take on faith."
+          illustration={{
+            src: ilServices,
+            alt: "",
+            width: 1024,
+            height: 1024,
+            maxWidthClass: "lg:max-w-[480px]",
+          }}
           actions={
             <>
               <a
