@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, Phone, ShieldCheck, FileCheck2, Timer } from "lucide-react";
+import { Download, Phone, ShieldCheck, FileCheck2, Timer, Layers } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
@@ -11,6 +11,8 @@ import { PhaseScopeDiagram } from "@/components/home/PhaseScopeDiagram";
 import { Illustration } from "@/components/home/Illustration";
 import ilServices from "@/assets/il-06-services.png";
 import ilDocs from "@/assets/il-03-docs.png";
+import ilVerify from "@/assets/il-02-verify.png";
+import ilDeadline from "@/assets/il-05-deadline.png";
 
 const TITLE = "Services — Accessibility consulting built around evidence";
 const DESC =
