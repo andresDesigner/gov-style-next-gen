@@ -1,5 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, Phone, ShieldCheck, FileCheck2, Timer, Layers } from "lucide-react";
+import {
+  Download,
+  Phone,
+  ShieldCheck,
+  FileCheck2,
+  Timer,
+  Layers,
+  CalendarClock,
+} from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
