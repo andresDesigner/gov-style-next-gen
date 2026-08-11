@@ -574,3 +574,132 @@
   }
 }
 
+
+/* ---------- Always-on loop motion for diagram graphics ---------- */
+
+/* Marching-ants flow along a connector. Set --dash (segment length). */
+@keyframes loop-dash {
+  to {
+    stroke-dashoffset: calc(var(--dash-cycle, 24) * -1);
+  }
+}
+.loop-dash[data-inview="true"] {
+  stroke-dasharray: var(--dash-a, 6) var(--dash-b, 6);
+  animation: loop-dash var(--loop-speed, 1.2s) linear infinite;
+  animation-delay: calc(var(--stagger, 0) * 160ms);
+}
+
+/* Soft pulse for nodes, dots and badges. */
+@keyframes loop-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(1.08);
+  }
+}
+.loop-pulse[data-inview="true"] {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: loop-pulse var(--loop-speed, 2.4s) ease-in-out infinite;
+  animation-delay: calc(var(--stagger, 0) * 180ms);
+}
+
+/* Expanding halo ring around an emphasized node. */
+@keyframes loop-halo {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+.loop-halo[data-inview="true"] {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: loop-halo var(--loop-speed, 2.6s) ease-out infinite;
+  animation-delay: calc(var(--stagger, 0) * 320ms);
+}
+
+/* Dot travelling along a horizontal connector. Set --travel in user units. */
+@keyframes loop-travel {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  10%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(var(--travel, 100px));
+  }
+}
+.loop-travel[data-inview="true"] {
+  animation: loop-travel var(--loop-speed, 2.6s) cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  animation-delay: calc(var(--stagger, 0) * 420ms);
+}
+
+/* Horizontal sweep across a band. Set --travel in user units. */
+@keyframes loop-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  15%,
+  70% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(var(--travel, 800px));
+  }
+}
+.loop-sweep[data-inview="true"] {
+  animation: loop-sweep var(--loop-speed, 4s) linear infinite;
+}
+
+/* Gentle float for illustration blocks and cards. */
+@keyframes loop-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.loop-float[data-inview="true"] {
+  animation: loop-float var(--loop-speed, 5s) ease-in-out infinite;
+  animation-delay: calc(var(--stagger, 0) * 240ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loop-dash,
+  .loop-pulse,
+  .loop-halo,
+  .loop-travel,
+  .loop-sweep,
+  .loop-float,
+  .loop-dash[data-inview="true"],
+  .loop-pulse[data-inview="true"],
+  .loop-halo[data-inview="true"],
+  .loop-travel[data-inview="true"],
+  .loop-sweep[data-inview="true"],
+  .loop-float[data-inview="true"] {
+    animation: none !important;
+    transform: none !important;
+  }
+  .loop-halo[data-inview="true"],
+  .loop-travel[data-inview="true"],
+  .loop-sweep[data-inview="true"] {
+    opacity: 0 !important;
+  }
+}

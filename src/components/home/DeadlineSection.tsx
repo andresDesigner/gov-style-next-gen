@@ -149,6 +149,11 @@ export function DeadlineSection() {
               style={{ ["--target-w" as string]: "34%" }}
             />
             <span className="absolute left-0 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
+            <span
+              data-inview={state}
+              className="loop-pulse absolute left-[34%] top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-signal"
+              style={{ ["--loop-speed" as string]: "2.4s" }}
+            />
             <span className="absolute left-[34%] top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-foreground/50 bg-card" />
             <span className="absolute right-0 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-foreground/30 bg-card" />
           </div>

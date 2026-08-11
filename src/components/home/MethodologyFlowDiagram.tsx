@@ -57,7 +57,32 @@ export function MethodologyFlowDiagram() {
           stroke="#cbd2dd"
           strokeWidth="2"
         />
-        {/* Rail progress — drawn on scroll */}
+        {/* Rail progress — drawn on scroll, then flows continuously */}
+        <line
+          className="loop-dash"
+          style={{
+            ["--dash-a" as string]: 10,
+            ["--dash-b" as string]: 8,
+            ["--dash-cycle" as string]: 18,
+            ["--loop-speed" as string]: "1.4s",
+          }}
+          data-inview={state}
+          x1={RAIL_START}
+          y1="62"
+          x2={RAIL_END}
+          y2="62"
+          stroke="#033EAD"
+          strokeWidth="2"
+        />
+        <circle
+          className="loop-travel"
+          data-inview={state}
+          style={{ ["--travel" as string]: `${RAIL_END - RAIL_START}px`, ["--loop-speed" as string]: "3.6s" }}
+          cx={RAIL_START}
+          cy="62"
+          r="4"
+          fill="var(--illus-coral)"
+        />
         <line
           className="draw"
           data-inview={state}
@@ -83,6 +108,19 @@ export function MethodologyFlowDiagram() {
               style={{ cursor: "default" }}
             >
               <circle cx={cx} cy="62" r={r + 12} fill="transparent" />
+              {emphasized ? (
+                <circle
+                  className="loop-halo"
+                  data-inview={state}
+                  style={{ ["--stagger" as string]: i, ["--loop-speed" as string]: "2.8s" }}
+                  cx={cx}
+                  cy="62"
+                  r={r}
+                  fill="none"
+                  stroke="#033EAD"
+                  strokeWidth="1.5"
+                />
+              ) : null}
               <circle
                 cx={cx}
                 cy="62"

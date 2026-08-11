@@ -95,9 +95,15 @@ export function AudienceRoutingDiagram() {
 
               {/* connector — drawn on scroll, staggered per route */}
               <line
-                className={"draw draw-delay-" + (i + 1)}
+                className="loop-dash"
                 data-inview={state}
-                style={{ ["--dash" as string]: 300 }}
+                style={{
+                  ["--dash-a" as string]: 8,
+                  ["--dash-b" as string]: 8,
+                  ["--dash-cycle" as string]: 16,
+                  ["--loop-speed" as string]: "1.3s",
+                  ["--stagger" as string]: i,
+                }}
                 x1="300"
                 y1={y}
                 x2="600"
@@ -105,8 +111,25 @@ export function AudienceRoutingDiagram() {
                 stroke="#033EAD"
                 strokeWidth="1.5"
               />
-              <circle cx="300" cy={y} r="3.5" fill="#033EAD" />
+              <circle
+                className="loop-pulse"
+                data-inview={state}
+                style={{ ["--stagger" as string]: i }}
+                cx="300"
+                cy={y}
+                r="3.5"
+                fill="#033EAD"
+              />
               <circle cx="600" cy={y} r="3.5" fill="#033EAD" />
+              <circle
+                className="loop-travel"
+                data-inview={state}
+                style={{ ["--travel" as string]: "300px", ["--stagger" as string]: i, ["--loop-speed" as string]: "2.8s" }}
+                cx="300"
+                cy={y}
+                r="4.5"
+                fill="var(--illus-coral)"
+              />
 
               {/* destination box */}
               <rect
