@@ -40,31 +40,36 @@ function PrinciplesGrid() {
   const state = inView ? "true" : "false";
   return (
     <div ref={ref} className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-      {operatingPrinciples.map((p, i) => (
-        <article
-          key={p.n}
-          data-inview={state}
-          style={{ ["--stagger" as string]: i }}
-          className="reveal reveal-stagger group relative overflow-hidden border border-foreground/15 bg-card p-8"
-        >
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-3 -top-8 select-none text-[8rem] font-bold leading-none tracking-tighter text-foreground/[0.05] transition-colors duration-300 group-hover:text-primary/10"
+      {operatingPrinciples.map((p, i) => {
+        const Icon = PRINCIPLE_ICONS[i % PRINCIPLE_ICONS.length];
+        return (
+          <article
+            key={p.n}
+            data-inview={state}
+            style={{ ["--stagger" as string]: i }}
+            className="reveal reveal-stagger group relative overflow-hidden rounded-xl border border-foreground/15 bg-card p-8 shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
           >
-            {p.n}
-          </span>
-          <div className="relative font-mono text-[10px] uppercase tracking-widest text-primary">
-            Principle {p.n}
-          </div>
-          <h3 className="relative mt-3 text-lg font-semibold leading-tight tracking-tight">
-            {p.title}
-          </h3>
-          <p className="relative mt-3 max-w-[34ch] text-sm leading-relaxed text-foreground/75">
-            {p.body}
-          </p>
-        </article>
-      ))}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-3 -top-8 select-none text-[8rem] font-bold leading-none tracking-tighter text-foreground/[0.05] transition-colors duration-300 group-hover:text-primary/10"
+            >
+              {String(i + 1)}
+            </span>
+            <Icon aria-hidden="true" strokeWidth={1.75} className="relative h-9 w-9 text-signal" />
+            <div className="relative mt-4 font-mono text-[10px] uppercase tracking-widest text-primary">
+              Principle {p.n}
+            </div>
+            <h3 className="relative mt-2 text-lg font-semibold leading-tight tracking-tight">
+              {p.title}
+            </h3>
+            <p className="relative mt-3 max-w-[34ch] text-sm leading-relaxed text-foreground/75">
+              {p.body}
+            </p>
+          </article>
+        );
+      })}
     </div>
+
   );
 }
 
