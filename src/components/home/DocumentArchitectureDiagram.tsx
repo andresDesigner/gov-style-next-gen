@@ -96,9 +96,15 @@ export function DocumentArchitectureDiagram() {
           return (
             <line
               key={"conn-" + i}
-              className={"draw draw-loop draw-delay-" + Math.min(i + 1, 3)}
+              className="loop-dash"
               data-inview={state}
-              style={{ ["--dash" as string]: 148 }}
+              style={{
+                ["--dash-a" as string]: 7,
+                ["--dash-b" as string]: 7,
+                ["--dash-cycle" as string]: 14,
+                ["--loop-speed" as string]: t.ok ? "1.8s" : "1.1s",
+                ["--stagger" as string]: i,
+              }}
               x1={x}
               y1={90}
               x2={x}
@@ -113,8 +119,19 @@ export function DocumentArchitectureDiagram() {
         <rect x="0" y="128" width="800" height="72" fill="#dbe4f7" />
         <line x1="0" y1="128" x2="800" y2="128" stroke="#033EAD" strokeWidth="1.25" strokeDasharray="4 4" />
         <line x1="0" y1="200" x2="800" y2="200" stroke="#033EAD" strokeWidth="1.25" strokeDasharray="4 4" />
-        <g className="reveal reveal-delay-2 reveal-loop" data-inview={state}>
-          <rect x="20" y="152" width="196" height="24" fill="#033EAD" />
+        <rect
+          className="loop-sweep"
+          data-inview={state}
+          style={{ ["--travel" as string]: "760px", ["--loop-speed" as string]: "4.2s" }}
+          x="0"
+          y="128"
+          width="40"
+          height="72"
+          fill="#033EAD"
+          opacity="0"
+        />
+        <g className="reveal reveal-delay-2" data-inview={state}>
+          <rect className="loop-pulse" data-inview={state} style={{ ["--loop-speed" as string]: "2.8s" }} x="20" y="152" width="196" height="24" fill="#033EAD" />
           <text
             x="32"
             y="169"
