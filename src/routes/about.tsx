@@ -119,7 +119,6 @@ function AboutPage() {
               />
             </div>
 
-            </div>
             <div className="lg:col-span-8 lg:border-l lg:border-foreground/10 lg:pl-10">
               <h2
                 id="founder"
@@ -127,29 +126,10 @@ function AboutPage() {
               >
                 A Trusted Tester–led practice.
               </h2>
-              <blockquote className="mt-6 border-l-2 border-primary pl-6 text-lg leading-relaxed text-foreground/85">
+              <blockquote className="mt-6 border-l-2 border-signal pl-6 text-lg leading-relaxed text-foreground/85">
                 {founderBio}
               </blockquote>
-              <dl className="mt-8 grid grid-cols-1 gap-0 border border-foreground/20 sm:grid-cols-3">
-                {[
-                  { k: "Certification", v: "Section 508 Trusted Tester" },
-                  { k: "Experience", v: "10+ years" },
-                  { k: "Levels served", v: "Federal · State · Local" },
-                ].map((c, i) => (
-                  <div
-                    key={c.k}
-                    className={
-                      "bg-card p-5 " +
-                      (i < 2 ? "border-b border-foreground/20 sm:border-b-0 sm:border-r" : "")
-                    }
-                  >
-                    <dt className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-                      {c.k}
-                    </dt>
-                    <dd className="mt-2 text-base font-semibold tracking-tight">{c.v}</dd>
-                  </div>
-                ))}
-              </dl>
+
             </div>
           </div>
         </section>
