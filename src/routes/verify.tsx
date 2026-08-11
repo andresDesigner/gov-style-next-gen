@@ -88,6 +88,7 @@ function VerifyPage() {
           kicker="How We Verify · Methodology"
           title="A nine-stage verification flow — not a scanner report."
           lead="Every finding travels through the same nine stages, from intake to trace. Two stages — NVDA behavioral capture and evidence sufficiency — are where we commit to what assistive technology actually exposes."
+          illustration={{ src: ilVerify, alt: "", width: 1024, height: 1024 }}
           actions={
             <>
               <a
