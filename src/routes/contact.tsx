@@ -1,15 +1,46 @@
 import { useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { CheckCircle2, Lock, Send } from "lucide-react";
+import {
+  CheckCircle2,
+  Lock,
+  Send,
+  PhoneCall,
+  ClipboardList,
+  FileSearch,
+} from "lucide-react";
 import { z } from "zod";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
+import { Illustration } from "@/components/home/Illustration";
 import {
   contactServices,
   contactEntityTypes,
   contactTimelines,
 } from "@/components/site/content";
+import ilContact from "@/assets/il-08-contact.png";
+
+const NEXT_STEPS = [
+  {
+    icon: ClipboardList,
+    step: "Step 1",
+    title: "You send the intake",
+    body: "Service, entity type, timeline and a short description of the surface at risk.",
+  },
+  {
+    icon: PhoneCall,
+    step: "Step 2",
+    title: "30-minute readiness call",
+    body: "We map your deadline exposure and name the shortest defensible path to coverage.",
+  },
+  {
+    icon: FileSearch,
+    step: "Step 3",
+    title: "Scoped proposal",
+    body: "Written scope, standards, evidence formats and delivery dates — reviewable by procurement.",
+  },
+];
+
 
 const TITLE = "Contact — Let's talk about your Title II timeline";
 const DESC =
@@ -136,7 +167,42 @@ function ContactPage() {
           kicker="Contact · Intake"
           title="Let's talk about your Title II timeline."
           lead="Tell us where you are and we'll route you to the right next step — readiness sprint, audit, remediation, or independent verification."
+          illustration={{ src: ilContact, alt: "", width: 1024, height: 1024, maxWidthClass: "lg:max-w-[380px]" }}
         />
+
+        <section aria-labelledby="next-steps" className="border-b border-foreground/10 bg-secondary/30">
+          <div className="mx-auto max-w-[1200px] px-6 py-14 sm:py-16">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/55">
+              What happens next
+            </div>
+            <h2
+              id="next-steps"
+              className="mt-2 max-w-[24ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
+            >
+              Three steps from intake to scoped proposal.
+            </h2>
+            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+              {NEXT_STEPS.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <article
+                    key={s.step}
+                    className="group rounded-xl border border-foreground/15 bg-card p-7 shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
+                  >
+                    <Icon aria-hidden="true" strokeWidth={1.75} className="h-9 w-9 text-signal" />
+                    <div className="mt-4 font-mono text-[10px] uppercase tracking-widest text-accent">
+                      {s.step}
+                    </div>
+                    <h3 className="mt-2 text-lg font-semibold tracking-tight">{s.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-foreground/75">{s.body}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+
 
         <section className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12">
@@ -341,6 +407,16 @@ function ContactPage() {
                   Informational only — submitting this form does not create a consulting
                   relationship and is not legal advice.
                 </p>
+                <Illustration
+                  src={ilContact}
+                  alt=""
+                  width={1024}
+                  height={1024}
+                  blob
+                  accents={false}
+                  className="mt-8 hidden max-w-[240px] lg:block"
+                />
+
               </div>
             </aside>
           </div>

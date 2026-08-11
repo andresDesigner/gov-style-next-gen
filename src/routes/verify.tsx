@@ -1,15 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, Phone, AlertTriangle } from "lucide-react";
+import {
+  Download,
+  Phone,
+  AlertTriangle,
+  ScanEye,
+  ListChecks,
+  FileCheck2,
+  Search,
+  ShieldQuestion,
+  FileSearch,
+} from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
+import { TrustBand } from "@/components/site/TrustBand";
 import { MethodologyFlowDiagram } from "@/components/home/MethodologyFlowDiagram";
 import { DocumentArchitectureDiagram } from "@/components/home/DocumentArchitectureDiagram";
 import { EvidenceArtifactCard } from "@/components/home/EvidenceArtifactCard";
+import { Illustration } from "@/components/home/Illustration";
 import { evidenceFindingF20270142 } from "@/components/home/shared";
 import { staticVsBehavioral, verifyAudience } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
+import ilVerify from "@/assets/il-02-verify.png";
+import ilDocs from "@/assets/il-03-docs.png";
+
+const COMPARISON_ICONS = [Search, ShieldQuestion, FileSearch];
 
 const TITLE = "How We Verify — Behavioral verification methodology";
 const DESC =
@@ -72,6 +88,7 @@ function VerifyPage() {
           kicker="How We Verify · Methodology"
           title="A nine-stage verification flow — not a scanner report."
           lead="Every finding travels through the same nine stages, from intake to trace. Two stages — NVDA behavioral capture and evidence sufficiency — are where we commit to what assistive technology actually exposes."
+          illustration={{ src: ilVerify, alt: "", width: 1024, height: 1024 }}
           actions={
             <>
               <a
@@ -92,32 +109,69 @@ function VerifyPage() {
           }
         />
 
+        <TrustBand
+          kicker="Verification Standard"
+          statement="Every conclusion is tied to captured assistive-technology behavior — reproducible from its trace, not from a scanner's rule name."
+          items={[
+            { icon: ScanEye, label: "Capture", value: "NVDA behavioral session" },
+            { icon: ListChecks, label: "Mapping", value: "WCAG 2.1 AA success criteria" },
+            { icon: FileCheck2, label: "Output", value: "Finding record with trace ID" },
+          ]}
+        />
+
         <section aria-labelledby="flow" className="border-b border-foreground/10">
-          <div className="mx-auto max-w-[1200px] px-6 py-20">
-            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-              Verification Flow
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                Verification Flow
+              </div>
+              <h2
+                id="flow"
+                className="mt-2 max-w-[18ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
+              >
+                Nine stages, one trace.
+              </h2>
+              <p className="mt-4 max-w-[44ch] text-foreground/75">
+                Intake, static extraction, behavioral capture, reconciliation, evidence sufficiency
+                — the same order on every engagement, so findings stay comparable over time.
+              </p>
             </div>
-            <h2 id="flow" className="mt-2 text-3xl font-medium tracking-tight md:text-4xl">
-              Nine stages, one trace.
-            </h2>
-            <MethodologyFlowDiagram />
+            <div className="lg:col-span-8">
+              <MethodologyFlowDiagram />
+            </div>
           </div>
         </section>
 
         <section aria-labelledby="structure" className="border-b border-foreground/10 bg-secondary/30">
-          <div className="mx-auto max-w-[1200px] px-6 py-20">
-            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-              Structure vs. Exposure
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                Structure vs. Exposure
+              </div>
+              <h2
+                id="structure"
+                className="mt-2 max-w-[20ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
+              >
+                What's in the document is not what the user hears.
+              </h2>
+              <p className="mt-4 max-w-[46ch] text-foreground/80">
+                Static analysis tells you the document's tag structure. Behavioral verification
+                tells you what the accessibility tree actually exposes to a screen reader. The gap
+                between the two layers is where compliance risk lives.
+              </p>
+              <Illustration
+                src={ilDocs}
+                alt=""
+                width={1024}
+                height={1024}
+                blob={false}
+                accents={false}
+                className="mt-8 hidden max-w-[280px] lg:block"
+              />
             </div>
-            <h2 id="structure" className="mt-2 text-3xl font-medium tracking-tight md:text-4xl">
-              What's in the document is not what the user hears.
-            </h2>
-            <p className="mt-4 max-w-[65ch] text-foreground/80">
-              Static analysis tells you the document's tag structure. Behavioral verification tells
-              you what the accessibility tree actually exposes to a screen reader. The gap between
-              the two layers is where compliance risk lives.
-            </p>
-            <DocumentArchitectureDiagram />
+            <div className="lg:col-span-8">
+              <DocumentArchitectureDiagram />
+            </div>
           </div>
         </section>
 
@@ -139,31 +193,40 @@ function VerifyPage() {
             </div>
 
             <div className="lg:col-span-8">
-              <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] border border-foreground/20">
-                <div className="border-b-2 border-foreground bg-card px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+              <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] overflow-hidden rounded-t-lg border border-foreground/20">
+                <div className="bg-brand-header px-4 py-4 text-sm font-bold text-primary-foreground">
                   Dimension
                 </div>
-                <div className="border-b-2 border-foreground bg-card px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+                <div className="bg-brand-header px-4 py-4 font-mono text-[11px] uppercase tracking-widest text-primary-foreground/85">
                   Static only
                 </div>
-                <div className="border-b-2 border-foreground bg-foreground px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-background/80">
+                <div className="bg-brand-header px-4 py-4 font-mono text-[11px] uppercase tracking-widest text-primary-foreground">
                   Behavioral verification
                 </div>
 
-                {staticVsBehavioral.map((r) => (
-                  <div key={r.capability} className="contents">
-                    <div className="border-b border-foreground/12 bg-card px-4 py-4 text-sm font-semibold">
-                      {r.capability}
+                {staticVsBehavioral.map((r, i) => {
+                  const Icon = COMPARISON_ICONS[i % COMPARISON_ICONS.length];
+                  return (
+                    <div key={r.capability} className="contents">
+                      <div className="flex items-start gap-3 border-b border-foreground/12 bg-card px-4 py-4 text-sm font-semibold">
+                        <Icon
+                          aria-hidden="true"
+                          strokeWidth={1.75}
+                          className="mt-0.5 h-6 w-6 shrink-0 text-accent"
+                        />
+                        <span className="min-w-0">{r.capability}</span>
+                      </div>
+                      <div className="border-b border-foreground/12 bg-card px-4 py-4 text-sm text-foreground/70">
+                        {r.staticOnly}
+                      </div>
+                      <div className="border-b border-foreground/12 bg-foreground/[0.04] px-4 py-4 text-sm font-medium text-foreground">
+                        {r.behavioral}
+                      </div>
                     </div>
-                    <div className="border-b border-foreground/12 bg-card px-4 py-4 text-sm text-foreground/70">
-                      {r.staticOnly}
-                    </div>
-                    <div className="border-b border-foreground/12 bg-foreground/[0.04] px-4 py-4 text-sm font-medium text-foreground">
-                      {r.behavioral}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
+
 
               <div className="mt-8 flex gap-4 border-l-2 border-[color:var(--illus-coral,#FF8C42)] bg-secondary/60 px-6 py-5">
                 <AlertTriangle

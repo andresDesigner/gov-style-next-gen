@@ -1,10 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { FileCheck2, AlertOctagon, Fingerprint, BadgeCheck, Clock, Landmark } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
+import { TrustBand } from "@/components/site/TrustBand";
+import { Illustration } from "@/components/home/Illustration";
 import { operatingPrinciples, founderBio } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
+import ilAbout from "@/assets/il-07-about.png";
+
+const PRINCIPLE_ICONS = [FileCheck2, AlertOctagon, Fingerprint];
 
 const TITLE = "About — Why ACT Verified exists";
 const DESC =
@@ -34,31 +40,36 @@ function PrinciplesGrid() {
   const state = inView ? "true" : "false";
   return (
     <div ref={ref} className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-      {operatingPrinciples.map((p, i) => (
-        <article
-          key={p.n}
-          data-inview={state}
-          style={{ ["--stagger" as string]: i }}
-          className="reveal reveal-stagger group relative overflow-hidden border border-foreground/15 bg-card p-8"
-        >
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-3 -top-8 select-none text-[8rem] font-bold leading-none tracking-tighter text-foreground/[0.05] transition-colors duration-300 group-hover:text-primary/10"
+      {operatingPrinciples.map((p, i) => {
+        const Icon = PRINCIPLE_ICONS[i % PRINCIPLE_ICONS.length];
+        return (
+          <article
+            key={p.n}
+            data-inview={state}
+            style={{ ["--stagger" as string]: i }}
+            className="reveal reveal-stagger group relative overflow-hidden rounded-xl border border-foreground/15 bg-card p-8 shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
           >
-            {p.n}
-          </span>
-          <div className="relative font-mono text-[10px] uppercase tracking-widest text-primary">
-            Principle {p.n}
-          </div>
-          <h3 className="relative mt-3 text-lg font-semibold leading-tight tracking-tight">
-            {p.title}
-          </h3>
-          <p className="relative mt-3 max-w-[34ch] text-sm leading-relaxed text-foreground/75">
-            {p.body}
-          </p>
-        </article>
-      ))}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-3 -top-8 select-none text-[8rem] font-bold leading-none tracking-tighter text-foreground/[0.05] transition-colors duration-300 group-hover:text-primary/10"
+            >
+              {String(i + 1)}
+            </span>
+            <Icon aria-hidden="true" strokeWidth={1.75} className="relative h-9 w-9 text-signal" />
+            <div className="relative mt-4 font-mono text-[10px] uppercase tracking-widest text-primary">
+              Principle {p.n}
+            </div>
+            <h3 className="relative mt-2 text-lg font-semibold leading-tight tracking-tight">
+              {p.title}
+            </h3>
+            <p className="relative mt-3 max-w-[34ch] text-sm leading-relaxed text-foreground/75">
+              {p.body}
+            </p>
+          </article>
+        );
+      })}
     </div>
+
   );
 }
 
@@ -78,6 +89,17 @@ function AboutPage() {
           kicker="About · Practice"
           title="Why ACT Verified exists."
           lead="ACT Verified is a consulting-led accessibility assurance practice operated under Zenzo LLC, built to bring evidence-grade rigor to accessibility verification for public-sector and regulated organizations facing legal exposure under ADA Title II."
+          illustration={{ src: ilAbout, alt: "", width: 1024, height: 1024, maxWidthClass: "lg:max-w-[380px]" }}
+        />
+
+        <TrustBand
+          kicker="Credentials"
+          statement="A Trusted Tester–certified practice, testing to WCAG 2.1 AA and Section 508 standards, with 10 years of accessibility compliance work across federal, state, and local government."
+          items={[
+            { icon: BadgeCheck, label: "Certification", value: "Section 508 Trusted Tester" },
+            { icon: Clock, label: "Experience", value: "10+ years" },
+            { icon: Landmark, label: "Levels served", value: "Federal · State · Local" },
+          ]}
         />
 
         <section aria-labelledby="founder" className="border-b border-foreground/10">
@@ -86,13 +108,17 @@ function AboutPage() {
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
                 Practice Lead
               </div>
-              <div
-                aria-hidden="true"
-                className="mt-4 grid aspect-[4/5] w-full max-w-[260px] place-items-center border border-dashed border-foreground/30 bg-secondary/40 font-mono text-[10px] uppercase tracking-widest text-foreground/40"
-              >
-                Photo — optional
-              </div>
+              <Illustration
+                src={ilAbout}
+                alt=""
+                width={1024}
+                height={1024}
+                blob
+                accents={false}
+                className="mt-4 max-w-[240px]"
+              />
             </div>
+
             <div className="lg:col-span-8 lg:border-l lg:border-foreground/10 lg:pl-10">
               <h2
                 id="founder"
@@ -100,29 +126,10 @@ function AboutPage() {
               >
                 A Trusted Tester–led practice.
               </h2>
-              <blockquote className="mt-6 border-l-2 border-primary pl-6 text-lg leading-relaxed text-foreground/85">
+              <blockquote className="mt-6 border-l-2 border-signal pl-6 text-lg leading-relaxed text-foreground/85">
                 {founderBio}
               </blockquote>
-              <dl className="mt-8 grid grid-cols-1 gap-0 border border-foreground/20 sm:grid-cols-3">
-                {[
-                  { k: "Certification", v: "Section 508 Trusted Tester" },
-                  { k: "Experience", v: "10+ years" },
-                  { k: "Levels served", v: "Federal · State · Local" },
-                ].map((c, i) => (
-                  <div
-                    key={c.k}
-                    className={
-                      "bg-card p-5 " +
-                      (i < 2 ? "border-b border-foreground/20 sm:border-b-0 sm:border-r" : "")
-                    }
-                  >
-                    <dt className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-                      {c.k}
-                    </dt>
-                    <dd className="mt-2 text-base font-semibold tracking-tight">{c.v}</dd>
-                  </div>
-                ))}
-              </dl>
+
             </div>
           </div>
         </section>
