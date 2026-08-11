@@ -1,15 +1,46 @@
 import { useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { CheckCircle2, Lock, Send } from "lucide-react";
+import {
+  CheckCircle2,
+  Lock,
+  Send,
+  PhoneCall,
+  ClipboardList,
+  FileSearch,
+} from "lucide-react";
 import { z } from "zod";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
+import { Illustration } from "@/components/home/Illustration";
 import {
   contactServices,
   contactEntityTypes,
   contactTimelines,
 } from "@/components/site/content";
+import ilContact from "@/assets/il-08-contact.png";
+
+const NEXT_STEPS = [
+  {
+    icon: ClipboardList,
+    step: "Step 1",
+    title: "You send the intake",
+    body: "Service, entity type, timeline and a short description of the surface at risk.",
+  },
+  {
+    icon: PhoneCall,
+    step: "Step 2",
+    title: "30-minute readiness call",
+    body: "We map your deadline exposure and name the shortest defensible path to coverage.",
+  },
+  {
+    icon: FileSearch,
+    step: "Step 3",
+    title: "Scoped proposal",
+    body: "Written scope, standards, evidence formats and delivery dates — reviewable by procurement.",
+  },
+];
+
 
 const TITLE = "Contact — Let's talk about your Title II timeline";
 const DESC =
