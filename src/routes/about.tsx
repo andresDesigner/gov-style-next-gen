@@ -1,10 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { FileCheck2, AlertOctagon, Fingerprint, BadgeCheck, Clock, Landmark } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
+import { TrustBand } from "@/components/site/TrustBand";
+import { Illustration } from "@/components/home/Illustration";
 import { operatingPrinciples, founderBio } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
+import ilAbout from "@/assets/il-07-about.png";
+
+const PRINCIPLE_ICONS = [FileCheck2, AlertOctagon, Fingerprint];
 
 const TITLE = "About — Why ACT Verified exists";
 const DESC =
