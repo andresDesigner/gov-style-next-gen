@@ -1,5 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, Phone, ShieldCheck, FileCheck2, Timer } from "lucide-react";
+import {
+  Download,
+  Phone,
+  ShieldCheck,
+  FileCheck2,
+  Timer,
+  Layers,
+  CalendarClock,
+} from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
@@ -11,6 +19,8 @@ import { PhaseScopeDiagram } from "@/components/home/PhaseScopeDiagram";
 import { Illustration } from "@/components/home/Illustration";
 import ilServices from "@/assets/il-06-services.png";
 import ilDocs from "@/assets/il-03-docs.png";
+import ilVerify from "@/assets/il-02-verify.png";
+import ilDeadline from "@/assets/il-05-deadline.png";
 
 const TITLE = "Services — Accessibility consulting built around evidence";
 const DESC =
@@ -90,53 +100,95 @@ function ServicesPage() {
 
         <section aria-labelledby="engagement-model" className="border-b border-foreground/10">
           <div className="mx-auto max-w-[1200px] px-6 py-20">
-            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-              Engagement Model
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+              <div className="lg:col-span-7">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                  Engagement Model
+                </div>
+                <h2
+                  id="engagement-model"
+                  className="mt-2 max-w-[26ch] text-balance font-medium tracking-tight"
+                  style={{ fontSize: "clamp(1.85rem, 3.2vw, 2.75rem)" }}
+                >
+                  One operating model runs under every service.
+                </h2>
+                <p className="mt-4 max-w-[62ch] text-lg text-foreground/75">
+                  Whichever service you start with, the work moves through the same six stages.
+                  That's what makes a finding from week two comparable to a finding from month six.
+                </p>
+              </div>
+              <div className="lg:col-span-5">
+                <Illustration
+                  src={ilVerify}
+                  alt=""
+                  width={1024}
+                  height={1024}
+                  blob
+                  accents
+                  className="mx-auto w-full max-w-[320px] lg:max-w-[380px]"
+                />
+              </div>
             </div>
-            <h2
-              id="engagement-model"
-              className="mt-2 max-w-[26ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
-            >
-              One operating model runs under every service.
-            </h2>
-            <p className="mt-4 max-w-[62ch] text-foreground/75">
-              Whichever service you start with, the work moves through the same six stages. That's
-              what makes a finding from week two comparable to a finding from month six.
-            </p>
             <EngagementRail />
           </div>
         </section>
 
         <section aria-labelledby="service-catalog" className="border-b border-foreground/10 bg-secondary/30">
           <div className="mx-auto max-w-[1200px] px-6 py-24">
-            <div className="mb-10">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-                Service Catalog
+            <div className="mb-10 grid grid-cols-1 items-end gap-8 lg:grid-cols-12">
+              <div className="lg:col-span-8">
+                <div className="flex items-center gap-3">
+                  <Layers aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
+                  <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                    Service Catalog
+                  </div>
+                </div>
+                <h2
+                  id="service-catalog"
+                  className="mt-3 max-w-[26ch] text-balance font-medium tracking-tight"
+                  style={{ fontSize: "clamp(1.85rem, 3.2vw, 2.75rem)" }}
+                >
+                  Four services available now. Two in Phase 2.
+                </h2>
+                <p className="mt-4 max-w-[58ch] text-lg text-foreground/75">
+                  Every card carries its own trace ID and status, so scope conversations start from
+                  the record rather than from a brochure.
+                </p>
               </div>
-              <h2
-                id="service-catalog"
-                className="mt-2 max-w-[26ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
-              >
-                Four services available now. Two in Phase 2.
-              </h2>
+              <div className="lg:col-span-4">
+                <Illustration
+                  src={ilDeadline}
+                  alt=""
+                  width={1008}
+                  height={1008}
+                  blob={false}
+                  accents={false}
+                  className="mx-auto hidden w-full max-w-[260px] lg:block"
+                />
+              </div>
             </div>
             <ServiceCardGrid />
           </div>
         </section>
 
+
         <section aria-labelledby="phase-scope" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-                Availability
+              <div className="flex items-center gap-3">
+                <CalendarClock aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
+                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                  Availability
+                </div>
               </div>
               <h2
                 id="phase-scope"
-                className="mt-2 max-w-[20ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
+                className="mt-3 max-w-[20ch] text-balance font-medium tracking-tight"
+                style={{ fontSize: "clamp(1.85rem, 3.2vw, 2.75rem)" }}
               >
                 What you can contract today.
               </h2>
-              <p className="mt-4 max-w-[44ch] text-foreground/75">
+              <p className="mt-4 max-w-[44ch] text-lg text-foreground/75">
                 Hard MVP and Phase 1 services are contractable now. Phase 2 services are scoped and
                 scheduled, not sold ahead of delivery.
               </p>
@@ -145,10 +197,11 @@ function ServicesPage() {
                 alt=""
                 width={1024}
                 height={1024}
-                blob={false}
+                blob
                 accents={false}
                 className="mt-8 hidden max-w-[280px] lg:block"
               />
+
             </div>
             <div className="lg:col-span-8">
               <PhaseScopeDiagram />
