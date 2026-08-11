@@ -1,15 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, Phone, AlertTriangle } from "lucide-react";
+import {
+  Download,
+  Phone,
+  AlertTriangle,
+  ScanEye,
+  ListChecks,
+  FileCheck2,
+  Search,
+  ShieldQuestion,
+  FileSearch,
+} from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
+import { TrustBand } from "@/components/site/TrustBand";
 import { MethodologyFlowDiagram } from "@/components/home/MethodologyFlowDiagram";
 import { DocumentArchitectureDiagram } from "@/components/home/DocumentArchitectureDiagram";
 import { EvidenceArtifactCard } from "@/components/home/EvidenceArtifactCard";
+import { Illustration } from "@/components/home/Illustration";
 import { evidenceFindingF20270142 } from "@/components/home/shared";
 import { staticVsBehavioral, verifyAudience } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
+import ilVerify from "@/assets/il-02-verify.png";
+import ilDocs from "@/assets/il-03-docs.png";
+
+const COMPARISON_ICONS = [Search, ShieldQuestion, FileSearch];
 
 const TITLE = "How We Verify — Behavioral verification methodology";
 const DESC =
