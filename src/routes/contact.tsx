@@ -167,7 +167,42 @@ function ContactPage() {
           kicker="Contact · Intake"
           title="Let's talk about your Title II timeline."
           lead="Tell us where you are and we'll route you to the right next step — readiness sprint, audit, remediation, or independent verification."
+          illustration={{ src: ilContact, alt: "", width: 1024, height: 1024, maxWidthClass: "lg:max-w-[380px]" }}
         />
+
+        <section aria-labelledby="next-steps" className="border-b border-foreground/10 bg-secondary/30">
+          <div className="mx-auto max-w-[1200px] px-6 py-14 sm:py-16">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/55">
+              What happens next
+            </div>
+            <h2
+              id="next-steps"
+              className="mt-2 max-w-[24ch] text-balance text-3xl font-medium tracking-tight md:text-4xl"
+            >
+              Three steps from intake to scoped proposal.
+            </h2>
+            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+              {NEXT_STEPS.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <article
+                    key={s.step}
+                    className="group rounded-xl border border-foreground/15 bg-card p-7 shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
+                  >
+                    <Icon aria-hidden="true" strokeWidth={1.75} className="h-9 w-9 text-signal" />
+                    <div className="mt-4 font-mono text-[10px] uppercase tracking-widest text-accent">
+                      {s.step}
+                    </div>
+                    <h3 className="mt-2 text-lg font-semibold tracking-tight">{s.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-foreground/75">{s.body}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+
 
         <section className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-12 sm:py-16 lg:grid-cols-12">
