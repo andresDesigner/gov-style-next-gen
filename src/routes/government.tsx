@@ -9,6 +9,7 @@ import { TrustBand } from "@/components/site/TrustBand";
 import { Illustration } from "@/components/home/Illustration";
 import { useInView } from "@/hooks/use-in-view";
 import ilGov from "@/assets/il-04-gov.png";
+import ilDeadline from "@/assets/il-05-deadline.png";
 
 
 
