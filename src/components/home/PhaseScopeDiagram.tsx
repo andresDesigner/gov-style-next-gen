@@ -29,7 +29,8 @@ function Dot({ filled }: { filled: boolean }) {
   return filled ? (
     <span
       aria-label="Included"
-      className="inline-block h-2.5 w-2.5 rounded-full bg-accent"
+      data-inview="true"
+      className="loop-pulse inline-block h-2.5 w-2.5 rounded-full bg-accent"
     />
   ) : (
     <span

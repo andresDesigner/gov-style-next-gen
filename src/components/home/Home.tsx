@@ -90,7 +90,11 @@ function TriStep({ compact = false }: { compact?: boolean }) {
                     <path d="M20 6 9 17l-5-5" />
                   </svg>
                 ) : s.state === "active" ? (
-                  <span className="h-2 w-2 rounded-full bg-primary" />
+                  <span
+                    data-inview="true"
+                    className="loop-pulse h-2 w-2 rounded-full bg-primary"
+                    style={{ ["--loop-speed" as string]: "1.8s" }}
+                  />
                 ) : null}
               </span>
               <span className="text-xs font-medium text-foreground/70">{s.label}</span>

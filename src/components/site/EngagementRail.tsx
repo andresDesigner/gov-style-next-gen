@@ -23,6 +23,11 @@ export function EngagementRail() {
             data-inview={state}
             className="rail-grow block h-px w-full origin-left bg-foreground/20"
           />
+          <span
+            data-inview={state}
+            className="loop-sweep absolute left-0 top-0 h-px w-24 bg-signal"
+            style={{ ["--travel" as string]: "100vw", ["--loop-speed" as string]: "5s" }}
+          />
         </div>
 
         <ol className="grid snap-x snap-mandatory auto-cols-[minmax(190px,1fr)] grid-flow-col gap-4 overflow-x-auto pb-4 md:grid-flow-row md:grid-cols-6 md:overflow-visible md:pb-0">
