@@ -407,6 +407,16 @@ function ContactPage() {
                   Informational only — submitting this form does not create a consulting
                   relationship and is not legal advice.
                 </p>
+                <Illustration
+                  src={ilContact}
+                  alt=""
+                  width={1024}
+                  height={1024}
+                  blob
+                  accents={false}
+                  className="mt-8 hidden max-w-[240px] lg:block"
+                />
+
               </div>
             </aside>
           </div>
