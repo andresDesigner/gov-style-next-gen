@@ -89,6 +89,17 @@ function AboutPage() {
           kicker="About · Practice"
           title="Why ACT Verified exists."
           lead="ACT Verified is a consulting-led accessibility assurance practice operated under Zenzo LLC, built to bring evidence-grade rigor to accessibility verification for public-sector and regulated organizations facing legal exposure under ADA Title II."
+          illustration={{ src: ilAbout, alt: "", width: 1024, height: 1024, maxWidthClass: "lg:max-w-[380px]" }}
+        />
+
+        <TrustBand
+          kicker="Credentials"
+          statement="A Trusted Tester–certified practice, testing to WCAG 2.1 AA and Section 508 standards, with 10 years of accessibility compliance work across federal, state, and local government."
+          items={[
+            { icon: BadgeCheck, label: "Certification", value: "Section 508 Trusted Tester" },
+            { icon: Clock, label: "Experience", value: "10+ years" },
+            { icon: Landmark, label: "Levels served", value: "Federal · State · Local" },
+          ]}
         />
 
         <section aria-labelledby="founder" className="border-b border-foreground/10">
@@ -97,12 +108,17 @@ function AboutPage() {
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
                 Practice Lead
               </div>
-              <div
-                aria-hidden="true"
-                className="mt-4 grid aspect-[4/5] w-full max-w-[260px] place-items-center border border-dashed border-foreground/30 bg-secondary/40 font-mono text-[10px] uppercase tracking-widest text-foreground/40"
-              >
-                Photo — optional
-              </div>
+              <Illustration
+                src={ilAbout}
+                alt=""
+                width={1024}
+                height={1024}
+                blob
+                accents={false}
+                className="mt-4 max-w-[240px]"
+              />
+            </div>
+
             </div>
             <div className="lg:col-span-8 lg:border-l lg:border-foreground/10 lg:pl-10">
               <h2
