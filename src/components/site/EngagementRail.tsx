@@ -38,14 +38,17 @@ export function EngagementRail() {
                 <span
                   aria-hidden="true"
                   data-inview={state}
-                  className="reveal-icon relative z-10 grid h-16 w-16 place-items-center border-[1.5px] border-signal/45 bg-background text-primary shadow-[0_0_0_5px_color-mix(in_oklab,var(--signal)_9%,transparent)] transition-colors"
+                  className="reveal-icon relative z-10 grid h-16 w-16 place-items-center bg-background text-signal"
                 >
-                  {Icon ? <Icon strokeWidth={1.75} className="h-7 w-7" /> : null}
+                  {Icon ? <Icon strokeWidth={1.75} className="h-11 w-11" /> : null}
                 </span>
                 <div className="mt-4 flex items-baseline gap-2">
-                  <span className="font-mono text-[10px] tabular-nums text-signal-strong">{step.n}</span>
-                  <span className="text-sm font-semibold tracking-tight">{step.label}</span>
+                  <span className="font-mono text-sm font-bold tabular-nums text-signal-strong">
+                    {step.n}
+                  </span>
+                  <span className="text-base font-semibold tracking-tight">{step.label}</span>
                 </div>
+
 
                 <p className="mt-1 max-w-[24ch] text-sm text-foreground/70">{step.desc}</p>
               </li>
