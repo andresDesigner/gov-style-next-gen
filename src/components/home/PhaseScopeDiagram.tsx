@@ -62,7 +62,7 @@ function ScopeRow({ id, title, index }: { id: string; title: string; index: numb
       style={{ ["--stagger" as string]: 0 }}
       className={`reveal-x ${
         fromRight ? "reveal-x-right" : ""
-      } group grid grid-cols-1 items-center gap-4 rounded-xl border border-foreground/15 bg-card px-5 py-4 shadow-sm motion-safe:transition-shadow motion-safe:duration-300 hover:shadow-md md:grid-cols-[minmax(0,1fr)_repeat(3,7.5rem)] md:px-6`}
+      } group grid grid-cols-1 items-center gap-4 rounded-xl border border-foreground/15 bg-card px-5 py-4 shadow-sm motion-safe:transition-shadow motion-safe:duration-300 hover:shadow-md md:grid-cols-[minmax(0,1fr)_repeat(3,8.5rem)] md:px-6`}
     >
       <div className="flex items-center gap-4">
         {Icon ? (
@@ -76,8 +76,8 @@ function ScopeRow({ id, title, index }: { id: string; title: string; index: numb
           </span>
         ) : null}
         <div className="min-w-0">
-          <div className="font-mono text-[10px] tracking-widest text-primary">{id}</div>
-          <div className="mt-1 text-sm font-semibold text-foreground">{title}</div>
+          <div className="font-mono text-xs tracking-widest text-primary">{id}</div>
+          <div className="mt-1 text-base font-semibold leading-snug text-foreground">{title}</div>
         </div>
       </div>
 
@@ -90,13 +90,13 @@ function ScopeRow({ id, title, index }: { id: string; title: string; index: numb
             style={{ ["--stagger" as string]: pi + 1 }}
             className="reveal reveal-stagger flex flex-col items-center gap-1 border border-foreground/10 py-2"
           >
-            <dt className="font-mono text-[9px] uppercase tracking-widest text-foreground/60">
+            <dt className="font-mono text-[11px] uppercase tracking-widest text-primary">
               {p.label}
             </dt>
             <dd className="flex flex-col items-center gap-1">
               <Dot filled={isIncluded(p.key, active)} />
               {p.key === active ? (
-                <span className="font-mono text-[8px] uppercase tracking-widest text-accent">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-accent">
                   Launches
                 </span>
               ) : null}
@@ -116,7 +116,7 @@ function ScopeRow({ id, title, index }: { id: string; title: string; index: numb
           <div className="inline-flex flex-col items-center gap-1">
             <Dot filled={isIncluded(p.key, active)} />
             {p.key === active ? (
-              <span className="font-mono text-[9px] uppercase tracking-widest text-accent">
+              <span className="font-mono text-[11px] uppercase tracking-widest text-accent">
                 Launches
               </span>
             ) : null}
@@ -137,27 +137,27 @@ export function PhaseScopeDiagram() {
         className="flex flex-wrap items-baseline justify-between gap-4 border border-foreground/15 bg-card px-6 py-4"
       >
         <div>
-          <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+          <div className="font-mono text-xs uppercase tracking-widest text-foreground/70">
             Phase Scope · Availability by service
           </div>
-          <div className="mt-1 text-sm font-semibold text-foreground">
+          <div className="mt-1.5 text-lg font-semibold text-foreground md:text-xl">
             When each capability comes online.
           </div>
         </div>
-        <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+        <div className="font-mono text-xs uppercase tracking-widest text-foreground/70">
           6 services · 3 phases
         </div>
       </figcaption>
 
       {/* Column headers (desktop) */}
-      <div className="mt-2 hidden grid-cols-[minmax(0,1fr)_repeat(3,7.5rem)] items-end gap-4 rounded-t-xl bg-brand-header px-6 py-4 md:grid">
+      <div className="mt-2 hidden grid-cols-[minmax(0,1fr)_repeat(3,8.5rem)] items-end gap-4 rounded-t-xl bg-brand-header px-6 py-5 md:grid">
         <div className="font-mono text-base font-bold uppercase tracking-widest text-white">
           Service
         </div>
         {phases.map((p) => (
-          <div key={p.key} className="text-center font-mono text-xs font-semibold uppercase tracking-widest text-white">
+          <div key={p.key} className="text-center font-mono text-sm font-semibold uppercase tracking-widest text-white">
             <div>{p.label}</div>
-            <div className="mt-1 normal-case tracking-normal text-white/70">{p.sub}</div>
+            <div className="mt-1 text-xs normal-case tracking-normal text-white/85">{p.sub}</div>
           </div>
         ))}
       </div>
@@ -169,7 +169,7 @@ export function PhaseScopeDiagram() {
         ))}
       </ul>
 
-      <div className="mt-2 flex flex-wrap items-center gap-4 border border-foreground/15 bg-secondary/30 px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+      <div className="mt-2 flex flex-wrap items-center gap-4 border border-foreground/15 bg-secondary/30 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground/70">
         <span className="inline-flex items-center gap-2">
           <Dot filled />
           Included

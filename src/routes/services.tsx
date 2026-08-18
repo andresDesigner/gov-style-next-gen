@@ -140,7 +140,7 @@ function ServicesPage() {
               <div className="lg:col-span-8">
                 <div className="flex items-center gap-3">
                   <Layers aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                  <div className="font-mono text-sm uppercase tracking-widest text-foreground/70">
                     Service Catalog
                   </div>
                 </div>
@@ -212,6 +212,7 @@ function ServicesPage() {
 
 
         <CtaBand
+          tertiary
           title="Start with the service that matches your deadline."
           lead="Tell us where your Title II exposure sits today and we'll scope the shortest defensible path to coverage."
         />
