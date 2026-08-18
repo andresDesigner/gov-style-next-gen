@@ -1,4 +1,4 @@
-import { Download, Phone } from "lucide-react";
+import { Download, FileSearch, Phone } from "lucide-react";
 
 export type CtaBandProps = {
   kicker?: string;
@@ -7,6 +7,10 @@ export type CtaBandProps = {
   /** Secondary action label; defaults to the capability statement download. */
   secondaryLabel?: string;
   secondaryHref?: string;
+  /** Tertiary action for technical evaluators; hidden when false. */
+  tertiary?: boolean;
+  tertiaryLabel?: string;
+  tertiaryHref?: string;
   id?: string;
 };
 
