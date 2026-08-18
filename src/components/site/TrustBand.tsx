@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 export type TrustBandItem = {
@@ -9,6 +10,8 @@ export type TrustBandItem = {
 
 export type TrustBandProps = {
   kicker?: string;
+  /** Icon preceding the kicker — matches the Service Catalog eyebrow rhythm. */
+  icon?: LucideIcon;
   statement: string;
   /** Optional differentiating closer rendered under the statement. */
   closer?: string;
@@ -21,6 +24,7 @@ export type TrustBandProps = {
  */
 export function TrustBand({
   kicker = "Practice Facts",
+  icon: Icon = ShieldCheck,
   statement,
   closer,
   items = [],
@@ -35,8 +39,11 @@ export function TrustBand({
         className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12"
       >
         <div className="lg:col-span-7">
-          <div className="font-mono text-[10px] uppercase tracking-widest text-signal">
-            {kicker}
+          <div className="flex items-center gap-3">
+            <Icon aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
+            <div className="font-mono text-sm uppercase tracking-widest text-signal">
+              {kicker}
+            </div>
           </div>
           <p
             className="mt-4 max-w-[52ch] text-balance font-medium leading-snug tracking-tight"
