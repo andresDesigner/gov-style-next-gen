@@ -21,6 +21,9 @@ export function CtaBand({
   lead,
   secondaryLabel = "Download Capability Statement",
   secondaryHref = "#capability",
+  tertiary = false,
+  tertiaryLabel = "Request a sample report walkthrough",
+  tertiaryHref = "/contact",
   id = "book",
 }: CtaBandProps) {
   return (
