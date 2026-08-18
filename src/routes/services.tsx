@@ -182,7 +182,7 @@ function ServicesPage() {
             <div className="lg:col-span-4">
               <div className="flex items-center gap-3">
                 <CalendarClock aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
-                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                <div className="font-mono text-sm uppercase tracking-widest text-foreground/70">
                   Availability
                 </div>
               </div>
