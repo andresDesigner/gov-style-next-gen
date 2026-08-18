@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 export type TrustBandItem = {
@@ -9,6 +10,8 @@ export type TrustBandItem = {
 
 export type TrustBandProps = {
   kicker?: string;
+  /** Icon preceding the kicker — matches the Service Catalog eyebrow rhythm. */
+  icon?: LucideIcon;
   statement: string;
   /** Optional differentiating closer rendered under the statement. */
   closer?: string;
