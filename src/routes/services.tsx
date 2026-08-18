@@ -104,8 +104,11 @@ function ServicesPage() {
           <div className="mx-auto max-w-[1200px] px-6 py-20">
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
               <div className="lg:col-span-7">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-                  Engagement Model
+                <div className="flex items-center gap-3">
+                  <Workflow aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
+                  <div className="font-mono text-sm uppercase tracking-widest text-foreground/70">
+                    Engagement Model
+                  </div>
                 </div>
                 <h2
                   id="engagement-model"
