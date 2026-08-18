@@ -91,6 +91,7 @@ function ServicesPage() {
         <TrustBand
           kicker="Why this scope"
           statement="A Trusted Tester–certified practice, testing to WCAG 2.1 AA and Section 508 standards, with 10 years of accessibility compliance work across federal, state, and local government."
+          closer="Findings carry a trace ID, a WCAG criterion, and a behavior log. Not just a score."
           items={[
             { icon: ShieldCheck, label: "Standards", value: "WCAG 2.1 AA · Section 508" },
             { icon: FileCheck2, label: "Deliverable", value: "Trace-backed finding records" },
