@@ -1,4 +1,4 @@
-import { Download, Phone } from "lucide-react";
+import { Download, FileSearch, Phone } from "lucide-react";
 
 export type CtaBandProps = {
   kicker?: string;
@@ -7,6 +7,10 @@ export type CtaBandProps = {
   /** Secondary action label; defaults to the capability statement download. */
   secondaryLabel?: string;
   secondaryHref?: string;
+  /** Tertiary action for technical evaluators; hidden when false. */
+  tertiary?: boolean;
+  tertiaryLabel?: string;
+  tertiaryHref?: string;
   id?: string;
 };
 
@@ -17,6 +21,9 @@ export function CtaBand({
   lead,
   secondaryLabel = "Download Capability Statement",
   secondaryHref = "#capability",
+  tertiary = false,
+  tertiaryLabel = "Request a sample report walkthrough",
+  tertiaryHref = "/contact",
   id = "book",
 }: CtaBandProps) {
   return (
@@ -57,6 +64,15 @@ export function CtaBand({
             <Download aria-hidden="true" strokeWidth={1.5} className="h-4 w-4" />
             {secondaryLabel}
           </a>
+          {tertiary ? (
+            <a
+              href={tertiaryHref}
+              className="inline-flex w-full items-center justify-center gap-2 px-1 py-2 text-center font-mono text-[11px] uppercase tracking-widest text-primary-foreground underline decoration-signal decoration-2 underline-offset-4 transition-colors hover:text-signal sm:w-auto"
+            >
+              <FileSearch aria-hidden="true" strokeWidth={1.75} className="h-4 w-4 text-signal" />
+              {tertiaryLabel}
+            </a>
+          ) : null}
         </div>
       </div>
     </section>

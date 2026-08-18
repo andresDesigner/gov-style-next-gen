@@ -58,7 +58,7 @@ function ServicesPage() {
 
       <main id="main">
         <PageHero
-          kicker="Services · 4 primary + 2 Phase 2"
+          kicker="What you can contract today"
           title="Accessibility consulting built around evidence."
           lead="Six services, one operating model: scope, test, prioritize, remediate, verify, govern. Each engagement produces findings you can defend — not a checklist you have to take on faith."
           illustration={{
@@ -91,6 +91,7 @@ function ServicesPage() {
         <TrustBand
           kicker="Why this scope"
           statement="A Trusted Tester–certified practice, testing to WCAG 2.1 AA and Section 508 standards, with 10 years of accessibility compliance work across federal, state, and local government."
+          closer="Findings carry a trace ID, a WCAG criterion, and a behavior log. Not just a score."
           items={[
             { icon: ShieldCheck, label: "Standards", value: "WCAG 2.1 AA · Section 508" },
             { icon: FileCheck2, label: "Deliverable", value: "Trace-backed finding records" },
@@ -139,7 +140,7 @@ function ServicesPage() {
               <div className="lg:col-span-8">
                 <div className="flex items-center gap-3">
                   <Layers aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                  <div className="font-mono text-sm uppercase tracking-widest text-foreground/70">
                     Service Catalog
                   </div>
                 </div>
@@ -211,6 +212,7 @@ function ServicesPage() {
 
 
         <CtaBand
+          tertiary
           title="Start with the service that matches your deadline."
           lead="Tell us where your Title II exposure sits today and we'll scope the shortest defensible path to coverage."
         />

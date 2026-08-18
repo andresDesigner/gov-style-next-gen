@@ -10,6 +10,8 @@ export type TrustBandItem = {
 export type TrustBandProps = {
   kicker?: string;
   statement: string;
+  /** Optional differentiating closer rendered under the statement. */
+  closer?: string;
   items?: TrustBandItem[];
 };
 
@@ -17,7 +19,12 @@ export type TrustBandProps = {
  * Navy statement band with coral signal icons — the same rhythm break used on
  * the home page so no interior page reads as a flat wall of text.
  */
-export function TrustBand({ kicker = "Practice Facts", statement, items = [] }: TrustBandProps) {
+export function TrustBand({
+  kicker = "Practice Facts",
+  statement,
+  closer,
+  items = [],
+}: TrustBandProps) {
   const { ref, inView } = useInView<HTMLDivElement>();
   const state = inView ? "true" : "false";
 
@@ -31,9 +38,17 @@ export function TrustBand({ kicker = "Practice Facts", statement, items = [] }: 
           <div className="font-mono text-[10px] uppercase tracking-widest text-signal">
             {kicker}
           </div>
-          <p className="mt-4 max-w-[52ch] text-balance text-xl font-medium leading-snug tracking-tight md:text-2xl">
+          <p
+            className="mt-4 max-w-[52ch] text-balance font-medium leading-snug tracking-tight"
+            style={{ fontSize: "clamp(1.5rem, 2.2vw, 1.85rem)" }}
+          >
             {statement}
           </p>
+          {closer ? (
+            <p className="mt-5 max-w-[54ch] border-l-2 border-signal pl-4 text-base font-semibold leading-relaxed text-primary-foreground/95 md:text-lg">
+              {closer}
+            </p>
+          ) : null}
         </div>
 
         {items.length ? (
