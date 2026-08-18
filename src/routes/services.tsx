@@ -58,7 +58,7 @@ function ServicesPage() {
 
       <main id="main">
         <PageHero
-          kicker="Services · 4 primary + 2 Phase 2"
+          kicker="What you can contract today"
           title="Accessibility consulting built around evidence."
           lead="Six services, one operating model: scope, test, prioritize, remediate, verify, govern. Each engagement produces findings you can defend — not a checklist you have to take on faith."
           illustration={{
