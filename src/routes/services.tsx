@@ -23,6 +23,7 @@ import ilDocs from "@/assets/il-03-docs.png";
 import ilVerify from "@/assets/il-02-verify.png";
 import ilEngagementAsset from "@/assets/il-engagement.png.asset.json";
 import ilDeadline from "@/assets/il-05-deadline.png";
+import ilCatalogAsset from "@/assets/il-service-catalog.png.asset.json";
 
 const TITLE = "Services — Accessibility consulting built around evidence";
 const DESC =
@@ -163,7 +164,7 @@ function ServicesPage() {
               </div>
               <div className="lg:col-span-4">
                 <Illustration
-                  src={ilDeadline}
+                  src={ilCatalogAsset.url}
                   alt=""
                   width={1008}
                   height={1008}
