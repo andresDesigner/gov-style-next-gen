@@ -20,6 +20,7 @@ import { PhaseScopeDiagram } from "@/components/home/PhaseScopeDiagram";
 import { Illustration } from "@/components/home/Illustration";
 import ilServicesAsset from "@/assets/il-06-services.png.asset.json";
 import ilDocs from "@/assets/il-03-docs.png";
+import ilAvailabilityAsset from "@/assets/il-availability.png.asset.json";
 import ilVerify from "@/assets/il-02-verify.png";
 import ilEngagementAsset from "@/assets/il-engagement.png.asset.json";
 import ilDeadline from "@/assets/il-05-deadline.png";
@@ -200,7 +201,7 @@ function ServicesPage() {
                 scheduled, not sold ahead of delivery.
               </p>
               <Illustration
-                src={ilDocs}
+                src={ilAvailabilityAsset.url}
                 alt=""
                 width={1024}
                 height={1024}
