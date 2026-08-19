@@ -71,6 +71,8 @@ function ServicesPage() {
             width: 1024,
             height: 1024,
             maxWidthClass: "lg:max-w-[480px]",
+            blob: false,
+            accents: false,
           }}
           actions={
             <>
@@ -131,8 +133,8 @@ function ServicesPage() {
                   alt=""
                   width={1024}
                   height={1024}
-                  blob
-                  accents
+                  blob={false}
+                  accents={false}
                   className="mx-auto w-full max-w-[320px] lg:max-w-[380px]"
                 />
               </div>
@@ -205,7 +207,7 @@ function ServicesPage() {
                 alt=""
                 width={1024}
                 height={1024}
-                blob
+                blob={false}
                 accents={false}
                 className="mt-8 hidden max-w-[280px] lg:block"
               />

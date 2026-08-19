@@ -8,6 +8,10 @@ export type PageHeroIllustration = {
   height: number;
   /** Max width of the figure on large screens. */
   maxWidthClass?: string;
+  /** Soft pastel blob behind the figure. Defaults to true. */
+  blob?: boolean;
+  /** Small floating flat accents. Defaults to true. */
+  accents?: boolean;
 };
 
 export type PageHeroProps = {
@@ -46,8 +50,8 @@ export function PageHero({
         width={illustration.width}
         height={illustration.height}
         eager
-        blob
-        accents
+        blob={illustration.blob ?? true}
+        accents={illustration.accents ?? true}
         className={
           "mx-auto w-full max-w-[360px] " + (illustration.maxWidthClass ?? "lg:max-w-[440px]")
         }
