@@ -63,7 +63,7 @@ function ServicesPage() {
           title="Accessibility consulting built around evidence."
           lead="Six services, one operating model: scope, test, prioritize, remediate, verify, govern. Each engagement produces findings you can defend — not a checklist you have to take on faith."
           illustration={{
-            src: ilServices,
+            src: ilServicesAsset.url,
             alt: "",
             width: 1024,
             height: 1024,
