@@ -21,6 +21,7 @@ import { Illustration } from "@/components/home/Illustration";
 import ilServicesAsset from "@/assets/il-06-services.png.asset.json";
 import ilDocs from "@/assets/il-03-docs.png";
 import ilVerify from "@/assets/il-02-verify.png";
+import ilEngagementAsset from "@/assets/il-engagement.png.asset.json";
 import ilDeadline from "@/assets/il-05-deadline.png";
 
 const TITLE = "Services — Accessibility consulting built around evidence";
@@ -124,7 +125,7 @@ function ServicesPage() {
               </div>
               <div className="lg:col-span-5">
                 <Illustration
-                  src={ilVerify}
+                  src={ilEngagementAsset.url}
                   alt=""
                   width={1024}
                   height={1024}
