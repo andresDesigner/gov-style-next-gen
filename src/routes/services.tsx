@@ -18,7 +18,7 @@ import { EngagementRail } from "@/components/site/EngagementRail";
 import { ServiceCardGrid } from "@/components/site/ServiceCardGrid";
 import { PhaseScopeDiagram } from "@/components/home/PhaseScopeDiagram";
 import { Illustration } from "@/components/home/Illustration";
-import ilServices from "@/assets/il-06-services.png";
+import ilServicesAsset from "@/assets/il-06-services.png.asset.json";
 import ilDocs from "@/assets/il-03-docs.png";
 import ilVerify from "@/assets/il-02-verify.png";
 import ilDeadline from "@/assets/il-05-deadline.png";
