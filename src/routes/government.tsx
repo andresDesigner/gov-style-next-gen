@@ -11,6 +11,8 @@ import { useInView } from "@/hooks/use-in-view";
 import ilGovAsset from "@/assets/il-04-gov.png.asset.json";
 const ilGov = ilGovAsset.url;
 import ilDeadline from "@/assets/il-05-deadline.png";
+import ilEvidenceAsset from "@/assets/il-05-evidence.png.asset.json";
+const ilEvidence = ilEvidenceAsset.url;
 
 
 
