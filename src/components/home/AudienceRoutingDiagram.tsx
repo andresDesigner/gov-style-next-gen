@@ -1,6 +1,7 @@
 import { useInView } from "@/hooks/use-in-view";
 import { Illustration } from "./Illustration";
-import ilGov from "@/assets/il-04-gov.png";
+import ilGovAsset from "@/assets/il-04-gov.png.asset.json";
+const ilGov = ilGovAsset.url;
 
 const ROUTES = [
   { role: "Procurement Officer", dest: "Capability Statement", href: "#capability" },
