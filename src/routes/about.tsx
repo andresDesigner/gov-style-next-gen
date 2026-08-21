@@ -8,7 +8,9 @@ import { TrustBand } from "@/components/site/TrustBand";
 import { Illustration } from "@/components/home/Illustration";
 import { operatingPrinciples, founderBio } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
-import ilAbout from "@/assets/il-07-about.png";
+import ilAboutAsset from "@/assets/il-07-about.png.asset.json";
+
+const ilAbout = ilAboutAsset.url;
 
 const PRINCIPLE_ICONS = [FileCheck2, AlertOctagon, Fingerprint];
 
