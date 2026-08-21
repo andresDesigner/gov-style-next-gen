@@ -22,7 +22,7 @@ import { Illustration } from "@/components/home/Illustration";
 import { evidenceFindingF20270142 } from "@/components/home/shared";
 import { staticVsBehavioral, verifyAudience } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
-import ilVerifyAsset from "@/assets/il-02-verify-new.png.asset.json";
+import ilVerifyAsset from "@/assets/il-02-verify-v2.png.asset.json";
 const ilVerify = ilVerifyAsset.url;
 import ilDocs from "@/assets/il-03-docs.png";
 
