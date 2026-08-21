@@ -1,7 +1,6 @@
 import { useInView } from "@/hooks/use-in-view";
-import { Illustration } from "./Illustration";
-import ilGovAsset from "@/assets/il-04-gov.png.asset.json";
-const ilGov = ilGovAsset.url;
+
+
 
 const ROUTES = [
   { role: "Procurement Officer", dest: "Capability Statement", href: "#capability" },
@@ -25,7 +24,6 @@ export function AudienceRoutingDiagram() {
       aria-label="Audience routing to conversion paths"
       className="mt-6 border border-foreground/15 bg-card/60 p-5"
     >
-
 
       <svg
         role="img"

@@ -150,10 +150,10 @@ function GovernmentPage() {
                 read method, counsel reads exposure.
               </p>
               <Illustration
-                src={ilDeadline}
+                src={ilEvidence}
                 alt=""
-                width={1008}
-                height={1008}
+                width={848}
+                height={883}
                 blob={false}
                 accents={false}
                 className="mt-8 hidden max-w-[240px] lg:block"
