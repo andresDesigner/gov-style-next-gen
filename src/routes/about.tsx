@@ -5,10 +5,11 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
 import { TrustBand } from "@/components/site/TrustBand";
-import { Illustration } from "@/components/home/Illustration";
 import { operatingPrinciples, founderBio } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
-import ilAbout from "@/assets/il-07-about.png";
+import ilAboutAsset from "@/assets/il-07-about.png.asset.json";
+
+const ilAbout = ilAboutAsset.url;
 
 const PRINCIPLE_ICONS = [FileCheck2, AlertOctagon, Fingerprint];
 
@@ -89,7 +90,7 @@ function AboutPage() {
           kicker="About · Practice"
           title="Why ACT Verified exists."
           lead="ACT Verified is a consulting-led accessibility assurance practice operated under Zenzo LLC, built to bring evidence-grade rigor to accessibility verification for public-sector and regulated organizations facing legal exposure under ADA Title II."
-          illustration={{ src: ilAbout, alt: "", width: 1024, height: 1024, maxWidthClass: "lg:max-w-[380px]" }}
+          illustration={{ src: ilAbout, alt: "", width: 695, height: 904, maxWidthClass: "lg:max-w-[380px]", blob: false, accents: false }}
         />
 
         <TrustBand
@@ -108,15 +109,6 @@ function AboutPage() {
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
                 Practice Lead
               </div>
-              <Illustration
-                src={ilAbout}
-                alt=""
-                width={1024}
-                height={1024}
-                blob
-                accents={false}
-                className="mt-4 max-w-[240px]"
-              />
             </div>
 
             <div className="lg:col-span-8 lg:border-l lg:border-foreground/10 lg:pl-10">
