@@ -50,7 +50,7 @@ export function PageHero({
         width={illustration.width}
         height={illustration.height}
         eager
-        blob={illustration.blob ?? true}
+        blob={illustration.blob ?? false}
         accents={illustration.accents ?? true}
         className={
           "mx-auto w-full max-w-[360px] " + (illustration.maxWidthClass ?? "lg:max-w-[440px]")

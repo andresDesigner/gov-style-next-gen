@@ -27,7 +27,7 @@ export function Illustration({
   width,
   height,
   eager = false,
-  blob = true,
+  blob = false,
   accents = true,
   className,
   imgClassName,
