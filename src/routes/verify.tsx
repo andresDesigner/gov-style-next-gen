@@ -24,7 +24,7 @@ import { staticVsBehavioral, verifyAudience } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
 import ilVerifyAsset from "@/assets/il-02-verify-v2.png.asset.json";
 const ilVerify = ilVerifyAsset.url;
-import ilDocs from "@/assets/il-03-docs.png";
+import ilDocsAsset from "@/assets/il-03-docs.png.asset.json";
 
 const COMPARISON_ICONS = [Search, ShieldQuestion, FileSearch];
 
@@ -161,10 +161,10 @@ function VerifyPage() {
                 between the two layers is where compliance risk lives.
               </p>
               <Illustration
-                src={ilDocs}
+                src={ilDocsAsset.url}
                 alt=""
-                width={1024}
-                height={1024}
+                width={848}
+                height={916}
                 blob={false}
                 accents={false}
                 className="mt-8 hidden max-w-[280px] lg:block"
