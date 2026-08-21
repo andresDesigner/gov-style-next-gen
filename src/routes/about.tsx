@@ -110,15 +110,6 @@ function AboutPage() {
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
                 Practice Lead
               </div>
-              <Illustration
-                src={ilAbout}
-                alt=""
-                width={1024}
-                height={1024}
-                blob
-                accents={false}
-                className="mt-4 max-w-[240px]"
-              />
             </div>
 
             <div className="lg:col-span-8 lg:border-l lg:border-foreground/10 lg:pl-10">
