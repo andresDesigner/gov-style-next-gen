@@ -161,10 +161,10 @@ function VerifyPage() {
                 between the two layers is where compliance risk lives.
               </p>
               <Illustration
-                src={ilDocs}
+                src={ilDocsAsset.url}
                 alt=""
-                width={1024}
-                height={1024}
+                width={848}
+                height={916}
                 blob={false}
                 accents={false}
                 className="mt-8 hidden max-w-[280px] lg:block"
