@@ -5,7 +5,6 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
 import { TrustBand } from "@/components/site/TrustBand";
-import { Illustration } from "@/components/home/Illustration";
 import { operatingPrinciples, founderBio } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
 import ilAboutAsset from "@/assets/il-07-about.png.asset.json";
