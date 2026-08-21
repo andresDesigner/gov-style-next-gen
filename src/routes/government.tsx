@@ -10,7 +10,9 @@ import { Illustration } from "@/components/home/Illustration";
 import { useInView } from "@/hooks/use-in-view";
 import ilGovAsset from "@/assets/il-04-gov.png.asset.json";
 const ilGov = ilGovAsset.url;
-import ilDeadline from "@/assets/il-05-deadline.png";
+
+import ilEvidenceAsset from "@/assets/il-05-evidence.png.asset.json";
+const ilEvidence = ilEvidenceAsset.url;
 
 
 
@@ -148,10 +150,10 @@ function GovernmentPage() {
                 read method, counsel reads exposure.
               </p>
               <Illustration
-                src={ilDeadline}
+                src={ilEvidence}
                 alt=""
-                width={1008}
-                height={1008}
+                width={848}
+                height={883}
                 blob={false}
                 accents={false}
                 className="mt-8 hidden max-w-[240px] lg:block"
