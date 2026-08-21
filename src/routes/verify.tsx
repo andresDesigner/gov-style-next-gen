@@ -24,7 +24,7 @@ import { staticVsBehavioral, verifyAudience } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
 import ilVerifyAsset from "@/assets/il-02-verify-v2.png.asset.json";
 const ilVerify = ilVerifyAsset.url;
-import ilDocs from "@/assets/il-03-docs.png";
+import ilDocsAsset from "@/assets/il-03-docs.png.asset.json";
 
 const COMPARISON_ICONS = [Search, ShieldQuestion, FileSearch];
 
