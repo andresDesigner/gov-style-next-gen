@@ -18,7 +18,8 @@ import {
   contactEntityTypes,
   contactTimelines,
 } from "@/components/site/content";
-import ilContact from "@/assets/il-08-contact.png";
+import ilContactAsset from "@/assets/il-06-contact.png.asset.json";
+const ilContact = ilContactAsset.url;
 
 const NEXT_STEPS = [
   {
@@ -167,7 +168,7 @@ function ContactPage() {
           kicker="Contact · Intake"
           title="Let's talk about your Title II timeline."
           lead="Tell us where you are and we'll route you to the right next step — readiness sprint, audit, remediation, or independent verification."
-          illustration={{ src: ilContact, alt: "", width: 1024, height: 1024, maxWidthClass: "lg:max-w-[380px]" }}
+          illustration={{ src: ilContact, alt: "", width: 916, height: 786, maxWidthClass: "lg:max-w-[380px]" }}
         />
 
         <section aria-labelledby="next-steps" className="border-b border-foreground/10 bg-secondary/30">
@@ -410,9 +411,9 @@ function ContactPage() {
                 <Illustration
                   src={ilContact}
                   alt=""
-                  width={1024}
-                  height={1024}
-                  blob
+                  width={916}
+                  height={786}
+                  blob={false}
                   accents={false}
                   className="mt-8 hidden max-w-[240px] lg:block"
                 />
