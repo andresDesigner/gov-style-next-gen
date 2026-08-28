@@ -38,9 +38,10 @@ function ServiceCard({
 
   return (
     <article
+      id={id.toLowerCase()}
       data-inview={state}
       style={{ ["--stagger" as string]: index }}
-      className="reveal reveal-stagger group relative flex flex-col overflow-hidden rounded-xl border border-foreground/15 bg-card shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
+      className="reveal reveal-stagger group relative flex scroll-mt-28 flex-col overflow-hidden rounded-xl border border-foreground/15 bg-card shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
     >
       <span aria-hidden="true" className={`block h-1.5 w-full ${accent.bar}`} />
 
@@ -54,11 +55,11 @@ function ServiceCard({
 
         <div className="relative flex items-start justify-between gap-4">
           <div className="font-mono text-sm font-bold tracking-widest text-foreground">
-            <span>TRACE-1{String(index + 1)}</span>
+            <span>{id}</span>
             <span aria-hidden="true" className="mx-1.5 text-foreground/30">
               ·
             </span>
-            <span className="text-accent">STATUS: {STATUS[index]}</span>
+            <span className="text-accent">STATUS: {serviceStatus[id] ?? "AVAILABLE"}</span>
           </div>
           {Icon ? (
             <span aria-hidden="true" className={`shrink-0 ${accent.icon}`}>
@@ -68,7 +69,7 @@ function ServiceCard({
         </div>
 
         <div className={`relative mt-4 font-mono text-[11px] tracking-widest ${accent.code}`}>
-          {id}
+          TRACE-1{String(index + 1)}
         </div>
         <h3 className="relative mt-1 text-xl font-semibold leading-tight tracking-tight text-foreground">
           {title}
@@ -83,6 +84,16 @@ function ServiceCard({
         <p className="relative mt-3 max-w-[46ch] text-sm leading-relaxed text-foreground/70">
           {desc}
         </p>
+
+        {detail ? (
+          <p className="relative mt-4 text-sm leading-relaxed text-foreground/85">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+              Deliverable —{" "}
+            </span>
+            <span className="font-medium text-foreground">{detail.deliverable}</span>
+          </p>
+        ) : null}
+
 
         {detail ? (
           <>
