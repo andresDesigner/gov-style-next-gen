@@ -123,7 +123,7 @@ function VerifyPage() {
         <section aria-labelledby="flow" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
                 Verification Flow
               </div>
               <h2
@@ -146,7 +146,7 @@ function VerifyPage() {
         <section aria-labelledby="structure" className="border-b border-foreground/10 bg-secondary/30">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
                 Structure vs. Exposure
               </div>
               <h2
@@ -179,7 +179,7 @@ function VerifyPage() {
         <section aria-labelledby="static-vs" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
                 Approach Comparison
               </div>
               <h2
@@ -194,14 +194,14 @@ function VerifyPage() {
             </div>
 
             <div className="lg:col-span-8">
-              <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] overflow-hidden rounded-t-lg border border-foreground/20">
+              <div className="grid grid-cols-1 overflow-hidden rounded-t-lg border border-foreground/20 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)]">
                 <div className="bg-brand-header px-4 py-4 text-sm font-bold text-primary-foreground">
                   Dimension
                 </div>
-                <div className="bg-brand-header px-4 py-4 font-mono text-[11px] uppercase tracking-widest text-primary-foreground/85">
+                <div className="hidden bg-brand-header px-4 py-4 font-mono text-[11px] uppercase tracking-widest text-primary-foreground/85 sm:block">
                   Static only
                 </div>
-                <div className="bg-brand-header px-4 py-4 font-mono text-[11px] uppercase tracking-widest text-primary-foreground">
+                <div className="hidden bg-brand-header px-4 py-4 font-mono text-[11px] uppercase tracking-widest text-primary-foreground sm:block">
                   Behavioral verification
                 </div>
 
@@ -217,43 +217,59 @@ function VerifyPage() {
                         />
                         <span className="min-w-0">{r.capability}</span>
                       </div>
-                      <div className="border-b border-foreground/12 bg-card px-4 py-4 text-sm text-foreground/70">
+                      <div className="border-b border-foreground/12 bg-card px-4 py-4 text-sm text-foreground/75">
+                        <span className="mb-1 block font-mono text-[10px] uppercase tracking-widest text-foreground/60 sm:hidden">
+                          Static only
+                        </span>
                         {r.staticOnly}
                       </div>
                       <div className="border-b border-foreground/12 bg-foreground/[0.04] px-4 py-4 text-sm font-medium text-foreground">
+                        <span className="mb-1 block font-mono text-[10px] uppercase tracking-widest text-foreground/60 sm:hidden">
+                          Behavioral verification
+                        </span>
                         {r.behavioral}
                       </div>
                     </div>
                   );
                 })}
               </div>
+            </div>
+          </div>
+        </section>
 
-
-              <div className="mt-8 flex gap-4 border-l-2 border-[color:var(--illus-coral,#FF8C42)] bg-secondary/60 px-6 py-5">
-                <AlertTriangle
-                  aria-hidden="true"
-                  strokeWidth={1.5}
-                  className="mt-0.5 h-5 w-5 shrink-0 text-foreground/70"
-                />
-                <div>
-                  <h3 className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">
-                    Scoped non-conclusions
-                  </h3>
-                  <p className="mt-2 max-w-[62ch] text-sm leading-relaxed text-foreground/85">
-                    Where evidence is insufficient to support a conclusion, we say so and record the
-                    limitation in the finding. We do not convert an untestable case into a silent
-                    pass, and we do not certify coverage we did not observe.
-                  </p>
+        <section aria-labelledby="non-conclusions" className="border-b border-foreground/10">
+          <div className="mx-auto max-w-[1200px] px-6 py-14 sm:py-16">
+            <div className="flex flex-col gap-5 border-l-2 border-[color:var(--illus-coral,#FF8C42)] bg-secondary/60 px-6 py-8 sm:flex-row">
+              <AlertTriangle
+                aria-hidden="true"
+                strokeWidth={1.5}
+                className="h-8 w-8 shrink-0 text-[color:var(--illus-coral,#FF8C42)]"
+              />
+              <div>
+                <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
+                  Limits of the record
                 </div>
+                <h2
+                  id="non-conclusions"
+                  className="mt-2 text-2xl font-medium tracking-tight md:text-3xl"
+                >
+                  Scoped non-conclusions.
+                </h2>
+                <p className="mt-3 max-w-[68ch] text-[15px] leading-relaxed text-foreground/85">
+                  Where evidence is insufficient to support a conclusion, we say so and record the
+                  limitation in the finding. We do not convert an untestable case into a silent
+                  pass, and we do not certify coverage we did not observe.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
+
         <section aria-labelledby="artifact" className="border-b border-foreground/10 bg-secondary/30">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
                 Evidence Artifact
               </div>
               <h2
@@ -279,7 +295,7 @@ function VerifyPage() {
 
         <section aria-labelledby="who" className="border-b border-foreground/10">
           <div className="mx-auto max-w-[1200px] px-6 py-20">
-            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+            <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
               Who This Is For
             </div>
             <h2 id="who" className="mt-2 text-3xl font-medium tracking-tight md:text-4xl">

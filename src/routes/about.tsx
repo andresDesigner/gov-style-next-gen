@@ -106,7 +106,7 @@ function AboutPage() {
         <section aria-labelledby="founder" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
                 Practice Lead
               </div>
             </div>
@@ -128,7 +128,7 @@ function AboutPage() {
 
         <section aria-labelledby="principles" className="border-b border-foreground/10 bg-secondary/30">
           <div className="mx-auto max-w-[1200px] px-6 py-20">
-            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+            <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
               Operating Principles
             </div>
             <h2

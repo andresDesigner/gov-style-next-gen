@@ -8,6 +8,8 @@ import { CtaBand } from "@/components/site/CtaBand";
 import { TrustBand } from "@/components/site/TrustBand";
 import { Illustration } from "@/components/home/Illustration";
 import { useInView } from "@/hooks/use-in-view";
+import { roleOutputs } from "@/components/site/content";
+
 import ilGovAsset from "@/assets/il-04-gov.png.asset.json";
 const ilGov = ilGovAsset.url;
 
@@ -45,24 +47,27 @@ const PATHS = [
     icon: FileText,
     headline: "Evaluate the practice, not the pitch.",
     body: "Download the capability statement: scope, standards, staffing, and evidence formats — the record you need on file before an award.",
-    cta: "Capability Statement",
+    cta: "Download Capability Statement",
     href: "#capability",
+    primary: false,
   },
   {
     role: "Accessibility Program Manager",
     icon: Workflow,
     headline: "See exactly how findings are produced.",
-    body: "Walk the nine-stage flow: intake, static extraction, NVDA capture, reconciliation, and the evidence sufficiency gate that guards every trace.",
-    cta: "How We Verify",
+    body: "Walk the nine-stage flow: intake, static extraction, NVDA behavioral capture, reconciliation, and the evidence sufficiency gate that guards every trace.",
+    cta: "See the nine-stage flow",
     href: "/verify",
+    primary: false,
   },
   {
     role: "Legal Counsel",
     icon: Scale,
     headline: "Talk to a Section 508 Trusted Tester-led practice.",
     body: "A 30-minute readiness call: deadline coverage, exposure areas, and what a defensible evidence trail looks like under Title II.",
-    cta: "Book a Call",
+    cta: "Book a Readiness Call",
     href: "#book",
+    primary: true,
   },
 ];
 
@@ -81,14 +86,25 @@ function PathCards() {
             className="reveal reveal-stagger group flex flex-col rounded-xl border border-foreground/15 bg-card p-7 shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
           >
             <Icon aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
-            <div className="mt-4 font-mono text-[10px] uppercase tracking-widest text-accent">
+            <div className="mt-4 font-mono text-[11px] uppercase tracking-widest text-accent">
               {p.role}
             </div>
             <h3 className="mt-2 text-xl font-semibold tracking-tight">{p.headline}</h3>
             <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/80">{p.body}</p>
+            <p className="mt-4 border-t border-foreground/10 pt-3 text-sm font-medium text-foreground">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+                You get —{" "}
+              </span>
+              {roleOutputs[p.role]}
+            </p>
             <a
               href={p.href}
-              className="btn-gov mt-6 inline-flex items-center justify-center gap-2 bg-accent px-4 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+              className={
+                "btn-gov mt-6 inline-flex min-h-11 items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-colors " +
+                (p.primary
+                  ? "bg-accent text-accent-foreground hover:bg-accent/90"
+                  : "border-[1.5px] border-foreground/30 text-foreground hover:border-accent hover:text-accent")
+              }
             >
               {p.cta}
               <ArrowRight
@@ -98,6 +114,7 @@ function PathCards() {
               />
             </a>
           </article>
+
         );
       })}
     </div>
@@ -136,7 +153,7 @@ function GovernmentPage() {
         <section aria-labelledby="routing" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
                 Audience Routing
               </div>
               <h2

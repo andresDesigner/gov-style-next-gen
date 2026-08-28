@@ -19,6 +19,25 @@ export const verifyAudience = [
   },
 ];
 
+/**
+ * The nine verification stages, named once. Hero copy, the flow diagram and
+ * every prose reference read from this list so the naming never drifts.
+ */
+export const verificationStages = [
+  { short: "Intake", full: "Intake & Scoping" },
+  { short: "Extract", full: "Static Extraction" },
+  { short: "Rules", full: "Rule Analysis" },
+  { short: "Capture", full: "NVDA Behavioral Capture" },
+  { short: "Normalize", full: "Event Normalization" },
+  { short: "Reconcile", full: "Reconciliation" },
+  { short: "Conflicts", full: "Conflict Resolution" },
+  { short: "Sufficiency", full: "Evidence Sufficiency" },
+  { short: "Finding", full: "Finding & Trace" },
+] as const;
+
+/** Stages where behavioral truth is committed (0-indexed). */
+export const emphasizedStages = [3, 7];
+
 export const staticVsBehavioral = [
   {
     capability: "What it examines",
@@ -35,25 +54,31 @@ export const staticVsBehavioral = [
     staticOnly: "Rule output only",
     behavioral: "Reproducible trace",
   },
+  {
+    capability: "What you receive",
+    staticOnly: "A scanner export with rule names and a score",
+    behavioral: "A finding record with trace ID, WCAG criterion, and behavior log",
+  },
 ];
 
 export const operatingPrinciples = [
   {
-    n: "01",
+    n: "1",
     title: "Evidence over assumption",
-    body: "Findings should be supported by captured evidence, not assumption.",
+    body: "Every conclusion is backed by captured assistive-technology behavior. If it was not observed, it is not claimed.",
   },
   {
-    n: "02",
+    n: "2",
     title: "Name the limitation",
-    body: "Where evidence is insufficient, name the limitation. Never default to a silent pass.",
+    body: "Where evidence is insufficient, the limitation is recorded in the finding. Nothing is converted into a silent pass.",
   },
   {
-    n: "03",
+    n: "3",
     title: "Reproducible by trace",
-    body: "Every result should be reproducible from its trace.",
+    body: "Every result carries the trace it came from, so a reviewer outside the team can reproduce it line by line.",
   },
 ];
+
 
 /** Founder name is centralized so it can be swapped in one place once confirmed. */
 export const FOUNDER_NAME = "[Name]";
@@ -69,8 +94,9 @@ export const contactServices = [
   "Section 508 / WCAG Audits",
   "PDF & Document Remediation",
   "Post-Remediation Verification",
-  "Governance & Operations",
-  "User Validation",
+  "Governance & Operations (Phase 2 — not yet contractable)",
+  "User Validation (Phase 2 — not yet contractable)",
+
 ];
 
 export const contactEntityTypes = [
@@ -178,4 +204,24 @@ export const engagementOutputs: Record<string, string> = {
   "4": "output: remediation guidance",
   "5": "output: verification statement",
   "6": "output: policy + procurement kit",
+};
+
+/** Availability status shown on each service card and in the availability matrix. */
+export const serviceStatus: Record<string, "AVAILABLE" | "PENDING"> = {
+  "S-01": "AVAILABLE",
+  "S-02": "AVAILABLE",
+  "S-03": "AVAILABLE",
+  "S-04": "AVAILABLE",
+  "S-05": "PENDING",
+  "S-06": "PENDING",
+};
+
+/**
+ * What each government role walks away with. Kept next to the routing copy so
+ * the diagram, the cards and the CTA labels always describe the same outcome.
+ */
+export const roleOutputs: Record<string, string> = {
+  "Procurement Officer": "A capability statement you can attach to the file",
+  "Accessibility Program Manager": "The nine-stage method, stage by stage",
+  "Legal Counsel": "A read on exposure and what a defensible record looks like",
 };

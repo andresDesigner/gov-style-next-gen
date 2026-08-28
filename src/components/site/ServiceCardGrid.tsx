@@ -3,9 +3,8 @@ import { ChevronDown, Phone } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { primaryServices, secondaryServices } from "@/components/home/shared";
 import { serviceIconMap } from "@/components/home/ServiceIcon";
-import { serviceDetails } from "@/components/site/content";
+import { serviceDetails, serviceStatus } from "@/components/site/content";
 
-const STATUS = ["ACTIVE", "ACTIVE", "VERIFIED", "VERIFIED"] as const;
 
 /**
  * Accent role per service inside the approved navy / cobalt / coral bichromy.
@@ -39,9 +38,10 @@ function ServiceCard({
 
   return (
     <article
+      id={id.toLowerCase()}
       data-inview={state}
       style={{ ["--stagger" as string]: index }}
-      className="reveal reveal-stagger group relative flex flex-col overflow-hidden rounded-xl border border-foreground/15 bg-card shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
+      className="reveal reveal-stagger group relative flex scroll-mt-28 flex-col overflow-hidden rounded-xl border border-foreground/15 bg-card shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
     >
       <span aria-hidden="true" className={`block h-1.5 w-full ${accent.bar}`} />
 
@@ -55,11 +55,11 @@ function ServiceCard({
 
         <div className="relative flex items-start justify-between gap-4">
           <div className="font-mono text-sm font-bold tracking-widest text-foreground">
-            <span>TRACE-1{String(index + 1)}</span>
+            <span>{id}</span>
             <span aria-hidden="true" className="mx-1.5 text-foreground/30">
               ·
             </span>
-            <span className="text-accent">STATUS: {STATUS[index]}</span>
+            <span className="text-accent">STATUS: {serviceStatus[id] ?? "AVAILABLE"}</span>
           </div>
           {Icon ? (
             <span aria-hidden="true" className={`shrink-0 ${accent.icon}`}>
@@ -69,7 +69,7 @@ function ServiceCard({
         </div>
 
         <div className={`relative mt-4 font-mono text-[11px] tracking-widest ${accent.code}`}>
-          {id}
+          TRACE-1{String(index + 1)}
         </div>
         <h3 className="relative mt-1 text-xl font-semibold leading-tight tracking-tight text-foreground">
           {title}
@@ -84,6 +84,16 @@ function ServiceCard({
         <p className="relative mt-3 max-w-[46ch] text-sm leading-relaxed text-foreground/70">
           {desc}
         </p>
+
+        {detail ? (
+          <p className="relative mt-4 text-sm leading-relaxed text-foreground/85">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">
+              Deliverable —{" "}
+            </span>
+            <span className="font-medium text-foreground">{detail.deliverable}</span>
+          </p>
+        ) : null}
+
 
         {detail ? (
           <>
@@ -129,20 +139,14 @@ function ServiceCard({
                   ))}
                 </ul>
 
-                <div className="mt-5 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-                  Deliverable
-                </div>
-                <p className="mt-2 text-sm font-medium leading-relaxed text-foreground">
-                  {detail.deliverable}
-                </p>
-
                 <a
                   href="/#book"
-                  className="btn-gov mt-5 inline-flex items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+                  className="btn-gov mt-6 inline-flex min-h-11 items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
                 >
                   <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
-                  Book a readiness call
+                  Book a Readiness Call
                 </a>
+
               </div>
             ) : null}
           </>
@@ -184,18 +188,20 @@ export function ServiceCardGrid() {
             return (
               <article
                 key={s.id}
-                className="relative flex flex-col rounded-xl border border-dashed border-foreground/30 bg-card p-6 shadow-sm motion-safe:transition-shadow motion-safe:hover:shadow-md"
+                id={s.id.toLowerCase()}
+                aria-disabled="true"
+                className="relative flex scroll-mt-28 flex-col rounded-xl border border-dashed border-foreground/30 bg-card p-6 shadow-sm motion-safe:transition-shadow motion-safe:hover:shadow-md"
               >
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="font-mono text-sm font-bold tracking-widest text-foreground">
-                    <span>TRACE-2{String(i + 1)}</span>
+                    <span>{s.id}</span>
                     <span aria-hidden="true" className="mx-1.5 text-foreground/30">
                       ·
                     </span>
-                    <span className="text-foreground/60">STATUS: PENDING</span>
+                    <span className="text-foreground/70">STATUS: PENDING</span>
                   </div>
-                  <span className="inline-flex items-center bg-primary px-2 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
-                    Phase 2
+                  <span className="inline-flex items-center bg-primary px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
+                    Phase 2 — not yet contractable
                   </span>
                 </div>
 
@@ -205,8 +211,8 @@ export function ServiceCardGrid() {
 
                 <div className="mt-4 flex items-start justify-between gap-4">
                   <div>
-                    <div className="font-mono text-[11px] tracking-widest text-foreground/60">
-                      {s.id}
+                    <div className="font-mono text-[11px] tracking-widest text-foreground/70">
+                      TRACE-2{String(i + 1)}
                     </div>
                     <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
                   </div>
@@ -228,11 +234,22 @@ export function ServiceCardGrid() {
                 </p>
 
                 {detail ? (
-                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/75">
                     <span className="font-semibold text-foreground">Deliverable — </span>
                     {detail.deliverable}
                   </p>
                 ) : null}
+
+                <span
+                  aria-hidden="true"
+                  className="btn-gov mt-6 inline-flex min-h-11 w-fit cursor-not-allowed items-center gap-2 border-[1.5px] border-foreground/25 px-4 py-2.5 text-sm font-medium text-foreground/45"
+                >
+                  Not available yet
+                </span>
+                <p className="mt-2 text-xs text-foreground/70">
+                  Ask about it on a readiness call — we will tell you when it opens.
+                </p>
+
               </article>
             );
           })}

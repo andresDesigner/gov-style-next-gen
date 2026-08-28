@@ -50,9 +50,10 @@ export function SiteHeader() {
                 aria-current={isActive(item.to) ? "page" : undefined}
                 className={
                   isActive(item.to)
-                    ? "text-primary underline decoration-primary decoration-2 underline-offset-[10px]"
+                    ? "font-semibold text-primary underline decoration-primary decoration-2 underline-offset-[10px]"
                     : "text-foreground/85 transition-colors hover:text-primary"
                 }
+
               >
                 {item.label}
               </Link>
@@ -68,16 +69,27 @@ export function SiteHeader() {
           Book a Readiness Call
         </a>
 
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href="/#book"
+            className="btn-gov inline-flex h-11 items-center gap-2 bg-accent px-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+          >
+            <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
+            <span className="hidden sm:inline">Book a Call</span>
+            <span className="sr-only sm:hidden">Book a Readiness Call</span>
+          </a>
+
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <button
               type="button"
               aria-label="Open navigation menu"
-              className="lg:hidden inline-flex h-11 w-11 items-center justify-center border border-foreground/20 text-foreground"
+              className="inline-flex h-11 w-11 items-center justify-center border border-foreground/20 text-foreground"
             >
               <Menu aria-hidden="true" className="h-5 w-5" />
             </button>
           </SheetTrigger>
+
           <SheetContent side="right" className="w-[86vw] max-w-sm bg-white p-0">
             <SheetHeader className="border-b border-foreground/10 px-6 py-4 text-left">
               <SheetTitle className="font-mono text-xs uppercase tracking-widest text-foreground/60">
@@ -93,9 +105,9 @@ export function SiteHeader() {
                       onClick={() => setOpen(false)}
                       aria-current={isActive(item.to) ? "page" : undefined}
                       className={
-                        "block border-b border-foreground/10 py-3 " +
+                        "flex min-h-11 items-center border-b border-foreground/10 py-3 " +
                         (isActive(item.to)
-                          ? "text-primary"
+                          ? "font-semibold text-primary underline decoration-primary decoration-2 underline-offset-8"
                           : "text-foreground/85 hover:text-primary")
                       }
                     >
@@ -115,6 +127,8 @@ export function SiteHeader() {
             </div>
           </SheetContent>
         </Sheet>
+        </div>
+
       </div>
     </nav>
   );
