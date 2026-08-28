@@ -143,7 +143,7 @@ export const footerCols = [
   },
   {
     head: "Resources",
-    items: ["Articles", "FAQ", "Glossary · Phase 2", "Guides · Phase 2"],
+    items: ["Articles · Phase 2", "FAQ · Phase 2", "Glossary · Phase 2", "Guides · Phase 2"],
   },
   {
     head: "For Government",
@@ -159,8 +159,9 @@ export const footerCols = [
   },
   {
     head: "Operations",
-    items: ["How We Verify", "Client Upload", "Accessibility Statement"],
+    items: ["How We Verify", "Accessibility Statement", "Client Upload · Phase 2"],
   },
+
 ];
 
 export const evidenceSnippet = `element     button#submit-form
