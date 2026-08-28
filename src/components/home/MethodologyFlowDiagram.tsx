@@ -1,19 +1,11 @@
 import { useState } from "react";
 import { useInView } from "@/hooks/use-in-view";
+import { verificationStages, emphasizedStages } from "@/components/site/content";
 
-const STAGES = [
-  { short: "Intake", full: "Intake & Scoping" },
-  { short: "Extract", full: "Static Extraction" },
-  { short: "Rules", full: "Rule Analysis" },
-  { short: "NVDA", full: "NVDA Capture" },
-  { short: "Normalize", full: "Event Normalization" },
-  { short: "Reconcile", full: "Reconciliation" },
-  { short: "Conflicts", full: "Conflict Resolution" },
-  { short: "Sufficiency", full: "Evidence Sufficiency" },
-  { short: "Finding", full: "Finding & Trace" },
-];
+const STAGES = verificationStages;
 
-const EMPHASIZED = new Set([3, 7]); // NVDA Capture, Evidence Sufficiency
+const EMPHASIZED = new Set(emphasizedStages); // NVDA Behavioral Capture, Evidence Sufficiency
+
 
 const DESC =
   "Nine-stage verification flow: Intake & Scoping, Static Extraction, Rule Analysis, " +
