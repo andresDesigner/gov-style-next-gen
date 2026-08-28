@@ -3,9 +3,8 @@ import { ChevronDown, Phone } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import { primaryServices, secondaryServices } from "@/components/home/shared";
 import { serviceIconMap } from "@/components/home/ServiceIcon";
-import { serviceDetails } from "@/components/site/content";
+import { serviceDetails, serviceStatus } from "@/components/site/content";
 
-const STATUS = ["ACTIVE", "ACTIVE", "VERIFIED", "VERIFIED"] as const;
 
 /**
  * Accent role per service inside the approved navy / cobalt / coral bichromy.
