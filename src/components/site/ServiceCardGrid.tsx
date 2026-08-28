@@ -139,20 +139,14 @@ function ServiceCard({
                   ))}
                 </ul>
 
-                <div className="mt-5 font-mono text-[10px] uppercase tracking-widest text-foreground/50">
-                  Deliverable
-                </div>
-                <p className="mt-2 text-sm font-medium leading-relaxed text-foreground">
-                  {detail.deliverable}
-                </p>
-
                 <a
                   href="/#book"
-                  className="btn-gov mt-5 inline-flex items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+                  className="btn-gov mt-6 inline-flex min-h-11 items-center gap-2 bg-accent px-4 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
                 >
                   <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
-                  Book a readiness call
+                  Book a Readiness Call
                 </a>
+
               </div>
             ) : null}
           </>
