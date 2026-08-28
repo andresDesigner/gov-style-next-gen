@@ -94,8 +94,9 @@ export const contactServices = [
   "Section 508 / WCAG Audits",
   "PDF & Document Remediation",
   "Post-Remediation Verification",
-  "Governance & Operations",
-  "User Validation",
+  "Governance & Operations (Phase 2 — not yet contractable)",
+  "User Validation (Phase 2 — not yet contractable)",
+
 ];
 
 export const contactEntityTypes = [
