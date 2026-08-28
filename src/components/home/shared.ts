@@ -1,4 +1,52 @@
+/**
+ * Single source of truth for the Title II deadlines quoted across the site.
+ * Every page must read from here — never hardcode a date in a component.
+ */
+export const deadlines = {
+  /** Entities with 50,000+ population. */
+  phase1: "April 26, 2027",
+  phase1Date: new Date(2027, 3, 26),
+  /** Small entities and special district governments. */
+  phase2: "April 26, 2028",
+  phase2Date: new Date(2028, 3, 26),
+  /** Practical preparation window before the first compliance date. */
+  prepWindow: "Q4 2026",
+  both: "April 26, 2027 · April 26, 2028",
+} as const;
+
+/** Canonical spelling of every recurring term. Import instead of retyping. */
+export const terms = {
+  behavioralVerification: "Behavioral Verification",
+  findingRecord: "Finding Record",
+  traceId: "Trace ID",
+  evidence: "Evidence",
+  trustedTester: "Section 508 Trusted Tester",
+  wcag: "WCAG 2.1 AA",
+  section508: "Section 508",
+  pdfUa: "PDF/UA-1 aligned",
+  titleII: "ADA Title II",
+} as const;
+
+/** Availability status vocabulary shared by every service surface. */
+export type ServiceStatus = "AVAILABLE" | "ACTIVE" | "PENDING" | "PHASE 2";
+
+export const statusStyles: Record<ServiceStatus, string> = {
+  ACTIVE: "text-accent",
+  AVAILABLE: "text-accent",
+  PENDING: "text-foreground/70",
+  "PHASE 2": "text-foreground/70",
+};
+
+/** Anchor target on /services for each service id. */
+export const serviceAnchors: Record<string, string> = {
+  "S-01": "/services#s-01",
+  "S-02": "/services#s-02",
+  "S-03": "/services#s-03",
+  "S-04": "/services#s-04",
+};
+
 export const primaryServices = [
+
   {
     id: "S-01",
     title: "Title II Readiness Sprint",
