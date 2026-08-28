@@ -8,6 +8,8 @@ import { CtaBand } from "@/components/site/CtaBand";
 import { TrustBand } from "@/components/site/TrustBand";
 import { Illustration } from "@/components/home/Illustration";
 import { useInView } from "@/hooks/use-in-view";
+import { roleOutputs } from "@/components/site/content";
+
 import ilGovAsset from "@/assets/il-04-gov.png.asset.json";
 const ilGov = ilGovAsset.url;
 
