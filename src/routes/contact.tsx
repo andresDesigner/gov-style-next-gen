@@ -236,7 +236,7 @@ function ContactPage() {
                 </div>
               ) : (
                 <form noValidate onSubmit={onSubmit} className="border border-foreground/15 bg-card p-8">
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+                  <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
                     Intake Form
                   </div>
                   <h2 className="mt-2 text-2xl font-medium tracking-tight">

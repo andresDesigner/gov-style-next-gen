@@ -123,7 +123,7 @@ function VerifyPage() {
         <section aria-labelledby="flow" className="border-b border-foreground/10">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
                 Verification Flow
               </div>
               <h2
@@ -146,7 +146,7 @@ function VerifyPage() {
         <section aria-labelledby="structure" className="border-b border-foreground/10 bg-secondary/30">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
                 Structure vs. Exposure
               </div>
               <h2
@@ -269,7 +269,7 @@ function VerifyPage() {
         <section aria-labelledby="artifact" className="border-b border-foreground/10 bg-secondary/30">
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+              <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
                 Evidence Artifact
               </div>
               <h2
@@ -295,7 +295,7 @@ function VerifyPage() {
 
         <section aria-labelledby="who" className="border-b border-foreground/10">
           <div className="mx-auto max-w-[1200px] px-6 py-20">
-            <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">
+            <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
               Who This Is For
             </div>
             <h2 id="who" className="mt-2 text-3xl font-medium tracking-tight md:text-4xl">
