@@ -104,9 +104,9 @@ export function SiteHeader() {
                       onClick={() => setOpen(false)}
                       aria-current={isActive(item.to) ? "page" : undefined}
                       className={
-                        "block border-b border-foreground/10 py-3 " +
+                        "flex min-h-11 items-center border-b border-foreground/10 py-3 " +
                         (isActive(item.to)
-                          ? "text-primary"
+                          ? "font-semibold text-primary underline decoration-primary decoration-2 underline-offset-8"
                           : "text-foreground/85 hover:text-primary")
                       }
                     >
@@ -126,6 +126,8 @@ export function SiteHeader() {
             </div>
           </SheetContent>
         </Sheet>
+        </div>
+
       </div>
     </nav>
   );
