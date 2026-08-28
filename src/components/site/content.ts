@@ -19,6 +19,25 @@ export const verifyAudience = [
   },
 ];
 
+/**
+ * The nine verification stages, named once. Hero copy, the flow diagram and
+ * every prose reference read from this list so the naming never drifts.
+ */
+export const verificationStages = [
+  { short: "Intake", full: "Intake & Scoping" },
+  { short: "Extract", full: "Static Extraction" },
+  { short: "Rules", full: "Rule Analysis" },
+  { short: "Capture", full: "NVDA Behavioral Capture" },
+  { short: "Normalize", full: "Event Normalization" },
+  { short: "Reconcile", full: "Reconciliation" },
+  { short: "Conflicts", full: "Conflict Resolution" },
+  { short: "Sufficiency", full: "Evidence Sufficiency" },
+  { short: "Finding", full: "Finding & Trace" },
+] as const;
+
+/** Stages where behavioral truth is committed (0-indexed). */
+export const emphasizedStages = [3, 7];
+
 export const staticVsBehavioral = [
   {
     capability: "What it examines",
@@ -35,25 +54,31 @@ export const staticVsBehavioral = [
     staticOnly: "Rule output only",
     behavioral: "Reproducible trace",
   },
+  {
+    capability: "What you receive",
+    staticOnly: "A scanner export with rule names and a score",
+    behavioral: "A finding record with trace ID, WCAG criterion, and behavior log",
+  },
 ];
 
 export const operatingPrinciples = [
   {
-    n: "01",
+    n: "1",
     title: "Evidence over assumption",
-    body: "Findings should be supported by captured evidence, not assumption.",
+    body: "Every conclusion is backed by captured assistive-technology behavior. If it was not observed, it is not claimed.",
   },
   {
-    n: "02",
+    n: "2",
     title: "Name the limitation",
-    body: "Where evidence is insufficient, name the limitation. Never default to a silent pass.",
+    body: "Where evidence is insufficient, the limitation is recorded in the finding. Nothing is converted into a silent pass.",
   },
   {
-    n: "03",
+    n: "3",
     title: "Reproducible by trace",
-    body: "Every result should be reproducible from its trace.",
+    body: "Every result carries the trace it came from, so a reviewer outside the team can reproduce it line by line.",
   },
 ];
+
 
 /** Founder name is centralized so it can be swapped in one place once confirmed. */
 export const FOUNDER_NAME = "[Name]";
