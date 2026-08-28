@@ -205,3 +205,23 @@ export const engagementOutputs: Record<string, string> = {
   "5": "output: verification statement",
   "6": "output: policy + procurement kit",
 };
+
+/** Availability status shown on each service card and in the availability matrix. */
+export const serviceStatus: Record<string, "AVAILABLE" | "PENDING"> = {
+  "S-01": "AVAILABLE",
+  "S-02": "AVAILABLE",
+  "S-03": "AVAILABLE",
+  "S-04": "AVAILABLE",
+  "S-05": "PENDING",
+  "S-06": "PENDING",
+};
+
+/**
+ * What each government role walks away with. Kept next to the routing copy so
+ * the diagram, the cards and the CTA labels always describe the same outcome.
+ */
+export const roleOutputs: Record<string, string> = {
+  "Procurement Officer": "A capability statement you can attach to the file",
+  "Accessibility Program Manager": "The nine-stage method, stage by stage",
+  "Legal Counsel": "A read on exposure and what a defensible record looks like",
+};
