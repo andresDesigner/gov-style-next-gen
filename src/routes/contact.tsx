@@ -269,7 +269,7 @@ function ContactPage() {
                       href="/#book"
                       className="btn-gov inline-flex min-h-11 items-center justify-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
                     >
-                      <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
+                      <PhoneCall aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
                       Book a Readiness Call
                     </a>
                     <button
