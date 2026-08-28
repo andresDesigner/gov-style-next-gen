@@ -211,6 +211,8 @@ function ContactPage() {
               {sent ? (
                 <div
                   role="status"
+                  aria-live="polite"
+                  tabIndex={-1}
                   className="border border-foreground/15 bg-card p-8"
                 >
                   <div className="flex items-center gap-3 text-accent">
@@ -223,17 +225,63 @@ function ContactPage() {
                     Thanks — your details are captured.
                   </h2>
                   <p className="mt-3 max-w-[56ch] text-foreground/75">
-                    We reply within one business day with a scoped next step. If your matter is
-                    time-critical, book a readiness call directly.
+                    Nothing else is required from you right now. Here is what happens next.
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => setSent(false)}
-                    className="btn-gov mt-6 inline-flex items-center gap-2 border-[1.5px] border-foreground/80 px-5 py-3 text-sm font-medium transition-colors hover:bg-foreground/[0.04]"
-                  >
-                    Submit another request
-                  </button>
+
+                  <ol className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    {[
+                      {
+                        step: "1",
+                        title: "Within one business day",
+                        body: "We confirm receipt and name the person who will read your request.",
+                      },
+                      {
+                        step: "2",
+                        title: "Scoping note",
+                        body: "You get a written scope: standards in play, evidence formats, delivery dates.",
+                      },
+                      {
+                        step: "3",
+                        title: "Readiness call",
+                        body: "A 30-minute call to confirm coverage before anything is contracted.",
+                      },
+                    ].map((s) => (
+                      <li
+                        key={s.step}
+                        className="border-t-2 border-[color:var(--illus-coral,#FF8C42)] bg-secondary/50 p-5"
+                      >
+                        <div className="font-mono text-2xl font-bold leading-none text-signal-strong">
+                          {s.step}
+                        </div>
+                        <div className="mt-3 text-sm font-semibold">{s.title}</div>
+                        <p className="mt-2 text-sm leading-relaxed text-foreground/75">{s.body}</p>
+                      </li>
+                    ))}
+                  </ol>
+
+                  <p className="mt-6 max-w-[62ch] text-xs leading-relaxed text-foreground/70">
+                    Informational only — submitting this form does not create a consulting
+                    relationship and is not legal advice.
+                  </p>
+
+                  <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                    <a
+                      href="/#book"
+                      className="btn-gov inline-flex min-h-11 items-center justify-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+                    >
+                      <Phone aria-hidden="true" strokeWidth={2} className="h-4 w-4" />
+                      Book a Readiness Call
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => setSent(false)}
+                      className="btn-gov inline-flex min-h-11 items-center justify-center gap-2 border-[1.5px] border-foreground/80 px-5 py-3 text-sm font-medium transition-colors hover:bg-foreground/[0.04]"
+                    >
+                      Submit another request
+                    </button>
+                  </div>
                 </div>
+
               ) : (
                 <form noValidate onSubmit={onSubmit} className="border border-foreground/15 bg-card p-8">
                   <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
