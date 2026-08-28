@@ -3,15 +3,17 @@ import { footerCols } from "@/components/home/shared";
 
 /** Known destinations for footer labels. Everything else renders as plain text. */
 const FOOTER_LINKS: Record<string, string> = {
-  "Title II Readiness Sprint": "/services",
-  "Section 508 / WCAG Audits": "/services",
-  "PDF & Document Remediation": "/services",
-  "Post-Remediation Verification": "/services",
-  "Capability Statement": "/government",
+  "Title II Readiness Sprint": "/services#s-01",
+  "Section 508 / WCAG Audits": "/services#s-02",
+  "PDF & Document Remediation": "/services#s-03",
+  "Post-Remediation Verification": "/services#s-04",
+  "Capability Statement": "/government#capability",
   "How We Verify": "/verify",
+  "Accessibility Statement": "/about#entity",
   About: "/about",
   Contact: "/contact",
 };
+
 
 /** Sitewide 5-column footer with parent-entity and standards disclosure. */
 export function SiteFooter() {
