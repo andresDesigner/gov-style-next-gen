@@ -117,10 +117,11 @@ export const operations = [
     desc: "Traceable, reproducible findings with scoped non-conclusions.",
   },
   {
-    label: "Secure Intake",
-    value: "upload.actverified.com",
-    desc: "Operational document intake for regulated materials.",
+    label: "Client Upload",
+    value: "Coming soon",
+    desc: "A secure document intake channel for regulated materials. Not yet open — send nothing there today.",
   },
+
   {
     label: "Government-ready",
     value: "Procurement-fluent",
