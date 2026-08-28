@@ -50,9 +50,10 @@ export function SiteHeader() {
                 aria-current={isActive(item.to) ? "page" : undefined}
                 className={
                   isActive(item.to)
-                    ? "text-primary underline decoration-primary decoration-2 underline-offset-[10px]"
+                    ? "font-semibold text-primary underline decoration-primary decoration-2 underline-offset-[10px]"
                     : "text-foreground/85 transition-colors hover:text-primary"
                 }
+
               >
                 {item.label}
               </Link>
