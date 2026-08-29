@@ -9,12 +9,12 @@ const DESC =
   "technology accessibility tree (Heading, Text, — no name —, Image without alt, and an ignored group). " +
   "A shaded band between the two layers marks the discrepancy — the gap where behavioral verification lives.";
 
-const TAGS = [
-  { label: "H1", exposed: "Heading", ok: true },
-  { label: "P", exposed: "Text", ok: true },
-  { label: "BUTTON", exposed: "no name", ok: false },
-  { label: "IMG", exposed: "no alt", ok: false },
-  { label: "DIV", exposed: "ignored", ok: false },
+const TAGS: { label: string; exposed: string; ok: boolean; Icon: LucideIcon }[] = [
+  { label: "H1", exposed: "Heading", ok: true, Icon: Heading1 },
+  { label: "P", exposed: "Text", ok: true, Icon: Pilcrow },
+  { label: "BUTTON", exposed: "no name", ok: false, Icon: SquareMousePointer },
+  { label: "IMG", exposed: "no alt", ok: false, Icon: Image },
+  { label: "DIV", exposed: "ignored", ok: false, Icon: Code },
 ];
 
 export function DocumentArchitectureDiagram() {
