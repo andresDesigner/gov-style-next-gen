@@ -1,4 +1,7 @@
 import { useInView } from "@/hooks/use-in-view";
+import type { LucideIcon } from "lucide-react";
+import { Heading1, Pilcrow, SquareMousePointer, Image, Code } from "lucide-react";
+
 
 const DESC =
   "Two-layer diagram contrasting a document's tag structure with what a screen reader actually exposes. " +
@@ -6,12 +9,12 @@ const DESC =
   "technology accessibility tree (Heading, Text, — no name —, Image without alt, and an ignored group). " +
   "A shaded band between the two layers marks the discrepancy — the gap where behavioral verification lives.";
 
-const TAGS = [
-  { label: "H1", exposed: "Heading", ok: true },
-  { label: "P", exposed: "Text", ok: true },
-  { label: "BUTTON", exposed: "no name", ok: false },
-  { label: "IMG", exposed: "no alt", ok: false },
-  { label: "DIV", exposed: "ignored", ok: false },
+const TAGS: { label: string; exposed: string; ok: boolean; Icon: LucideIcon }[] = [
+  { label: "H1", exposed: "Heading", ok: true, Icon: Heading1 },
+  { label: "P", exposed: "Text", ok: true, Icon: Pilcrow },
+  { label: "BUTTON", exposed: "no name", ok: false, Icon: SquareMousePointer },
+  { label: "IMG", exposed: "no alt", ok: false, Icon: Image },
+  { label: "DIV", exposed: "ignored", ok: false, Icon: Code },
 ];
 
 export function DocumentArchitectureDiagram() {
@@ -64,7 +67,7 @@ export function DocumentArchitectureDiagram() {
                 x={x}
                 y={34}
                 width={w}
-                height={56}
+                height={76}
                 rx={4}
                 fill="#ffffff"
                 stroke="#cbd2dd"
@@ -73,9 +76,18 @@ export function DocumentArchitectureDiagram() {
                 data-inview={state}
                 {...{ style: { ["--stagger" as string]: i } }}
               />
+              <t.Icon
+                aria-hidden="true"
+                x={x + w / 2 - 10}
+                y={44}
+                width={20}
+                height={20}
+                color="#033EAD"
+                strokeWidth={1.75}
+              />
               <text
                 x={x + w / 2}
-                y={68}
+                y={94}
                 textAnchor="middle"
                 fontFamily="ui-monospace, monospace"
                 fontSize="12"
@@ -106,7 +118,7 @@ export function DocumentArchitectureDiagram() {
                 ["--stagger" as string]: i,
               }}
               x1={x}
-              y1={90}
+              y1={110}
               x2={x}
               y2={238}
               stroke={t.ok ? "#9aa5b6" : "#033EAD"}
@@ -214,7 +226,8 @@ export function DocumentArchitectureDiagram() {
               style={{ ["--stagger" as string]: i }}
               className="reveal reveal-stagger grid grid-cols-2"
             >
-              <div className="border-r border-foreground/10 bg-card p-3 font-mono text-xs font-bold">
+              <div className="flex items-center gap-2.5 border-r border-foreground/10 bg-card p-3 font-mono text-xs font-bold">
+                <t.Icon aria-hidden="true" strokeWidth={1.75} className="h-5 w-5 shrink-0 text-accent" />
                 {t.label}
               </div>
               <div className="bg-primary p-3 text-xs text-primary-foreground">

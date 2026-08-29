@@ -18,12 +18,10 @@ import { TrustBand } from "@/components/site/TrustBand";
 import { MethodologyFlowDiagram } from "@/components/home/MethodologyFlowDiagram";
 import { DocumentArchitectureDiagram } from "@/components/home/DocumentArchitectureDiagram";
 import { EvidenceArtifactCard } from "@/components/home/EvidenceArtifactCard";
-import { Illustration } from "@/components/home/Illustration";
 import { NineStageFlowHero } from "@/components/home/NineStageFlowHero";
 import { evidenceFindingF20270142 } from "@/components/home/shared";
 import { staticVsBehavioral, verifyAudience } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
-import ilDocsAsset from "@/assets/il-03-docs.png.asset.json";
 
 const COMPARISON_ICONS = [Search, ShieldQuestion, FileSearch];
 
@@ -159,15 +157,6 @@ function VerifyPage() {
                 tells you what the accessibility tree actually exposes to a screen reader. The gap
                 between the two layers is where compliance risk lives.
               </p>
-              <Illustration
-                src={ilDocsAsset.url}
-                alt=""
-                width={848}
-                height={916}
-                blob={false}
-                accents={false}
-                className="mt-8 hidden max-w-[280px] lg:block"
-              />
             </div>
             <div className="lg:col-span-8">
               <DocumentArchitectureDiagram />
