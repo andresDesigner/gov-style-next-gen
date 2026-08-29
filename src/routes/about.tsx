@@ -8,8 +8,11 @@ import { TrustBand } from "@/components/site/TrustBand";
 import { operatingPrinciples, founderBio } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
 import ilAboutAsset from "@/assets/il-07-about-v2.png.asset.json";
+import ilPracticeLeadAsset from "@/assets/il-practice-lead.png.asset.json";
+import { Illustration } from "@/components/home/Illustration";
 
 const ilAbout = ilAboutAsset.url;
+const ilPracticeLead = ilPracticeLeadAsset.url;
 
 const PRINCIPLE_ICONS = [FileCheck2, AlertOctagon, Fingerprint];
 
