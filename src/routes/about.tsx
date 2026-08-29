@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FileCheck2, AlertOctagon, Fingerprint, BadgeCheck, Clock, Landmark } from "lucide-react";
+import { BadgeCheck, Clock, Landmark } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
@@ -10,6 +10,7 @@ import { useInView } from "@/hooks/use-in-view";
 import ilAboutAsset from "@/assets/il-07-about-v2.png.asset.json";
 import ilPracticeLeadAsset from "@/assets/il-practice-lead.png.asset.json";
 import { Illustration } from "@/components/home/Illustration";
+import { PrincipleDiagram, type PrincipleVariant } from "@/components/site/PrincipleDiagram";
 
 const ilAbout = ilAboutAsset.url;
 const ilPracticeLead = ilPracticeLeadAsset.url;
@@ -45,7 +46,6 @@ function PrinciplesGrid() {
   return (
     <div ref={ref} className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
       {operatingPrinciples.map((p, i) => {
-        const Icon = PRINCIPLE_ICONS[i % PRINCIPLE_ICONS.length];
         return (
           <article
             key={p.n}
