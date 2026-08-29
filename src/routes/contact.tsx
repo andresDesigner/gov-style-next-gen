@@ -459,10 +459,10 @@ function ContactPage() {
                   relationship and is not legal advice.
                 </p>
                 <Illustration
-                  src={ilContact}
+                  src={ilSteps}
                   alt=""
-                  width={916}
-                  height={786}
+                  width={625}
+                  height={636}
                   blob={false}
                   accents={false}
                   className="mt-8 hidden max-w-[240px] lg:block"
