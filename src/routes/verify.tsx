@@ -19,11 +19,10 @@ import { MethodologyFlowDiagram } from "@/components/home/MethodologyFlowDiagram
 import { DocumentArchitectureDiagram } from "@/components/home/DocumentArchitectureDiagram";
 import { EvidenceArtifactCard } from "@/components/home/EvidenceArtifactCard";
 import { Illustration } from "@/components/home/Illustration";
+import { NineStageFlowHero } from "@/components/home/NineStageFlowHero";
 import { evidenceFindingF20270142 } from "@/components/home/shared";
 import { staticVsBehavioral, verifyAudience } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
-import ilVerifyAsset from "@/assets/il-02-verify-v3.png.asset.json";
-const ilVerify = ilVerifyAsset.url;
 import ilDocsAsset from "@/assets/il-03-docs.png.asset.json";
 
 const COMPARISON_ICONS = [Search, ShieldQuestion, FileSearch];
@@ -89,7 +88,7 @@ function VerifyPage() {
           kicker="How We Verify · Methodology"
           title="A nine-stage verification flow — not a scanner report."
           lead="Every finding travels through the same nine stages, from intake to trace. Two stages — NVDA behavioral capture and evidence sufficiency — are where we commit to what assistive technology actually exposes."
-          illustration={{ src: ilVerify, alt: "", width: 896, height: 768 }}
+          aside={<NineStageFlowHero />}
           actions={
             <>
               <a
