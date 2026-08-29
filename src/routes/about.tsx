@@ -14,7 +14,7 @@ import { Illustration } from "@/components/home/Illustration";
 const ilAbout = ilAboutAsset.url;
 const ilPracticeLead = ilPracticeLeadAsset.url;
 
-const PRINCIPLE_ICONS = [FileCheck2, AlertOctagon, Fingerprint];
+const PRINCIPLE_VARIANTS: PrincipleVariant[] = ["observation", "limitation", "trace"];
 
 const TITLE = "About — Why ACT Verified exists";
 const DESC =
