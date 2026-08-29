@@ -170,7 +170,7 @@ function ContactPage() {
           kicker="Contact · Intake"
           title="Let's talk about your Title II timeline."
           lead="Tell us where you are and we'll route you to the right next step — readiness sprint, audit, remediation, or independent verification."
-          illustration={{ src: ilContact, alt: "", width: 1200, height: 999, maxWidthClass: "lg:max-w-[440px]" }}
+          illustration={{ src: ilContact, alt: "", width: 1200, height: 999 }}
         />
 
         <section aria-labelledby="next-steps" className="border-b border-foreground/10 bg-secondary/30">
@@ -465,7 +465,8 @@ function ContactPage() {
                   height={636}
                   blob={false}
                   accents={false}
-                  className="mt-8 hidden max-w-[240px] lg:block"
+                  scale="section"
+                  className="mt-8 hidden lg:block"
                 />
 
               </div>

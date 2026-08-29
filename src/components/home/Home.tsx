@@ -207,7 +207,8 @@ export function Home() {
                 eager
                 blob={false}
                 accents={false}
-                className="mx-auto w-full max-w-[460px] lg:max-w-[560px] lg:-mt-6"
+                scale="hero"
+                className="lg:-mt-6"
               />
 
               <aside
@@ -380,7 +381,7 @@ export function Home() {
                       height={1008}
                       accents={false}
                       blob={false}
-                      className="max-w-[200px] md:max-w-[240px]"
+                      scale="section"
                     />
                   </div>
                 </div>
@@ -528,7 +529,7 @@ export function Home() {
                   width={1008}
                   height={1008}
                   blob={false}
-                  className="max-w-[320px]"
+                  scale="section"
                 />
               </div>
 

@@ -52,9 +52,8 @@ export function PageHero({
         eager
         blob={illustration.blob ?? false}
         accents={illustration.accents ?? true}
-        className={
-          "mx-auto w-full max-w-[360px] " + (illustration.maxWidthClass ?? "lg:max-w-[440px]")
-        }
+        scale={illustration.maxWidthClass ? "none" : "hero"}
+        className={illustration.maxWidthClass ? "mx-auto w-full max-w-[400px] " + illustration.maxWidthClass : undefined}
       />
     ) : null);
 

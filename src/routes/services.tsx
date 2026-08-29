@@ -69,7 +69,6 @@ function ServicesPage() {
             alt: "",
             width: 1024,
             height: 1024,
-            maxWidthClass: "lg:max-w-[480px]",
             blob: false,
             accents: false,
           }}
@@ -134,7 +133,7 @@ function ServicesPage() {
                   height={1024}
                   blob={false}
                   accents={false}
-                  className="mx-auto w-full max-w-[320px] lg:max-w-[380px]"
+                  scale="section"
                 />
               </div>
             </div>
@@ -200,7 +199,8 @@ function ServicesPage() {
                 height={946}
                 blob={false}
                 accents={false}
-                className="mt-8 hidden max-w-[280px] lg:block"
+                scale="section"
+                className="mt-8 hidden lg:block"
               />
 
             </div>
