@@ -8,8 +8,11 @@ import { TrustBand } from "@/components/site/TrustBand";
 import { operatingPrinciples, founderBio } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
 import ilAboutAsset from "@/assets/il-07-about-v2.png.asset.json";
+import ilPracticeLeadAsset from "@/assets/il-practice-lead.png.asset.json";
+import { Illustration } from "@/components/home/Illustration";
 
 const ilAbout = ilAboutAsset.url;
+const ilPracticeLead = ilPracticeLeadAsset.url;
 
 const PRINCIPLE_ICONS = [FileCheck2, AlertOctagon, Fingerprint];
 
@@ -104,24 +107,48 @@ function AboutPage() {
         />
 
         <section aria-labelledby="founder" className="border-b border-foreground/10">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
-                Practice Lead
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-10 px-6 py-14 sm:py-20 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-7">
+              <div className="flex items-center gap-3">
+                <span aria-hidden="true" className="h-px w-8 bg-signal" />
+                <div className="font-mono text-sm font-semibold uppercase tracking-widest text-signal-strong">
+                  Practice Lead
+                </div>
               </div>
-            </div>
-
-            <div className="lg:col-span-8 lg:border-l lg:border-foreground/10 lg:pl-10">
               <h2
                 id="founder"
-                className="text-3xl font-medium tracking-tight md:text-4xl"
+                className="mt-4 max-w-[20ch] text-balance text-3xl font-medium tracking-tight md:text-4xl lg:text-[2.75rem] lg:leading-[1.1]"
               >
                 A Trusted Tester–led practice.
               </h2>
-              <blockquote className="mt-6 border-l-2 border-signal pl-6 text-lg leading-relaxed text-foreground/85">
+              <blockquote className="mt-6 max-w-[60ch] border-l-2 border-signal pl-6 text-lg leading-relaxed text-foreground/85">
                 {founderBio}
               </blockquote>
+              <dl className="mt-8 grid max-w-[46ch] grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="border-t border-foreground/15 pt-3">
+                  <dt className="font-mono text-[10px] uppercase tracking-widest text-foreground/55">
+                    Certification
+                  </dt>
+                  <dd className="mt-1 text-sm font-medium">Section 508 Trusted Tester</dd>
+                </div>
+                <div className="border-t border-foreground/15 pt-3">
+                  <dt className="font-mono text-[10px] uppercase tracking-widest text-foreground/55">
+                    Standards
+                  </dt>
+                  <dd className="mt-1 text-sm font-medium">WCAG 2.1 AA · Section 508</dd>
+                </div>
+              </dl>
+            </div>
 
+            <div className="lg:col-span-5">
+              <Illustration
+                src={ilPracticeLead}
+                alt=""
+                width={848}
+                height={1272}
+                accents={false}
+                className="mx-auto w-full max-w-[320px] lg:max-w-[400px]"
+              />
             </div>
           </div>
         </section>
