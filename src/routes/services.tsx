@@ -20,7 +20,7 @@ import { PhaseScopeDiagram } from "@/components/home/PhaseScopeDiagram";
 import { Illustration } from "@/components/home/Illustration";
 import ilServicesAsset from "@/assets/il-07-services-hero.png.asset.json";
 
-import ilAvailabilityAsset from "@/assets/il-availability.png.asset.json";
+import ilAvailabilityAsset from "@/assets/il-availability-v2.png.asset.json";
 import ilEngagementAsset from "@/assets/il-engagement.png.asset.json";
 import ilDeadline from "@/assets/il-05-deadline.png";
 import { ServiceTraceRecordDiagram } from "@/components/site/ServiceTraceRecordDiagram";
