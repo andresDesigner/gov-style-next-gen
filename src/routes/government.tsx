@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FileText, Workflow, Scale, ShieldCheck, Timer, Landmark, ArrowRight } from "lucide-react";
+import { Landmark, Users, Scale, ShieldCheck, Timer, ArrowRight } from "lucide-react";
 import { AudienceRoutingDiagram } from "@/components/home/AudienceRoutingDiagram";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/government")({
 const PATHS = [
   {
     role: "Procurement Officer",
-    icon: FileText,
+    icon: Landmark,
     headline: "Evaluate the practice, not the pitch.",
     body: "Download the capability statement: scope, standards, staffing, and evidence formats — the record you need on file before an award.",
     cta: "Download Capability Statement",
@@ -53,7 +53,7 @@ const PATHS = [
   },
   {
     role: "Accessibility Program Manager",
-    icon: Workflow,
+    icon: Users,
     headline: "See exactly how findings are produced.",
     body: "Walk the nine-stage flow: intake, static extraction, NVDA behavioral capture, reconciliation, and the evidence sufficiency gate that guards every trace.",
     cta: "See the nine-stage flow",
@@ -83,15 +83,17 @@ function PathCards() {
             key={p.role}
             data-inview={state}
             style={{ ["--stagger" as string]: i }}
-            className="reveal reveal-stagger group flex flex-col rounded-xl border border-foreground/15 bg-card p-7 shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
+            className="reveal reveal-stagger group flex flex-col items-center rounded-xl border border-foreground/15 bg-card p-7 text-center shadow-sm motion-safe:transition-[box-shadow,transform] motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
           >
-            <Icon aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
-            <div className="mt-4 font-mono text-[11px] uppercase tracking-widest text-accent">
+            <div className="flex h-20 w-20 items-center justify-center rounded-full border border-foreground/10 bg-secondary/50">
+              <Icon aria-hidden="true" strokeWidth={1.5} className="h-12 w-12 text-signal" />
+            </div>
+            <div className="mt-5 font-mono text-[11px] uppercase tracking-widest text-accent">
               {p.role}
             </div>
             <h3 className="mt-2 text-xl font-semibold tracking-tight">{p.headline}</h3>
             <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/80">{p.body}</p>
-            <p className="mt-4 border-t border-foreground/10 pt-3 text-sm font-medium text-foreground">
+            <p className="mt-4 w-full border-t border-foreground/10 pt-3 text-sm font-medium text-foreground">
               <span className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">
                 You get —{" "}
               </span>
