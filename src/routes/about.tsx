@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FileCheck2, AlertOctagon, Fingerprint, BadgeCheck, Clock, Landmark } from "lucide-react";
+import { BadgeCheck, Clock, Landmark } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageHero } from "@/components/site/PageHero";
@@ -10,11 +10,12 @@ import { useInView } from "@/hooks/use-in-view";
 import ilAboutAsset from "@/assets/il-07-about-v2.png.asset.json";
 import ilPracticeLeadAsset from "@/assets/il-practice-lead.png.asset.json";
 import { Illustration } from "@/components/home/Illustration";
+import { PrincipleDiagram, type PrincipleVariant } from "@/components/site/PrincipleDiagram";
 
 const ilAbout = ilAboutAsset.url;
 const ilPracticeLead = ilPracticeLeadAsset.url;
 
-const PRINCIPLE_ICONS = [FileCheck2, AlertOctagon, Fingerprint];
+const PRINCIPLE_VARIANTS: PrincipleVariant[] = ["observation", "limitation", "trace"];
 
 const TITLE = "About — Why ACT Verified exists";
 const DESC =
@@ -45,7 +46,6 @@ function PrinciplesGrid() {
   return (
     <div ref={ref} className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
       {operatingPrinciples.map((p, i) => {
-        const Icon = PRINCIPLE_ICONS[i % PRINCIPLE_ICONS.length];
         return (
           <article
             key={p.n}
@@ -59,7 +59,9 @@ function PrinciplesGrid() {
             >
               {String(i + 1)}
             </span>
-            <Icon aria-hidden="true" strokeWidth={1.75} className="relative h-9 w-9 text-signal" />
+            <div className="relative">
+              <PrincipleDiagram variant={PRINCIPLE_VARIANTS[i % PRINCIPLE_VARIANTS.length]} inView={inView} />
+            </div>
             <div className="relative mt-4 font-mono text-[10px] uppercase tracking-widest text-primary">
               Principle {p.n}
             </div>
