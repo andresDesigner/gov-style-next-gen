@@ -22,8 +22,8 @@ const DESC =
 const COBALT = "#033EAD";
 const CORAL_HEX = "#fd7239";
 
-const START = 34;
-const STEP = 61;
+const START = 40;
+const STEP = 60;
 const END = START + STEP * (STAGES.length - 1);
 const RAIL_Y = 40;
 
@@ -44,7 +44,7 @@ export function NineStageFlowHero() {
       <svg
         role="img"
         aria-labelledby="nsf-title"
-        viewBox="0 0 520 106"
+        viewBox="0 0 560 106"
         className="mt-4 hidden h-auto w-full sm:block"
         preserveAspectRatio="xMidYMid meet"
       >
