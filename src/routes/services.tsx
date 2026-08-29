@@ -145,7 +145,7 @@ function ServicesPage() {
         <section aria-labelledby="service-catalog" className="border-b border-foreground/10 bg-secondary/30">
           <div className="mx-auto max-w-[1200px] px-6 py-24">
             <div className="mb-10 grid grid-cols-1 items-end gap-8 lg:grid-cols-12">
-              <div className="lg:col-span-8">
+              <div className="lg:col-span-7">
                 <div className="flex items-center gap-3">
                   <Layers aria-hidden="true" strokeWidth={1.75} className="h-8 w-8 text-signal" />
                   <div className="font-mono text-sm uppercase tracking-widest text-foreground/70">
@@ -164,7 +164,7 @@ function ServicesPage() {
                   the record rather than from a brochure.
                 </p>
               </div>
-              <div className="hidden lg:col-span-4 lg:block">
+              <div className="lg:col-span-5 lg:flex lg:items-center">
                 <ServiceTraceRecordDiagram />
               </div>
             </div>
