@@ -23,7 +23,7 @@ import ilServicesAsset from "@/assets/il-06-services.png.asset.json";
 import ilAvailabilityAsset from "@/assets/il-availability.png.asset.json";
 import ilEngagementAsset from "@/assets/il-engagement.png.asset.json";
 import ilDeadline from "@/assets/il-05-deadline.png";
-import ilCatalogAsset from "@/assets/il-service-catalog.png.asset.json";
+import { ServiceTraceRecordDiagram } from "@/components/site/ServiceTraceRecordDiagram";
 
 const TITLE = "Services — Accessibility consulting built around evidence";
 const DESC =
@@ -164,16 +164,8 @@ function ServicesPage() {
                   the record rather than from a brochure.
                 </p>
               </div>
-              <div className="lg:col-span-4">
-                <Illustration
-                  src={ilCatalogAsset.url}
-                  alt=""
-                  width={1008}
-                  height={1008}
-                  blob={false}
-                  accents={false}
-                  className="mx-auto hidden w-full max-w-[260px] lg:block"
-                />
+              <div className="hidden lg:col-span-4 lg:block">
+                <ServiceTraceRecordDiagram />
               </div>
             </div>
             <ServiceCardGrid />
