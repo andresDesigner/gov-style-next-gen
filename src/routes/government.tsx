@@ -10,10 +10,10 @@ import { Illustration } from "@/components/home/Illustration";
 import { useInView } from "@/hooks/use-in-view";
 import { roleOutputs } from "@/components/site/content";
 
-import ilGovAsset from "@/assets/il-04-gov.png.asset.json";
+import ilGovAsset from "@/assets/il-04-gov-v2.png.asset.json";
 const ilGov = ilGovAsset.url;
 
-import ilEvidenceAsset from "@/assets/il-05-evidence.png.asset.json";
+import ilEvidenceAsset from "@/assets/il-05-evidence-v2.png.asset.json";
 const ilEvidence = ilEvidenceAsset.url;
 
 
@@ -139,7 +139,7 @@ function GovernmentPage() {
           kicker="For Government · Hub"
           title="Three roles. Three paths to a Title II decision."
           lead="Different roles need different evidence at different moments. Route yourself to the record that matches the decision on your desk today."
-          illustration={{ src: ilGov, alt: "", width: 1024, height: 1024 }}
+          illustration={{ src: ilGov, alt: "", width: 1274, height: 1054 }}
         />
 
         <TrustBand
@@ -171,8 +171,8 @@ function GovernmentPage() {
               <Illustration
                 src={ilEvidence}
                 alt=""
-                width={848}
-                height={883}
+                width={1269}
+                height={1155}
                 blob={false}
                 accents={false}
                 className="mt-8 hidden max-w-[240px] lg:block"
