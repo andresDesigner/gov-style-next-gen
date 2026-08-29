@@ -11,7 +11,7 @@ import ilAboutAsset from "@/assets/il-07-about-v2.png.asset.json";
 
 const ilAbout = ilAboutAsset.url;
 
-const PRINCIPLE_ICONS
+const PRINCIPLE_ICONS = [FileCheck2, AlertOctagon, Fingerprint];
 
 const TITLE = "About — Why ACT Verified exists";
 const DESC =
