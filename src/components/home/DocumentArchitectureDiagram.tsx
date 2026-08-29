@@ -1,4 +1,7 @@
 import { useInView } from "@/hooks/use-in-view";
+import type { LucideIcon } from "lucide-react";
+import { Heading1, Pilcrow, SquareMousePointer, Image, Code } from "lucide-react";
+
 
 const DESC =
   "Two-layer diagram contrasting a document's tag structure with what a screen reader actually exposes. " +

@@ -159,15 +159,6 @@ function VerifyPage() {
                 tells you what the accessibility tree actually exposes to a screen reader. The gap
                 between the two layers is where compliance risk lives.
               </p>
-              <Illustration
-                src={ilDocsAsset.url}
-                alt=""
-                width={848}
-                height={916}
-                blob={false}
-                accents={false}
-                className="mt-8 hidden max-w-[280px] lg:block"
-              />
             </div>
             <div className="lg:col-span-8">
               <DocumentArchitectureDiagram />
