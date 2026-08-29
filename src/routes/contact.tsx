@@ -18,8 +18,10 @@ import {
   contactEntityTypes,
   contactTimelines,
 } from "@/components/site/content";
-import ilContactAsset from "@/assets/il-06-contact.png.asset.json";
+import ilContactAsset from "@/assets/il-06-contact-v2.png.asset.json";
 const ilContact = ilContactAsset.url;
+import ilStepsAsset from "@/assets/il-08-contact-steps.png.asset.json";
+const ilSteps = ilStepsAsset.url;
 
 const NEXT_STEPS = [
   {
