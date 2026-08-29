@@ -196,8 +196,8 @@ function ServicesPage() {
               <Illustration
                 src={ilAvailabilityAsset.url}
                 alt=""
-                width={1024}
-                height={1024}
+                width={1193}
+                height={946}
                 blob={false}
                 accents={false}
                 className="mt-8 hidden max-w-[280px] lg:block"
