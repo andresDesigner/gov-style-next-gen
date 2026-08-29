@@ -14,6 +14,17 @@ export type IllustrationProps = {
   accents?: boolean;
   className?: string;
   imgClassName?: string;
+  /**
+   * Shared sizing scale.
+   * hero: high-impact page hero art. section: subordinate in-page art.
+   */
+  scale?: "hero" | "section" | "none";
+};
+
+const SCALE_CLASS: Record<"hero" | "section" | "none", string> = {
+  hero: "mx-auto w-full max-w-[400px] lg:max-w-[520px]",
+  section: "mx-auto w-full max-w-[260px] lg:max-w-[320px]",
+  none: "",
 };
 
 /**
@@ -31,6 +42,7 @@ export function Illustration({
   accents = true,
   className,
   imgClassName,
+  scale = "none",
 }: IllustrationProps) {
   const { ref, inView } = useInView<HTMLDivElement>();
   const state = inView ? "true" : "false";
@@ -38,7 +50,9 @@ export function Illustration({
   return (
     <div
       ref={ref}
-      className={"relative isolate " + (className ?? "")}
+      className={["relative isolate", SCALE_CLASS[scale], className ?? ""]
+        .filter(Boolean)
+        .join(" ")}
       data-inview={state}
     >
       {blob ? (
