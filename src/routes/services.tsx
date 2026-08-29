@@ -164,7 +164,7 @@ function ServicesPage() {
                   the record rather than from a brochure.
                 </p>
               </div>
-              <div className="hidden lg:col-span-4 lg:block">
+              <div className="lg:col-span-5 lg:flex lg:items-center">
                 <ServiceTraceRecordDiagram />
               </div>
             </div>
