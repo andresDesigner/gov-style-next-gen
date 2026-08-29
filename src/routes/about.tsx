@@ -7,7 +7,7 @@ import { CtaBand } from "@/components/site/CtaBand";
 import { TrustBand } from "@/components/site/TrustBand";
 import { operatingPrinciples, founderBio } from "@/components/site/content";
 import { useInView } from "@/hooks/use-in-view";
-import ilAboutAsset from "@/assets/il-07-about.png.asset.json";
+import ilAboutAsset from "@/assets/il-07-about-v2.png.asset.json";
 
 const ilAbout = ilAboutAsset.url;
 
