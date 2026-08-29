@@ -10,10 +10,10 @@ import { Illustration } from "@/components/home/Illustration";
 import { useInView } from "@/hooks/use-in-view";
 import { roleOutputs } from "@/components/site/content";
 
-import ilGovAsset from "@/assets/il-04-gov.png.asset.json";
+import ilGovAsset from "@/assets/il-04-gov-v2.png.asset.json";
 const ilGov = ilGovAsset.url;
 
-import ilEvidenceAsset from "@/assets/il-05-evidence.png.asset.json";
+import ilEvidenceAsset from "@/assets/il-05-evidence-v2.png.asset.json";
 const ilEvidence = ilEvidenceAsset.url;
 
 
