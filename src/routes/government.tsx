@@ -175,7 +175,8 @@ function GovernmentPage() {
                 height={1155}
                 blob={false}
                 accents={false}
-                className="mt-8 hidden max-w-[240px] lg:block"
+                scale="section"
+                className="mt-8 hidden lg:block"
               />
             </div>
             <div className="lg:col-span-8">

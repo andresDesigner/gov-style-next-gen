@@ -95,7 +95,7 @@ function AboutPage() {
           kicker="About · Practice"
           title="Why ACT Verified exists."
           lead="ACT Verified is a consulting-led accessibility assurance practice operated under Zenzo LLC, built to bring evidence-grade rigor to accessibility verification for public-sector and regulated organizations facing legal exposure under ADA Title II."
-          illustration={{ src: ilAbout, alt: "", width: 695, height: 904, maxWidthClass: "lg:max-w-[380px]", blob: false, accents: false }}
+          illustration={{ src: ilAbout, alt: "", width: 695, height: 904, blob: false, accents: false }}
         />
 
         <TrustBand
@@ -149,7 +149,7 @@ function AboutPage() {
                 width={848}
                 height={1272}
                 accents={false}
-                className="mx-auto w-full max-w-[320px] lg:max-w-[400px]"
+                scale="section"
               />
             </div>
           </div>
