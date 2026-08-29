@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FileText, Workflow, Scale, ShieldCheck, Timer, Landmark, ArrowRight } from "lucide-react";
+import { Landmark, Users, Scale, ArrowRight } from "lucide-react";
 import { AudienceRoutingDiagram } from "@/components/home/AudienceRoutingDiagram";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/government")({
 const PATHS = [
   {
     role: "Procurement Officer",
-    icon: FileText,
+    icon: Landmark,
     headline: "Evaluate the practice, not the pitch.",
     body: "Download the capability statement: scope, standards, staffing, and evidence formats — the record you need on file before an award.",
     cta: "Download Capability Statement",
