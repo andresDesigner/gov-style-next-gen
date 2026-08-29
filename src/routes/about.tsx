@@ -59,7 +59,9 @@ function PrinciplesGrid() {
             >
               {String(i + 1)}
             </span>
-            <Icon aria-hidden="true" strokeWidth={1.75} className="relative h-9 w-9 text-signal" />
+            <div className="relative">
+              <PrincipleDiagram variant={PRINCIPLE_VARIANTS[i % PRINCIPLE_VARIANTS.length]} inView={inView} />
+            </div>
             <div className="relative mt-4 font-mono text-[10px] uppercase tracking-widest text-primary">
               Principle {p.n}
             </div>
