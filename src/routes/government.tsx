@@ -139,7 +139,7 @@ function GovernmentPage() {
           kicker="For Government · Hub"
           title="Three roles. Three paths to a Title II decision."
           lead="Different roles need different evidence at different moments. Route yourself to the record that matches the decision on your desk today."
-          illustration={{ src: ilGov, alt: "", width: 1024, height: 1024 }}
+          illustration={{ src: ilGov, alt: "", width: 1274, height: 1054 }}
         />
 
         <TrustBand
@@ -171,8 +171,8 @@ function GovernmentPage() {
               <Illustration
                 src={ilEvidence}
                 alt=""
-                width={848}
-                height={883}
+                width={1269}
+                height={1155}
                 blob={false}
                 accents={false}
                 className="mt-8 hidden max-w-[240px] lg:block"
