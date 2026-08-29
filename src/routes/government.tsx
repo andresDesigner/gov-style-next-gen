@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Landmark, Users, Scale, ArrowRight } from "lucide-react";
+import { Landmark, Users, Scale, ShieldCheck, Timer, ArrowRight } from "lucide-react";
 import { AudienceRoutingDiagram } from "@/components/home/AudienceRoutingDiagram";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -53,7 +53,7 @@ const PATHS = [
   },
   {
     role: "Accessibility Program Manager",
-    icon: Workflow,
+    icon: Users,
     headline: "See exactly how findings are produced.",
     body: "Walk the nine-stage flow: intake, static extraction, NVDA behavioral capture, reconciliation, and the evidence sufficiency gate that guards every trace.",
     cta: "See the nine-stage flow",
